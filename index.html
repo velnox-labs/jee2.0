@@ -636,6 +636,123 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .tt-day{padding:7px 11px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); font-size:12.5px; font-weight:600; cursor:pointer;}
 .tt-day.active{background:var(--indigo); border-color:var(--indigo); color:#fff;}
 .upnext{border-left:4px solid var(--kc); cursor:pointer;}
+/* ---------- Avatar / Profile / new Settings look ---------- */
+.avatar-btn{flex:0 0 38px;min-width:38px;aspect-ratio:1/1;box-sizing:border-box;width:38px;height:38px;border-radius:50%;border:2px solid var(--indigo);padding:0;overflow:hidden;cursor:pointer;background:var(--indigo-tint);color:var(--indigo);font:700 15px var(--font-head);display:flex;align-items:center;justify-content:center}
+.avatar-btn img,.pf-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.pf-top{position:relative;text-align:center;padding:10px 0 22px}
+.pf-gear{position:absolute;top:0;right:0;width:38px;height:38px;border-radius:50%;border:none;background:transparent;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pf-gear svg{width:21px;height:21px}
+.pf-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 12px;overflow:hidden;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font:700 34px var(--font-head)}
+.pf-name{font:700 20px var(--font-head);word-break:break-word}
+.pf-sub{font-size:12.5px;color:var(--ink-soft);margin:2px 0 8px}
+.pf-edit{background:none;border:none;color:var(--indigo);font-weight:600;font-size:13px;cursor:pointer;padding:4px 8px}
+.pf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.pf-box{padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:transparent}
+.pf-box .l{font-size:11.5px;color:var(--ink-soft);margin-bottom:4px}
+.pf-box .n{font:700 26px var(--font-head);color:var(--ink);line-height:1.1}
+.pf-box .n small{font-size:12px;font-weight:500;color:var(--ink-soft);margin-left:4px}
+.pf-lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:22px 2px 10px}
+.pf-more{display:block;margin:18px auto 0;background:none;border:none;color:var(--ink-soft);font-size:12.5px;cursor:pointer}
+.pf-ph{width:104px;height:104px;border-radius:50%;margin:0 auto 14px;overflow:hidden;background:var(--paper-2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font:700 38px var(--font-head);color:var(--indigo)}
+.pf-ph img{width:100%;height:100%;object-fit:cover}
+.st-head{display:flex;align-items:center;gap:12px;padding:18px;margin-bottom:16px;border-radius:22px;color:#fff;background:linear-gradient(145deg,#4452C4,#242C74)}
+.st-head h2{font-size:20px}.st-head p{font-size:12.5px;opacity:.75;margin-top:2px}
+.st-back{width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,.18);color:#fff;font-size:18px;cursor:pointer}
+#view-settings .card{border-radius:22px;border:none;box-shadow:var(--shadow)}
+#view-settings .section-title{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);display:flex;align-items:center;gap:8px}
+#view-settings .section-title::before{content:"";width:4px;height:14px;border-radius:2px;background:var(--amber)}
+#view-settings .field input,#view-settings .field select,#view-settings .field textarea{border-radius:12px;background:var(--paper-2);border-color:transparent}
+#view-settings .btn{border-radius:999px}
+#view-settings .seg{border-radius:999px}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.more-box{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:18px 16px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 14px var(--font-body);text-align:left;cursor:pointer;position:relative}
+.more-box:active{transform:scale(.98)}
+.more-box svg{width:24px;height:24px;color:var(--indigo)}
+.more-box .mb-badge{position:absolute;top:12px;right:12px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--red);color:#fff;font-size:11.5px;display:flex;align-items:center;justify-content:center}
+.hm-today{display:flex;align-items:center;gap:18px;margin-bottom:0}
+.hm-ring{position:relative;width:92px;height:92px;flex:0 0 92px}
+.hm-ring svg{width:100%;height:100%}
+.hm-ring-t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15}
+.hm-ring-t b{font:700 15px var(--font-head)}.hm-ring-t span{font-size:10.5px;color:var(--ink-soft)}
+.hm-bars{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+.hm-lblrow{display:flex;align-items:center;justify-content:space-between}
+.hm-lblrow .pf-edit{padding:0 2px;text-transform:none;letter-spacing:0}
+.pf-box .n span{font-size:12px;font-weight:500;color:var(--ink-soft)}
+.qa-grid{display:grid;grid-template-columns:repeat(var(--cols,3),1fr);gap:10px}
+.qa-tile{aspect-ratio:1/1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:6px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font:600 11.5px/1.2 var(--font-body);text-align:center}
+.qa-tile:active{transform:scale(.97)}
+.qa-tile svg{width:24px;height:24px;color:var(--indigo);flex:0 0 auto}
+.qa-tile span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:100%}
+.qa-row2{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}
+.qa-row2 label{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer}
+.qa-ico svg{width:18px;height:18px;color:var(--indigo);display:block}
+.qa-mv{border:none;background:var(--paper-2);color:var(--ink-soft);width:30px;height:28px;border-radius:8px;margin-left:4px;font-size:11px;cursor:pointer}
+.an-tab{display:none}.an-tab.on{display:block}
+.an-seg{border-radius:999px}
+/* ---------- Minimal login ---------- */
+.auth-screen{align-items:center}
+.auth-wrap{max-width:380px}
+.auth-brand{margin-bottom:28px}
+.auth-logo{width:52px;height:52px;border-radius:50%;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font:700 22px var(--font-head)}
+.auth-wrap h2{font-size:26px;letter-spacing:-.01em;margin-bottom:6px}
+.auth-lead{font-size:13.5px;margin-bottom:26px}
+.auth-card{background:transparent;border:none;box-shadow:none;padding:0}
+.auth-card .seg{border:none;background:var(--paper-2);border-radius:999px;padding:4px;margin-bottom:22px;gap:4px}
+.auth-card .seg button{border:none;border-radius:999px;background:transparent;padding:9px 6px}
+.auth-card .seg button.active{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(27,34,51,.12)}
+.auth-card .field label{font-size:12px;font-weight:500;margin-bottom:6px}
+.auth-card .field input{border-radius:14px;background:var(--paper-2);border:1px solid transparent}
+.auth-card .field input:focus{background:var(--paper);border-color:var(--indigo);outline:none}
+.auth-card .btn{border-radius:999px;padding:14px 18px;margin-top:10px}
+.auth-foot{margin-top:14px}
+.auth-link{color:var(--ink-soft);font-weight:500}
+/* ===================== Global minimal layer (all pages) ===================== */
+:root,:root[data-theme="dark"]{--shadow:none;--radius-md:16px;--radius-lg:20px}
+.sidebar{background:var(--paper)}
+.nav-item{font-weight:500;border-radius:999px}
+.nav-item.active{background:var(--indigo-tint);color:var(--indigo)}
+.topbar h1{font-size:21px;font-weight:600}
+.topbar .date-pill{border:none}
+.card,.stat,.row-item,.pill-searchbar{background:transparent;box-shadow:none;border:1px solid var(--line);border-radius:16px}
+.card-flat{background:var(--paper-2);border:none;border-radius:16px}
+.card.is-important{border-color:var(--amber)}
+.section-title{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:26px 2px 10px}
+.stat .val{font-weight:700}
+.stat .icon{background:transparent !important;padding:0;width:auto;height:auto;justify-content:flex-start}
+.hero{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hero-exam .label,.hero-exam .sub,.hero-exam .num span{opacity:1;color:var(--ink-soft)}
+.hero-divider{background:var(--line)}
+.btn{border-radius:999px;font-weight:600}
+.btn.sm{border-radius:999px}
+.btn.secondary{background:transparent}
+.fab,.fab-alert{box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.field label{font-weight:500;font-size:12px}
+.field input,.field select,.field textarea{border-radius:12px;background:var(--paper-2);border:1px solid transparent}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--indigo);background:var(--paper)}
+.seg{border:none;background:var(--paper-2);border-radius:999px;padding:3px;gap:3px;overflow:visible}
+.seg button{border:none !important;border-radius:999px;background:transparent}
+.seg button.active{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.tab{background:transparent;border-color:var(--line);font-weight:500}
+.tab.active{background:var(--indigo-tint);color:var(--indigo);border-color:transparent}
+.icon-btn{border:none;background:var(--paper-2);border-radius:50%}
+.badge{font-weight:600;border-radius:999px}
+.pbar{height:6px}
+.pill-searchbar{border-radius:999px}
+.filter-row select.pill-select,.filter-row .pill-toggle{background-color:transparent;border-color:var(--line);font-weight:500}
+.empty .ee{display:none}
+.modal{border-radius:24px 24px 0 0}
+.modal-backdrop{backdrop-filter:blur(3px)}
+.bottomnav{background:var(--paper)}
+.bn-item{font-weight:500}
+.ch-tile.gold .ch-tile-in{background:var(--amber-tint);color:var(--amber)}
+.st-head{background:transparent;color:var(--ink);padding:4px 0;margin-bottom:10px}
+.st-head p{opacity:1;color:var(--ink-soft)}
+.st-back{background:var(--paper-2);color:var(--ink)}
+#view-settings .card{box-shadow:none;border:1px solid var(--line);border-radius:16px}
+#view-settings .section-title{color:var(--ink-soft)}
+#view-settings .section-title::before{display:none}
+#view-settings .field input,#view-settings .field select,#view-settings .field textarea{border-color:transparent}
+.more-box,.qa-tile{background:transparent}
 </style>
 </head>
 <body>
@@ -654,13 +771,7 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
       <h1 id="viewTitle">Home</h1>
       <div style="display:flex; align-items:center; gap:8px;">
         <span class="date-pill" id="topDate">—</span>
-        <div class="streak-chips" id="topStreak" style="display:none;">
-          <button type="button" class="streak-chip" id="streakCurrent" aria-label="Current streak: 0 days. Tap to see dates"><span class="sc-ico fire">🔥</span><b>0</b></button>
-          <button type="button" class="streak-chip" id="streakBest" aria-label="Best streak: 0 days. Tap to see dates"><span class="sc-ico trophy">🏆</span><b>0</b></button>
-        </div>
-        <button class="icon-btn" id="moreMenuBtn" aria-label="More" style="width:36px; height:36px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
-        </button>
+        <button class="avatar-btn" id="moreMenuBtn" aria-label="Profile"></button>
       </div>
     </div>
 
@@ -684,6 +795,10 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
     <section class="view" id="view-goal"></section>
     <!-- SETTINGS -->
     <section class="view" id="view-settings"></section>
+    <!-- PROFILE -->
+    <section class="view" id="view-profile"></section>
+    <!-- MORE -->
+    <section class="view" id="view-more"></section>
     <!-- TIMER -->
     <section class="view" id="view-timer"></section>
 
@@ -708,7 +823,7 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 <div class="auth-screen" id="authScreen">
   <div class="auth-loading" id="authLoading"><span class="auth-spinner"></span><span>Loading…</span></div>
   <div class="auth-wrap" id="authWrap" hidden>
-    <div class="auth-brand"><span class="brand-mark">JEE</span><span class="brand-sub">Tracker</span></div>
+    <div class="auth-brand"><span class="auth-logo">J</span></div>
     <h2 id="authTitle">Welcome back</h2>
     <p class="auth-lead" id="authLead">Log in to see your progress on any device.</p>
     <div class="auth-card">
@@ -1663,6 +1778,7 @@ const ICONS = {
   add_task: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
 };
 
+ICONS.more = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>`;
 const NAV_ITEMS = [
   {id:'home', label:'Home', icon:'home'},
   {id:'planner', label:'Planner', icon:'planner'},
@@ -1672,11 +1788,11 @@ const NAV_ITEMS = [
   {id:'tests', label:'Tests', icon:'tests'},
   {id:'revision', label:'Revision', icon:'revision'},
   {id:'timer', label:'Study Timer', icon:'timer'},
-  {id:'analytics', label:'Analytics', icon:'analytics'},
   {id:'goal', label:'My Goal', icon:'goal'},
   {id:'settings', label:'Settings', icon:'settings'},
+  {id:'more', label:'More', icon:'more'},
 ];
-const BOTTOM_NAV_IDS = ['home','planner','chapters','tests','analytics'];
+const BOTTOM_NAV_IDS = ['home','planner','chapters','tests','more'];
 
 let CURRENT_VIEW = 'home';
 let APP_TODAY = todayStr();
@@ -1766,7 +1882,7 @@ function showDailyPopup(){
 
 function buildSidebar(){
   const nav = $('#sidebarNav');
-  nav.innerHTML = NAV_ITEMS.map(item=>`
+  nav.innerHTML = NAV_ITEMS.filter(i=>i.id!=='more').map(item=>`
     <button class="nav-item ${item.id===CURRENT_VIEW?'active':''}" data-view="${item.id}">
       ${ICONS[item.icon]}<span>${item.label}</span>
     </button>`).join('');
@@ -1788,7 +1904,7 @@ function switchView(viewId){
   const target = $('#view-'+viewId);
   if(target) target.classList.add('active');
   const item = NAV_ITEMS.find(n=>n.id===viewId);
-  $('#viewTitle').textContent = item ? item.label : (viewId==='timer'?'Study Timer':'JEE Tracker');
+  $('#viewTitle').textContent = viewId==='home' ? homeTitle() : item ? item.label : (viewId==='timer'?'Study Timer':viewId==='profile'?'Profile':viewId==='analytics'?'Analytics':'JEE Tracker');
   $all('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   $all('.bn-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   updateTopStreak(viewId);
@@ -1854,12 +1970,16 @@ function renderView(viewId){
   else if(viewId==='analytics') renderAnalytics();
   else if(viewId==='goal') renderGoal();
   else if(viewId==='settings') renderSettings();
+  else if(viewId==='profile') renderProfile();
+  else if(viewId==='more') renderMore();
   else if(viewId==='timer') renderTimer();
 }
 function renderAll(){
   recomputeStreaks();
   updateTopStreak();
   updateDeadlineFab();
+  updateAvatarBtn();
+  if(CURRENT_VIEW==='home') $('#viewTitle').textContent = homeTitle();
   renderView(CURRENT_VIEW);
 }
 
@@ -1942,7 +2062,7 @@ async function startSession(user){
 
   $('#fabBtn').addEventListener('click', openQuickAddMenu);
   $('#deadlineFabBtn').addEventListener('click', openDeadlinePanel);
-  $('#moreMenuBtn').addEventListener('click', openMoreMenu);
+  $('#moreMenuBtn').addEventListener('click', ()=>switchView('profile'));
   $('#streakCurrent').addEventListener('click', ()=>openStreakDetails('current'));
   $('#streakBest').addEventListener('click', ()=>openStreakDetails('best'));
 }
@@ -2284,90 +2404,52 @@ function renderHome(){
   const math = chapterCompletionPct('Mathematics');
   const lt = latestTest();
 
-  const hr = new Date().getHours();
-  const hello = hr<12 ? 'Good morning' : hr<17 ? 'Good afternoon' : 'Good evening';
-  const who = (s.studentName || '').trim() || (fbUser && fbUser.displayName) || ((fbUser && fbUser.email) ? fbUser.email.split('@')[0] : '');
 
+  const R=34, C=2*Math.PI*R, hp=Math.min(100,pct(todayHrs,s.dailyStudyHours));
+  const bar=(lbl,val,tot,cl)=>`<div class="hm-bar"><div class="pbar-row"><span>${lbl}</span><span>${val} / ${tot}</span></div><div class="pbar ${cl}"><div style="width:${pct(val,tot)}%"></div></div></div>`;
+  const subj=(n,v,c)=>`<div class="pf-box"><div class="l">${n}</div><div class="n">${v}<small>%</small></div><div class="pbar" style="margin-top:8px"><div style="width:${v}%;background:${c}"></div></div></div>`;
   const html = `
-  <div class="home-greet">
-    <h2>${hello}${who ? ', ' + esc(who) : ''}</h2>
-    <p>Let's make today count.</p>
+  <div class="pf-row">
+    <div class="pf-box"><div class="l">JEE Main</div><div class="n" id="cd-main">${Math.max(daysUntil(s.jeeMainDate),0)}<span> days</span></div></div>
+    <div class="pf-box"><div class="l">JEE Advanced</div><div class="n" id="cd-adv">${Math.max(daysUntil(s.jeeAdvancedDate),0)}<span> days</span></div></div>
   </div>
-  <div class="hero">
-    <div class="hero-row">
-      <div class="hero-exam">
-        <div class="label">JEE Main</div>
-        <div class="num" id="cd-main">${Math.max(daysUntil(s.jeeMainDate),0)}<span> days</span></div>
-        <div class="sub">${fmtDate(s.jeeMainDate)}</div>
-      </div>
-      <div class="hero-divider"></div>
-      <div class="hero-exam">
-        <div class="label">JEE Advanced</div>
-        <div class="num" id="cd-adv">${Math.max(daysUntil(s.jeeAdvancedDate),0)}<span> days</span></div>
-        <div class="sub">${fmtDate(s.jeeAdvancedDate)}</div>
-      </div>
+
+  <div class="pf-lbl">Today</div>
+  <div class="pf-box hm-today">
+    <div class="hm-ring">
+      <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="${R}" fill="none" stroke="var(--line)" stroke-width="7"/><circle cx="40" cy="40" r="${R}" fill="none" stroke="${studyBehindAlert?'var(--red)':'var(--indigo)'}" stroke-width="7" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-hp/100)}" transform="rotate(-90 40 40)"/></svg>
+      <div class="hm-ring-t"><b>${hoursToHM(todayHrs)}</b><span>of ${s.dailyStudyHours}h</span></div>
+    </div>
+    <div class="hm-bars">
+      ${bar('Questions',todayQ,s.dailyQuestionTarget,'amber')}
+      ${tTasks.length>0 ? bar('Tasks',doneTasks,tTasks.length,'green') : ''}
+      ${revDueTodayAll.length>0 ? bar('Revision',revDoneToday,revDueTodayAll.length,'') : ''}
     </div>
   </div>
 
-  <div class="section-title">Quick actions</div>
-  <div class="qa-row">
-    <button class="qa-btn" data-qa="session"><span class="qico">${ICONS.timer}</span>Start Session</button>
-    <button class="qa-btn" data-qa="task"><span class="qico">${ICONS.add_task}</span>Add Task</button>
-    <button class="qa-btn" data-qa="practice"><span class="qico">${ICONS.practice}</span>Add Questions</button>
-    <button class="qa-btn" data-qa="test"><span class="qico">${ICONS.tests}</span>Add Test</button>
-    <button class="qa-btn" data-qa="revision"><span class="qico">${ICONS.revision}</span>Mark Revision</button>
-  </div>
+  <div class="pf-lbl hm-lblrow"><span>Quick actions</span><button class="pf-edit" id="qaCustom">Customise</button></div>
+  <div class="qa-grid" id="qaGrid"></div>
 
   ${upNextHtml()}
-  <div class="section-title">Today's target</div>
-  <div class="card">
-    <div class="grid grid-2">
-      <div>
-        <div class="pbar-row"><span>Study hours</span><span>${hoursToHM(todayHrs)} / ${s.dailyStudyHours}h</span></div>
-        <div class="pbar${studyBehindAlert?' danger':''}"><div style="width:${pct(todayHrs, s.dailyStudyHours)}%; ${studyBehindAlert?'background:var(--red);':''}"></div></div>
-        ${studyBehindAlert ? `<p style="color:var(--red); font-size:12px; margin-top:4px;">⚠️ You still need ${hoursToHM(s.dailyStudyHours-todayHrs)} more to hit today's target</p>` : ''}
-      </div>
-      <div>
-        <div class="pbar-row"><span>Questions</span><span>${todayQ} / ${s.dailyQuestionTarget}</span></div>
-        <div class="pbar amber"><div style="width:${pct(todayQ, s.dailyQuestionTarget)}%"></div></div>
-      </div>
-      ${tTasks.length>0 ? `<div>
-        <div class="pbar-row"><span>Tasks</span><span>${doneTasks} / ${tTasks.length}</span></div>
-        <div class="pbar green"><div style="width:${pct(doneTasks, tTasks.length)}%"></div></div>
-      </div>` : ''}
-      ${revDueTodayAll.length>0 ? `<div>
-        <div class="pbar-row"><span>Revision</span><span>${revDoneToday} / ${revDueTodayAll.length}</span></div>
-        <div class="pbar"><div style="width:${pct(revDoneToday, revDueTodayAll.length)}%"></div></div>
-      </div>` : ''}
-    </div>
-  </div>
 
-  <div class="section-title">Syllabus completion</div>
-  <div class="card">
-    <div class="hbar-row"><div class="hb-label">Overall</div><div class="hb-track"><div style="width:${overall}%; background:var(--indigo);"></div></div><div class="hb-val">${overall}%</div></div>
-    <div class="hbar-row"><div class="hb-label">Physics</div><div class="hb-track"><div style="width:${phy}%; background:#3E6FD9;"></div></div><div class="hb-val">${phy}%</div></div>
-    <div class="hbar-row"><div class="hb-label">Chemistry</div><div class="hb-track"><div style="width:${chem}%; background:var(--green);"></div></div><div class="hb-val">${chem}%</div></div>
-    <div class="hbar-row"><div class="hb-label">Mathematics</div><div class="hb-track"><div style="width:${math}%; background:var(--amber);"></div></div><div class="hb-val">${math}%</div></div>
-    <div class="hbar-row"><div class="hb-label">Important</div><div class="hb-track"><div style="width:${importantSyllabusPct()}%; background:var(--red);"></div></div><div class="hb-val">${importantSyllabusPct()}%</div></div>
-  </div>
+  <div class="pf-lbl">Syllabus</div>
+  <div class="pf-box" style="margin-bottom:10px"><div class="l">Overall</div><div class="n">${overall}<small>%</small></div><div class="pbar" style="margin-top:8px"><div style="width:${overall}%"></div></div></div>
+  <div class="pf-row">${subj('Physics',phy,'#3E6FD9')}${subj('Chemistry',chem,'var(--green)')}</div>
+  <div class="pf-row">${subj('Mathematics',math,'var(--amber)')}${subj('Important',importantSyllabusPct(),'var(--red)')}</div>
 
-  ${lt ? `
-  <div class="section-title">Latest mock test</div>
-  <div class="card">
-    <div class="ri-title" style="margin-bottom:4px;">${esc(lt.name)} <span class="badge studying">${esc(lt.type)}</span></div>
-    <div class="muted" style="margin-bottom:10px;">${fmtDate(lt.date)}</div>
+  <div class="pf-lbl">Latest mock test</div>
+  ${lt ? `<div class="pf-box">
+    <div class="ri-title" style="margin-bottom:2px">${esc(lt.name)} <span class="badge studying">${esc(lt.type)}</span></div>
+    <div class="muted" style="margin-bottom:12px">${fmtDate(lt.date)}</div>
     <div class="grid grid-3">
-      <div><div class="lbl muted">Score</div><div style="font-weight:700; font-size:18px;">${lt.total}</div></div>
-      <div><div class="lbl muted">Accuracy</div><div style="font-weight:700; font-size:18px;">${testAccuracy(lt)}%</div></div>
-      <div><div class="lbl muted">Attempted</div><div style="font-weight:700; font-size:18px;">${Number(lt.correct||0)+Number(lt.wrong||0)}</div></div>
-    </div>
-  </div>` : `
-  <div class="section-title">Latest mock test</div>
-  <div class="empty card-flat"><div class="ee">📝</div><h4>No tests added yet</h4><p>Start tracking your first mock test.</p></div>
-  `}
+      <div><div class="l" style="font-size:11.5px;color:var(--ink-soft)">Score</div><div style="font:700 20px var(--font-head)">${lt.total}</div></div>
+      <div><div class="l" style="font-size:11.5px;color:var(--ink-soft)">Accuracy</div><div style="font:700 20px var(--font-head)">${testAccuracy(lt)}%</div></div>
+      <div><div class="l" style="font-size:11.5px;color:var(--ink-soft)">Attempted</div><div style="font:700 20px var(--font-head)">${Number(lt.correct||0)+Number(lt.wrong||0)}</div></div>
+    </div></div>` : `<div class="pf-box muted">No tests added yet. Add your first mock test from Quick actions.</div>`}
   `;
   view('home').innerHTML = html;
-  $all('.qa-btn').forEach(b=>b.addEventListener('click', ()=>handleQuickAction(b.dataset.qa)));
+  renderQuickGrid();
+  $('#qaCustom').addEventListener('click', openQaCustomise);
   const unc = document.getElementById('upNextCard');
   if(unc) unc.addEventListener('click', ()=>{ TT_DATE = todayStr(); switchView('timetable'); });
 }
@@ -2551,7 +2633,7 @@ function taskRowHtml(t){
   <div class="row-item" data-id="${t.id}">
     <button class="icon-btn" data-taskaction="toggle" style="${t.completed?'background:var(--green-tint); color:var(--green); border-color:var(--green-tint);':''}">${ICONS.check}</button>
     <div class="ri-main">
-      <div class="ri-title" style="${t.completed?'text-decoration:line-through; color:var(--ink-soft);':''}">${t.recurringId?'🔁 ':''}${esc(t.title)} <span class="badge ${t.priority.toLowerCase()}">${t.priority}</span></div>
+      <div class="ri-title" style="${t.completed?'text-decoration:line-through; color:var(--ink-soft);':''}">${t.recurringId?'↻ ':''}${esc(t.title)} <span class="badge ${t.priority.toLowerCase()}">${t.priority}</span></div>
       <div class="ri-sub">${esc(t.subject||'General')}${t.chapter?' · '+esc(t.chapter):''} · ${fmtDateShort(t.date)}${t.startTime?', '+t.startTime:''}${t.duration?' · '+t.duration+'m':''}</div>
     </div>
     <div class="ri-actions">
@@ -2619,7 +2701,7 @@ function openTaskModal(id, prefillDate){
     <label class="checkline" style="margin-bottom:14px;">
       <input type="checkbox" id="tf-repeat"> Repeat this task every day
     </label>` : editing.recurringId ? `
-    <p class="muted" style="margin-bottom:14px; font-size:13px;">🔁 This task repeats daily. <a href="#" id="tf-stop-repeat" style="color:var(--red);">Stop repeating</a></p>
+    <p class="muted" style="margin-bottom:14px; font-size:13px;">↻ This task repeats daily. <a href="#" id="tf-stop-repeat" style="color:var(--red);">Stop repeating</a></p>
     ` : ''}
     <div class="modal-actions">
       <button class="btn secondary" onclick="closeModal()">Cancel</button>
@@ -3193,9 +3275,11 @@ function sparklineSvg(values, color){
 function renderTests(){
   let tests = DATA.tests.slice().sort((a,b)=>b.date.localeCompare(a.date));
   if(TEST_FILTER.type) tests = tests.filter(t=>t.type===TEST_FILTER.type);
-  const avgScore = DATA.tests.length ? Math.round(DATA.tests.reduce((s,t)=>s+Number(t.total||0),0)/DATA.tests.length) : 0;
   const avgAcc = DATA.tests.length ? Math.round(DATA.tests.reduce((s,t)=>s+testAccuracy(t),0)/DATA.tests.length) : 0;
+  const avgScore = DATA.tests.length ? Math.round(DATA.tests.reduce((s,t)=>s+Number(t.total||0),0)/DATA.tests.length) : 0;
   const best = DATA.tests.length ? Math.max(...DATA.tests.map(t=>Number(t.total||0))) : 0;
+  const wkTests = DATA.tests.filter(t=>t.date>=addDays(todayStr(),-6)).length;
+  const prevWkTests = DATA.tests.filter(t=>t.date>=addDays(todayStr(),-13)&&t.date<addDays(todayStr(),-6)).length;
   const withTotalQ = DATA.tests.filter(t=>t.totalQuestions);
   const avgAttemptRate = withTotalQ.length ? Math.round(withTotalQ.reduce((s,t)=>s+pct(t.questions||0, t.totalQuestions),0)/withTotalQ.length) : null;
 
@@ -3229,8 +3313,8 @@ function renderTests(){
   const subjectAvgCard = subjEntries.length ? `
     <div class="section-title">Average marks by subject (across mocks)</div>
     <div class="card" style="margin-bottom:16px;">
-      ${subjEntries.map(([name,v])=>`<div class="hbar-row"><div class="hb-label">${name}${name===weakest?' ⚠️':''}</div><div class="hb-track"><div style="width:${Math.min(100,pct(v,100))}%; background:${name===weakest?'var(--red)':'var(--indigo)'};"></div></div><div class="hb-val">${v}</div></div>`).join('')}
-      ${weakest ? `<p class="muted" style="margin-top:8px;">${weakest} has your lowest average across mocks — spend extra practice time here.</p>` : ''}
+      ${subjEntries.map(([name,v])=>`<div class="hbar-row"><div class="hb-label">${name}</div><div class="hb-track"><div style="width:${Math.min(100,Math.max(0,pct(v,100)))}%; background:${name===weakest?'var(--red)':'var(--indigo)'};"></div></div><div class="hb-val">${v}</div></div>`).join('')}
+      ${weakest ? `<p class="muted" style="margin-top:8px;">${weakest} has your lowest average across mocks. Spend extra practice time here.</p>` : ''}
     </div>` : '';
 
   const html = `
@@ -3240,6 +3324,7 @@ function renderTests(){
       <div class="stat"><div class="val">${avgAcc}%</div><div class="lbl">Average accuracy</div></div>
       <div class="stat"><div class="val">${best}</div><div class="lbl">Best score</div></div>
     </div>
+    <div style="margin-bottom:16px;">${compareCard('Tests this week', wkTests, prevWkTests)}</div>
     ${avgAttemptRate!==null ? `<div class="card-flat" style="margin-bottom:16px;"><div class="lbl muted">Average attempt rate</div><div style="font-weight:700; font-size:18px;">${avgAttemptRate}% of paper attempted</div></div>` : ''}
     ${improvement}
     ${scoreChart}
@@ -3549,41 +3634,15 @@ function renderAnalytics(){
   const readiness = readinessScore();
 
   const html = `
-  <div class="section-title">Readiness score</div>
-  <div class="card readiness-card" style="margin-bottom:18px;">
-    <div style="display:flex; align-items:center; gap:16px;">
-      <div class="readiness-num" style="color:${readiness.score>=70?'var(--green)':readiness.score>=40?'var(--amber)':'var(--red)'};">${readiness.score}</div>
-      <div style="flex:1;">
-        <p class="muted" style="margin-bottom:6px;">Based on syllabus progress, consistency${readiness.components.some(c=>c.key==='mocks')?', mock performance':''}${readiness.components.some(c=>c.key==='pace')?' and pace':''}.</p>
-        <div class="pbar"><div style="width:${readiness.score}%; background:${readiness.score>=70?'var(--green)':readiness.score>=40?'var(--amber)':'var(--red)'};"></div></div>
-      </div>
-    </div>
-  </div>
-
-    <div class="section-title">This week vs previous week</div>
-    <div class="grid grid-4" style="margin-bottom:18px;">
+  <div class="section-title">This week vs previous week</div>
+    <div class="grid grid-3" style="margin-bottom:18px;">
       ${compareCard('Study Hours', thisWeekHrs, prevWeekHrs, h=>hoursToHM(h))}
       ${compareCard('Questions', thisWeekQ, prevWeekQ)}
-      ${compareCard('Tests', thisWeekTests, prevWeekTests)}
       ${compareCard('Accuracy', thisWeekAcc, prevWeekAcc, v=>v+'%')}
     </div>
-
-    <div class="section-title">Study calendar</div>
-    <div class="card" style="margin-bottom:18px;">
-      ${calendarHeatmapHtml()}
-    </div>
-
-    <div class="section-title">Personal records</div>
-    <div class="grid grid-2" style="margin-bottom:18px;">
-      <div class="stat"><div class="val">${hoursToHM(records.bestDayHours)}</div><div class="lbl">Best single-day study${records.bestDayDate?' · '+fmtDateShort(records.bestDayDate):''}</div></div>
-      <div class="stat"><div class="val">${records.bestQ}</div><div class="lbl">Best single-day questions${records.bestQDate?' · '+fmtDateShort(records.bestQDate):''}</div></div>
-      <div class="stat"><div class="val">${records.longestStreak}</div><div class="lbl">Longest study streak</div></div>
-      <div class="stat"><div class="val">${records.bestScore!=null?records.bestScore:'—'}</div><div class="lbl">Best mock score</div></div>
-      <div class="stat"><div class="val">${formatSeconds(avgTimePerQuestion())}</div><div class="lbl">Avg time / question</div></div>
-      ${records.bestJump!=null ? `<div class="stat"><div class="val" style="color:${records.bestJump>=0?'var(--green)':'var(--red)'};">${records.bestJump>=0?'+':''}${records.bestJump}</div><div class="lbl">Best test-to-test jump</div></div>` : ''}
-    </div>
-
-    <div class="two-col">
+<div class="seg an-seg" style="margin-bottom:16px;"><button type="button" data-antab="week" class="${AN_TAB==='week'?'active':''}">Week</button><button type="button" data-antab="cal" class="${AN_TAB==='cal'?'active':''}">Calendar</button></div>
+<div class="an-tab${AN_TAB==='week'?' on':''}" data-tab="week">
+<div class="two-col">
       <div class="card">
         <div class="section-title" style="margin-top:0;">Daily study hours (7 days)</div>
         <div class="barchart">
@@ -3607,39 +3666,7 @@ function renderAnalytics(){
         </div>
       </div>
     </div>
-
-    <div class="section-title">Mock-test performance</div>
-    ${testsSorted.length ? `
-    <div class="card" style="margin-bottom:16px;">
-      <div class="barchart">
-        ${testsSorted.map(t=>`
-          <div class="bcol">
-            <div class="bval">${t.total}</div>
-            <div class="bar" style="height:${pct(Number(t.total||0),maxMark)}%; background:var(--indigo);"></div>
-            <div class="blabel">${fmtDateShort(t.date).split(' ')[0]}</div>
-          </div>`).join('')}
-      </div>
-      <p class="muted" style="margin-top:6px;">Marks per test, most recent ${testsSorted.length} tests</p>
-    </div>` : emptyState('📈','No test data yet','Add mock tests to see performance trends.')}
-
-    <div class="two-col">
-      <div class="card">
-        <div class="section-title" style="margin-top:0;">Subject performance (avg marks)</div>
-        ${subjPerf.map(s=>`
-          <div class="hbar-row"><div class="hb-label">${s.subject}</div><div class="hb-track"><div style="width:${pct(s.avg,maxSubjPerf)}%; background:var(--indigo);"></div></div><div class="hb-val">${s.avg}</div></div>
-        `).join('')}
-      </div>
-      <div class="card">
-        <div class="section-title" style="margin-top:0;">Chapter completion</div>
-        ${['Physics','Chemistry','Mathematics'].map(s=>{
-          const p = chapterCompletionPct(s);
-          return `<div class="hbar-row"><div class="hb-label">${s}</div><div class="hb-track"><div style="width:${p}%; background:var(--green);"></div></div><div class="hb-val">${p}%</div></div>`;
-        }).join('')}
-        <div class="hbar-row"><div class="hb-label">★ Important</div><div class="hb-track"><div style="width:${importantSyllabusPct()}%; background:var(--amber);"></div></div><div class="hb-val">${importantSyllabusPct()}%</div></div>
-      </div>
-    </div>
-
-    <div class="section-title">Revision consistency (last 8 weeks)</div>
+<div class="section-title">Revision consistency (last 8 weeks)</div>
     <div class="card" style="margin-bottom:16px;">
       <div class="barchart">
         ${revConsistency.map(w=>`
@@ -3650,37 +3677,25 @@ function renderAnalytics(){
           </div>`).join('')}
       </div>
     </div>
-
-    <div class="two-col">
-      <div class="card">
-        <div class="section-title" style="margin-top:0;">Study time by subject</div>
-        ${subjectStudyTimeBreakdown()}
-      </div>
-      <div class="card">
-        <div class="section-title" style="margin-top:0;">Study consistency</div>
-        <div class="grid grid-2">
-          <div class="stat"><div class="val">${DATA.streaks.study.current}</div><div class="lbl">Current streak (days)</div></div>
-          <div class="stat"><div class="val">${DATA.streaks.study.longest}</div><div class="lbl">Longest streak (days)</div></div>
-          <div class="stat"><div class="val">${DATA.studySessions.length}</div><div class="lbl">Total sessions</div></div>
-          <div class="stat"><div class="val">${avgSessionLengthMin()}m</div><div class="lbl">Avg session length</div></div>
-        </div>
-      </div>
+<div class="card" style="margin-bottom:16px;">
+  <div class="section-title" style="margin-top:0;">Study time by subject</div>
+  ${subjectStudyTimeBreakdown()}
+</div>
+</div>
+<div class="an-tab${AN_TAB==='cal'?' on':''}" data-tab="cal">
+<div class="section-title">Study calendar</div>
+    <div class="card" style="margin-bottom:18px;">
+      ${calendarHeatmapHtml()}
     </div>
+</div>
 
-    <div class="section-title">Weak chapters to focus on</div>
-    <div class="list" style="margin-bottom:16px;">
-      ${weakChaptersList()}
-    </div>
-
-    <div class="section-title">Performance summary</div>
-    <div class="grid grid-4">
-      <div class="stat"><div class="val">${hoursToHM(DATA.studySessions.reduce((s,x)=>s+Number(x.minutes||0),0)/60)}</div><div class="lbl">Total study time</div></div>
-      <div class="stat"><div class="val">${DATA.practiceSessions.reduce((s,p)=>s+Number(p.attempted||0),0)}</div><div class="lbl">Total questions</div></div>
-      <div class="stat"><div class="val">${DATA.tests.length}</div><div class="lbl">Total tests</div></div>
-      <div class="stat"><div class="val">${overallSyllabusPct()}%</div><div class="lbl">Syllabus done</div></div>
-    </div>
   `;
   view('analytics').innerHTML = html;
+  $all('[data-antab]', view('analytics')).forEach(b=>b.addEventListener('click',()=>{
+    AN_TAB=b.dataset.antab;
+    $all('[data-antab]').forEach(x=>x.classList.toggle('active',x===b));
+    $all('.an-tab').forEach(t=>t.classList.toggle('on',t.dataset.tab===AN_TAB));
+  }));
   bindCalendarHeatmapEvents();
 }
 function subjectStudyTimeBreakdown(){
@@ -3847,7 +3862,7 @@ function renderSettings(){
       <button class="btn danger block" onclick="confirmResetAll()">Reset All Data</button>
     </div>
   `;
-  view('settings').innerHTML = html;
+  view('settings').innerHTML = `<div class="st-head"><button class="st-back" onclick="switchView('profile')" aria-label="Back">&#8592;</button><div><h2>Settings</h2><p>Customise your tracker</p></div></div>` + html;
   $all('[data-theme]', view('settings')).forEach(b=>b.addEventListener('click', ()=>{
     $all('[data-theme]', view('settings')).forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
@@ -4544,6 +4559,199 @@ function saveStudySession(minutes){
   }
 }
 
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+function homeTitle(){ return 'Hi, ' + (profileName().split(/\s+/)[0] || 'Student'); }
+function svgSrc(svg){ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); }
+function profileName(){ const s=DATA.settings; return (s.studentName||'').trim() || (fbUser&&fbUser.displayName) || ((fbUser&&fbUser.email)?fbUser.email.split('@')[0]:'Student'); }
+function avatarInner(){ const sv=DATA.settings.photoSvg; return sv ? `<img alt="" src="${svgSrc(sv)}">` : esc((profileName()[0]||'S').toUpperCase()); }
+function updateAvatarBtn(){ const b=$('#moreMenuBtn'); if(b) b.innerHTML=avatarInner(); }
+function profileOverallHtml(){
+  const T=DATA.tests, rec=computeRecords(), rd=readinessScore();
+  const key={Physics:'physics',Chemistry:'chemistry',Mathematics:'maths'};
+  const vals=(sub)=>T.map(t=>t[key[sub]]).filter(v=>v!=null&&v!=='').map(Number);
+  const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):null;
+  const mx=a=>a.length?Math.max(...a):null;
+  const fmt=v=>v==null?'—':v;
+  const tile=(l,v,sub)=>`<div class="pf-box"><div class="l">${l}</div><div class="n">${v}</div>${sub?`<div class="l" style="margin:4px 0 0">${sub}</div>`:''}</div>`;
+  const grp=(t,items)=>`<div class="pf-lbl">${t}</div><div class="pf-row" style="grid-template-columns:1fr 1fr;flex-wrap:wrap">${items.join('')}</div>`;
+  const tot=T.map(t=>Number(t.total||0));
+  const spanDays=(arr)=>{ const ds=arr.map(x=>x.date).filter(Boolean).sort(); return ds.length ? Math.max(1,Math.round((new Date(todayStr())-new Date(ds[0]))/864e5)+1) : 0; };
+  const PS=DATA.practiceSessions, SS=DATA.studySessions;
+  const totQ=PS.reduce((a,x)=>a+Number(x.attempted||0),0);
+  const totMin=SS.reduce((a,x)=>a+Number(x.minutes||0),0);
+  const qDays=spanDays(PS), sDays=spanDays(SS);
+  const corr=PS.reduce((a,x)=>a+Number(x.correct||0),0), wr=PS.reduce((a,x)=>a+Number(x.wrong||0),0);
+  const doneCh=DATA.chapters.filter(c=>c.status==='Completed'||c.status==='Revised').length;
+  const rc=rd.score>=70?'var(--green)':rd.score>=40?'var(--amber)':'var(--red)';
+  const best=[
+    tile('Best study day',hoursToHM(rec.bestDayHours),rec.bestDayDate?fmtDateShort(rec.bestDayDate):''),
+    tile('Best questions day',rec.bestQ,rec.bestQDate?fmtDateShort(rec.bestQDate):''),
+    tile('Best mock score',fmt(rec.bestScore),'Mock test'),
+    ...Object.keys(key).map(n=>tile('Best '+n,fmt(mx(vals(n))),'Mock test marks'))
+  ];
+  if(rec.bestJump!=null) best.push(tile('Best mock jump',(rec.bestJump>=0?'+':'')+rec.bestJump,'Mock test'));
+  const average=[
+    tile('Average mock score',fmt(avg(tot)),'Mock test'),
+    ...Object.keys(key).map(n=>tile('Average '+n,fmt(avg(vals(n))),'Mock test marks')),
+    tile('Avg questions / day',qDays?Math.round(totQ/qDays):'—','Since first practice'),
+    tile('Avg study / day',sDays?hoursToHM(totMin/60/sDays):'—','Since first session'),
+    tile('Avg practice accuracy',(corr+wr)?Math.round(corr/(corr+wr)*100)+'%':'—','All practice'),
+    tile('Avg questions / session',PS.length?Math.round(totQ/PS.length):'—',''),
+    tile('Avg time / question',formatSeconds(avgTimePerQuestion()),''),
+    tile('Avg session length',avgSessionLengthMin()+'m','')
+  ];
+  const total=[
+    tile('Total study time',hoursToHM(DATA.studySessions.reduce((a,x)=>a+Number(x.minutes||0),0)/60),''),
+    tile('Total questions',DATA.practiceSessions.reduce((a,x)=>a+Number(x.attempted||0),0),''),
+    tile('Total tests',T.length,''),
+    tile('Chapters completed',doneCh,'of '+DATA.chapters.length)
+  ];
+  const prog=['Physics','Chemistry','Mathematics'].map(n=>[n,chapterCompletionPct(n),'var(--green)']).concat([['Important',importantSyllabusPct(),'var(--amber)']]);
+  return `<div class="pf-lbl">Readiness</div>
+    <div class="pf-box" style="display:flex;align-items:center;gap:16px"><div class="n" style="color:${rc};font-size:34px">${rd.score}</div><div style="flex:1"><div class="l">Out of 100</div><div class="pbar" style="margin-top:6px"><div style="width:${rd.score}%;background:${rc}"></div></div></div></div>
+    ${grp('Best',best)}${grp('Average',average)}${grp('Total',total)}
+    <div class="pf-lbl">Chapter completion</div>
+    <div class="pf-box">${prog.map(x=>`<div class="hbar-row"><div class="hb-label">${x[0]}</div><div class="hb-track"><div style="width:${x[1]}%;background:${x[2]}"></div></div><div class="hb-val">${x[1]}%</div></div>`).join('')}</div>
+    <div class="pf-lbl">Weak chapters</div>
+    <div class="list">${weakChaptersList()}</div>`;
+}
+function renderProfile(){
+  const s=DATA.settings, st=DATA.streaks.study;
+  const m=Math.max(daysUntil(s.jeeMainDate),0), a=Math.max(daysUntil(s.jeeAdvancedDate),0);
+  $('#view-profile').innerHTML=`
+    <div class="pf-top">
+      <button class="pf-gear" aria-label="Settings" onclick="switchView('settings')">${ICONS.settings}</button>
+      <div class="pf-avatar">${avatarInner()}</div>
+      <div class="pf-name">${esc(profileName())}</div>
+      <div class="pf-sub">${esc((fbUser&&fbUser.email)||s.targetExam||'')}</div>
+      <button class="pf-edit" onclick="openProfileEdit()">Edit profile</button>
+    </div>
+    <div class="pf-row">
+      <div class="pf-box"><div class="l">JEE Main</div><div class="n">${m}<small>days left</small></div></div>
+      <div class="pf-box"><div class="l">JEE Advanced</div><div class="n">${a}<small>days left</small></div></div>
+    </div>
+    <div class="pf-row">
+      <div class="pf-box"><div class="l">Current streak</div><div class="n">${st.current}<small>days</small></div></div>
+      <div class="pf-box"><div class="l">Best streak</div><div class="n">${st.longest}<small>days</small></div></div>
+    </div>
+    ${profileOverallHtml()}
+    ${fbUser ? '<button class="btn secondary block" style="margin-top:26px;color:var(--red)" onclick="logout()">Log out</button>' : ''}`;
+  updateAvatarBtn();
+}
+function openProfileEdit(){
+  let photo; // undefined = unchanged, '' = removed, string = new svg
+  const ph=()=>{ const sv = photo===undefined ? DATA.settings.photoSvg : photo; return sv ? `<img alt="" src="${svgSrc(sv)}">` : esc((($('#pf-name')&&$('#pf-name').value.trim()||profileName())[0]||'S').toUpperCase()); };
+  openModal(`
+    <div class="modal-head"><h3>Edit profile</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <div class="pf-ph" id="pf-prev">${ph()}</div>
+    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:16px">
+      <label class="btn secondary sm" style="cursor:pointer">Change photo<input type="file" id="pf-file" accept="image/*" hidden></label>
+      <button class="btn secondary sm" id="pf-rm" type="button">Remove</button>
+    </div>
+    <div class="field"><label>Name</label><input id="pf-name" value="${esc(DATA.settings.studentName||'')}" placeholder="Your name" maxlength="40"></div>
+    <div class="modal-actions"><button class="btn" id="pf-save" type="button">Save</button></div>`);
+  $('#pf-file').addEventListener('change',e=>{
+    const f=e.target.files[0]; if(!f) return;
+    const r=new FileReader();
+    r.onload=()=>{ const im=new Image(); im.onload=()=>{
+      const N=192, c=document.createElement('canvas'); c.width=c.height=N;
+      const z=Math.min(im.width,im.height), sx=(im.width-z)/2, sy=(im.height-z)/2;
+      c.getContext('2d').drawImage(im,sx,sy,z,z,0,0,N,N);
+      photo=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${N} ${N}"><image href="${c.toDataURL('image/jpeg',0.82)}" width="${N}" height="${N}"/></svg>`;
+      $('#pf-prev').innerHTML=ph();
+    }; im.src=r.result; };
+    r.readAsDataURL(f);
+  });
+  $('#pf-rm').addEventListener('click',()=>{ photo=''; $('#pf-prev').innerHTML=ph(); });
+  $('#pf-save').addEventListener('click',()=>{
+    const nm=$('#pf-name').value.trim();
+    updateData(d=>{ d.settings.studentName=nm; if(photo!==undefined) d.settings.photoSvg=photo; });
+    closeModal(); renderAll(); toast('Profile updated');
+  });
+}
+
+function renderMore(){
+  const ICO = moreIco();
+  const od = overdueChapters().length;
+  const items = [
+    ['analytics','Analytics',ICONS.analytics],['timetable','Timetable',ICONS.clock],['goal','My Goal',ICONS.goal],['practice','Practice',ICONS.practice],
+    ['revision','Revision',ICONS.revision],['timer','Study Timer',ICONS.timer],
+    ['deadlines','Chapter Deadlines',ICO.deadline,od]
+  ];
+  if(DEFERRED_INSTALL_PROMPT) items.push(['install','Install App',ICO.install]);
+  items.push(['share','Share Progress',ICO.share]);
+  $('#view-more').innerHTML = '<div class="more-grid">' + items.map(i=>`<button class="more-box" data-more="${i[0]}">${i[2]}<span>${i[1]}</span>${i[3]?`<span class="mb-badge">${i[3]}</span>`:''}</button>`).join('') + '</div>';
+  $all('[data-more]', $('#view-more')).forEach(b=>b.addEventListener('click', async ()=>{
+    const k=b.dataset.more;
+    if(k==='share') openShareCardModal();
+    else if(k==='deadlines') openDeadlinePanel();
+    else if(k==='install'){ if(!DEFERRED_INSTALL_PROMPT) return; DEFERRED_INSTALL_PROMPT.prompt(); await DEFERRED_INSTALL_PROMPT.userChoice; DEFERRED_INSTALL_PROMPT=null; renderMore(); }
+    else switchView(k);
+  }));
+}
+
+var AN_TAB='week';
+function moreIco(){ return {"share": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"18\" cy=\"5\" r=\"2.5\"/><circle cx=\"6\" cy=\"12\" r=\"2.5\"/><circle cx=\"18\" cy=\"19\" r=\"2.5\"/><path d=\"m8.2 10.8 7.6-4.6M8.2 13.2l7.6 4.6\"/></svg>", "deadline": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\" rx=\"2.5\"/><path d=\"M8 3v4M16 3v4M3.5 10h17\"/></svg>", "install": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14\"/></svg>"}; }
+/* ---------- Quick actions grid (2 rows, >=3 cols, square tiles, customisable) ---------- */
+function qaPool(){
+  const I=moreIco();
+  return [
+    {id:'session',label:'Start Session',ic:ICONS.timer,run:()=>handleQuickAction('session')},
+    {id:'task',label:'Add Task',ic:ICONS.add_task,run:()=>handleQuickAction('task')},
+    {id:'questions',label:'Add Questions',ic:ICONS.practice,run:()=>handleQuickAction('practice')},
+    {id:'test',label:'Add Test',ic:ICONS.tests,run:()=>handleQuickAction('test')},
+    {id:'markrev',label:'Mark Revision',ic:ICONS.revision,run:()=>handleQuickAction('revision')},
+    {id:'timetable',label:'Timetable',ic:ICONS.clock,run:()=>switchView('timetable')},
+    {id:'planner',label:'Planner',ic:ICONS.planner,run:()=>switchView('planner')},
+    {id:'chapters',label:'Chapters',ic:ICONS.chapters,run:()=>switchView('chapters')},
+    {id:'goal',label:'My Goal',ic:ICONS.goal,run:()=>switchView('goal')},
+    {id:'practice',label:'Practice',ic:ICONS.practice,run:()=>switchView('practice')},
+    {id:'revision',label:'Revision',ic:ICONS.revision,run:()=>switchView('revision')},
+    {id:'deadlines',label:'Deadlines',ic:I.deadline,run:()=>openDeadlinePanel()},
+    {id:'analytics',label:'Analytics',ic:ICONS.analytics,run:()=>switchView('analytics')},
+    {id:'share',label:'Share',ic:I.share,run:()=>openShareCardModal()}
+  ];
+}
+function qaIds(){
+  const pool=qaPool().map(x=>x.id), saved=DATA.settings.qaList;
+  const ids=Array.isArray(saved)?saved.filter(i=>pool.includes(i)):[];
+  return ids.length ? ids : pool;
+}
+function qaCols(){
+  const el=$('#qaGrid'); const w=(el&&el.clientWidth)||(view('home').clientWidth)||360;
+  return Math.min(6, Math.max(3, Math.floor((w+10)/(88+10))));
+}
+function renderQuickGrid(){
+  const g=$('#qaGrid'); if(!g) return;
+  const cols=qaCols(), pool=qaPool();
+  const items=qaIds().map(id=>pool.find(x=>x.id===id)).slice(0,cols*2);
+  g.style.setProperty('--cols',cols);
+  g.innerHTML=items.map(x=>`<button class="qa-tile" data-qid="${x.id}">${x.ic}<span>${x.label}</span></button>`).join('');
+  $all('.qa-tile',g).forEach(b=>b.addEventListener('click',()=>pool.find(x=>x.id===b.dataset.qid).run()));
+}
+let _qaRz; window.addEventListener('resize',()=>{ clearTimeout(_qaRz); _qaRz=setTimeout(()=>{ if(CURRENT_VIEW==='home') renderQuickGrid(); },120); });
+function openQaCustomise(){
+  const pool=qaPool(), on=qaIds();
+  let list=on.concat(pool.map(x=>x.id).filter(i=>!on.includes(i))), sel=new Set(on);
+  const draw=()=>{
+    $('#qaList').innerHTML=list.map((id,i)=>{ const x=pool.find(p=>p.id===id); return `<div class="qa-row2">
+      <label><input type="checkbox" data-c="${id}" ${sel.has(id)?'checked':''}><span class="qa-ico">${x.ic}</span>${x.label}</label>
+      <span><button type="button" class="qa-mv" data-u="${i}" aria-label="Up">&#9650;</button><button type="button" class="qa-mv" data-d="${i}" aria-label="Down">&#9660;</button></span></div>`; }).join('');
+    $all('[data-c]',$('#qaList')).forEach(c=>c.addEventListener('change',()=>{ c.checked?sel.add(c.dataset.c):sel.delete(c.dataset.c); }));
+    $all('[data-u]',$('#qaList')).forEach(b=>b.addEventListener('click',()=>{ const i=+b.dataset.u; if(i>0){ [list[i-1],list[i]]=[list[i],list[i-1]]; draw(); } }));
+    $all('[data-d]',$('#qaList')).forEach(b=>b.addEventListener('click',()=>{ const i=+b.dataset.d; if(i<list.length-1){ [list[i+1],list[i]]=[list[i],list[i+1]]; draw(); } }));
+  };
+  openModal(`<div class="modal-head"><h3>Quick actions</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <p class="muted" style="margin-bottom:12px">Tick the ones you want and set the order. Each screen shows as many as fit in 2 rows, from the top.</p>
+    <div id="qaList"></div>
+    <div class="modal-actions"><button class="btn secondary" id="qaReset" type="button">Reset</button><button class="btn" id="qaSave" type="button">Save</button></div>`);
+  draw();
+  $('#qaReset').addEventListener('click',()=>{ updateData(d=>{ d.settings.qaList=null; }); closeModal(); renderQuickGrid(); });
+  $('#qaSave').addEventListener('click',()=>{ const out=list.filter(i=>sel.has(i)); updateData(d=>{ d.settings.qaList=out.length?out:null; }); closeModal(); renderQuickGrid(); });
+}
 </script>
 </body>
 </html>
