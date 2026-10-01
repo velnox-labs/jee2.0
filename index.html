@@ -1412,18 +1412,36 @@ function ensureStreakDates(s){
     s.bestEnd = s.lastDate;
   }
 }
-function recomputeStreaks(){
-  ['study','question','revision'].forEach(k=>ensureStreakDates(DATA.streaks[k]));
-  bumpStreak('study', todayHasStudyActivity());
-  bumpStreak('question', todayHasQuestionActivity());
-  bumpStreak('revision', todayHasRevisionActivity());
-  // decay: if last active date is older than yesterday, reset current to 0 for display
-  ['study','question','revision'].forEach(k=>{
-    const s = DATA.streaks[k];
-    if(s.lastDate && s.lastDate < addDays(todayStr(),-1)){
-      s.current = 0;
-    }
+/* Streaks are rebuilt from the real history every time, so deleting a session,
+   practice entry or revision can never leave a fake streak behind. */
+function streakActiveDates(key){
+  const st=DATA.settings;
+  if(key==='study'){
+    const min=Math.max(0,Number(st.minStudyMinutesForStreak)||0);
+    return [...new Set(DATA.studySessions.map(x=>x.date).filter(Boolean))].filter(d=>{ const m=studyHoursOn(d)*60; return min<=0 ? m>0 : m>=min; });
+  }
+  if(key==='question'){
+    const min=Math.max(0,Number(st.minQuestionsForStreak)||0);
+    return [...new Set(DATA.practiceSessions.map(x=>x.date).filter(Boolean))].filter(d=>{ const q=questionsSolvedOn(d); return min<=0 ? q>0 : q>=min; });
+  }
+  const min=Math.max(0,Number(st.minRevisionsForStreak)||0);
+  return [...new Set(DATA.revisions.map(r=>r.completedDate).filter(Boolean))].filter(d=>{ const c=DATA.revisions.filter(r=>r.completedDate===d).length; return min<=0 ? c>0 : c>=min; });
+}
+function rebuildStreak(key){
+  const s=DATA.streaks[key], dates=streakActiveDates(key).sort();
+  let longest=0,bestStart=null,bestEnd=null,runStart=null,prev=null,len=0;
+  dates.forEach(d=>{
+    if(prev && addDays(prev,1)===d){ len++; } else { len=1; runStart=d; }
+    if(len>longest){ longest=len; bestStart=runStart; bestEnd=d; }
+    prev=d;
   });
+  const last=dates.length?dates[dates.length-1]:null;
+  s.lastDate=last; s.longest=longest; s.bestStart=bestStart; s.bestEnd=bestEnd;
+  if(last && last>=addDays(todayStr(),-1)){ s.current=len; s.startDate=runStart; }
+  else { s.current=0; s.startDate=null; }
+}
+function recomputeStreaks(){
+  ['study','question','revision'].forEach(rebuildStreak);
   saveData();
 }
 /* ============================================================
