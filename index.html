@@ -651,6 +651,7 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .pf-box .l{font-size:11.5px;color:var(--ink-soft);margin-bottom:4px}
 .pf-box .n{font:700 26px var(--font-head);color:var(--ink);line-height:1.1}
 .pf-box .n small{font-size:12px;font-weight:500;color:var(--ink-soft);margin-left:4px}
+.pf-tap{cursor:pointer}.pf-tap:active{background:var(--paper-2)}
 .pf-lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:22px 2px 10px}
 .pf-more{display:block;margin:18px auto 0;background:none;border:none;color:var(--ink-soft);font-size:12.5px;cursor:pointer}
 .pf-ph{width:104px;height:104px;border-radius:50%;margin:0 auto 14px;overflow:hidden;background:var(--paper-2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font:700 38px var(--font-head);color:var(--indigo)}
@@ -1960,6 +1961,7 @@ function openStreakDetails(kind){
   `);
 }
 function renderView(viewId){
+  updateAvatarBtn();
   if(viewId==='home') renderHome();
   else if(viewId==='planner') renderPlanner();
   else if(viewId==='timetable') renderTimetable();
@@ -2063,8 +2065,9 @@ async function startSession(user){
   $('#fabBtn').addEventListener('click', openQuickAddMenu);
   $('#deadlineFabBtn').addEventListener('click', openDeadlinePanel);
   $('#moreMenuBtn').addEventListener('click', ()=>switchView('profile'));
-  $('#streakCurrent').addEventListener('click', ()=>openStreakDetails('current'));
-  $('#streakBest').addEventListener('click', ()=>openStreakDetails('best'));
+  const sc=$('#streakCurrent'), sb=$('#streakBest');
+  if(sc) sc.addEventListener('click', ()=>openStreakDetails('current'));
+  if(sb) sb.addEventListener('click', ()=>openStreakDetails('best'));
 }
 function saveDataLocalOnly(){
   try{ localStorage.setItem(LS_KEY, JSON.stringify(DATA)); }catch(e){ console.error('Save failed', e); }
@@ -4634,8 +4637,8 @@ function renderProfile(){
       <div class="pf-box"><div class="l">JEE Advanced</div><div class="n">${a}<small>days left</small></div></div>
     </div>
     <div class="pf-row">
-      <div class="pf-box"><div class="l">Current streak</div><div class="n">${st.current}<small>days</small></div></div>
-      <div class="pf-box"><div class="l">Best streak</div><div class="n">${st.longest}<small>days</small></div></div>
+      <div class="pf-box pf-tap" onclick="openStreakDetails('current')"><div class="l">Current streak</div><div class="n">${st.current}<small>days</small></div></div>
+      <div class="pf-box pf-tap" onclick="openStreakDetails('best')"><div class="l">Best streak</div><div class="n">${st.longest}<small>days</small></div></div>
     </div>
     ${profileOverallHtml()}
     ${fbUser ? '<button class="btn secondary block" style="margin-top:26px;color:var(--red)" onclick="logout()">Log out</button>' : ''}`;
