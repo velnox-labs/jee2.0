@@ -754,6 +754,136 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 #view-settings .section-title::before{display:none}
 #view-settings .field input,#view-settings .field select,#view-settings .field textarea{border-color:transparent}
 .more-box,.qa-tile{background:transparent}
+.bt-hero{display:flex;align-items:center;justify-content:space-between;background:var(--ink);color:var(--paper);border-radius:20px;padding:18px 18px;margin-bottom:10px}
+.bt-l{font-size:12px;opacity:.7}
+.bt-big{font:700 42px/1.1 var(--font-head);margin-top:2px}
+.bt-mid{font:700 26px/1.2 var(--font-head);margin-top:2px}
+.bt-big span,.bt-mid span{font:500 12px var(--font-body);opacity:.7}
+.bt-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.bt-tile{border-radius:18px;padding:14px;min-width:0}
+.bt-tile .bt-l{opacity:1}
+.bt-ringrow{display:flex;align-items:center;gap:10px;margin-top:8px}
+.bt-ringrow b,.bt-flat b{display:block;font:700 18px/1.2 var(--font-head)}
+.bt-ringrow span,.bt-flat span{display:block;font-size:11px;opacity:.85}
+.bt-num{font:700 26px/1.1 var(--font-head);margin-top:10px}
+.bt-num span{font:500 13px var(--font-body)}
+.bt-track{height:6px;border-radius:3px;background:rgba(127,127,127,.25);margin-top:10px}
+.bt-track div{height:6px;border-radius:3px;background:currentColor}
+.bt-flat{cursor:pointer;display:flex;align-items:center;min-height:62px}
+.bt-extra{font-size:12px;color:var(--ink-soft);margin:-2px 2px 10px}
+.hm-lblrow{margin-top:18px}
+/* ===== Bento look on every page ===== */
+.card,.stat,.row-item,.pf-box,.more-box,.qa-tile,.pill-searchbar{border:none;background:var(--paper-2);border-radius:18px}
+.card-flat{background:var(--paper-2);border-radius:18px}
+.card .field input,.card .field select,.card .field textarea,.card .pill-select{background:var(--paper)}
+.stat .val{color:inherit}
+.stat .lbl{color:inherit;opacity:.8}
+.grid>.stat:nth-child(4n+1){background:var(--indigo-tint);color:var(--indigo)}
+.grid>.stat:nth-child(4n+2){background:var(--green-tint);color:var(--green)}
+.grid>.stat:nth-child(4n+3){background:var(--amber-tint);color:var(--amber)}
+.pf-c-g{background:var(--green-tint)}.pf-c-g .n,.pf-c-g .l{color:var(--green)}
+.pf-c-i{background:var(--indigo-tint)}.pf-c-i .n,.pf-c-i .l{color:var(--indigo)}
+.pf-c-a{background:var(--amber-tint)}.pf-c-a .n,.pf-c-a .l{color:var(--amber)}
+.pf-box .n small,.pf-box .n span{color:inherit;opacity:.75}
+.qa-tile,.more-box{background:var(--paper-2)}
+.more-grid .more-box:nth-child(4n+1) svg,.more-grid .more-box:nth-child(4n+4) svg{color:var(--indigo)}
+#view-settings .card{border:none;background:var(--paper-2)}
+#view-settings .field input,#view-settings .field select,#view-settings .field textarea{background:var(--paper)}
+.tab{border:none;background:var(--paper-2)}
+.filter-row select.pill-select,.filter-row .pill-toggle{background-color:var(--paper-2);border:none}
+/* ===== Home: colour-tile layout ===== */
+.hx-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.hx-cd{border-radius:16px;padding:14px 14px 12px;color:#fff;min-width:0}
+.hx-cd-top{display:flex;align-items:center;justify-content:space-between;font:700 12px var(--font-head);text-transform:uppercase;letter-spacing:.03em}
+.hx-num{font:700 34px/1.1 var(--font-head);margin-top:10px}
+.hx-num span{font:600 11px var(--font-body);text-transform:uppercase;letter-spacing:.03em;margin-left:3px}
+.hx-date{font-size:12px;opacity:.9;margin-top:6px}
+.hx-card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:12px}
+.hx-h{font:700 17px var(--font-head);margin-bottom:12px}
+.hx-rings{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hp-ring{position:relative;aspect-ratio:1/1;width:100%;max-width:170px;margin:0 auto}
+.hp-ring svg{width:100%;height:100%}
+.hp-ring-t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16%;line-height:1.25}
+.hp-k{font:600 9.5px var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.hp-ring-t b{font:700 17px var(--font-head);margin:2px 0}
+.hp-ring-t span{font-size:11px;color:var(--ink-soft)}
+.hp-ring-t em{font:700 12px var(--font-body);font-style:normal}
+.hx-extra{font-size:12px;color:var(--ink-soft);margin-top:10px;text-align:center}
+.hx-streak{cursor:pointer}
+.hx-streak .hx-h{margin-bottom:6px}
+.hx-streak-in{display:flex;align-items:center;gap:12px}
+.hx-sn{font:700 38px/1 var(--font-head)}
+.hx-streak-in b{display:block;font:700 14px var(--font-head)}
+.hx-streak-in span{font-size:13px;color:var(--ink-soft)}
+.qa-tile{color:#fff;border-radius:16px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:11px}
+.qa-tile svg{color:#fff}
+.qa-tile:nth-child(3n+1){background:#3B82D6}
+.qa-tile:nth-child(3n+2){background:#3FA5B5}
+.qa-tile:nth-child(3n){background:#3DBE7E}
+#view-home .pf-box,#view-home .pf-box.hm-today{background:var(--card)}
+/* ===== Header, nav and cards like the reference ===== */
+:root:not([data-theme="dark"]){--paper:#EBF0F6}
+.topbar{background:transparent;border:none;justify-content:space-between;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.tb-left{display:flex;align-items:center;gap:12px;min-width:0}
+.tb-right{display:flex;align-items:center;gap:6px}
+.topbar h1{font:400 24px var(--font-head);white-space:nowrap}
+.topbar h1 b{font-weight:700}
+.avatar-btn{flex:0 0 52px;width:52px;min-width:52px;height:52px;border:none}
+.tb-ic{position:relative;width:40px;height:40px;border:none;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%}
+.tb-ic svg{width:24px;height:24px}
+.tb-dot{position:absolute;top:7px;right:8px;width:9px;height:9px;border-radius:50%;background:#E5484D;border:2px solid var(--paper)}
+.hx-un-k{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.hx-un-h{font:700 21px var(--font-head);margin:4px 0 8px}
+.hx-un-t{font-size:16px;line-height:1.35;margin-bottom:10px}
+.hx-un-m{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
+.hx-un-m span{display:inline-flex;align-items:center;gap:6px}
+.bottomnav{background:var(--card);border-top:none}
+.bn-item{color:var(--ink);position:relative;font-size:12px;font-weight:500}
+.bn-item svg{width:24px;height:24px}
+.bn-item.active{color:#3B82D6}
+.bn-item.active::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:44px;height:3px;border-radius:2px;background:#3B82D6}
+/* ============ Reference design system, applied to every page ============ */
+:root:not([data-theme="dark"]){
+  --paper:#EBF0F6;--paper-2:#F1F4F9;--card:#FFFFFF;--ink:#111827;--ink-soft:#5B6475;--line:#E3E8EF;
+  --indigo:#3B82D6;--indigo-deep:#2A68B3;--indigo-tint:#E3EEFB;
+  --amber:#E0861A;--amber-tint:#FDEEDB;--green:#2FA66B;--green-tint:#E1F6EA;--red:#E5484D;--red-tint:#FDE7E8;
+}
+:root[data-theme="dark"]{--indigo:#5B9BE6;--indigo-deep:#3B82D6;--indigo-tint:#1E2B3F}
+.card,.row-item,.pill-searchbar,.pf-box,.stat{background:var(--card);border:none;border-radius:18px}
+.card-flat{background:var(--card);border-radius:18px}
+.field input,.field select,.field textarea,.card .field input,.card .field select,.card .field textarea,#view-settings .field input,#view-settings .field select,#view-settings .field textarea{background:var(--paper-2);border-radius:12px}
+.section-title,.pf-lbl{font:700 17px var(--font-head);text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 2px 10px}
+.btn{border-radius:14px}
+.btn.sm{border-radius:12px}
+.seg,.tab,.filter-row select.pill-select,.filter-row .pill-toggle{background:var(--card)}
+.seg button.active{background:var(--indigo);color:#fff;box-shadow:none}
+.tab.active{background:var(--indigo);color:#fff}
+.grid>.stat{color:#fff}
+.grid>.stat:nth-child(4n+1){background:#3B82D6}
+.grid>.stat:nth-child(4n+2){background:#F29A38}
+.grid>.stat:nth-child(4n+3){background:#3FA5B5}
+.grid>.stat:nth-child(4n){background:#3DBE7E}
+.grid>.stat .val,.grid>.stat .lbl{color:#fff}
+.grid>.stat .lbl{text-transform:uppercase;font-size:10.5px;letter-spacing:.03em;opacity:.95}
+.grid>.stat .icon{color:#fff}
+.pf-c-g{background:#3DBE7E}.pf-c-i{background:#3B82D6}.pf-c-a{background:#F29A38}
+.pf-c-g,.pf-c-i,.pf-c-a{color:#fff}
+.pf-c-g .n,.pf-c-g .l,.pf-c-i .n,.pf-c-i .l,.pf-c-a .n,.pf-c-a .l{color:#fff}
+.hx-k{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.hx-big2{font:700 30px/1.15 var(--font-head);margin-top:6px}
+.hx-big2 span{font:500 13px var(--font-body);color:var(--ink-soft)}
+.more-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.more-box{aspect-ratio:1/1;align-items:center;justify-content:center;text-align:center;gap:8px;padding:6px;border:none;border-radius:16px;color:#fff;font:600 11px/1.2 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.more-box svg{width:26px;height:26px;color:#fff !important}
+.more-box:nth-child(3n+1){background:#3B82D6}
+.more-box:nth-child(3n+2){background:#3FA5B5}
+.more-box:nth-child(3n){background:#3DBE7E}
+.more-box .mb-badge{background:#E5484D}
+.fab{background:#3B82D6;color:#fff}
+.nav-item.active{background:var(--indigo-tint);color:var(--indigo)}
+.modal{background:var(--card)}
+.st-head h2,.st-head p{color:var(--ink)}
+.pbar>div,.hb-track>div{border-radius:3px}
 </style>
 </head>
 <body>
@@ -769,11 +899,12 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
   <!-- Main -->
   <main class="main" id="main">
     <div class="topbar">
-      <h1 id="viewTitle">Home</h1>
-      <div style="display:flex; align-items:center; gap:8px;">
-        <span class="date-pill" id="topDate">—</span>
-        <button class="avatar-btn" id="moreMenuBtn" aria-label="Profile"></button>
+      <div class="tb-left"><button class="avatar-btn" id="moreMenuBtn" aria-label="Profile"></button><h1 id="viewTitle">Home</h1></div>
+      <div class="tb-right">
+        <button class="tb-ic" id="tbBell" aria-label="Deadlines"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15zM10 21h4"/></svg><span class="tb-dot" id="tbDot" hidden></span></button>
+        <button class="tb-ic" id="tbGear" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
       </div>
+      <span id="topDate" hidden></span>
     </div>
 
     <!-- HOME -->
@@ -1822,10 +1953,14 @@ const NAV_ITEMS = [
   {id:'revision', label:'Revision', icon:'revision'},
   {id:'timer', label:'Study Timer', icon:'timer'},
   {id:'goal', label:'My Goal', icon:'goal'},
+  {id:'analytics', label:'Progress', icon:'analytics'},
+  {id:'profile', label:'Profile', icon:'user'},
   {id:'settings', label:'Settings', icon:'settings'},
   {id:'more', label:'More', icon:'more'},
 ];
 const BOTTOM_NAV_IDS = ['home','planner','chapters','tests','more'];
+const BOTTOM_LABELS = {};
+ICONS.user = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-5.5 8-5.5s6.5 1.5 8 5.5"/></svg>`;
 
 let CURRENT_VIEW = 'home';
 let APP_TODAY = todayStr();
@@ -1926,7 +2061,7 @@ function buildBottomNav(){
   bn.innerHTML = BOTTOM_NAV_IDS.map(id=>{
     const item = NAV_ITEMS.find(n=>n.id===id);
     return `<button class="bn-item ${id===CURRENT_VIEW?'active':''}" data-view="${id}">
-      ${ICONS[item.icon]}<span>${item.label}</span>
+      ${ICONS[item.icon]}<span>${BOTTOM_LABELS[id]||item.label}</span>
     </button>`;
   }).join('');
   $all('.bn-item', bn).forEach(btn=>btn.addEventListener('click', ()=>switchView(btn.dataset.view)));
@@ -1937,7 +2072,7 @@ function switchView(viewId){
   const target = $('#view-'+viewId);
   if(target) target.classList.add('active');
   const item = NAV_ITEMS.find(n=>n.id===viewId);
-  $('#viewTitle').textContent = viewId==='home' ? homeTitle() : item ? item.label : (viewId==='timer'?'Study Timer':viewId==='profile'?'Profile':viewId==='analytics'?'Analytics':'JEE Tracker');
+  $('#viewTitle').innerHTML = viewId==='home' ? homeTitle() : esc(item ? item.label : (viewId==='timer'?'Study Timer':viewId==='profile'?'Profile':viewId==='analytics'?'Analytics':'JEE Tracker'));
   $all('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   $all('.bn-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   updateTopStreak(viewId);
@@ -1994,6 +2129,7 @@ function openStreakDetails(kind){
 }
 function renderView(viewId){
   updateAvatarBtn();
+  { const d=$('#tbDot'); if(d) d.hidden = overdueChapters().length===0; }
   if(viewId==='home') renderHome();
   else if(viewId==='planner') renderPlanner();
   else if(viewId==='timetable') renderTimetable();
@@ -2013,7 +2149,7 @@ function renderAll(){
   updateTopStreak();
   updateDeadlineFab();
   updateAvatarBtn();
-  if(CURRENT_VIEW==='home') $('#viewTitle').textContent = homeTitle();
+  if(CURRENT_VIEW==='home') $('#viewTitle').innerHTML = homeTitle();
   renderView(CURRENT_VIEW);
 }
 
@@ -2097,6 +2233,8 @@ async function startSession(user){
   $('#fabBtn').addEventListener('click', openQuickAddMenu);
   $('#deadlineFabBtn').addEventListener('click', openDeadlinePanel);
   $('#moreMenuBtn').addEventListener('click', ()=>switchView('profile'));
+  $('#tbGear').addEventListener('click', ()=>switchView('settings'));
+  $('#tbBell').addEventListener('click', ()=>openDeadlinePanel());
   const sc=$('#streakCurrent'), sb=$('#streakBest');
   if(sc) sc.addEventListener('click', ()=>openStreakDetails('current'));
   if(sb) sb.addEventListener('click', ()=>openStreakDetails('best'));
@@ -2417,8 +2555,8 @@ function renderHomeCountdownOnly(){
   const mainDays = countdownParts(DATA.settings.jeeMainDate);
   const advDays = countdownParts(DATA.settings.jeeAdvancedDate);
   const mEl = $('#cd-main'); const aEl = $('#cd-adv');
-  if(mEl) mEl.innerHTML = `${mainDays>=0?mainDays:0}<span> days</span>`;
-  if(aEl) aEl.innerHTML = `${advDays>=0?advDays:0}<span> days</span>`;
+  if(mEl) mEl.innerHTML = `${mainDays>=0?mainDays:0}<span> days left</span>`;
+  if(aEl) aEl.innerHTML = `${advDays>=0?advDays:0}<span> days left</span>`;
 }
 
 function renderHome(){
@@ -2443,44 +2581,39 @@ function renderHome(){
   const R=34, C=2*Math.PI*R, hp=Math.min(100,pct(todayHrs,s.dailyStudyHours));
   const bar=(lbl,val,tot,cl)=>`<div class="hm-bar"><div class="pbar-row"><span>${lbl}</span><span>${val} / ${tot}</span></div><div class="pbar ${cl}"><div style="width:${pct(val,tot)}%"></div></div></div>`;
   const subj=(n,v,c)=>`<div class="pf-box"><div class="l">${n}</div><div class="n">${v}<small>%</small></div><div class="pbar" style="margin-top:8px"><div style="width:${v}%;background:${c}"></div></div></div>`;
+  const st=DATA.streaks.study, qp=pct(todayQ,s.dailyQuestionTarget);
+  const mDays=Math.max(daysUntil(s.jeeMainDate),0), aDays=Math.max(daysUntil(s.jeeAdvancedDate),0);
+  const extra=[tTasks.length>0?`Tasks ${doneTasks}/${tTasks.length}`:'', revDueTodayAll.length>0?`Revision ${revDoneToday}/${revDueTodayAll.length}`:''].filter(Boolean).join('  ·  ');
+  const IC='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+  const ring=(label,val,sub,p,col)=>`<div class="hp-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-opacity=".2" stroke-width="10"/><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="${314.16*(1-Math.min(100,p)/100)}" transform="rotate(-90 60 60)"/></svg><div class="hp-ring-t"><span class="hp-k">${label}</span><b>${val}</b><span>${sub}</span><em style="color:${col}">${Math.min(100,p)}%</em></div></div>`;
   const html = `
-  <div class="pf-row">
-    <div class="pf-box"><div class="l">JEE Main</div><div class="n" id="cd-main">${Math.max(daysUntil(s.jeeMainDate),0)}<span> days</span></div></div>
-    <div class="pf-box"><div class="l">JEE Advanced</div><div class="n" id="cd-adv">${Math.max(daysUntil(s.jeeAdvancedDate),0)}<span> days</span></div></div>
+  <div class="hx-row">
+    <div class="hx-cd" style="background:#3B82D6"><div class="hx-cd-top"><span>JEE Main</span><svg viewBox="0 0 24 24" width="22" height="22" ${IC}><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></div><div class="hx-num" id="cd-main">${mDays}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeMainDate)||'')}</div></div>
+    <div class="hx-cd" style="background:#F29A38"><div class="hx-cd-top"><span>JEE Advanced</span><svg viewBox="0 0 24 24" width="22" height="22" ${IC}><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6M10 17h4"/></svg></div><div class="hx-num" id="cd-adv">${aDays}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeAdvancedDate)||'')}</div></div>
   </div>
 
-  <div class="pf-lbl">Today</div>
-  <div class="pf-box hm-today">
-    <div class="hm-ring">
-      <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="${R}" fill="none" stroke="var(--line)" stroke-width="7"/><circle cx="40" cy="40" r="${R}" fill="none" stroke="${studyBehindAlert?'var(--red)':'var(--indigo)'}" stroke-width="7" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-hp/100)}" transform="rotate(-90 40 40)"/></svg>
-      <div class="hm-ring-t"><b>${hoursToHM(todayHrs)}</b><span>of ${s.dailyStudyHours}h</span></div>
+  <div class="hx-card">
+    <div class="hx-h">Today's progress</div>
+    <div class="hx-rings">
+      ${ring('Study hours',`${hoursToHM(todayHrs)} / ${s.dailyStudyHours}h`,'completed',hp,studyBehindAlert?'#E5484D':'#3DBE7E')}
+      ${ring('Questions solved',`${todayQ} / ${s.dailyQuestionTarget}`,'daily goal',qp,'#3B82D6')}
     </div>
-    <div class="hm-bars">
-      ${bar('Questions',todayQ,s.dailyQuestionTarget,'amber')}
-      ${tTasks.length>0 ? bar('Tasks',doneTasks,tTasks.length,'green') : ''}
-      ${revDueTodayAll.length>0 ? bar('Revision',revDoneToday,revDueTodayAll.length,'') : ''}
+    ${extra?`<div class="hx-extra">${extra}</div>`:''}
+  </div>
+
+  <div class="hx-card hx-streak" onclick="openStreakDetails('current')">
+    <div class="hx-h">Current streak</div>
+    <div class="hx-streak-in">
+      <svg viewBox="0 0 24 24" width="44" height="44" fill="#F29A38" fill-opacity=".25" stroke="#F29A38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3.5-4 5.5-4 10a4 4 0 0 0 8 0c0-2-1-3.2-2-4.3-.2 2-1 3-2 3 .3-3 .5-5-0-8.7z"/></svg>
+      <div class="hx-sn">${st.current}</div>
+      <div><b>days streak</b><span>${st.current>0?'Awesome! Keep it up!':'Study today to start a streak'}</span></div>
     </div>
   </div>
 
-  <div class="pf-lbl hm-lblrow"><span>Quick actions</span><button class="pf-edit" id="qaCustom">Customise</button></div>
   <div class="qa-grid" id="qaGrid"></div>
+  <div style="text-align:right;margin:4px 0 12px"><button class="pf-edit" id="qaCustom">Customise</button></div>
 
   ${upNextHtml()}
-
-  <div class="pf-lbl">Syllabus</div>
-  <div class="pf-box" style="margin-bottom:10px"><div class="l">Overall</div><div class="n">${overall}<small>%</small></div><div class="pbar" style="margin-top:8px"><div style="width:${overall}%"></div></div></div>
-  <div class="pf-row">${subj('Physics',phy,'#3E6FD9')}${subj('Chemistry',chem,'var(--green)')}</div>
-  <div class="pf-row">${subj('Mathematics',math,'var(--amber)')}${subj('Important',importantSyllabusPct(),'var(--red)')}</div>
-
-  <div class="pf-lbl">Latest mock test</div>
-  ${lt ? `<div class="pf-box">
-    <div class="ri-title" style="margin-bottom:2px">${esc(lt.name)} <span class="badge studying">${esc(lt.type)}</span></div>
-    <div class="muted" style="margin-bottom:12px">${fmtDate(lt.date)}</div>
-    <div class="grid grid-3">
-      <div><div class="l" style="font-size:11.5px;color:var(--ink-soft)">Score</div><div style="font:700 20px var(--font-head)">${lt.total}</div></div>
-      <div><div class="l" style="font-size:11.5px;color:var(--ink-soft)">Accuracy</div><div style="font:700 20px var(--font-head)">${testAccuracy(lt)}%</div></div>
-      <div><div class="l" style="font-size:11.5px;color:var(--ink-soft)">Attempted</div><div style="font:700 20px var(--font-head)">${Number(lt.correct||0)+Number(lt.wrong||0)}</div></div>
-    </div></div>` : `<div class="pf-box muted">No tests added yet. Add your first mock test from Quick actions.</div>`}
   `;
   view('home').innerHTML = html;
   renderQuickGrid();
@@ -2493,10 +2626,13 @@ function upNextHtml(){
   const nb = blocksForDate(t).find(b=>!blockIsDone(b,t) && hmToMin(b.end) > now);
   if(!nb) return '';
   const isNow = hmToMin(nb.start) <= now;
-  return `<div class="section-title">Up next</div>
-  <div class="card upnext" id="upNextCard" style="--kc:${blockColor(nb.kind)}; margin-bottom:18px;">
-    <div class="ri-title">${esc(blockTitle(nb))}${isNow ? ' <span class="badge duetoday">Now</span>' : ''}</div>
-    <div class="ri-sub">${fmtTime12(nb.start)} – ${fmtTime12(nb.end)} · ${esc(nb.kind)}${nb.subject ? ' · '+esc(nb.subject) : ''}</div>
+  const hrs = Math.round((hmToMin(nb.end)-hmToMin(nb.start))/60*10)/10;
+  const CK='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+  return `<div class="hx-card" id="upNextCard" style="cursor:pointer">
+    <div class="hx-un-k">${isNow?'Now':'Up next'}</div>
+    <div class="hx-un-h">${isNow?'Current session':'Upcoming session'}</div>
+    <div class="hx-un-t">${esc(blockTitle(nb))}</div>
+    <div class="hx-un-m"><span>${CK}${fmtTime12(nb.start)} - ${fmtTime12(nb.end)}</span><span>${CK}${hrs} Hrs</span></div>
   </div>`;
 }
 function view(id){ return $('#view-'+id); }
@@ -3323,7 +3459,7 @@ function renderTests(){
   const best = DATA.tests.length ? Math.max(...DATA.tests.map(t=>Number(t.total||0))) : 0;
   const rkTests = DATA.tests.filter(t=>t.percentile!=null && t.percentile!=='' && !isNaN(Number(t.percentile)));
   const avgPct = rkTests.length ? rkTests.reduce((a,t)=>a+Number(t.percentile),0)/rkTests.length : null;
-  const avgRank = avgPct==null ? null : Math.max(1, Math.round((100-avgPct)/100*1700000));
+  const avgRank = avgPct==null ? null : estRank(avgPct);
   const avgRankCard = avgPct==null ? '' : `<div class="card" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;"><div><div class="lbl muted">Average rank</div><div style="font:700 26px var(--font-head);">~${avgRank.toLocaleString('en-IN')}</div></div><div class="muted" style="text-align:right;font-size:12.5px;">Avg percentile ${avgPct.toFixed(2)}<br>out of 17,00,000 candidates<br>${rkTests.length} test${rkTests.length>1?'s':''}</div></div>`;
   const wkTests = DATA.tests.filter(t=>t.date>=addDays(todayStr(),-6)).length;
   const prevWkTests = DATA.tests.filter(t=>t.date>=addDays(todayStr(),-13)&&t.date<addDays(todayStr(),-6)).length;
@@ -3399,9 +3535,11 @@ function renderTests(){
     else if(act==='view') viewTestDetails(id);
   }));
 }
+function estRank(p){ return (p==null||p===''||isNaN(Number(p))) ? null : Math.max(1, Math.round((100-Number(p))/100*1700000)); }
 function testRowHtml(t){
   const totalQ = t.totalQuestions ? ` (${t.questions||0}/${t.totalQuestions})` : '';
-  const pctTxt = t.percentile!=null ? ` · ${t.percentile}%ile${t.percentileEstimated?' (est.)':''}` : '';
+  const rk = estRank(t.percentile);
+  const pctTxt = t.percentile!=null ? ` · ${t.percentile}%ile${t.percentileEstimated?' (est.)':''}${rk?' · Rank ~'+rk.toLocaleString('en-IN'):''}` : '';
   return `
   <div class="row-item" data-id="${t.id}" style="align-items:flex-start; cursor:pointer;">
     <div class="ri-main" data-testaction="view">
@@ -3428,6 +3566,7 @@ function viewTestDetails(id){
       <div class="card-flat"><div class="lbl muted">Chemistry</div><div style="font-weight:700; font-size:17px;">${t.chemistry||0}</div></div>
       <div class="card-flat"><div class="lbl muted">Maths</div><div style="font-weight:700; font-size:17px;">${t.maths||0}</div></div>
       <div class="card-flat"><div class="lbl muted">Percentile</div><div style="font-weight:700; font-size:17px;">${t.percentile!=null?t.percentile+(t.percentileEstimated?' (est.)':''):'—'}</div></div>
+      <div class="card-flat"><div class="lbl muted">Estimated rank</div><div style="font-weight:700; font-size:17px;">${estRank(t.percentile)?'~'+estRank(t.percentile).toLocaleString('en-IN'):'—'}</div></div>
     </div>
     <div class="grid grid-2">
       <div class="card-flat"><div class="lbl muted">Total marks</div><div style="font-weight:700; font-size:18px;">${t.total}</div></div>
@@ -4611,7 +4750,7 @@ function saveStudySession(minutes){
 /* ============================================================
    PROFILE
    ============================================================ */
-function homeTitle(){ return 'Hi, ' + (profileName().split(/\s+/)[0] || 'Student'); }
+function homeTitle(){ return 'Hi, <b>' + esc(profileName().split(/\s+/)[0] || 'Student') + '</b>'; }
 function svgSrc(svg){ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); }
 function profileName(){ const s=DATA.settings; return (s.studentName||'').trim() || (fbUser&&fbUser.displayName) || ((fbUser&&fbUser.email)?fbUser.email.split('@')[0]:'Student'); }
 function avatarInner(){ const sv=DATA.settings.photoSvg; return sv ? `<img alt="" src="${svgSrc(sv)}">` : esc((profileName()[0]||'S').toUpperCase()); }
@@ -4624,7 +4763,7 @@ function profileOverallHtml(){
   const mx=a=>a.length?Math.max(...a):null;
   const fmt=v=>v==null?'—':v;
   const tile=(l,v,sub)=>`<div class="pf-box"><div class="l">${l}</div><div class="n">${v}</div>${sub?`<div class="l" style="margin:4px 0 0">${sub}</div>`:''}</div>`;
-  const grp=(t,items)=>`<div class="pf-lbl">${t}</div><div class="pf-row" style="grid-template-columns:1fr 1fr;flex-wrap:wrap">${items.join('')}</div>`;
+  const grp=(t,items,c)=>`<div class="pf-lbl">${t}</div><div class="pf-row" style="grid-template-columns:1fr 1fr;flex-wrap:wrap">${items.map(x=>x.replace('class="pf-box"','class="pf-box '+c+'"')).join('')}</div>`;
   const tot=T.map(t=>Number(t.total||0));
   const spanDays=(arr)=>{ const ds=arr.map(x=>x.date).filter(Boolean).sort(); return ds.length ? Math.max(1,Math.round((new Date(todayStr())-new Date(ds[0]))/864e5)+1) : 0; };
   const PS=DATA.practiceSessions, SS=allStudy();
@@ -4660,7 +4799,7 @@ function profileOverallHtml(){
   const prog=['Physics','Chemistry','Mathematics'].map(n=>[n,chapterCompletionPct(n),'var(--green)']).concat([['Important',importantSyllabusPct(),'var(--amber)']]);
   return `<div class="pf-lbl">Readiness</div>
     <div class="pf-box" style="display:flex;align-items:center;gap:16px"><div class="n" style="color:${rc};font-size:34px">${rd.score}</div><div style="flex:1"><div class="l">Out of 100</div><div class="pbar" style="margin-top:6px"><div style="width:${rd.score}%;background:${rc}"></div></div></div></div>
-    ${grp('Best',best)}${grp('Average',average)}${grp('Total',total)}
+    ${grp('Best',best,'pf-c-g')}${grp('Average',average,'pf-c-i')}${grp('Total',total,'pf-c-a')}
     <div class="pf-lbl">Chapter completion</div>
     <div class="pf-box">${prog.map(x=>`<div class="hbar-row"><div class="hb-label">${x[0]}</div><div class="hb-track"><div style="width:${x[1]}%;background:${x[2]}"></div></div><div class="hb-val">${x[1]}%</div></div>`).join('')}</div>
     <div class="pf-lbl">Weak chapters</div>
@@ -4677,13 +4816,13 @@ function renderProfile(){
       <div class="pf-sub">${esc((fbUser&&fbUser.email)||s.targetExam||'')}</div>
       <button class="pf-edit" onclick="openProfileEdit()">Edit profile</button>
     </div>
-    <div class="pf-row">
-      <div class="pf-box"><div class="l">JEE Main</div><div class="n">${m}<small>days left</small></div></div>
-      <div class="pf-box"><div class="l">JEE Advanced</div><div class="n">${a}<small>days left</small></div></div>
+    <div class="hx-row">
+      <div class="hx-cd" style="background:#3B82D6"><div class="hx-cd-top"><span>JEE Main</span></div><div class="hx-num">${m}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeMainDate)||'')}</div></div>
+      <div class="hx-cd" style="background:#F29A38"><div class="hx-cd-top"><span>JEE Advanced</span></div><div class="hx-num">${a}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeAdvancedDate)||'')}</div></div>
     </div>
-    <div class="pf-row">
-      <div class="pf-box pf-tap" onclick="openStreakDetails('current')"><div class="l">Current streak</div><div class="n">${st.current}<small>days</small></div></div>
-      <div class="pf-box pf-tap" onclick="openStreakDetails('best')"><div class="l">Best streak</div><div class="n">${st.longest}<small>days</small></div></div>
+    <div class="hx-row">
+      <div class="hx-card pf-tap" style="margin:0" onclick="openStreakDetails('current')"><div class="hx-k">Current streak</div><div class="hx-big2">${st.current}<span> days</span></div></div>
+      <div class="hx-card pf-tap" style="margin:0" onclick="openStreakDetails('best')"><div class="hx-k">Best streak</div><div class="hx-big2">${st.longest}<span> days</span></div></div>
     </div>
     ${profileOverallHtml()}
     ${fbUser ? '<button class="btn secondary block" style="margin-top:26px;color:var(--red)" onclick="logout()">Log out</button>' : ''}`;
@@ -4727,6 +4866,7 @@ function renderMore(){
   const items = [
     ['analytics','Analytics',ICONS.analytics],['timetable','Timetable',ICONS.clock],['goal','My Goal',ICONS.goal],['practice','Practice',ICONS.practice],
     ['revision','Revision',ICONS.revision],['timer','Study Timer',ICONS.timer],
+    ['chapters','Chapters',ICONS.chapters],['tests','Tests',ICONS.tests],
     ['deadlines','Chapter Deadlines',ICO.deadline,od]
   ];
   if(DEFERRED_INSTALL_PROMPT) items.push(['install','Install App',ICO.install]);
