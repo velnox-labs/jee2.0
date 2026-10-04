@@ -884,6 +884,55 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .modal{background:var(--card)}
 .st-head h2,.st-head p{color:var(--ink)}
 .pbar>div,.hb-track>div{border-radius:3px}
+.dl-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:6px}
+.dl-tile{border-radius:16px;padding:14px 12px;color:#fff}
+.dl-tile b{display:block;font:700 28px/1.1 var(--font-head)}
+.dl-tile span{font:600 11px var(--font-body);text-transform:uppercase;letter-spacing:.03em;opacity:.95}
+.dl-grp{display:flex;align-items:center;gap:8px;font:700 16px var(--font-head);margin:20px 2px 10px}
+.dl-grp em{font:600 12px var(--font-body);font-style:normal;color:var(--ink-soft);background:var(--card);border-radius:999px;padding:2px 9px;margin-left:auto}
+.dl-dot{width:10px;height:10px;border-radius:50%}
+.dl-card{background:var(--card);border-radius:16px;border-left:4px solid var(--line);padding:14px;margin-bottom:10px}
+.dl-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.dl-name{font:600 15px/1.3 var(--font-body);min-width:0}
+.dl-when{font:700 12.5px var(--font-body);white-space:nowrap}
+.dl-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-soft);margin:8px 0 12px}
+.dl-actions{display:flex;gap:8px;flex-wrap:wrap}
+.dl-actions .btn{flex:1 1 auto}
+.pl-strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:12px}
+.pl-day{border:none;background:var(--card);border-radius:14px;padding:8px 0 6px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:var(--ink);font-family:var(--font-body)}
+.pl-day span{font-size:10.5px;color:var(--ink-soft)}
+.pl-day b{font:700 16px var(--font-head)}
+.pl-day i{width:5px;height:5px;border-radius:50%}
+.pl-day.on{background:#3B82D6;color:#fff}.pl-day.on span{color:#fff;opacity:.85}
+.pl-filters{display:flex;gap:8px;margin-bottom:12px}
+.pl-chip{border:none;background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 13px var(--font-body);cursor:pointer}
+.pl-chip.on{background:#3B82D6;color:#fff}
+.tk-row .icon-btn{background:var(--paper-2);border-radius:50%}
+.tk-row .ri-title{font-weight:600}
+.filter-row{margin-bottom:14px}
+.pill-searchbar{margin-bottom:10px}
+.dl-sum .dl-tile{min-width:0}
+/* ===== No horizontal scroll anywhere ===== */
+html,body,.main,.view,#app{max-width:100%;overflow-x:hidden}
+.tabs{flex-wrap:wrap;overflow:visible;gap:8px}
+.tab{border-radius:999px;padding:8px 14px;white-space:normal;text-align:center}
+.filter-row{flex-wrap:wrap;overflow:visible}
+.filter-row select,.filter-row select.pill-select{flex:1 1 calc(50% - 8px);min-width:0;max-width:100%}
+.filter-row .pill-toggle,.filter-row .btn{flex:1 1 auto}
+.table-wrap{overflow-x:visible}
+.grid-3,.grid-4{grid-template-columns:repeat(auto-fit,minmax(98px,1fr))}
+.card svg,.hx-card svg{max-width:100%}
+.ri-main,.dl-name,.tt-card{min-width:0;overflow-wrap:anywhere}
+.toast{white-space:normal;max-width:calc(100vw - 32px)}
+.row-item{flex-wrap:wrap}
+.ri-actions{flex-wrap:wrap}
+img,canvas{max-width:100%}
+/* ===== Tighter top spacing ===== */
+.main{padding-top:8px}
+.topbar{padding-top:0 !important;margin-bottom:12px}
+.avatar-btn{flex:0 0 46px;width:46px;min-width:46px;height:46px}
+.tb-ic{width:38px;height:38px}
+@media (min-width:900px){.main{padding-top:20px}}
 </style>
 </head>
 <body>
@@ -931,6 +980,8 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
     <section class="view" id="view-profile"></section>
     <!-- MORE -->
     <section class="view" id="view-more"></section>
+    <!-- DEADLINES -->
+    <section class="view" id="view-deadlines"></section>
     <!-- TIMER -->
     <section class="view" id="view-timer"></section>
 
@@ -2072,7 +2123,7 @@ function switchView(viewId){
   const target = $('#view-'+viewId);
   if(target) target.classList.add('active');
   const item = NAV_ITEMS.find(n=>n.id===viewId);
-  $('#viewTitle').innerHTML = viewId==='home' ? homeTitle() : esc(item ? item.label : (viewId==='timer'?'Study Timer':viewId==='profile'?'Profile':viewId==='analytics'?'Analytics':'JEE Tracker'));
+  $('#viewTitle').innerHTML = viewId==='home' ? homeTitle() : esc(item ? item.label : (viewId==='timer'?'Study Timer':viewId==='profile'?'Profile':viewId==='analytics'?'Analytics':viewId==='deadlines'?'Deadlines':'JEE Tracker'));
   $all('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   $all('.bn-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   updateTopStreak(viewId);
@@ -2127,9 +2178,22 @@ function openStreakDetails(kind){
     <div class="modal-actions" style="margin-top:18px;"><button class="btn secondary" onclick="closeModal()">Close</button></div>
   `);
 }
+/* Past tasks: completed ones are removed, unfinished ones roll over to today
+   (keeping originalDate so the row can say how many days overdue it is). */
+function rolloverTasks(){
+  const t=todayStr(); let changed=false;
+  DATA.tasks = DATA.tasks.filter(x=>{
+    if(!x.date || x.date>=t) return true;
+    if(x.completed || x.recurringId){ changed=true; return false; }
+    x.originalDate = x.originalDate || x.date; x.date = t; changed=true;
+    return true;
+  });
+  if(changed) saveData();
+}
 function renderView(viewId){
+  rolloverTasks();
   updateAvatarBtn();
-  { const d=$('#tbDot'); if(d) d.hidden = overdueChapters().length===0; }
+  { const d=$('#tbDot'); if(d){ d.hidden = dueNowChapters().length===0; d.style.background = overdueChapters().length ? '#E5484D' : '#F29A38'; } }
   if(viewId==='home') renderHome();
   else if(viewId==='planner') renderPlanner();
   else if(viewId==='timetable') renderTimetable();
@@ -2142,6 +2206,7 @@ function renderView(viewId){
   else if(viewId==='settings') renderSettings();
   else if(viewId==='profile') renderProfile();
   else if(viewId==='more') renderMore();
+  else if(viewId==='deadlines') renderDeadlinesPage();
   else if(viewId==='timer') renderTimer();
 }
 function renderAll(){
@@ -2277,47 +2342,57 @@ let DEADLINE_TAB = 'overdue';
 function updateDeadlineFab(){
   const btn = document.getElementById('deadlineFabBtn');
   if(!btn) return;
-  const n = overdueChapters().length;
-  if(n>0){ btn.style.display='flex'; btn.textContent = String(n); }
+  const n = dueNowChapters().length;
+  if(n>0){ btn.style.display='flex'; btn.textContent = String(n); btn.style.background = overdueChapters().length ? 'var(--red)' : '#F29A38'; }
   else { btn.style.display='none'; }
 }
-function openDeadlinePanel(){
-  DEADLINE_TAB = 'overdue';
-  renderDeadlinePanel();
+function dueNowChapters(){
+  const t=todayStr();
+  return DATA.chapters.filter(c=>c.completeByDate && c.completeByDate<=t && c.status!=='Completed' && c.status!=='Revised');
 }
-function renderDeadlinePanel(){
-  const overdue = overdueChapters();
-  const upcoming = upcomingDeadlineChapters();
-  const list = DEADLINE_TAB==='overdue' ? overdue : upcoming;
-  openModal(`
-    <div class="modal-head"><h3>Chapter Deadlines</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    <div class="tabs" style="margin-bottom:12px;">
-      <div class="tab ${DEADLINE_TAB==='overdue'?'active':''}" data-dtab="overdue">Overdue (${overdue.length})</div>
-      <div class="tab ${DEADLINE_TAB==='upcoming'?'active':''}" data-dtab="upcoming">Upcoming (${upcoming.length})</div>
-    </div>
-    <div class="list" id="deadlineList">
-      ${list.length ? list.map(c=>deadlineRowHtml(c)).join('') : emptyState('📅', DEADLINE_TAB==='overdue' ? 'No overdue chapters' : 'No upcoming deadlines', DEADLINE_TAB==='overdue' ? 'You are all caught up.' : 'Set a "Complete by" date on a chapter to see it here.')}
-    </div>
-  `);
-  $all('[data-dtab]').forEach(t=>t.addEventListener('click', ()=>{ DEADLINE_TAB=t.dataset.dtab; renderDeadlinePanel(); }));
-  bindDeadlineRowEvents();
+function openDeadlinePanel(){ switchView('deadlines'); }
+function renderDeadlinePanel(){ if(CURRENT_VIEW==='deadlines') renderDeadlinesPage(); else switchView('deadlines'); }
+function deadlineGroups(){
+  const t=todayStr();
+  const pending=DATA.chapters.filter(c=>c.completeByDate && c.status!=='Completed' && c.status!=='Revised')
+    .map(c=>({c, diff:Math.round((new Date(c.completeByDate)-new Date(t))/864e5)}))
+    .sort((a,b)=>a.diff-b.diff);
+  return [
+    {key:'over', title:'Overdue', col:'#E5484D', items:pending.filter(x=>x.diff<0)},
+    {key:'today', title:'Due today', col:'#F29A38', items:pending.filter(x=>x.diff===0)},
+    {key:'week', title:'Next 7 days', col:'#3B82D6', items:pending.filter(x=>x.diff>0&&x.diff<=7)},
+    {key:'later', title:'Later', col:'#3DBE7E', items:pending.filter(x=>x.diff>7)}
+  ];
 }
-function deadlineRowHtml(c){
-  const t = todayStr();
-  const isOverdue = c.completeByDate < t;
-  const diff = Math.abs(daysBetween(t, c.completeByDate));
-  return `
-  <div class="row-item" data-id="${c.id}" style="align-items:flex-start;">
-    <div class="ri-main">
-      <div class="ri-title">${esc(c.name)} <span class="badge ${isOverdue?'high':'medium'}">${c.subject}</span></div>
-      <div class="ri-sub" style="${isOverdue?'color:var(--red); font-weight:600;':''}">${isOverdue ? diff+' day'+(diff===1?'':'s')+' overdue' : diff===0?'Due today':diff+' day'+(diff===1?'':'s')+' left'} · was set for ${fmtDateShort(c.completeByDate)}</div>
+function deadlineRowHtml(x,col){
+  const c=x.c, d=x.diff;
+  const when = d<0 ? `${-d} day${d===-1?'':'s'} overdue` : d===0 ? 'Due today' : `in ${d} day${d===1?'':'s'}`;
+  return `<div class="dl-card" data-id="${c.id}" style="border-left-color:${col}">
+    <div class="dl-top">
+      <div class="dl-name">${esc(c.name)}</div>
+      <span class="dl-when" style="color:${col}">${when}</span>
     </div>
-    <div class="ri-actions" style="flex-direction:column; gap:6px; align-items:stretch;">
-      <button class="btn secondary sm" data-dlaction="complete">Mark Completed</button>
+    <div class="dl-meta"><span class="badge medium">${esc(c.subject)}</span><span>Due ${fmtDateShort(c.completeByDate)}</span><span>${esc(c.status||'Not Started')}</span></div>
+    <div class="dl-actions">
+      <button class="btn sm" data-dlaction="complete">Mark done</button>
       <button class="btn secondary sm" data-dlaction="reschedule">Reschedule</button>
-      <button class="btn secondary sm" data-dlaction="remove" style="color:var(--red);">Remove</button>
+      <button class="btn secondary sm" data-dlaction="remove" style="color:var(--red)">Remove</button>
     </div>
   </div>`;
+}
+function renderDeadlinesPage(){
+  const g=deadlineGroups(), total=g.reduce((a,x)=>a+x.items.length,0);
+  const tile=(k,col)=>{ const x=g.find(y=>y.key===k); return `<div class="dl-tile" style="background:${col}"><b>${x.items.length}</b><span>${x.title}</span></div>`; };
+  const upc=g.find(x=>x.key==='week').items.length+g.find(x=>x.key==='later').items.length;
+  view('deadlines').innerHTML = `
+    <div class="dl-sum">${tile('over','#E5484D')}${tile('today','#F29A38')}<div class="dl-tile" style="background:#3B82D6"><b>${upc}</b><span>Upcoming</span></div></div>
+    <div id="deadlineList">
+    ${total ? g.filter(x=>x.items.length).map(x=>`
+      <div class="dl-grp"><span class="dl-dot" style="background:${x.col}"></span><span>${x.title}</span><em>${x.items.length}</em></div>
+      ${x.items.map(i=>deadlineRowHtml(i,x.col)).join('')}`).join('')
+      : `<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No deadlines set. Add a "Complete by" date to a chapter and it will show up here.</div>`}
+    </div>`;
+  bindDeadlineRowEvents();
 }
 function bindDeadlineRowEvents(){
   $all('[data-dlaction]', document.getElementById('deadlineList')).forEach(b=>b.addEventListener('click', ()=>{
@@ -2329,7 +2404,6 @@ function bindDeadlineRowEvents(){
         if(c){ c.status='Completed'; if(!c.completedOn) c.completedOn=todayStr(); }
       });
       renderAll();
-      renderDeadlinePanel();
       toast('Marked completed');
     } else if(act==='reschedule'){
       openRescheduleModal(id);
@@ -2343,8 +2417,8 @@ function removeDeadline(chapterId){
     const c = d.chapters.find(x=>x.id===chapterId);
     if(c) c.completeByDate = '';
   });
+  closeModal();
   renderAll();
-  renderDeadlinePanel();
   toast('Deadline removed');
 }
 function openRescheduleModal(chapterId){
@@ -2355,7 +2429,7 @@ function openRescheduleModal(chapterId){
     <p class="muted" style="margin-bottom:12px;">${esc(c.name)}</p>
     <div class="field"><label>New complete-by date</label><input type="date" id="rs-date" value="${c.completeByDate||todayStr()}"></div>
     <div class="modal-actions">
-      <button class="btn secondary" onclick="renderDeadlinePanel()">Cancel</button>
+      <button class="btn secondary" onclick="closeModal()">Cancel</button>
       <button class="btn" onclick="confirmReschedule('${chapterId}')">Save</button>
     </div>
     <button class="btn secondary block" style="margin-top:10px; color:var(--red);" onclick="removeDeadline('${chapterId}')">Remove deadline</button>
@@ -2365,8 +2439,8 @@ function confirmReschedule(chapterId){
   const newDate = $('#rs-date').value;
   if(!newDate) return;
   updateData(d=>{ d.chapters.find(x=>x.id===chapterId).completeByDate = newDate; });
+  closeModal();
   renderAll();
-  renderDeadlinePanel();
   toast('Deadline updated');
 }
 function openMoreMenu(){
@@ -2685,37 +2759,59 @@ function completeQuickRevision(){
 let PLANNER_TAB = 'today';
 let CALENDAR_MONTH = (()=>{ const d=new Date(); return {y:d.getFullYear(), m:d.getMonth()}; })();
 
+function plannerDayLabel(d){
+  const t=todayStr();
+  const w=new Date(d+'T00:00:00').toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
+  return d===t?'Today, '+w : d===addDays(t,1)?'Tomorrow, '+w : w;
+}
+let PLANNER_DATE = null;
 function renderPlanner(){
-  const tabs = [
-    {id:'today', label:"Today"},
-    {id:'tomorrow', label:"Tomorrow"},
-    {id:'week', label:"This Week"},
-    {id:'completed', label:"Completed"},
-    {id:'all', label:"All Tasks"},
-  ];
+  const t=todayStr();
+  if(!['day','all','completed'].includes(PLANNER_TAB)){ PLANNER_TAB='day'; }
+  if(!PLANNER_DATE || PLANNER_DATE<t) PLANNER_DATE=t;
   let list;
-  if(PLANNER_TAB==='today') list = DATA.tasks.filter(t=>t.date===todayStr());
-  else if(PLANNER_TAB==='tomorrow') list = DATA.tasks.filter(t=>t.date===addDays(todayStr(),1));
-  else if(PLANNER_TAB==='week'){
-    const start = todayStr(), end = addDays(todayStr(),6);
-    list = DATA.tasks.filter(t=>t.date>=start && t.date<=end);
-  }
-  else if(PLANNER_TAB==='completed') list = DATA.tasks.filter(t=>t.completed);
+  if(PLANNER_TAB==='day') list = DATA.tasks.filter(x=>x.date===PLANNER_DATE);
+  else if(PLANNER_TAB==='completed') list = DATA.tasks.filter(x=>x.completed);
   else list = DATA.tasks.slice();
-
-  list = list.slice().sort((a,b)=> (a.date+a.startTime).localeCompare(b.date+b.startTime));
-
-  const html = `
-    <div class="tabs">
-      ${tabs.map(t=>`<div class="tab ${PLANNER_TAB===t.id?'active':''}" data-tab="${t.id}">${t.label}</div>`).join('')}
+  list = list.slice().sort((a,b)=> (a.date+(a.startTime||'')).localeCompare(b.date+(b.startTime||'')));
+  const done=list.filter(x=>x.completed).length, pending=list.length-done;
+  const mins=list.filter(x=>!x.completed).reduce((a,x)=>a+(Number(x.duration)||0),0);
+  const progress=list.length?Math.round(done/list.length*100):0;
+  const strip=[0,1,2,3,4,5,6].map(n=>{
+    const d=addDays(t,n), cnt=DATA.tasks.filter(x=>x.date===d && !x.completed).length;
+    const dt=new Date(d+'T00:00:00');
+    const sel=PLANNER_TAB==='day' && PLANNER_DATE===d;
+    return `<button class="pl-day ${sel?'on':''}" data-date="${d}"><span>${n===0?'Today':dt.toLocaleDateString('en-IN',{weekday:'short'})}</span><b>${dt.getDate()}</b><i style="background:${cnt?(sel?'#fff':'#F29A38'):'transparent'}"></i></button>`;
+  }).join('');
+  let body='';
+  if(!list.length){
+    body=`<div class="hx-card" style="text-align:center;color:var(--ink-soft)">${PLANNER_TAB==='completed'?'No completed tasks yet.':'No tasks here. Tap "Add task" to plan your day.'}</div>`;
+  } else if(PLANNER_TAB==='day'){
+    body=list.map(taskRowHtml).join('');
+  } else {
+    const dates=[...new Set(list.map(x=>x.date))];
+    body=dates.map(d=>`<div class="dl-grp"><span class="dl-dot" style="background:${d<t?'#E5484D':d===t?'#3B82D6':'#3DBE7E'}"></span><span>${plannerDayLabel(d)}</span><em>${list.filter(x=>x.date===d).length}</em></div>${list.filter(x=>x.date===d).map(taskRowHtml).join('')}`).join('');
+  }
+  view('planner').innerHTML = `
+    <div class="pl-strip">${strip}</div>
+    <div class="pl-filters">
+      <button class="pl-chip ${PLANNER_TAB==='day'?'on':''}" data-tab="day">Day</button>
+      <button class="pl-chip ${PLANNER_TAB==='all'?'on':''}" data-tab="all">All tasks</button>
+      <button class="pl-chip ${PLANNER_TAB==='completed'?'on':''}" data-tab="completed">Completed</button>
     </div>
-    <button class="btn block" style="margin-bottom:14px;" onclick="openTaskModal()">+ Add Study Task</button>
-    <div class="list" id="taskList">
-      ${list.length ? list.map(taskRowHtml).join('') : emptyState('🗓️','No tasks here yet','Add a study task to build your plan.')}
+    <div class="hx-card">
+      <div class="hx-h" style="margin-bottom:8px">${PLANNER_TAB==='day'?plannerDayLabel(PLANNER_DATE):PLANNER_TAB==='all'?'All tasks':'Completed tasks'}</div>
+      <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
+      <div class="dl-sum" style="margin:12px 0 0">
+        <div class="dl-tile" style="background:#3DBE7E"><b>${done}</b><span>Done</span></div>
+        <div class="dl-tile" style="background:#F29A38"><b>${pending}</b><span>Pending</span></div>
+        <div class="dl-tile" style="background:#3B82D6"><b>${mins>=60?Math.floor(mins/60)+'h'+(mins%60?(mins%60)+'m':''):mins+'m'}</b><span>Planned</span></div>
+      </div>
     </div>
-  `;
-  view('planner').innerHTML = html;
-  $all('.tab', view('planner')).forEach(t=>t.addEventListener('click', ()=>{ PLANNER_TAB=t.dataset.tab; renderPlanner(); }));
+    <button class="btn block" style="margin:2px 0 14px;" onclick="openTaskModal(null,'${PLANNER_TAB==='day'?PLANNER_DATE:t}')">+ Add task</button>
+    <div id="taskList">${body}</div>`;
+  $all('.pl-day', view('planner')).forEach(b=>b.addEventListener('click', ()=>{ PLANNER_TAB='day'; PLANNER_DATE=b.dataset.date; renderPlanner(); }));
+  $all('.pl-chip', view('planner')).forEach(b=>b.addEventListener('click', ()=>{ PLANNER_TAB=b.dataset.tab; renderPlanner(); }));
   $all('[data-taskaction]', view('planner')).forEach(b=>b.addEventListener('click', ()=>{
     const id = b.closest('[data-id]').dataset.id;
     const act = b.dataset.taskaction;
@@ -2801,11 +2897,11 @@ function openDayAnalyticsModal(dateStr){
 }
 function taskRowHtml(t){
   return `
-  <div class="row-item" data-id="${t.id}">
+  <div class="row-item tk-row" data-id="${t.id}" style="border-left:4px solid ${t.priority==='High'?'#E5484D':t.priority==='Low'?'#3DBE7E':'#F29A38'};margin-bottom:10px;">
     <button class="icon-btn" data-taskaction="toggle" style="${t.completed?'background:var(--green-tint); color:var(--green); border-color:var(--green-tint);':''}">${ICONS.check}</button>
     <div class="ri-main">
       <div class="ri-title" style="${t.completed?'text-decoration:line-through; color:var(--ink-soft);':''}">${t.recurringId?'↻ ':''}${esc(t.title)} <span class="badge ${t.priority.toLowerCase()}">${t.priority}</span></div>
-      <div class="ri-sub">${esc(t.subject||'General')}${t.chapter?' · '+esc(t.chapter):''} · ${fmtDateShort(t.date)}${t.startTime?', '+t.startTime:''}${t.duration?' · '+t.duration+'m':''}</div>
+      <div class="ri-sub">${(t.originalDate && t.originalDate<t.date && t.date<=todayStr() && !t.completed) ? `<span style="color:var(--red);font-weight:600">${Math.round((new Date(t.date)-new Date(t.originalDate))/864e5)} day${Math.round((new Date(t.date)-new Date(t.originalDate))/864e5)===1?'':'s'} overdue (was ${fmtDateShort(t.originalDate)})</span> · `:''}${esc(t.subject||'General')}${t.chapter?' · '+esc(t.chapter):''} · ${fmtDateShort(t.date)}${t.startTime?', '+t.startTime:''}${t.duration?' · '+t.duration+'m':''}</div>
     </div>
     <div class="ri-actions">
       <button class="icon-btn" data-taskaction="edit">${ICONS.edit}</button>
@@ -2990,15 +3086,19 @@ function renderChapters(){
   chs = chs.slice().sort((a,b)=>a.order-b.order);
 
   const html = `
-    <div class="tabs">
-      ${subjects.map(s=>`<div class="tab ${CHAPTER_SUBJECT===s?'active':''}" data-subj="${s}">${s}</div>`).join('')}
+    <div class="pl-filters">
+      ${subjects.map(s=>`<button class="pl-chip ${CHAPTER_SUBJECT===s?'on':''}" data-subj="${s}">${s}</button>`).join('')}
     </div>
-    <div class="grid grid-4" style="margin-bottom:16px;">
-      <div class="stat"><div class="val">${overall}%</div><div class="lbl">Overall</div></div>
-      <div class="stat"><div class="val">${chapterCompletionPct(CHAPTER_SUBJECT)}%</div><div class="lbl">${CHAPTER_SUBJECT}</div></div>
-      <div class="stat"><div class="val">${stats.completed}</div><div class="lbl">Completed</div></div>
-      <div class="stat"><div class="val" style="color:var(--red);">${stats.weak}</div><div class="lbl">Weak chapters</div></div>
-      <div class="stat"><div class="val" style="color:var(--amber);">${impPct}%</div><div class="lbl">Important syllabus</div></div>
+    <div class="hx-card">
+      <div class="hx-h" style="margin-bottom:8px">Syllabus progress</div>
+      <div class="pbar"><div style="width:${overall}%;background:#3B82D6"></div></div>
+      <div class="dl-sum" style="margin:12px 0 0">
+        <div class="dl-tile" style="background:#3B82D6"><b>${overall}%</b><span>Overall</span></div>
+        <div class="dl-tile" style="background:#F29A38"><b>${chapterCompletionPct(CHAPTER_SUBJECT)}%</b><span>${CHAPTER_SUBJECT}</span></div>
+        <div class="dl-tile" style="background:#3DBE7E"><b>${stats.completed}</b><span>Completed</span></div>
+        <div class="dl-tile" style="background:#E5484D"><b>${stats.weak}</b><span>Weak</span></div>
+        <div class="dl-tile" style="background:#3FA5B5"><b>${impPct}%</b><span>Important</span></div>
+      </div>
     </div>
     <div class="pill-searchbar">
       <span class="ps-ico">${ICONS.search}</span>
@@ -3027,14 +3127,14 @@ function renderChapters(){
       </select>
       <button type="button" id="chImportantFilter" class="pill-toggle ${CHAPTER_FILTER.important?'active':''}">${ICONS.star} Important</button>
       <button type="button" id="chPyqPendingFilter" class="pill-toggle ${CHAPTER_FILTER.pyqPending?'active':''}">${ICONS.practice} PYQ Pending</button>
-      <button class="btn secondary sm" onclick="openChapterModal()">+ Add Chapter</button>
+      <button class="btn sm" onclick="openChapterModal()">+ Add chapter</button>
     </div>
     <div class="ch-grid">
       ${chs.length ? chs.map(chapterRowHtml).join('') : `<div style="grid-column:1/-1;">${emptyState('📘','No chapters found','Try a different filter or add a chapter.')}</div>`}
     </div>
   `;
   view('chapters').innerHTML = html;
-  $all('.tab', view('chapters')).forEach(t=>t.addEventListener('click', ()=>{ CHAPTER_SUBJECT=t.dataset.subj; renderChapters(); }));
+  $all('[data-subj]', view('chapters')).forEach(t=>t.addEventListener('click', ()=>{ CHAPTER_SUBJECT=t.dataset.subj; renderChapters(); }));
   $('#chSearch').addEventListener('input', e=>{ CHAPTER_FILTER.search=e.target.value; renderChaptersListOnly(); });
   const clearBtn = document.getElementById('chSearchClear');
   if(clearBtn) clearBtn.addEventListener('click', ()=>{ CHAPTER_FILTER.search=''; renderChapters(); });
@@ -3297,8 +3397,9 @@ function renderPractice(){
   const avgTPQ = avgTimePerQuestion();
 
   const html = `
-    <div class="card" style="margin-bottom:16px;">
-      <div class="pbar-row"><span>Today's questions</span><span>${todayQ} / ${target}</span></div>
+    <div class="hx-card">
+      <div class="hx-h" style="margin-bottom:8px">Today's questions</div>
+      <div class="pbar-row"><span>Solved</span><span>${todayQ} / ${target}</span></div>
       <div class="pbar amber"><div style="width:${pct(todayQ,target)}%"></div></div>
     </div>
     <div class="grid grid-4" style="margin-bottom:16px;">
@@ -3315,15 +3416,14 @@ function renderPractice(){
         <div class="hbar-row"><div class="hb-label">${subj}</div><div class="hb-track"><div style="width:${pct(n,maxSubj)}%; background:var(--indigo);"></div></div><div class="hb-val">${n} · ${formatSeconds(avgTimePerQuestion(subj))}/q</div></div>
       `).join('')}
     </div>` : ''}
-    <div class="section-title">Practice log
-      <select id="pracSubjFilter" style="width:auto; padding:6px 10px; font-size:12.5px; border-radius:8px; border:1px solid var(--line); background:var(--paper);">
+    <button class="btn block" style="margin:4px 0 14px;" onclick="openPracticeModal()">+ Log practice</button>
+    <div class="dl-grp" style="margin-top:6px"><span>Practice log</span></div>
+    <div class="filter-row"><select id="pracSubjFilter" class="pill-select">
         <option value="">All subjects</option>
         <option ${PRACTICE_FILTER.subject==='Physics'?'selected':''}>Physics</option>
         <option ${PRACTICE_FILTER.subject==='Chemistry'?'selected':''}>Chemistry</option>
         <option ${PRACTICE_FILTER.subject==='Mathematics'?'selected':''}>Mathematics</option>
-      </select>
-    </div>
-    <button class="btn block" style="margin-bottom:14px;" onclick="openPracticeModal()">+ Log Practice Session</button>
+      </select></div>
     <div class="list">
       ${sessions.length ? sessions.map(practiceRowHtml).join('') : emptyState('✏️','No practice logged yet','Log your first question-practice session.')}
     </div>
@@ -4862,12 +4962,12 @@ function openProfileEdit(){
 
 function renderMore(){
   const ICO = moreIco();
-  const od = overdueChapters().length;
+  const od = dueNowChapters().length;
   const items = [
     ['analytics','Analytics',ICONS.analytics],['timetable','Timetable',ICONS.clock],['goal','My Goal',ICONS.goal],['practice','Practice',ICONS.practice],
     ['revision','Revision',ICONS.revision],['timer','Study Timer',ICONS.timer],
     ['chapters','Chapters',ICONS.chapters],['tests','Tests',ICONS.tests],
-    ['deadlines','Chapter Deadlines',ICO.deadline,od]
+    ['deadlines','Deadlines',ICO.deadline,od]
   ];
   if(DEFERRED_INSTALL_PROMPT) items.push(['install','Install App',ICO.install]);
   items.push(['share','Share Progress',ICO.share]);
