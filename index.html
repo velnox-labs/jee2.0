@@ -109,11 +109,11 @@ a{color:inherit}
 }
 .brand-mark{
   font-family:var(--font-head);
-  font-weight:800;
-  font-size:20px;
+  font-weight:700;
+  font-size:18px;
   color:var(--indigo);
 }
-.brand-sub{font-size:11px; color:var(--ink-soft); font-weight:500;}
+.brand-sub{font-size:11px; color:var(--ink-soft); font-weight:600;}
 .nav-item{
   display:flex;
   align-items:center;
@@ -122,7 +122,7 @@ a{color:inherit}
   border-radius:12px;
   color:var(--ink-soft);
   font-weight:600;
-  font-size:14.5px;
+  font-size:14px;
   cursor:pointer;
   border:none;
   background:none;
@@ -132,7 +132,7 @@ a{color:inherit}
 .nav-item svg{width:19px; height:19px; flex-shrink:0;}
 .nav-item:hover{background:var(--indigo-tint); color:var(--indigo);}
 .nav-item.active{background:var(--indigo); color:#fff;}
-.sidebar-foot{margin-top:auto; padding:12px; font-size:11.5px; color:var(--slate);}
+.sidebar-foot{margin-top:auto; padding:12px; font-size:12px; color:var(--slate);}
 
 /* ---------- Main ---------- */
 .main{
@@ -146,9 +146,9 @@ a{color:inherit}
   justify-content:space-between;
   margin-bottom:18px;
 }
-.topbar h1{font-size:22px; font-weight:700;}
+.topbar h1{font-size:24px; font-weight:700;}
 .topbar .date-pill{
-  font-size:12.5px; color:var(--ink-soft); font-weight:500;
+  font-size:12px; color:var(--ink-soft); font-weight:600;
   background:var(--paper-2); padding:6px 12px; border-radius:20px; border:1px solid var(--line);
 }
 
@@ -156,7 +156,7 @@ a{color:inherit}
 .streak-chip{
   display:inline-flex; align-items:center; gap:6px; padding:3px 11px 3px 3px; border-radius:999px;
   background:var(--paper-2); border:1px solid var(--line); color:var(--ink);
-  font-family:var(--font-head); font-weight:600; font-size:13px; line-height:1;
+  font-family:var(--font-head); font-weight:600; font-size:14px; line-height:1;
 }
 button.streak-chip{cursor:pointer;}
 button.streak-chip:active{transform:scale(.97);}
@@ -165,8 +165,8 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .sc-ico{font-size:14px; line-height:1;}
 .sc-ico.fire{background:var(--amber-tint); color:var(--amber);}
 .sc-ico.trophy{background:var(--indigo-tint); color:var(--indigo);}
-.bs-count{font-family:var(--font-head); font-size:34px; font-weight:700; color:var(--indigo); line-height:1.1;}
-.bs-range{margin-top:10px; font-size:14.5px; line-height:1.5;}
+.bs-count{font-family:var(--font-head); font-size:40px; font-weight:700; color:var(--indigo); line-height:1.1;}
+.bs-range{margin-top:10px; font-size:14px; line-height:1.5;}
 .view{display:none;}
 .view.active{display:block; animation:fadein .28s ease;}
 @keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
@@ -195,11 +195,11 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
   padding:16px;
 }
 .section-title{
-  font-size:15px; font-weight:700; margin:26px 0 10px 0; color:var(--ink);
+  font-size:16px; font-weight:700; margin:26px 0 10px 0; color:var(--ink);
   display:flex; align-items:center; justify-content:space-between;
 }
 .section-title:first-child{margin-top:0;}
-.muted{color:var(--ink-soft); font-size:12.5px;}
+.muted{color:var(--ink-soft); font-size:12px;}
 
 /* ---------- Hero countdown ---------- */
 .hero{
@@ -213,9 +213,9 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .hero-row{display:flex; gap:14px; flex-wrap:wrap;}
 .hero-exam{flex:1; min-width:130px;}
 .hero-exam .label{font-size:12px; opacity:.75; font-weight:600; text-transform:none;}
-.hero-exam .num{font-family:var(--font-head); font-size:40px; font-weight:800; line-height:1.05; margin-top:2px;}
+.hero-exam .num{font-family:var(--font-head); font-size:40px; font-weight:700; line-height:1.05; margin-top:2px;}
 .hero-exam .num span{font-size:16px; font-weight:600; opacity:.8;}
-.hero-exam .sub{font-size:11.5px; opacity:.7; margin-top:2px;}
+.hero-exam .sub{font-size:12px; opacity:.7; margin-top:2px;}
 .hero-divider{width:1px; background:rgba(255,255,255,.2); align-self:stretch;}
 
 /* ---------- Stat tiles ---------- */
@@ -225,8 +225,8 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 }
 .stat .icon{width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; margin-bottom:2px;}
 .stat .icon svg{width:16px; height:16px;}
-.stat .val{font-family:var(--font-head); font-size:22px; font-weight:700;}
-.stat .lbl{font-size:12px; color:var(--ink-soft); font-weight:500;}
+.stat .val{font-family:var(--font-head); font-size:24px; font-weight:700;}
+.stat .lbl{font-size:12px; color:var(--ink-soft); font-weight:600;}
 
 /* progress bars */
 .pbar{height:8px; border-radius:6px; background:var(--paper-2); overflow:hidden; margin-top:8px;}
@@ -240,7 +240,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .qa-btn{
   flex:0 0 auto; display:flex; flex-direction:column; align-items:center; gap:6px;
   background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 16px;
-  cursor:pointer; min-width:84px; font-size:11.5px; font-weight:600; color:var(--ink);
+  cursor:pointer; min-width:84px; font-size:12px; font-weight:600; color:var(--ink);
 }
 .qa-btn .qico{width:34px; height:34px; border-radius:10px; background:var(--indigo-tint); color:var(--indigo); display:flex; align-items:center; justify-content:center;}
 .qa-btn .qico svg{width:17px; height:17px;}
@@ -257,7 +257,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .btn.danger{background:var(--red);}
 .btn.ghost{background:transparent; color:var(--indigo); padding:8px 10px;}
 .btn.block{width:100%;}
-.btn.sm{padding:7px 12px; font-size:12.5px; border-radius:9px;}
+.btn.sm{padding:7px 12px; font-size:12px; border-radius:9px;}
 .fab{
   position:fixed; right:18px; bottom:86px; z-index:40;
   width:56px; height:56px; border-radius:50%; background:var(--indigo); color:#fff;
@@ -268,22 +268,22 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 @media (min-width:900px){.fab{bottom:28px;}}
 .fab-alert{
   bottom:154px; width:44px; height:44px; background:var(--red);
-  box-shadow:0 8px 20px rgba(209,75,75,.4); font-weight:800; font-size:16px;
+  box-shadow:0 8px 20px rgba(209,75,75,.4); font-weight:700; font-size:16px;
 }
 @media (min-width:900px){.fab-alert{bottom:96px;}}
 
 /* forms */
 .field{margin-bottom:13px;}
-.field label{display:block; font-size:12.5px; font-weight:600; color:var(--ink-soft); margin-bottom:5px;}
+.field label{display:block; font-size:12px; font-weight:600; color:var(--ink-soft); margin-bottom:5px;}
 .field input, .field select, .field textarea{
   width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--line);
-  background:var(--paper); color:var(--ink); font-size:14.5px;
+  background:var(--paper); color:var(--ink); font-size:14px;
 }
 .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--indigo); outline-offset:1px;}
 .field-row{display:flex; gap:10px;}
 .field-row > .field{flex:1;}
 .seg{display:flex; border:1px solid var(--line); border-radius:10px; overflow:hidden;}
-.seg button{flex:1; padding:9px 6px; background:var(--paper); border:none; font-size:12.5px; font-weight:600; color:var(--ink-soft); cursor:pointer; border-right:1px solid var(--line);}
+.seg button{flex:1; padding:9px 6px; background:var(--paper); border:none; font-size:12px; font-weight:600; color:var(--ink-soft); cursor:pointer; border-right:1px solid var(--line);}
 .seg button:last-child{border-right:none;}
 .seg button.active{background:var(--indigo); color:#fff;}
 
@@ -294,7 +294,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
   display:flex; align-items:center; gap:12px;
 }
 .row-item .ri-main{flex:1; min-width:0;}
-.row-item .ri-title{font-weight:600; font-size:14.5px; display:flex; align-items:center; gap:8px;}
+.row-item .ri-title{font-weight:600; font-size:14px; display:flex; align-items:center; gap:8px;}
 .row-item .ri-sub{font-size:12px; color:var(--ink-soft); margin-top:2px;}
 .row-item .ri-actions{display:flex; gap:6px; flex-shrink:0;}
 .icon-btn{
@@ -305,7 +305,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .icon-btn:hover{color:var(--indigo); border-color:var(--indigo);}
 
 .badge{
-  font-size:10.5px; font-weight:700; padding:3px 8px; border-radius:20px; white-space:nowrap;
+  font-size:11px; font-weight:700; padding:3px 8px; border-radius:20px; white-space:nowrap;
 }
 .badge.high{background:var(--red-tint); color:var(--red);}
 .badge.medium{background:var(--amber-tint); color:var(--amber);}
@@ -323,14 +323,14 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .badge.average{background:var(--amber-tint); color:var(--amber);}
 .badge.strong{background:var(--green-tint); color:var(--green);}
 
-.checkline{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-soft);}
+.checkline{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--ink-soft);}
 .checkline input{width:16px; height:16px;}
 
 /* tabs (subject/section tabs) */
 .tabs{display:flex; gap:6px; overflow-x:auto; margin-bottom:14px; -webkit-overflow-scrolling:touch;}
 
 .cal-header{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;}
-.readiness-num{font-size:44px; font-weight:800; line-height:1;}
+.readiness-num{font-size:40px; font-weight:700; line-height:1;}
 .cal-title{font-weight:700; font-size:16px;}
 .cal-weekdays{display:grid; grid-template-columns:repeat(7,1fr); text-align:center; font-size:11px; color:var(--ink-soft); font-weight:600; margin-bottom:4px;}
 .cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:4px;}
@@ -347,7 +347,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .cal-daynum{font-size:12px; font-weight:700; color:var(--ink);}
 .cal-dots{display:flex; flex-wrap:wrap; gap:2px; margin-top:auto;}
 .cal-dot{width:6px; height:6px; border-radius:50%; display:inline-block;}
-.cal-more{font-size:9px; color:var(--ink-soft); font-weight:600;}
+.cal-more{font-size:11px; color:var(--ink-soft); font-weight:600;}
 .cal-legend{display:flex; align-items:center; gap:4px; justify-content:flex-end; margin-top:10px; font-size:11px; color:var(--ink-soft);}
 .cal-legend .cal-dot{width:12px; height:12px; border-radius:3px; background:var(--paper-2);}
 .cal-legend .cal-lv0{background:var(--paper-2);}
@@ -357,7 +357,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .cal-legend .cal-lv4{background:var(--indigo);}
 .tab{
   flex:0 0 auto; padding:8px 15px; border-radius:20px; background:var(--paper-2); border:1px solid var(--line);
-  font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer; white-space:nowrap;
+  font-size:14px; font-weight:600; color:var(--ink-soft); cursor:pointer; white-space:nowrap;
 }
 .tab.active{background:var(--indigo); color:#fff; border-color:var(--indigo);}
 
@@ -382,12 +382,12 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
   appearance:none; -webkit-appearance:none;
   flex:0 0 auto; min-width:0; padding:8px 30px 8px 15px; border-radius:20px;
   background:var(--paper-2) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%235B6178" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right 10px center/12px;
-  border:1px solid var(--line); font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;
+  border:1px solid var(--line); font-size:14px; font-weight:600; color:var(--ink-soft); cursor:pointer;
 }
 .filter-row select.pill-select.active{background-color:var(--indigo-tint); border-color:var(--indigo); color:var(--indigo);}
 .filter-row .pill-toggle{
   flex:0 0 auto; display:flex; align-items:center; gap:6px; padding:8px 14px; border-radius:20px;
-  background:var(--paper-2); border:1px solid var(--line); font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;
+  background:var(--paper-2); border:1px solid var(--line); font-size:14px; font-weight:600; color:var(--ink-soft); cursor:pointer;
 }
 .filter-row .pill-toggle svg{width:14px; height:14px;}
 .filter-row .pill-toggle.active{background:var(--amber-tint); border-color:var(--amber); color:var(--amber);}
@@ -401,9 +401,9 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .empty{
   text-align:center; padding:38px 20px; color:var(--ink-soft);
 }
-.empty .ee{font-size:34px; margin-bottom:10px;}
-.empty h4{color:var(--ink); font-size:15px; margin-bottom:4px;}
-.empty p{font-size:13px;}
+.empty .ee{font-size:40px; margin-bottom:10px;}
+.empty h4{color:var(--ink); font-size:16px; margin-bottom:4px;}
+.empty p{font-size:14px;}
 
 /* modal */
 .modal-backdrop{
@@ -422,7 +422,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 }
 @keyframes slideup{from{transform:translateY(30px); opacity:.6;} to{transform:translateY(0); opacity:1;}}
 .modal-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
-.modal-head h3{font-size:17px;}
+.modal-head h3{font-size:18px;}
 .modal-close{width:30px; height:30px; border-radius:50%; border:none; background:var(--paper-2); color:var(--ink-soft); cursor:pointer; display:flex; align-items:center; justify-content:center;}
 .modal-actions{display:flex; gap:10px; margin-top:6px;}
 .modal-actions .btn{flex:1;}
@@ -430,13 +430,13 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 /* toast */
 .toast{
   position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
-  background:var(--ink); color:var(--paper); padding:11px 18px; border-radius:24px; font-size:13.5px;
-  font-weight:500; z-index:200; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s;
+  background:var(--ink); color:var(--paper); padding:11px 18px; border-radius:24px; font-size:14px;
+  font-weight:600; z-index:200; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s;
   box-shadow:0 8px 24px rgba(0,0,0,.25); display:flex; align-items:center; gap:10px; white-space:nowrap;
 }
 :root[data-theme="dark"] .toast{background:#EDEFF7; color:#12141C;}
 .toast.show{opacity:1; transform:translateX(-50%) translateY(-6px); pointer-events:auto;}
-.toast-action{background:none; border:none; color:#8FB0FF; font-weight:700; font-size:13.5px; cursor:pointer; padding:0;}
+.toast-action{background:none; border:none; color:#8FB0FF; font-weight:700; font-size:14px; cursor:pointer; padding:0;}
 :root[data-theme="dark"] .toast-action{color:#3E4FD9;}
 @media (min-width:900px){.toast{bottom:24px;}}
 
@@ -448,7 +448,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 }
 .bn-item{
   flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 2px;
-  border:none; background:none; color:var(--ink-soft); font-size:10px; font-weight:600; cursor:pointer;
+  border:none; background:none; color:var(--ink-soft); font-size:11px; font-weight:600; cursor:pointer;
 }
 .bn-item svg{width:20px; height:20px;}
 .bn-item.active{color:var(--indigo);}
@@ -462,7 +462,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 }
 
 /* timer */
-.timer-mode-label{text-align:center; font-size:12.5px; color:var(--ink-soft); font-weight:600;}
+.timer-mode-label{text-align:center; font-size:12px; color:var(--ink-soft); font-weight:600;}
 .timer-controls{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap;}
 .timer-controls .btn{min-width:96px;}
 .timer-ring{position:relative; width:min(290px,78vw); aspect-ratio:1; margin:6px auto 4px; color:var(--indigo); transition:color .4s;}
@@ -479,8 +479,8 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .timer-tick.now{stroke:currentColor; stroke-width:3.6;}
 .timer-ring.paused .timer-prog{opacity:.5;}
 .timer-center{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; pointer-events:none;}
-.timer-digits{font-family:var(--font-mono); font-size:44px; font-weight:600; letter-spacing:.5px; color:var(--ink); font-variant-numeric:tabular-nums;}
-.timer-digits.long{font-size:34px;}
+.timer-digits{font-family:var(--font-mono); font-size:40px; font-weight:600; letter-spacing:.5px; color:var(--ink); font-variant-numeric:tabular-nums;}
+.timer-digits.long{font-size:40px;}
 .timer-ring.paused .timer-digits{animation:tblink 1.6s ease-in-out infinite;}
 .timer-ring.done{animation:tdone .8s ease-out;}
 @keyframes tbreathe{0%,100%{transform:scale(.9); opacity:.10;} 50%{transform:scale(1.08); opacity:.28;}}
@@ -495,11 +495,11 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .barchart{display:flex; align-items:flex-end; gap:8px; height:140px; padding-top:10px;}
 .barchart .bcol{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:6px;}
 .barchart .bcol .bar{width:100%; max-width:26px; border-radius:6px 6px 3px 3px; background:var(--indigo); min-height:3px;}
-.barchart .bcol .blabel{font-size:10px; color:var(--ink-soft);}
-.barchart .bcol .bval{font-size:10px; color:var(--ink-soft); font-weight:600;}
+.barchart .bcol .blabel{font-size:11px; color:var(--ink-soft);}
+.barchart .bcol .bval{font-size:11px; color:var(--ink-soft); font-weight:600;}
 
 .hbar-row{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
-.hbar-row .hb-label{width:88px; flex-shrink:0; font-size:12.5px; font-weight:600; color:var(--ink-soft);}
+.hbar-row .hb-label{width:88px; flex-shrink:0; font-size:12px; font-weight:600; color:var(--ink-soft);}
 .hbar-row .hb-track{flex:1; height:10px; background:var(--paper-2); border-radius:6px; overflow:hidden;}
 .hbar-row .hb-track > div{height:100%; border-radius:6px;}
 .hbar-row .hb-val{width:38px; text-align:right; font-size:12px; font-weight:700; flex-shrink:0;}
@@ -510,13 +510,13 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .chip-row{display:flex; gap:8px; flex-wrap:wrap;}
 .chip{padding:6px 12px; border-radius:20px; background:var(--paper-2); border:1px solid var(--line); font-size:12px; font-weight:600; color:var(--ink-soft);}
 
-table.simple{width:100%; border-collapse:collapse; font-size:13px;}
+table.simple{width:100%; border-collapse:collapse; font-size:14px;}
 table.simple th{text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:var(--slate); padding:6px 8px; border-bottom:1px solid var(--line);}
 table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .table-wrap{overflow-x:auto;}
 
 .streak-flame{display:flex; align-items:center; gap:8px;}
-.streak-flame .num{font-family:var(--font-head); font-size:28px; font-weight:800; color:var(--amber);}
+.streak-flame .num{font-family:var(--font-head); font-size:28px; font-weight:700; color:var(--amber);}
 
 
 /* ---------- Portrait only ---------- */
@@ -539,54 +539,54 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .auth-screen[hidden], .auth-screen [hidden]{display:none !important;}
 .auth-wrap{width:100%; max-width:400px; margin:auto 0;}
 .auth-brand{display:flex; align-items:baseline; gap:8px; margin-bottom:26px;}
-.auth-brand .brand-mark{font-size:26px;}
-.auth-brand .brand-sub{font-size:13px;}
+.auth-brand .brand-mark{font-size:28px;}
+.auth-brand .brand-sub{font-size:14px;}
 .auth-wrap h2{font-size:24px; font-weight:700; margin-bottom:6px;}
 .auth-lead{color:var(--ink-soft); font-size:14px; line-height:1.5; margin-bottom:20px;}
 .auth-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow);}
 .auth-card .seg{margin-bottom:18px;}
-.auth-card .seg button{padding:10px 6px; font-size:13.5px;}
-.auth-card .field input{padding:12px 13px; font-size:15px;}
+.auth-card .seg button{padding:10px 6px; font-size:14px;}
+.auth-card .field input{padding:12px 13px; font-size:16px;}
 .pw-row{position:relative;}
 .pw-row input{padding-right:64px;}
 .pw-toggle{
   position:absolute; right:6px; top:50%; transform:translateY(-50%);
-  background:none; border:none; color:var(--indigo); font-weight:600; font-size:12.5px;
+  background:none; border:none; color:var(--indigo); font-weight:600; font-size:12px;
   padding:8px; cursor:pointer; border-radius:8px;
 }
 .pw-toggle:focus-visible, .auth-link:focus-visible{outline:2px solid var(--indigo); outline-offset:2px;}
-.auth-msg{display:none; font-size:13px; line-height:1.45; padding:10px 12px; border-radius:10px; margin-bottom:14px;}
+.auth-msg{display:none; font-size:14px; line-height:1.45; padding:10px 12px; border-radius:10px; margin-bottom:14px;}
 .auth-msg.show{display:block;}
 .auth-msg.error{background:var(--red-tint); color:var(--red);}
 .auth-msg.ok{background:var(--green-tint); color:var(--green);}
-.auth-card .btn{padding:13px 18px; font-size:15px; margin-top:6px;}
+.auth-card .btn{padding:13px 18px; font-size:16px; margin-top:6px;}
 .auth-card .btn[disabled]{opacity:.6; cursor:default;}
-.auth-link{background:none; border:none; color:var(--indigo); font-weight:600; font-size:13px; cursor:pointer; padding:6px 0;}
+.auth-link{background:none; border:none; color:var(--indigo); font-weight:600; font-size:14px; cursor:pointer; padding:6px 0;}
 .auth-foot{display:flex; justify-content:center; margin-top:10px;}
 .auth-loading{display:flex; align-items:center; justify-content:center; gap:10px; color:var(--ink-soft); font-size:14px; margin:auto;}
 .auth-spinner{width:18px; height:18px; border-radius:50%; border:2.5px solid var(--line); border-top-color:var(--indigo); animation:authspin .8s linear infinite;}
 @keyframes authspin{to{transform:rotate(360deg);}}
 @media (prefers-reduced-motion:reduce){ .auth-spinner{animation-duration:2.4s;} }
 .home-greet{margin-bottom:16px;}
-.home-greet h2{font-size:22px; font-weight:700; line-height:1.25;}
-.home-greet p{color:var(--ink-soft); font-size:13.5px; margin-top:3px;}
+.home-greet h2{font-size:24px; font-weight:700; line-height:1.25;}
+.home-greet p{color:var(--ink-soft); font-size:14px; margin-top:3px;}
 .plan-head{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:14px;}
-.plan-goal{font-weight:700; font-size:15px; line-height:1.3;}
-.plan-dream{color:var(--ink-soft); font-size:13px; margin-top:2px;}
+.plan-goal{font-weight:700; font-size:16px; line-height:1.3;}
+.plan-dream{color:var(--ink-soft); font-size:14px; margin-top:2px;}
 .plan-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px;}
 .plan-stat{background:var(--paper-2); border-radius:12px; padding:10px 6px; text-align:center;}
-.plan-stat .v{font-family:var(--font-head); font-weight:700; font-size:17px; line-height:1.1;}
+.plan-stat .v{font-family:var(--font-head); font-weight:700; font-size:18px; line-height:1.1;}
 .plan-stat .l{font-size:11px; color:var(--ink-soft); margin-top:4px; line-height:1.25;}
-.plan-pace{font-size:13px; line-height:1.45; margin-bottom:12px; color:var(--ink-soft);}
+.plan-pace{font-size:14px; line-height:1.45; margin-bottom:12px; color:var(--ink-soft);}
 .plan-pace b.ok{color:var(--green);}
 .plan-pace b.behind{color:var(--red);}
 .plan-dot{width:9px; height:9px; border-radius:50%; flex-shrink:0;}
-.plan-note{background:var(--indigo-tint); border-radius:12px; padding:10px 12px; font-size:13px; line-height:1.5; margin-top:12px;}
-.plan-link{background:none; border:none; color:var(--indigo); font-weight:600; font-size:13px; padding:0; cursor:pointer; text-decoration:underline;}
-.plan-foot{font-size:11.5px; color:var(--ink-soft); margin-top:12px; line-height:1.4;}
-.gl-check{display:flex; align-items:center; gap:8px; font-size:13.5px; margin-bottom:4px;}
+.plan-note{background:var(--indigo-tint); border-radius:12px; padding:10px 12px; font-size:14px; line-height:1.5; margin-top:12px;}
+.plan-link{background:none; border:none; color:var(--indigo); font-weight:600; font-size:14px; padding:0; cursor:pointer; text-decoration:underline;}
+.plan-foot{font-size:12px; color:var(--ink-soft); margin-top:12px; line-height:1.4;}
+.gl-check{display:flex; align-items:center; gap:8px; font-size:14px; margin-bottom:4px;}
 .gl-check input{width:18px; height:18px;}
-.account-email{font-family:var(--font-mono); font-size:13px; word-break:break-all; margin-bottom:14px;}
+.account-email{font-family:var(--font-mono); font-size:14px; word-break:break-all; margin-bottom:14px;}
 @media print{ .sidebar,.bottomnav,.fab{display:none;} }
 
 /* Chapter list: square tiles with outer progress ring */
@@ -607,15 +607,15 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .ch-tile.full{--ring:var(--green);}
 .ch-tile-in{width:100%; height:100%; border-radius:15px; background:var(--card); color:var(--ink);
   display:flex; align-items:center; justify-content:center; text-align:center; padding:10px; overflow:hidden;}
-.ch-tile-in span{font-weight:700; font-size:13.5px; line-height:1.3; word-break:break-word;
+.ch-tile-in span{font-weight:700; font-size:14px; line-height:1.3; word-break:break-word;
   display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;}
 .ch-tile.gold .ch-tile-in{background:linear-gradient(135deg,#FCE38A,#F2B705); color:#4A3500;}
-.ch-pct{font-size:11.5px; font-weight:700; color:var(--ink-soft);}
+.ch-pct{font-size:12px; font-weight:700; color:var(--ink-soft);}
 
 /* Timetable */
 .tt-nav{display:flex; align-items:center; gap:8px; margin-bottom:12px;}
-.tt-nav .tt-date{flex:1; text-align:center; font-weight:700; font-size:14.5px;}
-.tt-nav .tt-date small{display:block; font-weight:500; font-size:11.5px; color:var(--ink-soft);}
+.tt-nav .tt-date{flex:1; text-align:center; font-weight:700; font-size:14px;}
+.tt-nav .tt-date small{display:block; font-weight:600; font-size:12px; color:var(--ink-soft);}
 .tt-block{display:flex; gap:10px; margin-bottom:8px;}
 .tt-time{width:62px; flex-shrink:0; text-align:right; font-size:11px; color:var(--ink-soft); display:flex; flex-direction:column; padding-top:12px; line-height:1.35;}
 .tt-time b{color:var(--ink); font-size:12px; font-weight:700;}
@@ -625,39 +625,39 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .tt-block.done .tt-title{text-decoration:line-through;}
 .tt-block.missed .tt-card{background:var(--paper-2);}
 .tt-top{display:flex; align-items:flex-start; gap:8px;}
-.tt-title{flex:1; min-width:0; font-weight:600; font-size:14.5px; overflow-wrap:anywhere;}
+.tt-title{flex:1; min-width:0; font-weight:600; font-size:14px; overflow-wrap:anywhere;}
 .tt-sub{font-size:12px; color:var(--ink-soft); margin-top:3px;}
 .tt-tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; align-items:center;}
 .tt-check{width:28px; height:28px; border-radius:50%; border:2px solid var(--line); background:transparent; color:transparent; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer; padding:0;}
 .tt-check.on{background:var(--green); border-color:var(--green); color:#fff;}
 .tt-check svg{width:14px; height:14px;}
-.tt-gap{margin:0 0 8px 72px; font-size:11.5px; color:var(--ink-soft); border-left:2px dashed var(--line); padding:2px 0 2px 10px;}
+.tt-gap{margin:0 0 8px 72px; font-size:12px; color:var(--ink-soft); border-left:2px dashed var(--line); padding:2px 0 2px 10px;}
 .tt-days{display:flex; gap:6px; flex-wrap:wrap;}
-.tt-day{padding:7px 11px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); font-size:12.5px; font-weight:600; cursor:pointer;}
+.tt-day{padding:7px 11px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); font-size:12px; font-weight:600; cursor:pointer;}
 .tt-day.active{background:var(--indigo); border-color:var(--indigo); color:#fff;}
 .upnext{border-left:4px solid var(--kc); cursor:pointer;}
 /* ---------- Avatar / Profile / new Settings look ---------- */
-.avatar-btn{flex:0 0 38px;min-width:38px;aspect-ratio:1/1;box-sizing:border-box;width:38px;height:38px;border-radius:50%;border:2px solid var(--indigo);padding:0;overflow:hidden;cursor:pointer;background:var(--indigo-tint);color:var(--indigo);font:700 15px var(--font-head);display:flex;align-items:center;justify-content:center}
+.avatar-btn{flex:0 0 38px;min-width:38px;aspect-ratio:1/1;box-sizing:border-box;width:38px;height:38px;border-radius:50%;border:2px solid var(--indigo);padding:0;overflow:hidden;cursor:pointer;background:var(--indigo-tint);color:var(--indigo);font:700 16px var(--font-head);display:flex;align-items:center;justify-content:center}
 .avatar-btn img,.pf-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .pf-top{position:relative;text-align:center;padding:10px 0 22px}
 .pf-gear{position:absolute;top:0;right:0;width:38px;height:38px;border-radius:50%;border:none;background:transparent;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center}
 .pf-gear svg{width:21px;height:21px}
-.pf-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 12px;overflow:hidden;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font:700 34px var(--font-head)}
-.pf-name{font:700 20px var(--font-head);word-break:break-word}
-.pf-sub{font-size:12.5px;color:var(--ink-soft);margin:2px 0 8px}
-.pf-edit{background:none;border:none;color:var(--indigo);font-weight:600;font-size:13px;cursor:pointer;padding:4px 8px}
+.pf-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 12px;overflow:hidden;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font:700 40px var(--font-head)}
+.pf-name{font:700 18px var(--font-head);word-break:break-word}
+.pf-sub{font-size:12px;color:var(--ink-soft);margin:2px 0 8px}
+.pf-edit{background:none;border:none;color:var(--indigo);font-weight:600;font-size:14px;cursor:pointer;padding:4px 8px}
 .pf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .pf-box{padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:transparent}
-.pf-box .l{font-size:11.5px;color:var(--ink-soft);margin-bottom:4px}
-.pf-box .n{font:700 26px var(--font-head);color:var(--ink);line-height:1.1}
-.pf-box .n small{font-size:12px;font-weight:500;color:var(--ink-soft);margin-left:4px}
+.pf-box .l{font-size:12px;color:var(--ink-soft);margin-bottom:4px}
+.pf-box .n{font:700 28px var(--font-head);color:var(--ink);line-height:1.1}
+.pf-box .n small{font-size:12px;font-weight:600;color:var(--ink-soft);margin-left:4px}
 .pf-tap{cursor:pointer}.pf-tap:active{background:var(--paper-2)}
-.pf-lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:22px 2px 10px}
-.pf-more{display:block;margin:18px auto 0;background:none;border:none;color:var(--ink-soft);font-size:12.5px;cursor:pointer}
-.pf-ph{width:104px;height:104px;border-radius:50%;margin:0 auto 14px;overflow:hidden;background:var(--paper-2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font:700 38px var(--font-head);color:var(--indigo)}
+.pf-lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:22px 2px 10px}
+.pf-more{display:block;margin:18px auto 0;background:none;border:none;color:var(--ink-soft);font-size:12px;cursor:pointer}
+.pf-ph{width:104px;height:104px;border-radius:50%;margin:0 auto 14px;overflow:hidden;background:var(--paper-2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font:700 40px var(--font-head);color:var(--indigo)}
 .pf-ph img{width:100%;height:100%;object-fit:cover}
 .st-head{display:flex;align-items:center;gap:12px;padding:18px;margin-bottom:16px;border-radius:22px;color:#fff;background:linear-gradient(145deg,#4452C4,#242C74)}
-.st-head h2{font-size:20px}.st-head p{font-size:12.5px;opacity:.75;margin-top:2px}
+.st-head h2{font-size:18px}.st-head p{font-size:12px;opacity:.75;margin-top:2px}
 .st-back{width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,.18);color:#fff;font-size:18px;cursor:pointer}
 #view-settings .card{border-radius:22px;border:none;box-shadow:var(--shadow)}
 #view-settings .section-title{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);display:flex;align-items:center;gap:8px}
@@ -669,18 +669,18 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .more-box{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:18px 16px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 14px var(--font-body);text-align:left;cursor:pointer;position:relative}
 .more-box:active{transform:scale(.98)}
 .more-box svg{width:24px;height:24px;color:var(--indigo)}
-.more-box .mb-badge{position:absolute;top:12px;right:12px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--red);color:#fff;font-size:11.5px;display:flex;align-items:center;justify-content:center}
+.more-box .mb-badge{position:absolute;top:12px;right:12px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--red);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
 .hm-today{display:flex;align-items:center;gap:18px;margin-bottom:0}
 .hm-ring{position:relative;width:92px;height:92px;flex:0 0 92px}
 .hm-ring svg{width:100%;height:100%}
 .hm-ring-t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15}
-.hm-ring-t b{font:700 15px var(--font-head)}.hm-ring-t span{font-size:10.5px;color:var(--ink-soft)}
+.hm-ring-t b{font:700 16px var(--font-head)}.hm-ring-t span{font-size:11px;color:var(--ink-soft)}
 .hm-bars{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
 .hm-lblrow{display:flex;align-items:center;justify-content:space-between}
 .hm-lblrow .pf-edit{padding:0 2px;text-transform:none;letter-spacing:0}
-.pf-box .n span{font-size:12px;font-weight:500;color:var(--ink-soft)}
+.pf-box .n span{font-size:12px;font-weight:600;color:var(--ink-soft)}
 .qa-grid{display:grid;grid-template-columns:repeat(var(--cols,3),1fr);gap:10px}
-.qa-tile{aspect-ratio:1/1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:6px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font:600 11.5px/1.2 var(--font-body);text-align:center}
+.qa-tile{aspect-ratio:1/1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:6px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font:600 12px/1.2 var(--font-body);text-align:center}
 .qa-tile:active{transform:scale(.97)}
 .qa-tile svg{width:24px;height:24px;color:var(--indigo);flex:0 0 auto}
 .qa-tile span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:100%}
@@ -694,30 +694,30 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .auth-screen{align-items:center}
 .auth-wrap{max-width:380px}
 .auth-brand{margin-bottom:28px}
-.auth-logo{width:52px;height:52px;border-radius:50%;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font:700 22px var(--font-head)}
-.auth-wrap h2{font-size:26px;letter-spacing:-.01em;margin-bottom:6px}
-.auth-lead{font-size:13.5px;margin-bottom:26px}
+.auth-logo{width:52px;height:52px;border-radius:50%;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font:700 24px var(--font-head)}
+.auth-wrap h2{font-size:28px;letter-spacing:-.01em;margin-bottom:6px}
+.auth-lead{font-size:14px;margin-bottom:26px}
 .auth-card{background:transparent;border:none;box-shadow:none;padding:0}
 .auth-card .seg{border:none;background:var(--paper-2);border-radius:999px;padding:4px;margin-bottom:22px;gap:4px}
 .auth-card .seg button{border:none;border-radius:999px;background:transparent;padding:9px 6px}
 .auth-card .seg button.active{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(27,34,51,.12)}
-.auth-card .field label{font-size:12px;font-weight:500;margin-bottom:6px}
+.auth-card .field label{font-size:12px;font-weight:600;margin-bottom:6px}
 .auth-card .field input{border-radius:14px;background:var(--paper-2);border:1px solid transparent}
 .auth-card .field input:focus{background:var(--paper);border-color:var(--indigo);outline:none}
 .auth-card .btn{border-radius:999px;padding:14px 18px;margin-top:10px}
 .auth-foot{margin-top:14px}
-.auth-link{color:var(--ink-soft);font-weight:500}
+.auth-link{color:var(--ink-soft);font-weight:600}
 /* ===================== Global minimal layer (all pages) ===================== */
 :root,:root[data-theme="dark"]{--shadow:none;--radius-md:16px;--radius-lg:20px}
 .sidebar{background:var(--paper)}
-.nav-item{font-weight:500;border-radius:999px}
+.nav-item{font-weight:600;border-radius:999px}
 .nav-item.active{background:var(--indigo-tint);color:var(--indigo)}
-.topbar h1{font-size:21px;font-weight:600}
+.topbar h1{font-size:18px;font-weight:600}
 .topbar .date-pill{border:none}
 .card,.stat,.row-item,.pill-searchbar{background:transparent;box-shadow:none;border:1px solid var(--line);border-radius:16px}
 .card-flat{background:var(--paper-2);border:none;border-radius:16px}
 .card.is-important{border-color:var(--amber)}
-.section-title{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:26px 2px 10px}
+.section-title{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:26px 2px 10px}
 .stat .val{font-weight:700}
 .stat .icon{background:transparent !important;padding:0;width:auto;height:auto;justify-content:flex-start}
 .hero{background:transparent;color:var(--ink);border:1px solid var(--line)}
@@ -727,24 +727,24 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .btn.sm{border-radius:999px}
 .btn.secondary{background:transparent}
 .fab,.fab-alert{box-shadow:0 2px 10px rgba(0,0,0,.18)}
-.field label{font-weight:500;font-size:12px}
+.field label{font-weight:600;font-size:12px}
 .field input,.field select,.field textarea{border-radius:12px;background:var(--paper-2);border:1px solid transparent}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--indigo);background:var(--paper)}
 .seg{border:none;background:var(--paper-2);border-radius:999px;padding:3px;gap:3px;overflow:visible}
 .seg button{border:none !important;border-radius:999px;background:transparent}
 .seg button.active{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
-.tab{background:transparent;border-color:var(--line);font-weight:500}
+.tab{background:transparent;border-color:var(--line);font-weight:600}
 .tab.active{background:var(--indigo-tint);color:var(--indigo);border-color:transparent}
 .icon-btn{border:none;background:var(--paper-2);border-radius:50%}
 .badge{font-weight:600;border-radius:999px}
 .pbar{height:6px}
 .pill-searchbar{border-radius:999px}
-.filter-row select.pill-select,.filter-row .pill-toggle{background-color:transparent;border-color:var(--line);font-weight:500}
+.filter-row select.pill-select,.filter-row .pill-toggle{background-color:transparent;border-color:var(--line);font-weight:600}
 .empty .ee{display:none}
 .modal{border-radius:24px 24px 0 0}
 .modal-backdrop{backdrop-filter:blur(3px)}
 .bottomnav{background:var(--paper)}
-.bn-item{font-weight:500}
+.bn-item{font-weight:600}
 .ch-tile.gold .ch-tile-in{background:var(--amber-tint);color:var(--amber)}
 .st-head{background:transparent;color:var(--ink);padding:4px 0;margin-bottom:10px}
 .st-head p{opacity:1;color:var(--ink-soft)}
@@ -756,17 +756,17 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .more-box,.qa-tile{background:transparent}
 .bt-hero{display:flex;align-items:center;justify-content:space-between;background:var(--ink);color:var(--paper);border-radius:20px;padding:18px 18px;margin-bottom:10px}
 .bt-l{font-size:12px;opacity:.7}
-.bt-big{font:700 42px/1.1 var(--font-head);margin-top:2px}
-.bt-mid{font:700 26px/1.2 var(--font-head);margin-top:2px}
-.bt-big span,.bt-mid span{font:500 12px var(--font-body);opacity:.7}
+.bt-big{font:700 40px/1.1 var(--font-head);margin-top:2px}
+.bt-mid{font:700 28px/1.2 var(--font-head);margin-top:2px}
+.bt-big span,.bt-mid span{font:600 12px var(--font-body);opacity:.7}
 .bt-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .bt-tile{border-radius:18px;padding:14px;min-width:0}
 .bt-tile .bt-l{opacity:1}
 .bt-ringrow{display:flex;align-items:center;gap:10px;margin-top:8px}
 .bt-ringrow b,.bt-flat b{display:block;font:700 18px/1.2 var(--font-head)}
 .bt-ringrow span,.bt-flat span{display:block;font-size:11px;opacity:.85}
-.bt-num{font:700 26px/1.1 var(--font-head);margin-top:10px}
-.bt-num span{font:500 13px var(--font-body)}
+.bt-num{font:700 28px/1.1 var(--font-head);margin-top:10px}
+.bt-num span{font:600 14px var(--font-body)}
 .bt-track{height:6px;border-radius:3px;background:rgba(127,127,127,.25);margin-top:10px}
 .bt-track div{height:6px;border-radius:3px;background:currentColor}
 .bt-flat{cursor:pointer;display:flex;align-items:center;min-height:62px}
@@ -795,26 +795,26 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .hx-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .hx-cd{border-radius:16px;padding:14px 14px 12px;color:#fff;min-width:0}
 .hx-cd-top{display:flex;align-items:center;justify-content:space-between;font:700 12px var(--font-head);text-transform:uppercase;letter-spacing:.03em}
-.hx-num{font:700 34px/1.1 var(--font-head);margin-top:10px}
+.hx-num{font:700 40px/1.1 var(--font-head);margin-top:10px}
 .hx-num span{font:600 11px var(--font-body);text-transform:uppercase;letter-spacing:.03em;margin-left:3px}
 .hx-date{font-size:12px;opacity:.9;margin-top:6px}
 .hx-card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:12px}
-.hx-h{font:700 17px var(--font-head);margin-bottom:12px}
+.hx-h{font:700 18px var(--font-head);margin-bottom:12px}
 .hx-rings{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .hp-ring{position:relative;aspect-ratio:1/1;width:100%;max-width:170px;margin:0 auto}
 .hp-ring svg{width:100%;height:100%}
 .hp-ring-t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16%;line-height:1.25}
-.hp-k{font:600 9.5px var(--font-body);text-transform:uppercase;letter-spacing:.02em}
-.hp-ring-t b{font:700 17px var(--font-head);margin:2px 0}
+.hp-k{font:600 11px var(--font-body);text-transform:uppercase;letter-spacing:.02em}
+.hp-ring-t b{font:700 18px var(--font-head);margin:2px 0}
 .hp-ring-t span{font-size:11px;color:var(--ink-soft)}
 .hp-ring-t em{font:700 12px var(--font-body);font-style:normal}
 .hx-extra{font-size:12px;color:var(--ink-soft);margin-top:10px;text-align:center}
 .hx-streak{cursor:pointer}
 .hx-streak .hx-h{margin-bottom:6px}
 .hx-streak-in{display:flex;align-items:center;gap:12px}
-.hx-sn{font:700 38px/1 var(--font-head)}
+.hx-sn{font:700 40px/1 var(--font-head)}
 .hx-streak-in b{display:block;font:700 14px var(--font-head)}
-.hx-streak-in span{font-size:13px;color:var(--ink-soft)}
+.hx-streak-in span{font-size:14px;color:var(--ink-soft)}
 .qa-tile{color:#fff;border-radius:16px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:11px}
 .qa-tile svg{color:#fff}
 .qa-tile:nth-child(3n+1){background:#3B82D6}
@@ -833,26 +833,26 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .tb-ic svg{width:24px;height:24px}
 .tb-dot{position:absolute;top:7px;right:8px;width:9px;height:9px;border-radius:50%;background:#E5484D;border:2px solid var(--paper)}
 .hx-un-k{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
-.hx-un-h{font:700 21px var(--font-head);margin:4px 0 8px}
+.hx-un-h{font:700 18px var(--font-head);margin:4px 0 8px}
 .hx-un-t{font-size:16px;line-height:1.35;margin-bottom:10px}
 .hx-un-m{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
 .hx-un-m span{display:inline-flex;align-items:center;gap:6px}
 .bottomnav{background:var(--card);border-top:none}
-.bn-item{color:var(--ink);position:relative;font-size:12px;font-weight:500}
+.bn-item{color:var(--ink);position:relative;font-size:12px;font-weight:600}
 .bn-item svg{width:24px;height:24px}
 .bn-item.active{color:#3B82D6}
 .bn-item.active::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:44px;height:3px;border-radius:2px;background:#3B82D6}
 /* ============ Reference design system, applied to every page ============ */
 :root:not([data-theme="dark"]){
   --paper:#EBF0F6;--paper-2:#F1F4F9;--card:#FFFFFF;--ink:#111827;--ink-soft:#5B6475;--line:#E3E8EF;
-  --indigo:#3B82D6;--indigo-deep:#2A68B3;--indigo-tint:#E3EEFB;
-  --amber:#E0861A;--amber-tint:#FDEEDB;--green:#2FA66B;--green-tint:#E1F6EA;--red:#E5484D;--red-tint:#FDE7E8;
+  --indigo:#3B82D6;--indigo-deep:#1F5AA8;--indigo-tint:#E3EEFB;
+  --amber:#A85F00;--amber-tint:#FDEEDB;--green:#1E7F52;--green-tint:#E1F6EA;--red:#E5484D;--red-tint:#FDE7E8;
 }
-:root[data-theme="dark"]{--indigo:#5B9BE6;--indigo-deep:#3B82D6;--indigo-tint:#1E2B3F}
+:root[data-theme="dark"]{--indigo:#6AA6EE;--indigo-deep:#3B82D6;--indigo-tint:#1E2B3F}
 .card,.row-item,.pill-searchbar,.pf-box,.stat{background:var(--card);border:none;border-radius:18px}
 .card-flat{background:var(--card);border-radius:18px}
 .field input,.field select,.field textarea,.card .field input,.card .field select,.card .field textarea,#view-settings .field input,#view-settings .field select,#view-settings .field textarea{background:var(--paper-2);border-radius:12px}
-.section-title,.pf-lbl{font:700 17px var(--font-head);text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 2px 10px}
+.section-title,.pf-lbl{font:700 18px var(--font-head);text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 2px 10px}
 .btn{border-radius:14px}
 .btn.sm{border-radius:12px}
 .seg,.tab,.filter-row select.pill-select,.filter-row .pill-toggle{background:var(--card)}
@@ -864,14 +864,14 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .grid>.stat:nth-child(4n+3){background:#3FA5B5}
 .grid>.stat:nth-child(4n){background:#3DBE7E}
 .grid>.stat .val,.grid>.stat .lbl{color:#fff}
-.grid>.stat .lbl{text-transform:uppercase;font-size:10.5px;letter-spacing:.03em;opacity:.95}
+.grid>.stat .lbl{text-transform:uppercase;font-size:11px;letter-spacing:.03em;opacity:.95}
 .grid>.stat .icon{color:#fff}
 .pf-c-g{background:#3DBE7E}.pf-c-i{background:#3B82D6}.pf-c-a{background:#F29A38}
 .pf-c-g,.pf-c-i,.pf-c-a{color:#fff}
 .pf-c-g .n,.pf-c-g .l,.pf-c-i .n,.pf-c-i .l,.pf-c-a .n,.pf-c-a .l{color:#fff}
 .hx-k{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
-.hx-big2{font:700 30px/1.15 var(--font-head);margin-top:6px}
-.hx-big2 span{font:500 13px var(--font-body);color:var(--ink-soft)}
+.hx-big2{font:700 28px/1.15 var(--font-head);margin-top:6px}
+.hx-big2 span{font:600 14px var(--font-body);color:var(--ink-soft)}
 .more-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .more-box{aspect-ratio:1/1;align-items:center;justify-content:center;text-align:center;gap:8px;padding:6px;border:none;border-radius:16px;color:#fff;font:600 11px/1.2 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
 .more-box svg{width:26px;height:26px;color:#fff !important}
@@ -893,19 +893,19 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .dl-dot{width:10px;height:10px;border-radius:50%}
 .dl-card{background:var(--card);border-radius:16px;border-left:4px solid var(--line);padding:14px;margin-bottom:10px}
 .dl-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-.dl-name{font:600 15px/1.3 var(--font-body);min-width:0}
-.dl-when{font:700 12.5px var(--font-body);white-space:nowrap}
-.dl-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-soft);margin:8px 0 12px}
+.dl-name{font:600 16px/1.3 var(--font-body);min-width:0}
+.dl-when{font:700 12px var(--font-body);white-space:nowrap}
+.dl-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:12px;color:var(--ink-soft);margin:8px 0 12px}
 .dl-actions{display:flex;gap:8px;flex-wrap:wrap}
 .dl-actions .btn{flex:1 1 auto}
 .pl-strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-bottom:12px}
 .pl-day{border:none;background:var(--card);border-radius:14px;padding:8px 0 6px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:var(--ink);font-family:var(--font-body)}
-.pl-day span{font-size:10.5px;color:var(--ink-soft)}
+.pl-day span{font-size:11px;color:var(--ink-soft)}
 .pl-day b{font:700 16px var(--font-head)}
 .pl-day i{width:5px;height:5px;border-radius:50%}
 .pl-day.on{background:#3B82D6;color:#fff}.pl-day.on span{color:#fff;opacity:.85}
 .pl-filters{display:flex;gap:8px;margin-bottom:12px}
-.pl-chip{border:none;background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 13px var(--font-body);cursor:pointer}
+.pl-chip{border:none;background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 14px var(--font-body);cursor:pointer}
 .pl-chip.on{background:#3B82D6;color:#fff}
 .tk-row .icon-btn{background:var(--paper-2);border-radius:50%}
 .tk-row .ri-title{font-weight:600}
@@ -933,6 +933,61 @@ img,canvas{max-width:100%}
 .avatar-btn{flex:0 0 46px;width:46px;min-width:46px;height:46px}
 .tb-ic{width:38px;height:38px}
 @media (min-width:900px){.main{padding-top:20px}}
+/* ===== Contrast: text and icons on coloured fills ===== */
+.hx-date,.hx-num span{opacity:1}
+.hx-cd,.dl-tile,.qa-tile,.more-box,.grid>.stat,.pf-c-g,.pf-c-i,.pf-c-a{color:#fff}
+.hx-cd svg,.qa-tile svg,.more-box svg,.grid>.stat svg{color:#fff;stroke:currentColor}
+.dl-tile span,.grid>.stat .lbl{opacity:1}
+.badge{font-weight:700}
+.grid>.stat .val,.grid>.stat .lbl,.grid>.stat .icon,.grid>.stat .icon svg{color:#fff !important}
+.grid>.stat .icon{background:transparent !important}
+.seg button.active,.tab.active,.pl-chip.on,.pl-day.on{color:#fff !important}
+.grid>.stat .cmp-delta{color:#fff !important}
+/* lighter tiles: keep text readable with weight + soft shadow */
+.hx-cd,.dl-tile,.qa-tile,.more-box,.grid>.stat,.pf-c-g,.pf-c-i,.pf-c-a{text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.hx-cd svg,.qa-tile svg,.more-box svg{filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+.hd-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.hd-more{font:600 14px var(--font-body);color:var(--indigo)}
+.hd-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-left:4px solid var(--line);padding:6px 0 6px 10px;margin-bottom:6px}
+.hd-n{font:600 14px/1.3 var(--font-body);min-width:0}
+.hd-n span{display:block;font:400 12px var(--font-body);color:var(--ink-soft)}
+.hd-row b{font:700 12px var(--font-body);white-space:nowrap}
+.hd-sub{font-size:14px;color:var(--ink-soft)}
+/* ===== One typeface, one size scale (11 / 12 / 14 / 16 / 18 / 24 / 28 / 40) ===== */
+:root{--font-head:'Inter',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'Inter',system-ui,sans-serif}
+html,body,button,input,select,textarea{font-family:'Inter',system-ui,sans-serif}
+body{font-size:14px;line-height:1.45;font-variant-numeric:tabular-nums}
+h1,h2,h3,h4{font-family:inherit}
+.rv-cal{padding:14px}
+.rv-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.rv-head span{text-align:center;font:600 11px var(--font-body);color:var(--ink-soft);padding:6px 0}
+.rv-c{aspect-ratio:1/1;border:none;background:var(--paper-2);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--ink);font-family:var(--font-body);padding:0;min-width:0}
+.rv-c.empty{background:transparent;cursor:default}
+.rv-c b{font:600 14px var(--font-body)}
+.rv-c i{width:6px;height:6px;border-radius:50%}
+.rv-c.today{box-shadow:inset 0 0 0 2px #3B82D6}
+.rv-c.on{background:#3B82D6;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.rv-nav{border:none;background:var(--paper-2);width:34px;height:34px;border-radius:50%;font-size:20px;color:var(--ink);cursor:pointer;line-height:1}
+.rv-legend{display:flex;gap:14px;justify-content:center;margin-top:10px;font-size:12px;color:var(--ink-soft)}
+.rv-legend span{display:inline-flex;align-items:center;gap:5px}
+.rv-legend i{width:8px;height:8px;border-radius:50%}
+.rv-cal{padding:10px 12px}
+.rv-toggle{width:100%;display:flex;align-items:center;gap:10px;border:none;background:transparent;color:var(--ink);font:600 14px var(--font-body);cursor:pointer;padding:4px 0;text-align:left}
+.rv-toggle svg{color:var(--indigo);flex:0 0 auto}
+.rv-sel{flex:1;min-width:0}
+.rv-toggle em{font:700 11px var(--font-body);font-style:normal;color:#fff;border-radius:999px;padding:2px 8px;white-space:nowrap}
+.rv-chev{transition:transform .2s;color:var(--ink-soft)}.rv-chev.open{transform:rotate(180deg)}
+.rv-body{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.rv-c{aspect-ratio:auto;height:38px;border-radius:10px}
+.rv-grid{gap:3px}
+.rv-nav{width:30px;height:30px}
+.st-me{display:flex;align-items:center;gap:14px;cursor:pointer}
+.st-h{display:flex;align-items:center;gap:8px}
+#view-settings .hx-card{margin-bottom:12px}
+#view-settings .field-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+#view-settings .muted{font-size:12px}
+#view-settings .btn.danger{background:#E5484D;color:#fff}
+#view-settings>.btn.block{margin:6px 0 18px}
 </style>
 </head>
 <body>
@@ -1852,7 +1907,7 @@ function goalAnalyticsExtraHtml(){
   <div class="card">
     <div class="grid grid-2">
       <div class="stat"><div class="val">${s.goal.value}</div><div class="lbl">Target percentile</div></div>
-      <div class="stat"><div class="val" style="color:${avgPct>=s.goal.value?'var(--green)':'var(--red)'};">${avgPct}</div><div class="lbl">Recent avg (last 3 mocks)</div></div>
+      <div class="stat" style="background:${avgPct>=s.goal.value?'#3DBE7E':'#E5484D'};"><div class="val">${avgPct}</div><div class="lbl">Recent avg (last 3 mocks)</div></div>
     </div>
     <p class="muted" style="margin-top:8px;">${avgPct>=s.goal.value ? 'You are meeting or beating your target in recent mocks.' : `You are ${Math.round((s.goal.value-avgPct)*100)/100} percentile behind your target right now.`}${anyEstimated ? ' Some values are auto-estimated from marks and may differ from the actual official percentile.' : ''}</p>
   </div>` : '';
@@ -1863,7 +1918,7 @@ function goalAnalyticsExtraHtml(){
   <div class="card">
     <div class="grid grid-2">
       <div class="stat"><div class="val">${college.percentile}</div><div class="lbl">${esc(college.name)}${college.rankNote?' · rank '+college.rankNote:''}</div></div>
-      <div class="stat"><div class="val" style="color:${(avgPctAny!==null && avgPctAny>=college.percentile)?'var(--green)':'var(--red)'};">${avgPctAny!==null?avgPctAny:'—'}</div><div class="lbl">Recent avg (last 3 mocks)</div></div>
+      <div class="stat" style="background:${(avgPctAny!==null && avgPctAny>=college.percentile)?'#3DBE7E':'#E5484D'};"><div class="val">${avgPctAny!==null?avgPctAny:'—'}</div><div class="lbl">Recent avg (last 3 mocks)</div></div>
     </div>
     <p class="muted" style="margin-top:8px;">${avgPctAny===null ? 'Log a mock test with a percentile (or marks, for auto-estimate) to see your gap.' : avgPctAny>=college.percentile ? `You are matching or beating this college's recent cutoff range in your mocks.` : `You are about ${Math.round((college.percentile-avgPctAny)*100)/100} percentile behind this college's recent cutoff range.`}${college.rankNote ? ' Cutoffs shift every year — treat this as a rough benchmark, not a guarantee.' : ''}</p>
   </div>` : '';
@@ -2060,7 +2115,7 @@ function weeklyRecapHtml(){
     <div class="stat"><div class="val">${hoursToHM(hrs)}</div><div class="lbl">Studied</div></div>
     <div class="stat"><div class="val">${q}</div><div class="lbl">Questions</div></div>
     <div class="stat"><div class="val">${testsCount}</div><div class="lbl">Mock tests</div></div>
-    <div class="stat"><div class="val" style="color:var(--amber);">${least||'—'}</div><div class="lbl">Needs more focus</div></div>
+    <div class="stat" style="background:#F29A38;"><div class="val">${least||'—'}</div><div class="lbl">Needs more focus</div></div>
   </div>`;
 }
 function maybeShowDailyPopup(){
@@ -2083,7 +2138,7 @@ function showDailyPopup(){
 
   const html = `
     <div class="modal-head"><h3>Welcome back</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    ${mainDays!=null ? `<div class="card-flat" style="margin-bottom:14px; text-align:center;"><div style="font-size:13px; color:var(--ink-soft);">JEE Main in</div><div style="font-size:32px; font-weight:800; color:var(--indigo);">${mainDays} days</div></div>` : ''}
+    ${mainDays!=null ? `<div class="card-flat" style="margin-bottom:14px; text-align:center;"><div style="font-size:14px; color:var(--ink-soft);">JEE Main in</div><div style="font-size:28px; font-weight:700; color:var(--indigo);">${mainDays} days</div></div>` : ''}
     <p style="margin-bottom:14px; font-style:italic; color:var(--ink-soft);">"${pickDailyQuote()}"</p>
     <div class="section-title" style="margin-top:0;">Yesterday</div>
     <div class="grid grid-2" style="margin-bottom:6px;">
@@ -2164,7 +2219,7 @@ function openStreakDetails(kind){
     } else if(runningNow){
       const endTxt = end===todayStr() ? 'today' : 'yesterday';
       range = `<b>${fmtDate(start)}</b> to ${endTxt} <span class="muted">(still going)</span>`;
-      if(end!==todayStr()) hint = `<p class="muted" style="margin-top:8px; font-size:13px;">Study today to keep it going.</p>`;
+      if(end!==todayStr()) hint = `<p class="muted" style="margin-top:8px; font-size:14px;">Study today to keep it going.</p>`;
     } else if(start===end){
       range = `On <b>${fmtDate(start)}</b>`;
     } else {
@@ -2633,6 +2688,30 @@ function renderHomeCountdownOnly(){
   if(aEl) aEl.innerHTML = `${advDays>=0?advDays:0}<span> days left</span>`;
 }
 
+function homeDeadlinesCard(){
+  const groups=deadlineGroups();
+  const urgent=groups[0].items.concat(groups[1].items);
+  const upcoming=groups[2].items.concat(groups[3].items);
+  const show=(urgent.length?urgent:upcoming).slice(0,3);
+  const col=x=>x.diff<0?'#E5484D':x.diff===0?'#F29A38':'#3B82D6';
+  const when=x=>x.diff<0?`${-x.diff} day${x.diff===-1?'':'s'} overdue`:x.diff===0?'Due today':`in ${x.diff} day${x.diff===1?'':'s'}`;
+  const rows=show.map(x=>`<div class="hd-row" style="border-left-color:${col(x)}"><div class="hd-n">${esc(x.c.name)}<span>${esc(x.c.subject)}</span></div><b style="color:${col(x)}">${when(x)}</b></div>`).join('');
+  return `<div class="hx-card" onclick="switchView('deadlines')" style="cursor:pointer">
+    <div class="hd-head"><div class="hx-h" style="margin:0">Deadlines</div><span class="hd-more">See all</span></div>
+    ${(!urgent.length&&show.length)?'<div class="hx-extra" style="margin:0 0 8px;text-align:left">Nothing due today. Next up:</div>':''}
+    ${rows || '<div class="hx-extra" style="margin:6px 0 0;text-align:left">No chapter deadlines set.</div>'}
+  </div>`;
+}
+function homeLatestMockCard(lt){
+  if(!lt) return `<div class="hx-card"><div class="hx-h" style="margin-bottom:6px">Latest mock test</div><div class="hx-extra" style="margin:0 0 12px;text-align:left">No tests added yet.</div><button class="btn sm" onclick="handleQuickAction('test')">+ Add test</button></div>`;
+  const rk=estRank(lt.percentile);
+  const tile=(v,l,c)=>`<div class="dl-tile" style="background:${c}"><b>${v}</b><span>${l}</span></div>`;
+  return `<div class="hx-card" onclick="switchView('tests')" style="cursor:pointer">
+    <div class="hd-head"><div class="hx-h" style="margin:0">Latest mock test</div><span class="hd-more">All tests</span></div>
+    <div class="hd-sub">${esc(lt.name)} <span class="badge studying">${esc(lt.type)}</span> · ${fmtDate(lt.date)}</div>
+    <div class="dl-sum" style="margin:12px 0 0">${tile(lt.total,'Score','#3B82D6')}${tile(testAccuracy(lt)+'%','Accuracy','#F29A38')}${tile(rk?'~'+rk.toLocaleString('en-IN'):'—','Est. rank','#3DBE7E')}</div>
+  </div>`;
+}
 function renderHome(){
   const s = DATA.settings;
   const streaks = DATA.streaks;
@@ -2688,6 +2767,10 @@ function renderHome(){
   <div style="text-align:right;margin:4px 0 12px"><button class="pf-edit" id="qaCustom">Customise</button></div>
 
   ${upNextHtml()}
+
+  ${homeDeadlinesCard()}
+
+  ${homeLatestMockCard(lt)}
   `;
   view('home').innerHTML = html;
   renderQuickGrid();
@@ -2767,7 +2850,7 @@ function plannerDayLabel(d){
 let PLANNER_DATE = null;
 function renderPlanner(){
   const t=todayStr();
-  if(!['day','all','completed'].includes(PLANNER_TAB)){ PLANNER_TAB='day'; }
+  PLANNER_TAB='day';
   if(!PLANNER_DATE || PLANNER_DATE<t) PLANNER_DATE=t;
   let list;
   if(PLANNER_TAB==='day') list = DATA.tasks.filter(x=>x.date===PLANNER_DATE);
@@ -2794,13 +2877,8 @@ function renderPlanner(){
   }
   view('planner').innerHTML = `
     <div class="pl-strip">${strip}</div>
-    <div class="pl-filters">
-      <button class="pl-chip ${PLANNER_TAB==='day'?'on':''}" data-tab="day">Day</button>
-      <button class="pl-chip ${PLANNER_TAB==='all'?'on':''}" data-tab="all">All tasks</button>
-      <button class="pl-chip ${PLANNER_TAB==='completed'?'on':''}" data-tab="completed">Completed</button>
-    </div>
     <div class="hx-card">
-      <div class="hx-h" style="margin-bottom:8px">${PLANNER_TAB==='day'?plannerDayLabel(PLANNER_DATE):PLANNER_TAB==='all'?'All tasks':'Completed tasks'}</div>
+      <div class="hx-h" style="margin-bottom:8px">${plannerDayLabel(PLANNER_DATE)}</div>
       <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:#3DBE7E"><b>${done}</b><span>Done</span></div>
@@ -2808,10 +2886,9 @@ function renderPlanner(){
         <div class="dl-tile" style="background:#3B82D6"><b>${mins>=60?Math.floor(mins/60)+'h'+(mins%60?(mins%60)+'m':''):mins+'m'}</b><span>Planned</span></div>
       </div>
     </div>
-    <button class="btn block" style="margin:2px 0 14px;" onclick="openTaskModal(null,'${PLANNER_TAB==='day'?PLANNER_DATE:t}')">+ Add task</button>
+    <button class="btn block" style="margin:2px 0 14px;" onclick="openTaskModal(null,'${PLANNER_DATE}')">+ Add task</button>
     <div id="taskList">${body}</div>`;
   $all('.pl-day', view('planner')).forEach(b=>b.addEventListener('click', ()=>{ PLANNER_TAB='day'; PLANNER_DATE=b.dataset.date; renderPlanner(); }));
-  $all('.pl-chip', view('planner')).forEach(b=>b.addEventListener('click', ()=>{ PLANNER_TAB=b.dataset.tab; renderPlanner(); }));
   $all('[data-taskaction]', view('planner')).forEach(b=>b.addEventListener('click', ()=>{
     const id = b.closest('[data-id]').dataset.id;
     const act = b.dataset.taskaction;
@@ -2968,7 +3045,7 @@ function openTaskModal(id, prefillDate){
     <label class="checkline" style="margin-bottom:14px;">
       <input type="checkbox" id="tf-repeat"> Repeat this task every day
     </label>` : editing.recurringId ? `
-    <p class="muted" style="margin-bottom:14px; font-size:13px;">↻ This task repeats daily. <a href="#" id="tf-stop-repeat" style="color:var(--red);">Stop repeating</a></p>
+    <p class="muted" style="margin-bottom:14px; font-size:14px;">↻ This task repeats daily. <a href="#" id="tf-stop-repeat" style="color:var(--red);">Stop repeating</a></p>
     ` : ''}
     <div class="modal-actions">
       <button class="btn secondary" onclick="closeModal()">Cancel</button>
@@ -3220,9 +3297,9 @@ function chapterRowHtml(c){
 function chapterDeadlineNote(c){
   if(!c.completeByDate || c.status==='Completed' || c.status==='Revised') return '';
   const t = todayStr();
-  if(c.completeByDate < t) return `<span style="color:var(--red); font-size:11.5px; font-weight:700;">Overdue</span>`;
+  if(c.completeByDate < t) return `<span style="color:var(--red); font-size:12px; font-weight:700;">Overdue</span>`;
   const d = daysBetween(t, c.completeByDate);
-  return `<span class="muted" style="font-size:11.5px;">${d===0?'Due today':d+'d left'}</span>`;
+  return `<span class="muted" style="font-size:12px;">${d===0?'Due today':d+'d left'}</span>`;
 }
 function bindChapterRowEvents(){
   $all('.ch-tile-wrap', view('chapters')).forEach(w=>{
@@ -3329,8 +3406,8 @@ function openChapterDetail(id){
 
     <div class="modal-actions"><button class="btn block" onclick="closeModal()">Close</button></div>
     <div style="display:flex; justify-content:center; gap:8px; margin-top:14px;">
-      <button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:11.5px; ${c.important?'color:var(--amber); border-color:var(--amber);':''}" onclick="setChapterField('${c.id}','important',${!c.important})">${c.important?'★ Important':'☆ Mark important'}</button>
-      <button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:11.5px; color:var(--red);" onclick="confirmDelete('chapter','${c.id}','Delete this chapter and its revision schedule?')">Delete</button>
+      <button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:12px; ${c.important?'color:var(--amber); border-color:var(--amber);':''}" onclick="setChapterField('${c.id}','important',${!c.important})">${c.important?'★ Important':'☆ Mark important'}</button>
+      <button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:12px; color:var(--red);" onclick="confirmDelete('chapter','${c.id}','Delete this chapter and its revision schedule?')">Delete</button>
     </div>
   `);
 }
@@ -3560,7 +3637,7 @@ function renderTests(){
   const rkTests = DATA.tests.filter(t=>t.percentile!=null && t.percentile!=='' && !isNaN(Number(t.percentile)));
   const avgPct = rkTests.length ? rkTests.reduce((a,t)=>a+Number(t.percentile),0)/rkTests.length : null;
   const avgRank = avgPct==null ? null : estRank(avgPct);
-  const avgRankCard = avgPct==null ? '' : `<div class="card" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;"><div><div class="lbl muted">Average rank</div><div style="font:700 26px var(--font-head);">~${avgRank.toLocaleString('en-IN')}</div></div><div class="muted" style="text-align:right;font-size:12.5px;">Avg percentile ${avgPct.toFixed(2)}<br>out of 17,00,000 candidates<br>${rkTests.length} test${rkTests.length>1?'s':''}</div></div>`;
+  const avgRankCard = avgPct==null ? '' : `<div class="card" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;"><div><div class="lbl muted">Average rank</div><div style="font:700 28px var(--font-head);">~${avgRank.toLocaleString('en-IN')}</div></div><div class="muted" style="text-align:right;font-size:12px;">Avg percentile ${avgPct.toFixed(2)}<br>out of 17,00,000 candidates<br>${rkTests.length} test${rkTests.length>1?'s':''}</div></div>`;
   const wkTests = DATA.tests.filter(t=>t.date>=addDays(todayStr(),-6)).length;
   const prevWkTests = DATA.tests.filter(t=>t.date>=addDays(todayStr(),-13)&&t.date<addDays(todayStr(),-6)).length;
   const withTotalQ = DATA.tests.filter(t=>t.totalQuestions);
@@ -3573,7 +3650,7 @@ function renderTests(){
     const diff = Number(last.total||0) - Number(prev.total||0);
     improvement = `<div class="card-flat" style="margin-bottom:16px;">
       <div class="lbl muted">Change vs previous test</div>
-      <div style="font-size:20px; font-weight:700; color:${diff>=0?'var(--green)':'var(--red)'};">${diff>=0?'+':''}${diff} marks</div>
+      <div style="font-size:18px; font-weight:700; color:${diff>=0?'var(--green)':'var(--red)'};">${diff>=0?'+':''}${diff} marks</div>
     </div>`;
   }
 
@@ -3615,7 +3692,7 @@ function renderTests(){
     ${percentileChart}
     ${subjectAvgCard}
     <div class="section-title">Test history
-      <select id="testTypeFilter" style="width:auto; padding:6px 10px; font-size:12.5px; border-radius:8px; border:1px solid var(--line); background:var(--paper);">
+      <select id="testTypeFilter" style="width:auto; padding:6px 10px; font-size:12px; border-radius:8px; border:1px solid var(--line); background:var(--paper);">
         <option value="">All types</option>
         ${['JEE Main','JEE Advanced','Chapter Test','Full Syllabus','Custom'].map(t=>`<option ${TEST_FILTER.type===t?'selected':''}>${t}</option>`).join('')}
       </select>
@@ -3662,11 +3739,11 @@ function viewTestDetails(id){
     <div class="modal-head"><h3>${esc(t.name)}</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
     <p class="muted" style="margin-bottom:14px;">${esc(t.type)} · ${fmtDate(t.date)}</p>
     <div class="grid grid-2" style="margin-bottom:14px;">
-      <div class="card-flat"><div class="lbl muted">Physics</div><div style="font-weight:700; font-size:17px;">${t.physics||0}</div></div>
-      <div class="card-flat"><div class="lbl muted">Chemistry</div><div style="font-weight:700; font-size:17px;">${t.chemistry||0}</div></div>
-      <div class="card-flat"><div class="lbl muted">Maths</div><div style="font-weight:700; font-size:17px;">${t.maths||0}</div></div>
-      <div class="card-flat"><div class="lbl muted">Percentile</div><div style="font-weight:700; font-size:17px;">${t.percentile!=null?t.percentile+(t.percentileEstimated?' (est.)':''):'—'}</div></div>
-      <div class="card-flat"><div class="lbl muted">Estimated rank</div><div style="font-weight:700; font-size:17px;">${estRank(t.percentile)?'~'+estRank(t.percentile).toLocaleString('en-IN'):'—'}</div></div>
+      <div class="card-flat"><div class="lbl muted">Physics</div><div style="font-weight:700; font-size:18px;">${t.physics||0}</div></div>
+      <div class="card-flat"><div class="lbl muted">Chemistry</div><div style="font-weight:700; font-size:18px;">${t.chemistry||0}</div></div>
+      <div class="card-flat"><div class="lbl muted">Maths</div><div style="font-weight:700; font-size:18px;">${t.maths||0}</div></div>
+      <div class="card-flat"><div class="lbl muted">Percentile</div><div style="font-weight:700; font-size:18px;">${t.percentile!=null?t.percentile+(t.percentileEstimated?' (est.)':''):'—'}</div></div>
+      <div class="card-flat"><div class="lbl muted">Estimated rank</div><div style="font-weight:700; font-size:18px;">${estRank(t.percentile)?'~'+estRank(t.percentile).toLocaleString('en-IN'):'—'}</div></div>
     </div>
     <div class="grid grid-2">
       <div class="card-flat"><div class="lbl muted">Total marks</div><div style="font-weight:700; font-size:18px;">${t.total}</div></div>
@@ -3774,41 +3851,109 @@ function completeRevision(revId){
   });
 }
 
+let REVISION_DATE = null, REVISION_MODE = 'daily', REVISION_MONTH = null, REVISION_CAL_OPEN = false;
+function isoDate(y,m,d){ return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'); }
+function revisionCalendarHtml(){
+  const t=todayStr();
+  const y=REVISION_MONTH.y, m=REVISION_MONTH.m;
+  const first=new Date(y,m,1), days=new Date(y,m+1,0).getDate();
+  const offset=(first.getDay()+6)%7; // Monday first
+  const info={};
+  DATA.revisions.forEach(r=>{
+    const o=info[r.dueDate]||(info[r.dueDate]={over:0,pend:0,done:0});
+    if(r.completed) o.done++; else if(r.dueDate<t) o.over++; else o.pend++;
+  });
+  let cells='';
+  for(let k=0;k<offset;k++) cells+='<span class="rv-c empty"></span>';
+  for(let d=1; d<=days; d++){
+    const iso=isoDate(y,m,d), o=info[iso];
+    const dot=!o?'transparent':o.over?'#E5484D':o.pend?'#F29A38':'#3DBE7E';
+    cells+=`<button class="rv-c ${iso===REVISION_DATE?'on':''} ${iso===t?'today':''}" data-rdate="${iso}"><b>${d}</b><i style="background:${iso===REVISION_DATE&&o?'#fff':dot}"></i></button>`;
+  }
+  const label=first.toLocaleDateString('en-IN',{month:'long',year:'numeric'});
+  const o=info[REVISION_DATE];
+  const chip=o?(o.over?`<em style="background:#E5484D">${o.over} overdue</em>`:'')+(o.pend?`<em style="background:#F29A38">${o.pend} due</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
+  const CAL='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>';
+  return `<div class="hx-card rv-cal">
+    <button class="rv-toggle" id="rvToggle" aria-expanded="${REVISION_CAL_OPEN}">${CAL}<span class="rv-sel">${plannerDayLabel(REVISION_DATE)}</span>${chip}<span class="rv-chev ${REVISION_CAL_OPEN?'open':''}">&#9662;</span></button>
+    ${REVISION_CAL_OPEN?`
+    <div class="rv-body">
+      <div class="hd-head"><button class="rv-nav" data-rmonth="-1" aria-label="Previous month">&#8249;</button><div class="hx-h" style="margin:0">${label}</div><button class="rv-nav" data-rmonth="1" aria-label="Next month">&#8250;</button></div>
+      <div class="rv-grid rv-head"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+      <div class="rv-grid">${cells}</div>
+      <div class="rv-legend"><span><i style="background:#E5484D"></i>Overdue</span><span><i style="background:#F29A38"></i>Due</span><span><i style="background:#3DBE7E"></i>Done</span></div>
+    </div>`:''}
+  </div>`;
+}
 function renderRevision(){
-  const due = revisionsDueToday();
-  const overdue = revisionsOverdue();
-  const upcoming = revisionsUpcoming().sort((a,b)=>a.dueDate.localeCompare(b.dueDate));
-  const completed = DATA.revisions.filter(r=>r.completed).sort((a,b)=> (b.completedDate||'').localeCompare(a.completedDate||''));
-
-  const tabs = [
-    {id:'due', label:`Due Today (${due.length})`},
-    {id:'overdue', label:`Overdue (${overdue.length})`},
-    {id:'upcoming', label:`Upcoming (${upcoming.length})`},
-    {id:'completed', label:`Completed (${completed.length})`},
-  ];
-  let list;
-  if(REVISION_TAB==='due') list = due;
-  else if(REVISION_TAB==='overdue') list = overdue;
-  else if(REVISION_TAB==='upcoming') list = upcoming;
-  else list = completed;
-
-  const html = `
-    <div class="grid grid-4" style="margin-bottom:16px;">
-      <div class="stat"><div class="val" style="color:var(--amber);">${due.length}</div><div class="lbl">Due today</div></div>
-      <div class="stat"><div class="val" style="color:var(--red);">${overdue.length}</div><div class="lbl">Overdue</div></div>
-      <div class="stat"><div class="val" style="color:var(--indigo);">${upcoming.length}</div><div class="lbl">Upcoming</div></div>
-      <div class="stat"><div class="val" style="color:var(--green);">${completed.length}</div><div class="lbl">Completed</div></div>
+  const t=todayStr();
+  if(!REVISION_DATE) REVISION_DATE=t;
+  if(!REVISION_MONTH){ const d=new Date(REVISION_DATE+'T00:00:00'); REVISION_MONTH={y:d.getFullYear(),m:d.getMonth()}; }
+  const od=revisionsOverdue();
+  const all=DATA.revisions;
+  const doneAll=all.filter(r=>r.completed).length, pendAll=all.length-doneAll;
+  let body='', head='';
+  if(REVISION_MODE==='daily'){
+    const isToday=REVISION_DATE===t;
+    let list=all.filter(r=>r.dueDate===REVISION_DATE);
+    if(isToday){
+      od.forEach(r=>{ if(!list.includes(r)) list.push(r); });
+      all.filter(r=>r.completed && r.completedDate===t).forEach(r=>{ if(!list.includes(r)) list.push(r); });
+    }
+    list=list.sort((a,b)=>(a.completed-b.completed)||a.dueDate.localeCompare(b.dueDate));
+    const done=list.filter(r=>r.completed).length, pending=list.length-done;
+    const progress=list.length?Math.round(done/list.length*100):0;
+    head=revisionCalendarHtml()+`
+    <div class="hx-card">
+      <div class="hx-h" style="margin-bottom:8px">${plannerDayLabel(REVISION_DATE)}</div>
+      <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
+      <div class="dl-sum" style="margin:12px 0 0">
+        <div class="dl-tile" style="background:#3DBE7E"><b>${done}</b><span>Done</span></div>
+        <div class="dl-tile" style="background:#F29A38"><b>${pending}</b><span>Pending</span></div>
+        <div class="dl-tile" style="background:#E5484D"><b>${od.length}</b><span>Overdue</span></div>
+      </div>
+    </div>`;
+    body=list.length ? list.map(revisionRowHtml).join('') : `<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No revisions on this day.</div>`;
+  } else {
+    const progress=all.length?Math.round(doneAll/all.length*100):0;
+    head=`<div class="hx-card">
+      <div class="hx-h" style="margin-bottom:8px">All revisions</div>
+      <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
+      <div class="dl-sum" style="margin:12px 0 0">
+        <div class="dl-tile" style="background:#3DBE7E"><b>${doneAll}</b><span>Done</span></div>
+        <div class="dl-tile" style="background:#F29A38"><b>${pendAll-od.length}</b><span>Upcoming</span></div>
+        <div class="dl-tile" style="background:#E5484D"><b>${od.length}</b><span>Overdue</span></div>
+      </div>
+    </div>`;
+    const sec=(title,col,items)=>{
+      if(!items.length) return '';
+      const dates=[...new Set(items.map(r=>r.completed?(r.completedDate||r.dueDate):r.dueDate))];
+      return `<div class="dl-grp"><span class="dl-dot" style="background:${col}"></span><span>${title}</span><em>${items.length}</em></div>`+
+        items.map(revisionRowHtml).join('');
+    };
+    const byDue=(a,b)=>a.dueDate.localeCompare(b.dueDate);
+    const overdue=od.slice().sort(byDue);
+    const today=all.filter(r=>!r.completed && r.dueDate===t);
+    const upcoming=all.filter(r=>!r.completed && r.dueDate>t).sort(byDue);
+    const completed=all.filter(r=>r.completed).sort((a,b)=>(b.completedDate||'').localeCompare(a.completedDate||''));
+    body = all.length ? sec('Overdue','#E5484D',overdue)+sec('Due today','#F29A38',today)+sec('Upcoming','#3B82D6',upcoming)+sec('Completed','#3DBE7E',completed)
+      : `<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No revisions yet. Complete chapters to auto-schedule spaced revisions.</div>`;
+  }
+  view('revision').innerHTML = `
+    <div class="pl-filters">
+      <button class="pl-chip ${REVISION_MODE==='daily'?'on':''}" data-rmode="daily">Daily</button>
+      <button class="pl-chip ${REVISION_MODE==='all'?'on':''}" data-rmode="all">All</button>
     </div>
-    <div class="tabs">
-      ${tabs.map(t=>`<div class="tab ${REVISION_TAB===t.id?'active':''}" data-rtab="${t.id}">${t.label}</div>`).join('')}
-    </div>
-    <button class="btn block" style="margin-bottom:14px;" onclick="openCustomRevisionModal()">+ Add Custom Revision</button>
-    <div class="list">
-      ${list.length ? list.map(revisionRowHtml).join('') : emptyState('🔁','Nothing here','Complete chapters to auto-schedule spaced revisions.')}
-    </div>
-  `;
-  view('revision').innerHTML = html;
-  $all('[data-rtab]', view('revision')).forEach(t=>t.addEventListener('click', ()=>{ REVISION_TAB=t.dataset.rtab; renderRevision(); }));
+    ${head}
+    <button class="btn block" style="margin:2px 0 14px;" onclick="openCustomRevisionModal()">+ Add revision</button>
+    <div class="list">${body}</div>`;
+  $all('[data-rmode]', view('revision')).forEach(b=>b.addEventListener('click', ()=>{ REVISION_MODE=b.dataset.rmode; renderRevision(); }));
+  const tg=$('#rvToggle'); if(tg) tg.addEventListener('click', ()=>{ REVISION_CAL_OPEN=!REVISION_CAL_OPEN; if(REVISION_CAL_OPEN){ const n=new Date(); REVISION_MONTH={y:n.getFullYear(),m:n.getMonth()}; } renderRevision(); });
+  $all('[data-rdate]', view('revision')).forEach(b=>b.addEventListener('click', ()=>{ REVISION_DATE=b.dataset.rdate; REVISION_CAL_OPEN=false; renderRevision(); }));
+  $all('[data-rmonth]', view('revision')).forEach(b=>b.addEventListener('click', ()=>{
+    let {y,m}=REVISION_MONTH; m+=Number(b.dataset.rmonth); if(m<0){m=11;y--;} if(m>11){m=0;y++;}
+    REVISION_MONTH={y,m}; renderRevision();
+  }));
   $all('[data-revaction]', view('revision')).forEach(b=>b.addEventListener('click', ()=>{
     const id = b.closest('[data-id]').dataset.id;
     const act = b.dataset.revaction;
@@ -3822,7 +3967,7 @@ function revisionRowHtml(r){
   const status = revisionStatusOf(r);
   const statusClass = {'Due Today':'duetoday','Overdue':'overdue','Upcoming':'upcoming','Completed':'done'}[status];
   return `
-  <div class="row-item" data-id="${r.id}">
+  <div class="row-item tk-row" data-id="${r.id}" style="border-left:4px solid ${{'Due Today':'#F29A38','Overdue':'#E5484D','Upcoming':'#3B82D6','Completed':'#3DBE7E'}[status]};margin-bottom:10px;">
     <div class="ri-main">
       <div class="ri-title">${esc(chapter?chapter.name:'Chapter')} <span class="badge ${statusClass}">${status}</span></div>
       <div class="ri-sub">${esc(chapter?chapter.subject:'')} · Revision round ${r.round} · ${r.completed? 'Done '+fmtDateShort(r.completedDate) : 'Due '+fmtDateShort(r.dueDate)}</div>
@@ -4025,7 +4170,7 @@ function compareCard(label, cur, prev, fmt){
   return `<div class="stat">
     <div class="val">${f(cur)}</div>
     <div class="lbl">${label}</div>
-    <div style="font-size:11px; font-weight:700; margin-top:2px; color:${flat?'var(--ink-soft)':(up?'var(--green)':'var(--red)')};">${flat?'No change':(up?'▲ ':'▼ ')+f(Math.abs(diff))+' vs last wk'}</div>
+    <div class="cmp-delta" style="font-size:11px; font-weight:700; margin-top:2px; color:${flat?'var(--ink-soft)':(up?'var(--green)':'var(--red)')};">${flat?'No change':(up?'▲ ':'▼ ')+f(Math.abs(diff))+' vs last wk'}</div>
   </div>`;
 }
 function last8WeeksRevisionRate(){
@@ -4149,7 +4294,22 @@ function renderSettings(){
       <button class="btn danger block" onclick="confirmResetAll()">Reset All Data</button>
     </div>
   `;
-  view('settings').innerHTML = `<div class="st-head"><button class="st-back" onclick="switchView('profile')" aria-label="Back">&#8592;</button><div><h2>Settings</h2><p>Customise your tracker</p></div></div>` + html;
+  view('settings').innerHTML = `<div class="st-head"><button class="st-back" onclick="switchView('home')" aria-label="Back">&#8592;</button><div><h2>Settings</h2><p>Customise your tracker</p></div></div>` + html;
+  { // same layout language as the rest of the app: headings live inside white cards
+    const root=view('settings'), cols=['#3B82D6','#F29A38','#3FA5B5','#3DBE7E','#E5484D'];
+    let ci=0;
+    $all('.section-title', root).forEach(t=>{
+      const card=t.nextElementSibling;
+      if(!card || !card.classList.contains('card')) return;
+      const danger=/danger/i.test(t.textContent);
+      const h=document.createElement('div'); h.className='hx-h st-h';
+      h.innerHTML=`<span class="dl-dot" style="background:${danger?'#E5484D':cols[ci++%cols.length]}"></span>${esc(t.textContent)}`;
+      card.classList.remove('card'); card.classList.add('hx-card'); card.style.removeProperty('border-color');
+      card.insertBefore(h, card.firstChild); t.remove();
+    });
+    const head=root.querySelector('.st-head');
+    if(head) head.insertAdjacentHTML('afterend', `<div class="hx-card st-me" onclick="openProfileEdit()"><div class="pf-avatar" style="width:56px;height:56px;margin:0;font-size:24px">${avatarInner()}</div><div><div class="hx-h" style="margin:0">${esc(profileName())}</div><div class="muted">${esc((fbUser&&fbUser.email)||'Tap to edit profile')}</div></div></div>`);
+  }
   $all('[data-theme]', view('settings')).forEach(b=>b.addEventListener('click', ()=>{
     $all('[data-theme]', view('settings')).forEach(x=>x.classList.remove('active'));
     b.classList.add('active');
@@ -4301,7 +4461,7 @@ function renderTimetable(){
           ${st==='missed' ? '<span class="badge overdue">Missed</span>' : ''}
           ${overlap ? '<span class="badge high">Overlaps</span>' : ''}
           ${b.repeat==='days' ? '<span class="badge pending">Repeats</span>' : ''}
-          ${canStart ? '<button type="button" class="btn secondary sm" data-ttaction="start" style="padding:4px 10px; font-size:11.5px; margin-left:auto;">Start timer</button>' : ''}
+          ${canStart ? '<button type="button" class="btn secondary sm" data-ttaction="start" style="padding:4px 10px; font-size:12px; margin-left:auto;">Start timer</button>' : ''}
         </div>
       </div>
     </div>`;
@@ -4319,7 +4479,7 @@ function renderTimetable(){
     <div class="card" style="margin-bottom:14px;">
       <div class="pbar-row"><span>Blocks done</span><span>${doneCount} / ${blocks.length}</span></div>
       <div class="pbar green"><div style="width:${pct(doneCount, blocks.length)}%"></div></div>
-      <p class="muted" style="margin-top:8px; font-size:12.5px;">Planned study ${hoursToHM(planned/60)}${target ? ' of '+target+'h target' : ''}${doneMins>0 ? ' · done '+hoursToHM(doneMins/60) : ''}</p>
+      <p class="muted" style="margin-top:8px; font-size:12px;">Planned study ${hoursToHM(planned/60)}${target ? ' of '+target+'h target' : ''}${doneMins>0 ? ' · done '+hoursToHM(doneMins/60) : ''}</p>
     </div>` : ''}
     <div>
       ${blocks.length ? rows : emptyState('', 'No blocks for this day', 'Plan your day with time blocks. Repeat them on chosen weekdays to build a weekly routine.')}
@@ -4364,7 +4524,7 @@ function linkedBlockNoteHtml(){
   if(!b){ LINKED_BLOCK = null; return ''; }
   return `<div class="card-flat" style="max-width:420px; margin:0 auto 10px; display:flex; align-items:center; gap:8px;">
     <div style="flex:1; min-width:0;">
-      <div class="muted" style="font-size:11.5px;">Timetable block</div>
+      <div class="muted" style="font-size:12px;">Timetable block</div>
       <div class="ri-title">${esc(blockTitle(b))}</div>
       <div class="ri-sub">${fmtTime12(b.start)} – ${fmtTime12(b.end)}</div>
     </div>
@@ -4425,8 +4585,8 @@ function openBlockModal(id){
       <button class="btn" onclick="saveBlock('${b?b.id:''}')">${b?'Save Changes':'Add Block'}</button>
     </div>
     ${b ? `<div style="display:flex; justify-content:center; gap:8px; margin-top:14px;">
-      ${b.repeat==='days' ? `<button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:11.5px;" onclick="skipBlockDate('${b.id}')">Skip on ${esc(fmtDateShort(ttDate()))}</button>` : ''}
-      <button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:11.5px; color:var(--red);" onclick="confirmDelete('timeBlock','${b.id}','${b.repeat==='days'?'Delete this block from every day it repeats?':'Delete this time block?'}')">Delete</button>
+      ${b.repeat==='days' ? `<button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:12px;" onclick="skipBlockDate('${b.id}')">Skip on ${esc(fmtDateShort(ttDate()))}</button>` : ''}
+      <button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:12px; color:var(--red);" onclick="confirmDelete('timeBlock','${b.id}','${b.repeat==='days'?'Delete this block from every day it repeats?':'Delete this time block?'}')">Delete</button>
     </div>` : ''}
   `);
   refreshBlockChapters(b ? (b.chapter||'') : '');
@@ -4898,7 +5058,7 @@ function profileOverallHtml(){
   ];
   const prog=['Physics','Chemistry','Mathematics'].map(n=>[n,chapterCompletionPct(n),'var(--green)']).concat([['Important',importantSyllabusPct(),'var(--amber)']]);
   return `<div class="pf-lbl">Readiness</div>
-    <div class="pf-box" style="display:flex;align-items:center;gap:16px"><div class="n" style="color:${rc};font-size:34px">${rd.score}</div><div style="flex:1"><div class="l">Out of 100</div><div class="pbar" style="margin-top:6px"><div style="width:${rd.score}%;background:${rc}"></div></div></div></div>
+    <div class="pf-box" style="display:flex;align-items:center;gap:16px"><div class="n" style="color:${rc};font-size:40px">${rd.score}</div><div style="flex:1"><div class="l">Out of 100</div><div class="pbar" style="margin-top:6px"><div style="width:${rd.score}%;background:${rc}"></div></div></div></div>
     ${grp('Best',best,'pf-c-g')}${grp('Average',average,'pf-c-i')}${grp('Total',total,'pf-c-a')}
     <div class="pf-lbl">Chapter completion</div>
     <div class="pf-box">${prog.map(x=>`<div class="hbar-row"><div class="hb-label">${x[0]}</div><div class="hb-track"><div style="width:${x[1]}%;background:${x[2]}"></div></div><div class="hb-val">${x[1]}%</div></div>`).join('')}</div>
@@ -4910,7 +5070,6 @@ function renderProfile(){
   const m=Math.max(daysUntil(s.jeeMainDate),0), a=Math.max(daysUntil(s.jeeAdvancedDate),0);
   $('#view-profile').innerHTML=`
     <div class="pf-top">
-      <button class="pf-gear" aria-label="Settings" onclick="switchView('settings')">${ICONS.settings}</button>
       <div class="pf-avatar">${avatarInner()}</div>
       <div class="pf-name">${esc(profileName())}</div>
       <div class="pf-sub">${esc((fbUser&&fbUser.email)||s.targetExam||'')}</div>
