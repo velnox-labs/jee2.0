@@ -953,6 +953,23 @@ img,canvas{max-width:100%}
 .hd-n span{display:block;font:400 12px var(--font-body);color:var(--ink-soft)}
 .hd-row b{font:700 12px var(--font-body);white-space:nowrap}
 .hd-sub{font-size:14px;color:var(--ink-soft)}
+.tb-coin{display:flex;align-items:center;gap:5px;height:32px;padding:0 10px 0 7px;border-radius:999px;border:none;background:var(--card);color:var(--ink);cursor:pointer;margin-right:2px}
+.tb-coin[hidden]{display:none}
+.tb-coin-ic{display:flex;width:18px;height:18px;color:#F29A38}
+.tb-coin-ic svg{width:18px;height:18px}
+.tb-coin b{font:700 14px var(--font-body)}
+.avatar-btn.back-mode{background:var(--card);color:var(--ink);border:none}
+.avatar-btn.back-mode svg{width:24px;height:24px}
+.st-back{display:flex;align-items:center;justify-content:center;padding:0}
+.st-back svg{width:20px;height:20px}
+/* ===== Notifications ===== */
+.nt-head{display:flex;align-items:center;justify-content:space-between;margin:0 2px 12px}
+.nt-head b{font:700 16px var(--font-head)}
+.nt-card{display:flex;align-items:flex-start;gap:10px;background:var(--card);border-radius:16px;border-left:4px solid var(--line);padding:13px 12px 13px 14px;margin-bottom:10px;cursor:pointer}
+.nt-main{flex:1;min-width:0}
+.nt-title{font:600 14px/1.35 var(--font-body);overflow-wrap:anywhere}
+.nt-sub{font-size:12px;color:var(--ink-soft);margin-top:3px;overflow-wrap:anywhere}
+.nt-x{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:none;background:var(--paper-2);color:var(--ink-soft);font-size:16px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
 /* ===== One typeface, one size scale (11 / 12 / 14 / 16 / 18 / 24 / 28 / 40) ===== */
 :root{--font-head:'Inter',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'Inter',system-ui,sans-serif}
 html,body,button,input,select,textarea{font-family:'Inter',system-ui,sans-serif}
@@ -1005,6 +1022,7 @@ h1,h2,h3,h4{font-family:inherit}
     <div class="topbar">
       <div class="tb-left"><button class="avatar-btn" id="moreMenuBtn" aria-label="Profile"></button><h1 id="viewTitle">Home</h1></div>
       <div class="tb-right">
+        <button class="tb-coin" id="tbCoin" aria-label="Coins" hidden><span class="tb-coin-ic"></span><b id="tbCoinNum">0</b></button>
         <button class="tb-ic" id="tbBell" aria-label="Deadlines"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15zM10 21h4"/></svg><span class="tb-dot" id="tbDot" hidden></span></button>
         <button class="tb-ic" id="tbGear" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
       </div>
@@ -1033,6 +1051,10 @@ h1,h2,h3,h4{font-family:inherit}
     <section class="view" id="view-settings"></section>
     <!-- PROFILE -->
     <section class="view" id="view-profile"></section>
+    <!-- NOTIFICATIONS -->
+    <section class="view" id="view-notifications"></section>
+    <!-- REWARDS -->
+    <section class="view" id="view-rewards"></section>
     <!-- MORE -->
     <section class="view" id="view-more"></section>
     <!-- DEADLINES -->
@@ -1669,7 +1691,8 @@ function streakActiveDates(key){
   const st=DATA.settings;
   if(key==='study'){
     const min=Math.max(0,Number(st.minStudyMinutesForStreak)||0);
-    return [...new Set(allStudy().map(x=>x.date).filter(Boolean))].filter(d=>{ const m=studyHoursOn(d)*60; return min<=0 ? m>0 : m>=min; });
+    const active = [...new Set(allStudy().map(x=>x.date).filter(Boolean))].filter(d=>{ const m=studyHoursOn(d)*60; return min<=0 ? m>0 : m>=min; });
+    return [...new Set(active.concat(ensureRewards().frozenDates))];   // streak freezes count as active days
   }
   if(key==='question'){
     const min=Math.max(0,Number(st.minQuestionsForStreak)||0);
@@ -1802,83 +1825,80 @@ function buildDailyPlan(){
   plan.targetsBelow = s.dailyStudyHours <= tier.hours - 1;
   return plan;
 }
-function planCardHtml(){
-  const s = DATA.settings;
-  if(!s.goal){
-    return `
-  <div class="section-title">Today's plan</div>
-  <div class="card">
-    <p style="font-weight:700; margin-bottom:4px;">Set your goal</p>
-    <p class="muted" style="margin-bottom:14px;">Enter the rank or percentile you are aiming for and get a daily plan built from your syllabus progress.</p>
-    <button type="button" class="btn" onclick="openGoalModal()">Set my goal</button>
+function goalHeaderHtml(){
+  const g = DATA.settings.goal;
+  if(!g) return `<div class="hx-card">
+    <div class="hx-k">My goal</div>
+    <div class="hx-h" style="margin:6px 0 4px">Set your goal</div>
+    <p class="hd-sub" style="margin-bottom:14px">Enter the rank or percentile you are aiming for and get a daily plan built from your syllabus progress.</p>
+    <button type="button" class="btn block" onclick="openGoalModal()">Set my goal</button>
   </div>`;
-  }
-  const p = buildDailyPlan();
-  const head = `
-    <div class="plan-head">
-      <div>
-        <div class="plan-goal">${esc(goalText(p.goal))}</div>
-        ${p.goal.dream ? `<div class="plan-dream">${esc(p.goal.dream)}</div>` : ''}
+  return `<div class="hx-card">
+    <div class="hd-head" style="margin:0;align-items:flex-start;gap:12px">
+      <div style="min-width:0">
+        <div class="hx-k">My goal</div>
+        <div class="hx-big2" style="font-size:22px">${esc(goalText(g))}</div>
+        ${g.dream ? `<div class="hd-sub" style="margin-top:2px">${esc(g.dream)}</div>` : ''}
       </div>
-      <button type="button" class="btn ghost sm" onclick="openGoalModal()">Edit</button>
-    </div>`;
-  if(p.expired){
-    return `
-  <div class="section-title">Today's plan</div>
-  <div class="card">${head}<p class="muted">The exam date for this goal has passed. Update it in Settings to get a fresh plan.</p></div>`;
-  }
-  let pace;
-  let catchUpNote = '';
+      <button type="button" class="btn sm secondary" onclick="openGoalModal()">Edit</button>
+    </div>
+  </div>`;
+}
+function goalPlanHtml(){
+  const s = DATA.settings;
+  const p = buildDailyPlan();
+  if(!p) return '';
+  if(p.expired) return `<div class="hx-card"><div class="hx-h">Today's plan</div><div class="hd-sub">The exam date for this goal has passed. Update it in Settings to get a fresh plan.</div></div>`;
+  const tile = (v,l,c)=>`<div class="dl-tile" style="background:${c}"><b>${v}</b><span>${l}</span></div>`;
+
+  let pace = '', catchUp = '';
   if(p.remainingWork<=0) pace = 'Syllabus complete. Use the time for revision and mock tests.';
   else if(p.pace!==null){
-    const isBehind = p.pace < p.perWeekNeeded*0.9;
-    pace = isBehind
+    const behind = p.pace < p.perWeekNeeded*0.9;
+    pace = behind
       ? `<b class="behind">Behind pace.</b> You are doing about ${p.pace} chapters a week and need about ${p.perWeekNeeded}.`
       : `<b class="ok">On track.</b> You finished about ${p.pace} chapters a week recently.`;
-    if(isBehind){
+    if(behind){
       const priorityLeft = DATA.chapters.filter(c=>(c.important||c.weightage==='High') && c.status!=='Completed' && c.status!=='Revised').length;
-      if(priorityLeft>0){
-        catchUpNote = `<p class="plan-pace" style="color:var(--red);">Suggestion: focus on your ${priorityLeft} important/high-weightage chapter${priorityLeft===1?'':'s'} that ${priorityLeft===1?'is':'are'} still pending, before moving to the rest.</p>`;
-      }
+      if(priorityLeft>0) catchUp = `<p class="plan-pace" style="color:var(--red);margin:10px 0 0">Suggestion: focus on your ${priorityLeft} important/high-weightage chapter${priorityLeft===1?'':'s'} that ${priorityLeft===1?'is':'are'} still pending, before moving to the rest.</p>`;
     }
   } else pace = 'Mark chapters as completed and your weekly pace will show here.';
+  let paceBar = '';
+  if(p.remainingWork>0 && p.pace!==null && p.perWeekNeeded>0){
+    const ratio = Math.min(100, Math.round(p.pace/p.perWeekNeeded*100));
+    paceBar = `<div class="pbar-row"><span>Your pace vs needed</span><span>${ratio}%</span></div><div class="pbar" style="margin-bottom:10px"><div style="width:${ratio}%;background:${ratio>=90?'#3DBE7E':'#E5484D'}"></div></div>`;
+  }
 
   const rows = p.rows.map(r=>{
     const focus = r.focus ? `${esc(r.focus.name)} (${r.focus.note})` : 'Mixed problem practice';
-    return `<div class="row-item"><div class="ri-main">
-      <div class="ri-title"><span class="plan-dot" style="background:${PLAN_COLORS[r.subject]};"></span>${r.subject} · ${hoursToHM(r.minutes/60)}</div>
-      <div class="ri-sub">${focus} · ${r.questions} questions</div>
-    </div></div>`;
+    return `<div class="hd-row" style="border-left-color:${PLAN_COLORS[r.subject]}"><div class="hd-n">${r.subject} · ${hoursToHM(r.minutes/60)}<span>${focus} · ${r.questions} questions</span></div></div>`;
   }).join('');
   const revSub = p.revisionDue>0 ? `${p.revisionDue} due today` : 'Nothing due today. Revise a weak chapter if you have time.';
   let mockTitle, mockSub;
   if(p.mockSince===null){ mockTitle='Take your first mock test'; mockSub=`Aim for ${p.tier.mocks} a week.`; }
   else if(p.mockSince>=p.mockGap){ mockTitle='Mock test due today'; mockSub=`Last one was ${p.mockSince} ${p.mockSince===1?'day':'days'} ago. Aim for ${p.tier.mocks} a week.`; }
   else { const n=p.mockGap-p.mockSince; mockTitle=`Next mock test in ${n} ${n===1?'day':'days'}`; mockSub=`Aim for ${p.tier.mocks} a week.`; }
+  const s2 = DATA.settings;
 
   return `
-  <div class="section-title">Today's plan</div>
-  <div class="card">
-    ${head}
-    <div class="plan-stats">
-      <div class="plan-stat"><div class="v">${p.daysLeft}</div><div class="l">days left</div></div>
-      <div class="plan-stat"><div class="v">${p.perWeekNeeded}</div><div class="l">chapters a week needed</div></div>
-      <div class="plan-stat"><div class="v">${fmtDateShort(p.finishBy)}</div><div class="l">finish syllabus by</div></div>
-    </div>
-    <p class="plan-pace">${pace}</p>
-    ${catchUpNote}
-    <div class="list">
-      ${rows}
-      <div class="row-item"><div class="ri-main"><div class="ri-title">Revision</div><div class="ri-sub">${revSub}</div></div></div>
-      <div class="row-item"><div class="ri-main"><div class="ri-title">${mockTitle}</div><div class="ri-sub">${mockSub}</div></div></div>
-    </div>
-    ${p.targetsBelow ? `<div class="plan-note">This goal usually calls for about ${p.tier.hours}h a day and ${p.tier.q} questions. Your targets are ${s.dailyStudyHours}h and ${s.dailyQuestionTarget}. <button type="button" class="plan-link" onclick="applyGoalTargets()">Use suggested targets</button></div>` : ''}
+  <div class="dl-sum" style="margin-bottom:12px">${tile(p.daysLeft,'Days left','#3B82D6')}${tile(p.perWeekNeeded,'Chapters / week','#F29A38')}${tile(fmtDateShort(p.finishBy),'Finish by','#3DBE7E')}</div>
+  <div class="hx-card">
+    <div class="hx-h">Pace</div>
+    ${paceBar}
+    <p class="plan-pace" style="margin:0">${pace}</p>
+    ${catchUp}
+  </div>
+  <div class="hx-card">
+    <div class="hx-h">Today's plan</div>
+    ${rows}
+    <div class="hd-row" style="border-left-color:#F29A38"><div class="hd-n">Revision<span>${revSub}</span></div></div>
+    <div class="hd-row" style="border-left-color:#3DBE7E"><div class="hd-n">${mockTitle}<span>${mockSub}</span></div></div>
+    ${p.targetsBelow ? `<div class="plan-note">This goal usually calls for about ${p.tier.hours}h a day and ${p.tier.q} questions. Your targets are ${s2.dailyStudyHours}h and ${s2.dailyQuestionTarget}. <button type="button" class="plan-link" onclick="applyGoalTargets()">Use suggested targets</button></div>` : ''}
     <p class="plan-foot">General guidelines, not a rank prediction. Protect your sleep while chasing the hours.</p>
   </div>`;
 }
 function renderGoal(){
-  const s = DATA.settings;
-  view('goal').innerHTML = `${planCardHtml()}${s.goal ? goalAnalyticsExtraHtml() : ''}`;
+  view('goal').innerHTML = goalHeaderHtml() + (DATA.settings.goal ? goalPlanHtml() : '') + goalProgressHtml() + goalLast30Html() + goalGapHtml();
 }
 function getTargetCollegeInfo(){
   const s = DATA.settings;
@@ -1889,59 +1909,66 @@ function getTargetCollegeInfo(){
   }
   return TARGET_COLLEGES.find(c=>c.id===s.targetCollegeId) || null;
 }
-function goalAnalyticsExtraHtml(){
-  const s = DATA.settings;
-  const overall = overallSyllabusPct();
-  const phy = chapterCompletionPct('Physics');
-  const chem = chapterCompletionPct('Chemistry');
-  const math = chapterCompletionPct('Mathematics');
-  const last30 = allStudy().filter(ss=>ss.date>addDays(todayStr(),-30));
-  const hrs30 = Math.round(last30.reduce((a,b)=>a+b.minutes,0)/60*10)/10;
-  const questions30 = DATA.practiceSessions.filter(p=>p.date>addDays(todayStr(),-30)).reduce((a,b)=>a+(Number(b.attempted)||0),0);
-  const tests30 = DATA.tests.filter(t=>t.date>addDays(todayStr(),-30)).length;
-  const avgPctAny = recentPercentileAvg(3);
-  const avgPct = (s.goal && s.goal.type==='main_pct') ? avgPctAny : null;
-  const anyEstimated = DATA.tests.filter(t=>t.percentile!=null).slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3).some(t=>t.percentileEstimated);
-  const gapHtml = avgPct!==null ? `
-  <div class="section-title">Percentile gap</div>
-  <div class="card">
-    <div class="grid grid-2">
-      <div class="stat"><div class="val">${s.goal.value}</div><div class="lbl">Target percentile</div></div>
-      <div class="stat" style="background:${avgPct>=s.goal.value?'#3DBE7E':'#E5484D'};"><div class="val">${avgPct}</div><div class="lbl">Recent avg (last 3 mocks)</div></div>
-    </div>
-    <p class="muted" style="margin-top:8px;">${avgPct>=s.goal.value ? 'You are meeting or beating your target in recent mocks.' : `You are ${Math.round((s.goal.value-avgPct)*100)/100} percentile behind your target right now.`}${anyEstimated ? ' Some values are auto-estimated from marks and may differ from the actual official percentile.' : ''}</p>
-  </div>` : '';
-
-  const college = getTargetCollegeInfo();
-  const collegeGapHtml = college ? `
-  <div class="section-title">College target</div>
-  <div class="card">
-    <div class="grid grid-2">
-      <div class="stat"><div class="val">${college.percentile}</div><div class="lbl">${esc(college.name)}${college.rankNote?' · rank '+college.rankNote:''}</div></div>
-      <div class="stat" style="background:${(avgPctAny!==null && avgPctAny>=college.percentile)?'#3DBE7E':'#E5484D'};"><div class="val">${avgPctAny!==null?avgPctAny:'—'}</div><div class="lbl">Recent avg (last 3 mocks)</div></div>
-    </div>
-    <p class="muted" style="margin-top:8px;">${avgPctAny===null ? 'Log a mock test with a percentile (or marks, for auto-estimate) to see your gap.' : avgPctAny>=college.percentile ? `You are matching or beating this college's recent cutoff range in your mocks.` : `You are about ${Math.round((college.percentile-avgPctAny)*100)/100} percentile behind this college's recent cutoff range.`}${college.rankNote ? ' Cutoffs shift every year — treat this as a rough benchmark, not a guarantee.' : ''}</p>
-  </div>` : '';
+function goalRing(label, val, sub, p, col){
+  const pc = Math.min(100, Math.max(0, p));
+  return `<div class="hp-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-opacity=".2" stroke-width="10"/><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="${314.16*(1-pc/100)}" transform="rotate(-90 60 60)"/></svg><div class="hp-ring-t"><span class="hp-k">${label}</span><b>${val}</b><span>${sub}</span><em style="color:${col}">${pc}%</em></div></div>`;
+}
+function goalProgressHtml(){
+  const total = DATA.chapters.length;
+  const doneCh = DATA.chapters.filter(c=>c.status==='Completed'||c.status==='Revised').length;
+  const imp = DATA.chapters.filter(c=>c.important);
+  const impDone = imp.filter(c=>c.status==='Completed'||c.status==='Revised').length;
+  const bars = PLAN_SUBJECTS.map(n=>{ const v = chapterCompletionPct(n); return `<div class="hbar-row"><div class="hb-label">${n}</div><div class="hb-track"><div style="width:${v}%;background:${PLAN_COLORS[n]}"></div></div><div class="hb-val">${v}%</div></div>`; }).join('');
   return `
-  <div class="section-title">Overall progress</div>
-  <div class="card">
-    <div class="grid grid-2">
-      <div><div class="pbar-row"><span>Overall syllabus</span><span>${overall}%</span></div><div class="pbar"><div style="width:${overall}%"></div></div></div>
-      <div><div class="pbar-row"><span>★ Important syllabus</span><span>${importantSyllabusPct()}%</span></div><div class="pbar amber"><div style="width:${importantSyllabusPct()}%"></div></div></div>
-      <div><div class="pbar-row"><span>Physics</span><span>${phy}%</span></div><div class="pbar"><div style="width:${phy}%; background:${PLAN_COLORS.Physics};"></div></div></div>
-      <div><div class="pbar-row"><span>Chemistry</span><span>${chem}%</span></div><div class="pbar green"><div style="width:${chem}%"></div></div></div>
-      <div><div class="pbar-row"><span>Mathematics</span><span>${math}%</span></div><div class="pbar amber"><div style="width:${math}%"></div></div></div>
+  <div class="hx-card">
+    <div class="hx-h">Syllabus progress</div>
+    <div class="hx-rings">
+      ${goalRing('Overall', `${doneCh}/${total}`, 'chapters done', overallSyllabusPct(), '#3B82D6')}
+      ${goalRing('Important', `${impDone}/${imp.length}`, 'chapters done', importantSyllabusPct(), '#F29A38')}
     </div>
-  </div>
-  <div class="section-title">Last 30 days</div>
-  <div class="grid grid-4">
-    <div class="stat"><div class="icon" style="background:var(--indigo-tint); color:var(--indigo);">${ICONS.clock}</div><div class="val">${hrs30}h</div><div class="lbl">Studied</div></div>
-    <div class="stat"><div class="icon" style="background:var(--amber-tint); color:var(--amber);">${ICONS.practice}</div><div class="val">${questions30}</div><div class="lbl">Questions</div></div>
-    <div class="stat"><div class="icon" style="background:var(--green-tint); color:var(--green);">${ICONS.tests}</div><div class="val">${tests30}</div><div class="lbl">Mock tests</div></div>
-    <div class="stat"><div class="icon" style="background:var(--red-tint); color:var(--red);">${ICONS.revision}</div><div class="val">${DATA.revisions.filter(r=>r.completed && r.dueDate>addDays(todayStr(),-30)).length}</div><div class="lbl">Revisions done</div></div>
-  </div>
-  ${gapHtml}
-  ${collegeGapHtml}`;
+    <div style="margin-top:14px">${bars}</div>
+  </div>`;
+}
+function goalLast30Html(){
+  const from = addDays(todayStr(), -30);
+  const mins = allStudy().filter(x=>x.date>from).reduce((a,b)=>a+Number(b.minutes||0),0);
+  const hrs = Math.round(mins/60*10)/10;
+  const q = DATA.practiceSessions.filter(x=>x.date>from).reduce((a,b)=>a+(Number(b.attempted)||0),0);
+  const tests = DATA.tests.filter(x=>x.date>from).length;
+  const revs = DATA.revisions.filter(r=>r.completed && r.completedDate && r.completedDate>from).length;
+  const tile = (v,l,c)=>`<div class="dl-tile" style="background:${c}"><b>${v}</b><span>${l}</span></div>`;
+  return `
+  <div class="dl-grp"><span>Last 30 days</span></div>
+  <div class="dl-sum" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+    ${tile(hoursToHM(hrs),'Studied','#3B82D6')}${tile(q,'Questions','#F29A38')}${tile(tests,'Mock tests','#3FA5B5')}${tile(revs,'Revisions done','#3DBE7E')}
+  </div>`;
+}
+function goalGapHtml(){
+  const s = DATA.settings;
+  const avgAny = recentPercentileAvg(3);
+  const tile = (v,l,c)=>`<div class="dl-tile" style="background:${c}"><b>${v}</b><span>${l}</span></div>`;
+  const two = 'grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:8px';
+  const anyEstimated = DATA.tests.filter(t=>t.percentile!=null).slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3).some(t=>t.percentileEstimated);
+  let html = '';
+  if(s.goal && s.goal.type==='main_pct' && avgAny!==null){
+    const met = avgAny >= s.goal.value;
+    html += `<div class="hx-card">
+      <div class="hx-h">Percentile gap</div>
+      <div class="dl-sum" style="${two}">${tile(s.goal.value,'Target percentile','#3B82D6')}${tile(avgAny,'Recent avg (3 mocks)',met?'#3DBE7E':'#E5484D')}</div>
+      <p class="hd-sub">${met ? 'You are meeting or beating your target in recent mocks.' : `You are ${Math.round((s.goal.value-avgAny)*100)/100} percentile behind your target right now.`}${anyEstimated ? ' Some values are auto-estimated from marks and may differ from the official percentile.' : ''}</p>
+    </div>`;
+  }
+  const college = getTargetCollegeInfo();
+  if(college){
+    const met = avgAny!==null && avgAny >= college.percentile;
+    html += `<div class="hx-card">
+      <div class="hx-h">College target</div>
+      <div class="hd-sub" style="margin-bottom:10px">${esc(college.name)}${college.rankNote ? ' · rank '+esc(college.rankNote) : ''}</div>
+      <div class="dl-sum" style="${two}">${tile(college.percentile,'Cutoff percentile','#3B82D6')}${tile(avgAny!==null?avgAny:'—','Recent avg (3 mocks)',avgAny===null?'#8B90A3':met?'#3DBE7E':'#E5484D')}</div>
+      <p class="hd-sub">${avgAny===null ? 'Log a mock test with a percentile (or marks, for auto-estimate) to see your gap.' : met ? "You are matching or beating this college's recent cutoff range in your mocks." : `You are about ${Math.round((college.percentile-avgAny)*100)/100} percentile behind this college's recent cutoff range.`}${college.rankNote ? ' Cutoffs shift every year, so treat this as a rough benchmark, not a guarantee.' : ''}</p>
+    </div>`;
+  }
+  return html ? `<div class="dl-grp"><span>Targets</span></div>` + html : '';
 }
 function applyGoalTargets(){
   const g = DATA.settings.goal; if(!g) return;
@@ -2049,6 +2076,8 @@ const ICONS = {
 };
 
 ICONS.more = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>`;
+ICONS.reward = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8M7.5 8a2.5 2.5 0 1 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 1 1 0 5"/></svg>`;
+ICONS.coin = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5a3 3 0 1 0 0 5M12 6.5v2M12 15.5v2"/></svg>`;
 const NAV_ITEMS = [
   {id:'home', label:'Home', icon:'home'},
   {id:'planner', label:'Planner', icon:'planner'},
@@ -2062,6 +2091,7 @@ const NAV_ITEMS = [
   {id:'analytics', label:'Progress', icon:'analytics'},
   {id:'profile', label:'Profile', icon:'user'},
   {id:'settings', label:'Settings', icon:'settings'},
+  {id:'rewards', label:'Rewards', icon:'reward'},
   {id:'more', label:'More', icon:'more'},
 ];
 const BOTTOM_NAV_IDS = ['home','planner','chapters','tests','more'];
@@ -2069,6 +2099,12 @@ const BOTTOM_LABELS = {};
 ICONS.user = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-5.5 8-5.5s6.5 1.5 8 5.5"/></svg>`;
 
 let CURRENT_VIEW = 'home';
+const VIEW_STACK = [];   // pages we came from, so Back returns to the exact previous page
+ICONS.back = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>`;
+function goBack(){
+  const prev = VIEW_STACK.pop() || 'home';
+  switchView(prev, true);
+}
 let APP_TODAY = todayStr();
 function checkDateRollover(){
   const t = todayStr();
@@ -2172,13 +2208,21 @@ function buildBottomNav(){
   }).join('');
   $all('.bn-item', bn).forEach(btn=>btn.addEventListener('click', ()=>switchView(btn.dataset.view)));
 }
-function switchView(viewId){
+function switchView(viewId, fromBack){
+  if(!fromBack && viewId!==CURRENT_VIEW){
+    if(viewId==='home') VIEW_STACK.length = 0;
+    else {
+      if(VIEW_STACK[VIEW_STACK.length-1]===viewId) VIEW_STACK.pop();
+      else VIEW_STACK.push(CURRENT_VIEW);
+      if(VIEW_STACK.length>30) VIEW_STACK.shift();
+    }
+  }
   CURRENT_VIEW = viewId;
   $all('.view').forEach(v=>v.classList.remove('active'));
   const target = $('#view-'+viewId);
   if(target) target.classList.add('active');
   const item = NAV_ITEMS.find(n=>n.id===viewId);
-  $('#viewTitle').innerHTML = viewId==='home' ? homeTitle() : esc(item ? item.label : (viewId==='timer'?'Study Timer':viewId==='profile'?'Profile':viewId==='analytics'?'Analytics':viewId==='deadlines'?'Deadlines':'JEE Tracker'));
+  $('#viewTitle').innerHTML = viewId==='home' ? homeTitle() : esc(item ? item.label : (viewId==='timer'?'Study Timer':viewId==='profile'?'Profile':viewId==='analytics'?'Analytics':viewId==='deadlines'?'Deadlines':viewId==='notifications'?'Notifications':'JEE Tracker'));
   $all('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   $all('.bn-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   updateTopStreak(viewId);
@@ -2248,8 +2292,10 @@ function rolloverTasks(){
 function renderView(viewId){
   rolloverTasks();
   updateAvatarBtn();
-  { const d=$('#tbDot'); if(d){ d.hidden = dueNowChapters().length===0; d.style.background = overdueChapters().length ? '#E5484D' : '#F29A38'; } }
-  if(viewId==='home') renderHome();
+  updateNotifDot();
+  updateCoinChip(viewId);
+  if(viewId==='notifications') renderNotifications();
+  else if(viewId==='home') renderHome();
   else if(viewId==='planner') renderPlanner();
   else if(viewId==='timetable') renderTimetable();
   else if(viewId==='chapters') renderChapters();
@@ -2262,9 +2308,11 @@ function renderView(viewId){
   else if(viewId==='profile') renderProfile();
   else if(viewId==='more') renderMore();
   else if(viewId==='deadlines') renderDeadlinesPage();
+  else if(viewId==='rewards') renderRewards();
   else if(viewId==='timer') renderTimer();
 }
 function renderAll(){
+  syncBonusDays();
   recomputeStreaks();
   updateTopStreak();
   updateDeadlineFab();
@@ -2344,6 +2392,7 @@ async function startSession(user){
   buildSidebar();
   buildBottomNav();
   updateTopDate();
+  syncBonusDays();
   switchView('home');
   updateDeadlineFab();
   maybeShowDailyPopup();
@@ -2352,9 +2401,10 @@ async function startSession(user){
 
   $('#fabBtn').addEventListener('click', openQuickAddMenu);
   $('#deadlineFabBtn').addEventListener('click', openDeadlinePanel);
-  $('#moreMenuBtn').addEventListener('click', ()=>switchView('profile'));
+  $('#moreMenuBtn').addEventListener('click', ()=>{ if(CURRENT_VIEW==='home') switchView('profile'); else goBack(); });
   $('#tbGear').addEventListener('click', ()=>switchView('settings'));
-  $('#tbBell').addEventListener('click', ()=>openDeadlinePanel());
+  $('#tbBell').addEventListener('click', ()=>switchView('notifications'));
+  $('#tbCoin').addEventListener('click', ()=>switchView('rewards'));
   const sc=$('#streakCurrent'), sb=$('#streakBest');
   if(sc) sc.addEventListener('click', ()=>openStreakDetails('current'));
   if(sb) sb.addEventListener('click', ()=>openStreakDetails('best'));
@@ -2386,7 +2436,356 @@ function boot(){
     }
   });
 }
-function tickCountdowns(){ if(CURRENT_VIEW==='home') renderHomeCountdownOnly(); }
+function tickCountdowns(){ if(CURRENT_VIEW==='home') renderHomeCountdownOnly(); updateNotifDot(); updateCoinChip(); }
+/* Small coin balance chip next to the bell, shown on the Home screen only */
+function updateCoinChip(viewId){
+  const chip = $('#tbCoin');
+  if(!chip || !DATA) return;
+  const onHome = (viewId || CURRENT_VIEW)==='home';
+  chip.hidden = !onHome;
+  if(!onHome) return;
+  const ic = chip.querySelector('.tb-coin-ic');
+  if(ic && !ic.firstChild) ic.innerHTML = ICONS.coin;
+  $('#tbCoinNum').textContent = coinBalance();
+}
+
+/* ============================================================
+   NOTIFICATIONS (in-app, built from today's data)
+   ============================================================ */
+const NOTIF_STUDY_HOUR = 20;   // study + question target alerts show from 8 PM
+const NOTIF_STREAK_HOUR = 18;  // streak-at-risk alert shows from 6 PM
+const COUNTDOWN_MILESTONES = [100,75,50,30,15,7,3,1];
+function buildNotifications(){
+  const out = [];
+  const s = DATA.settings, t = todayStr(), hr = new Date().getHours();
+  const add = (id, pri, col, title, sub, go)=>out.push({id, pri, col, title, sub, go});
+  const RED='#E5484D', AMB='#F29A38', BLU='#3B82D6', GRN='#3DBE7E';
+
+  // 1-2. chapter deadlines (overdue, due today)
+  const g = deadlineGroups();
+  g[0].items.forEach(x=>add('ch-'+x.c.id, 1, RED, `${x.c.name} is ${-x.diff} day${x.diff===-1?'':'s'} overdue`, `${x.c.subject} · was due ${fmtDateShort(x.c.completeByDate)}`, {view:'deadlines'}));
+  g[1].items.forEach(x=>add('ch-'+x.c.id, 2, AMB, `Finish ${x.c.name} today`, `${x.c.subject} · deadline is today`, {view:'deadlines'}));
+
+  // 3. revisions
+  const od = revisionsOverdue().length, due = revisionsDueToday().length;
+  if(od>0) add('rev-over', 1, RED, `${od} revision${od===1?'':'s'} overdue`, 'Do them before they pile up', {view:'revision'});
+  if(due>0) add('rev-due', 2, AMB, `${due} revision${due===1?'':'s'} due today`, 'Tap to open the revision list', {view:'revision'});
+
+  // 4. timetable: current or next block
+  const now = nowMinutes();
+  const nb = blocksForDate(t).find(b=>!blockIsDone(b,t) && hmToMin(b.end) > now);
+  if(nb){
+    const isNow = hmToMin(nb.start) <= now;
+    add('tt-'+nb.id, isNow?2:3, BLU, `${isNow?'Now':'Up next'}: ${blockTitle(nb)}`, `${fmtTime12(nb.start)} - ${fmtTime12(nb.end)}`, {view:'timetable', today:true});
+  }
+
+  // 5. tasks
+  const pend = todaysTasks().filter(x=>!x.completed);
+  const late = pend.filter(x=>x.originalDate && x.originalDate < x.date);
+  if(late.length>0) add('task-late', 2, RED, `${late.length} task${late.length===1?'':'s'} carried over from earlier days`, 'Still pending in your planner', {view:'planner'});
+  const fresh = pend.length - late.length;
+  if(fresh>0) add('task-today', 3, BLU, `${fresh} task${fresh===1?'':'s'} pending today`, 'Open the planner to tick them off', {view:'planner'});
+
+  // 6-7. study hours and questions target (evening)
+  if(hr >= NOTIF_STUDY_HOUR){
+    const hrsLeft = (s.dailyStudyHours||0) - studyHoursOn(t);
+    if(hrsLeft > 0.5) add('study-behind', 2, AMB, `${hoursToHM(hrsLeft)} left to hit today's study target`, `Target is ${s.dailyStudyHours}h`, {view:'timer'});
+    const qLeft = (Number(s.dailyQuestionTarget)||0) - questionsSolvedOn(t);
+    if(qLeft > 0) add('q-behind', 3, AMB, `${qLeft} question${qLeft===1?'':'s'} left for today's target`, `Target is ${s.dailyQuestionTarget}`, {view:'practice'});
+  }
+
+  // 8. streak in danger
+  const st = DATA.streaks.study;
+  if(hr >= NOTIF_STREAK_HOUR && st.current>0 && !todayHasStudyActivity()){
+    add('streak-risk', 1, RED, `Your ${st.current}-day streak is at risk`, `Study at least ${s.minStudyMinutesForStreak||1} min today to keep it`, {view:'timer'});
+  }
+
+  // 9. mock test
+  if(s.goal){
+    const p = buildDailyPlan();
+    if(p && !p.expired){
+      if(p.mockSince===null) add('mock-due', 3, GRN, 'Take your first mock test', `Aim for ${p.tier.mocks} a week`, {view:'tests'});
+      else if(p.mockSince >= p.mockGap) add('mock-due', 3, GRN, 'Mock test due today', `Last one was ${p.mockSince} day${p.mockSince===1?'':'s'} ago`, {view:'tests'});
+    }
+  }
+
+  // optional: Monday recap, exam countdown milestones
+  if(new Date().getDay()===1) add('weekly-recap', 4, BLU, "Last week's recap is ready", 'Tap to see your week', {fn:'recap'});
+  [['JEE Main', s.jeeMainDate], ['JEE Advanced', s.jeeAdvancedDate]].forEach(([n,d])=>{
+    if(!d) return;
+    const left = daysUntil(d);
+    if(COUNTDOWN_MILESTONES.includes(left)) add('cd-'+n+'-'+left, 4, AMB, `${n} is ${left} day${left===1?'':'s'} away`, 'Make today count', {view:'home'});
+  });
+
+  return out.sort((a,b)=>a.pri-b.pri);
+}
+function notifDismissedIds(){
+  const n = DATA.settings.notifDismissed;
+  return (n && n.date===todayStr() && Array.isArray(n.ids)) ? n.ids : [];
+}
+function activeNotifications(){
+  const gone = notifDismissedIds();
+  return buildNotifications().filter(n=>!gone.includes(n.id));
+}
+function dismissNotifs(ids){
+  updateData(d=>{
+    let n = d.settings.notifDismissed;
+    if(!n || n.date!==todayStr() || !Array.isArray(n.ids)) n = d.settings.notifDismissed = {date:todayStr(), ids:[]};
+    ids.forEach(id=>{ if(!n.ids.includes(id)) n.ids.push(id); });
+  });
+}
+function updateNotifDot(){
+  const dot = $('#tbDot');
+  if(!dot || !DATA) return;
+  const list = activeNotifications();
+  dot.hidden = list.length===0;
+  dot.style.background = list.some(n=>n.pri===1) ? '#E5484D' : '#F29A38';
+}
+function runNotifAction(go){
+  if(!go) return;
+  if(go.fn==='recap'){
+    openModal(`<div class="modal-head"><h3>Last week's recap</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>${weeklyRecapHtml()}<div class="modal-actions" style="margin-top:18px;"><button class="btn block" onclick="closeModal()">Close</button></div>`);
+    return;
+  }
+  if(go.today) TT_DATE = todayStr();
+  switchView(go.view);
+}
+function renderNotifications(){
+  const list = activeNotifications();
+  const v = view('notifications');
+  v.innerHTML = list.length ? `
+    <div class="nt-head"><b>${list.length} notification${list.length===1?'':'s'}</b><button type="button" class="btn ghost sm" id="ntClear">Clear all</button></div>
+    ${list.map(n=>`<div class="nt-card" data-nid="${esc(n.id)}" style="border-left-color:${n.col}">
+      <div class="nt-main"><div class="nt-title">${esc(n.title)}</div><div class="nt-sub">${esc(n.sub)}</div></div>
+      <button type="button" class="nt-x" data-ndismiss aria-label="Dismiss">&times;</button>
+    </div>`).join('')}`
+    : `<div class="hx-card" style="text-align:center;color:var(--ink-soft)">You're all caught up. Nothing needs attention right now.</div>`;
+  $all('.nt-card', v).forEach(el=>el.addEventListener('click', e=>{
+    const id = el.dataset.nid;
+    if(e.target.closest('[data-ndismiss]')){ dismissNotifs([id]); renderNotifications(); updateNotifDot(); return; }
+    const n = list.find(x=>x.id===id);
+    if(n) runNotifAction(n.go);
+  }));
+  const clr = $('#ntClear');
+  if(clr) clr.addEventListener('click', ()=>{ dismissNotifs(list.map(n=>n.id)); renderNotifications(); updateNotifDot(); });
+}
+
+/* ============================================================
+   COINS & REWARDS
+   Coins earned are worked out from your real data, so deleting a session,
+   test or revision also removes its coins. Spending is stored in rewards.history.
+   ============================================================ */
+function defaultRewardItems(){
+  return [
+    {id:uid(), name:'30 min reels / YouTube', cost:100, kind:'normal'},
+    {id:uid(), name:'1 hour reels / YouTube', cost:180, kind:'normal'},
+    {id:uid(), name:'One episode of a series', cost:200, kind:'normal'},
+    {id:uid(), name:'1 hour gaming', cost:250, kind:'normal'},
+    {id:uid(), name:'30 min guitar', cost:400, kind:'normal'},
+    {id:uid(), name:'1 hour guitar', cost:700, kind:'normal'},
+    {id:uid(), name:'Streak freeze (saves one missed day)', cost:400, kind:'freeze'}
+  ];
+}
+function ensureRewards(d){
+  d = d || DATA;
+  let created = false;
+  if(!d.rewards || typeof d.rewards!=='object') d.rewards = {};
+  const r = d.rewards;
+  if(!Array.isArray(r.items)){ r.items = defaultRewardItems(); created = true; }
+  if(!Array.isArray(r.history)) r.history = [];
+  if(!Array.isArray(r.frozenDates)) r.frozenDates = [];
+  if(!Array.isArray(r.bonusDays)) r.bonusDays = [];
+  if(!Number.isFinite(r.freezes)) r.freezes = 0;
+  if(!Number.isFinite(r.taskCount)) r.taskCount = 0;
+  if(created && d===DATA) saveData();
+  return r;
+}
+/* Locks in the 30-coin bonus for every day the study-hours or question target was hit. */
+function syncBonusDays(){
+  if(!DATA) return;
+  const r = ensureRewards(), s = DATA.settings, t = todayStr();
+  const mins = {}, qs = {};
+  allStudy().forEach(x=>{ if(x.date) mins[x.date] = (mins[x.date]||0) + Number(x.minutes||0); });
+  DATA.practiceSessions.forEach(p=>{ if(p.date) qs[p.date] = (qs[p.date]||0) + Number(p.attempted||0); });
+  const hrTarget = Number(s.dailyStudyHours)||0, qTarget = Number(s.dailyQuestionTarget)||0;
+  let changed = false;
+  new Set(Object.keys(mins).concat(Object.keys(qs))).forEach(d=>{
+    if(d>t || r.bonusDays.includes(d)) return;
+    if((hrTarget>0 && (mins[d]||0)/60 >= hrTarget) || (qTarget>0 && (qs[d]||0) >= qTarget)){ r.bonusDays.push(d); changed = true; }
+  });
+  if(changed) saveData();
+}
+function coinsBreakdown(){
+  const r = ensureRewards();
+  const study = Math.floor(allStudy().reduce((a,x)=>a+Number(x.minutes||0),0));
+  const questions = DATA.practiceSessions.reduce((a,p)=>a+Number(p.attempted||0)+Number(p.correct||0),0);
+  const chapters = DATA.chapters.filter(c=>c.status==='Completed'||c.status==='Revised').length*50;
+  const revisions = DATA.revisions.filter(x=>x.completed).length*20;
+  const tasks = Math.max(0, r.taskCount)*10;
+  const tests = DATA.tests.length*100;
+  const bonus = r.bonusDays.length*30;
+  return {study, questions, chapters, revisions, tasks, tests, bonus, total: study+questions+chapters+revisions+tasks+tests+bonus};
+}
+function coinsSpent(){ return ensureRewards().history.reduce((a,h)=>a+Number(h.cost||0),0); }
+function coinBalance(){ return Math.max(0, coinsBreakdown().total - coinsSpent()); }
+function coinCardHtml(){
+  const bal = coinBalance();
+  const items = ensureRewards().items.slice().sort((a,b)=>a.cost-b.cost);
+  const next = items.find(i=>i.cost>bal);
+  const sub = !items.length ? 'Add a reward to spend them on' : next ? `${next.cost-bal} more for ${next.name}` : 'You can afford every reward';
+  return `<div class="hx-card hx-streak" onclick="switchView('rewards')">
+    <div class="hx-h">Coins</div>
+    <div class="hx-streak-in">
+      <span style="color:#F29A38;display:flex;width:44px;height:44px;flex:0 0 44px">${ICONS.coin}</span>
+      <div class="hx-sn">${bal}</div>
+      <div style="min-width:0"><b>coins</b><span>${esc(sub)}</span></div>
+    </div>
+  </div>`;
+}
+function renderRewards(){
+  const r = ensureRewards(), b = coinsBreakdown(), spent = coinsSpent(), bal = Math.max(0, b.total-spent);
+  const items = r.items.slice().sort((a,c)=>a.cost-c.cost);
+  const earnRows = [
+    ['Study time','1 per minute',b.study], ['Questions','1 each, 2 if correct',b.questions],
+    ['Chapters completed','50 each',b.chapters], ['Revisions done','20 each',b.revisions],
+    ['Tasks done','10 each',b.tasks], ['Mock tests','100 each',b.tests],
+    ['Daily target hit','30 per day',b.bonus]
+  ];
+  view('rewards').innerHTML = `
+    <div class="hx-card">
+      <div class="hx-k">Coin balance</div>
+      <div class="hx-big2" style="font-size:40px">${bal}<span> coins</span></div>
+      <div class="hx-extra" style="text-align:left;margin-top:8px">Earned ${b.total} · Spent ${spent}</div>
+    </div>
+    <div class="hx-card">
+      <div class="hd-head" style="margin:0">
+        <div><div class="hx-h" style="margin:0 0 2px">Streak freezes</div><div class="hd-sub">${r.freezes>0 ? `You have ${r.freezes}. Use one on a day you missed.` : 'Buy one below to save a missed day.'}</div></div>
+        ${r.freezes>0 ? '<button type="button" class="btn sm" id="rwFreeze">Use one</button>' : ''}
+      </div>
+    </div>
+    <div class="dl-grp"><span>Reward shop</span></div>
+    <button type="button" class="btn block" style="margin:0 0 12px" onclick="openRewardModal()">+ Add reward</button>
+    <div class="list">
+      ${items.length ? items.map(i=>{
+        const ok = bal >= i.cost;
+        return `<div class="row-item" data-id="${i.id}">
+          <div class="ri-main">
+            <div class="ri-title">${esc(i.name)}${i.kind==='freeze' ? ' <span class="badge studying">Streak</span>' : ''}</div>
+            <div class="ri-sub">${i.cost} coins${ok ? '' : ` · need ${i.cost-bal} more`}</div>
+          </div>
+          <div class="ri-actions">
+            <button type="button" class="btn sm" data-rw="redeem" ${ok ? '' : 'style="opacity:.45"'}>Redeem</button>
+            <button type="button" class="icon-btn" data-rw="edit" aria-label="Edit">${ICONS.edit}</button>
+            <button type="button" class="icon-btn" data-rw="delete" aria-label="Delete">${ICONS.trash}</button>
+          </div>
+        </div>`;
+      }).join('') : '<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No rewards yet. Tap "+ Add reward".</div>'}
+    </div>
+    <div class="dl-grp" style="margin-top:20px"><span>How you earn</span></div>
+    <div class="hx-card">
+      ${earnRows.map(x=>`<div class="pbar-row" style="margin-bottom:8px"><span>${x[0]} <span class="muted">· ${x[1]}</span></span><span><b>+${x[2]}</b></span></div>`).join('')}
+    </div>
+    ${r.history.length ? `
+    <div class="dl-grp"><span>Redeemed</span><em>${r.history.length}</em></div>
+    <div class="list">${r.history.slice(0,15).map(h=>`<div class="row-item"><div class="ri-main"><div class="ri-title">${esc(h.name)}</div><div class="ri-sub">${fmtDateShort(h.date)} · -${h.cost} coins</div></div></div>`).join('')}</div>` : ''}
+  `;
+  $all('[data-rw]', view('rewards')).forEach(btn=>btn.addEventListener('click', ()=>{
+    const id = btn.closest('[data-id]').dataset.id, act = btn.dataset.rw;
+    if(act==='redeem') openRedeemModal(id);
+    else if(act==='edit') openRewardModal(id);
+    else if(act==='delete') openDeleteRewardModal(id);
+  }));
+  const fz = $('#rwFreeze'); if(fz) fz.addEventListener('click', openUseFreezeModal);
+}
+function openRedeemModal(id){
+  const it = ensureRewards().items.find(x=>x.id===id); if(!it) return;
+  const bal = coinBalance();
+  if(bal < it.cost){ toast(`You need ${it.cost-bal} more coins`); return; }
+  openModal(`
+    <div class="modal-head"><h3>Redeem reward?</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <p style="font-weight:600;margin-bottom:6px">${esc(it.name)}</p>
+    <p class="muted" style="font-size:14px;margin-bottom:16px">${it.cost} coins will be spent. You will have ${bal-it.cost} left.${it.kind==='freeze' ? ' You get 1 streak freeze to use on a missed day.' : ''}</p>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn" onclick="confirmRedeem('${id}')">Redeem</button>
+    </div>`);
+}
+function confirmRedeem(id){
+  const it = ensureRewards().items.find(x=>x.id===id); if(!it) return;
+  if(coinBalance() < it.cost){ closeModal(); toast('Not enough coins'); return; }
+  updateData(d=>{
+    const r = ensureRewards(d);
+    r.history.unshift({id:uid(), itemId:it.id, name:it.name, cost:it.cost, date:todayStr(), ts:Date.now()});
+    if(it.kind==='freeze') r.freezes += 1;
+  });
+  closeModal(); renderAll();
+  toast(it.kind==='freeze' ? 'Streak freeze added' : 'Enjoy your reward!');
+}
+function openRewardModal(id){
+  const it = id ? ensureRewards().items.find(x=>x.id===id) : null;
+  if(id && !it) return;
+  openModal(`
+    <div class="modal-head"><h3>${it?'Edit reward':'Add reward'}</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <div class="field"><label>Reward</label><input id="rw-name" maxlength="50" value="${it?esc(it.name):''}" placeholder="e.g. 30 min guitar"></div>
+    <div class="field"><label>Cost (coins)</label><input type="number" id="rw-cost" min="1" inputmode="numeric" value="${it?it.cost:''}" placeholder="e.g. 400"></div>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn" onclick="saveReward('${it?it.id:''}')">${it?'Save':'Add'}</button>
+    </div>`);
+}
+function saveReward(id){
+  const name = $('#rw-name').value.trim(), cost = Math.round(Number($('#rw-cost').value));
+  if(!name){ toast('Enter a reward name'); return; }
+  if(!Number.isFinite(cost) || cost<1){ toast('Enter a cost of at least 1 coin'); return; }
+  updateData(d=>{
+    const r = ensureRewards(d);
+    if(id){ const it = r.items.find(x=>x.id===id); if(it){ it.name = name; it.cost = cost; } }
+    else r.items.push({id:uid(), name, cost, kind:'normal'});
+  });
+  closeModal(); renderAll();
+  toast(id ? 'Reward updated' : 'Reward added');
+}
+function openDeleteRewardModal(id){
+  const it = ensureRewards().items.find(x=>x.id===id); if(!it) return;
+  openModal(`
+    <div class="modal-head"><h3>Delete reward?</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <p class="muted" style="font-size:14px;margin-bottom:16px">${esc(it.name)} will be removed from the shop. Your past redemptions stay in the history.</p>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn danger" onclick="performDeleteReward('${id}')">Delete</button>
+    </div>`);
+}
+function performDeleteReward(id){
+  updateData(d=>{ const r = ensureRewards(d); r.items = r.items.filter(x=>x.id!==id); });
+  closeModal(); renderAll(); toast('Reward deleted');
+}
+function openUseFreezeModal(){
+  const r = ensureRewards();
+  if(r.freezes<=0){ toast('You have no streak freezes'); return; }
+  const active = new Set(streakActiveDates('study'));
+  const opts = [];
+  for(let i=1;i<=14;i++){ const d = addDays(todayStr(), -i); if(!active.has(d)) opts.push(d); }
+  if(!opts.length){ toast('No missed days in the last 14 days'); return; }
+  openModal(`
+    <div class="modal-head"><h3>Use a streak freeze</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <div class="field"><label>Which missed day should it cover?</label>
+      <select id="fz-date">${opts.map(d=>`<option value="${d}">${esc(fmtDate(d))}</option>`).join('')}</select>
+    </div>
+    <p class="muted" style="font-size:14px;margin-bottom:12px">That day will count as a study day for your streak.</p>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn" onclick="confirmUseFreeze()">Use freeze</button>
+    </div>`);
+}
+function confirmUseFreeze(){
+  const date = $('#fz-date').value; if(!date) return;
+  updateData(d=>{
+    const r = ensureRewards(d);
+    if(r.freezes<=0 || r.frozenDates.includes(date)) return;
+    r.freezes -= 1; r.frozenDates.push(date);
+  });
+  closeModal(); renderAll(); toast('Streak freeze used');
+}
 
 let DEFERRED_INSTALL_PROMPT = null;
 window.addEventListener('beforeinstallprompt', (e)=>{ e.preventDefault(); DEFERRED_INSTALL_PROMPT = e; });
@@ -2763,8 +3162,8 @@ function renderHome(){
     </div>
   </div>
 
-  <div class="qa-grid" id="qaGrid"></div>
-  <div style="text-align:right;margin:4px 0 12px"><button class="pf-edit" id="qaCustom">Customise</button></div>
+  <div class="hd-head" style="margin:0 2px 10px"><div class="hx-h" style="margin:0">Quick tiles</div><button class="pf-edit" id="qaCustom">Customise</button></div>
+  <div class="qa-grid" id="qaGrid" style="margin-bottom:12px"></div>
 
   ${upNextHtml()}
 
@@ -2804,12 +3203,13 @@ function handleQuickAction(type){
 function openQuickAddMenu(){
   const map = {
     home:'task', planner:'task', chapters:'chapter', practice:'practice',
-    tests:'test', revision:'revision-manual', analytics:'task', settings:'task', timer:'task', timetable:'block'
+    tests:'test', revision:'revision-manual', analytics:'task', settings:'task', timer:'task', timetable:'block', rewards:'reward'
   };
   const action = map[CURRENT_VIEW] || 'task';
   if(action==='task') openTaskModal();
   else if(action==='chapter') openChapterModal();
   else if(action==='block') openBlockModal();
+  else if(action==='reward') openRewardModal();
   else if(action==='practice') openPracticeModal();
   else if(action==='test') openTestModal();
   else if(action==='revision-manual') openQuickRevisionModal();
@@ -3003,7 +3403,11 @@ function ensureRecurringTasksForToday(){
 function toggleTask(id){
   updateData(d=>{
     const t = d.tasks.find(x=>x.id===id);
-    if(t) t.completed = !t.completed;
+    if(t){
+      t.completed = !t.completed;
+      const r = ensureRewards(d);   // 10 coins per task, kept as a counter because finished tasks are cleared the next day
+      r.taskCount = Math.max(0, r.taskCount + (t.completed ? 1 : -1));
+    }
   });
   renderAll();
   toast('Task updated');
@@ -4198,7 +4602,6 @@ function renderSettings(){
     </div>` : ''}
     <div class="section-title"${fbUser ? '' : ' style="margin-top:0;"'}>Profile</div>
     <div class="card" style="margin-bottom:16px;">
-      <div class="field"><label>Student name</label><input id="st-name" value="${esc(s.studentName)}" placeholder="Your name"></div>
       <div class="field"><label>Target exam</label>
         <select id="st-target">
           <option ${s.targetExam==='JEE Main + Advanced'?'selected':''}>JEE Main + Advanced</option>
@@ -4294,7 +4697,7 @@ function renderSettings(){
       <button class="btn danger block" onclick="confirmResetAll()">Reset All Data</button>
     </div>
   `;
-  view('settings').innerHTML = `<div class="st-head"><button class="st-back" onclick="switchView('home')" aria-label="Back">&#8592;</button><div><h2>Settings</h2><p>Customise your tracker</p></div></div>` + html;
+  view('settings').innerHTML = html;
   { // same layout language as the rest of the app: headings live inside white cards
     const root=view('settings'), cols=['#3B82D6','#F29A38','#3FA5B5','#3DBE7E','#E5484D'];
     let ci=0;
@@ -4307,8 +4710,7 @@ function renderSettings(){
       card.classList.remove('card'); card.classList.add('hx-card'); card.style.removeProperty('border-color');
       card.insertBefore(h, card.firstChild); t.remove();
     });
-    const head=root.querySelector('.st-head');
-    if(head) head.insertAdjacentHTML('afterend', `<div class="hx-card st-me" onclick="openProfileEdit()"><div class="pf-avatar" style="width:56px;height:56px;margin:0;font-size:24px">${avatarInner()}</div><div><div class="hx-h" style="margin:0">${esc(profileName())}</div><div class="muted">${esc((fbUser&&fbUser.email)||'Tap to edit profile')}</div></div></div>`);
+    root.insertAdjacentHTML('afterbegin',`<div class="hx-card st-me" onclick="openProfileEdit()"><div class="pf-avatar" style="width:56px;height:56px;margin:0;font-size:24px">${avatarInner()}</div><div><div class="hx-h" style="margin:0">${esc(profileName())}</div><div class="muted">${esc((fbUser&&fbUser.email)||'Tap to edit profile')}</div></div></div>`);
   }
   $all('[data-theme]', view('settings')).forEach(b=>b.addEventListener('click', ()=>{
     $all('[data-theme]', view('settings')).forEach(x=>x.classList.remove('active'));
@@ -4322,7 +4724,6 @@ function renderSettings(){
 }
 function saveSettings(){
   updateData(d=>{
-    d.settings.studentName = $('#st-name').value.trim();
     d.settings.targetExam = $('#st-target').value;
     d.settings.jeeMainDate = $('#st-mainDate').value || d.settings.jeeMainDate;
     d.settings.jeeAdvancedDate = $('#st-advDate').value || d.settings.jeeAdvancedDate;
@@ -5014,7 +5415,13 @@ function homeTitle(){ return 'Hi, <b>' + esc(profileName().split(/\s+/)[0] || 'S
 function svgSrc(svg){ return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); }
 function profileName(){ const s=DATA.settings; return (s.studentName||'').trim() || (fbUser&&fbUser.displayName) || ((fbUser&&fbUser.email)?fbUser.email.split('@')[0]:'Student'); }
 function avatarInner(){ const sv=DATA.settings.photoSvg; return sv ? `<img alt="" src="${svgSrc(sv)}">` : esc((profileName()[0]||'S').toUpperCase()); }
-function updateAvatarBtn(){ const b=$('#moreMenuBtn'); if(b) b.innerHTML=avatarInner(); }
+function updateAvatarBtn(){
+  const b=$('#moreMenuBtn'); if(!b) return;
+  const back = CURRENT_VIEW!=='home';   // profile photo on Home, Back arrow everywhere else
+  b.classList.toggle('back-mode', back);
+  b.setAttribute('aria-label', back ? 'Back' : 'Profile');
+  b.innerHTML = back ? ICONS.back : avatarInner();
+}
 function profileOverallHtml(){
   const T=DATA.tests, rec=computeRecords(), rd=readinessScore();
   const key={Physics:'physics',Chemistry:'chemistry',Mathematics:'maths'};
@@ -5125,7 +5532,7 @@ function renderMore(){
   const items = [
     ['analytics','Analytics',ICONS.analytics],['timetable','Timetable',ICONS.clock],['goal','My Goal',ICONS.goal],['practice','Practice',ICONS.practice],
     ['revision','Revision',ICONS.revision],['timer','Study Timer',ICONS.timer],
-    ['chapters','Chapters',ICONS.chapters],['tests','Tests',ICONS.tests],
+    ['chapters','Chapters',ICONS.chapters],['tests','Tests',ICONS.tests],['rewards','Rewards',ICONS.reward],
     ['deadlines','Deadlines',ICO.deadline,od]
   ];
   if(DEFERRED_INSTALL_PROMPT) items.push(['install','Install App',ICO.install]);
@@ -5158,6 +5565,7 @@ function qaPool(){
     {id:'practice',label:'Practice',ic:ICONS.practice,run:()=>switchView('practice')},
     {id:'revision',label:'Revision',ic:ICONS.revision,run:()=>switchView('revision')},
     {id:'deadlines',label:'Deadlines',ic:I.deadline,run:()=>openDeadlinePanel()},
+    {id:'rewards',label:'Rewards',ic:ICONS.reward,run:()=>switchView('rewards')},
     {id:'analytics',label:'Analytics',ic:ICONS.analytics,run:()=>switchView('analytics')},
     {id:'share',label:'Share',ic:I.share,run:()=>openShareCardModal()}
   ];
