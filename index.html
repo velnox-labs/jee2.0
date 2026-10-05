@@ -962,6 +962,33 @@ img,canvas{max-width:100%}
 .avatar-btn.back-mode svg{width:24px;height:24px}
 .st-back{display:flex;align-items:center;justify-content:center;padding:0}
 .st-back svg{width:20px;height:20px}
+/* ===== Login page: readable colours in light and dark ===== */
+.auth-screen{--au-accent:#2B66C2;--au-on:#fff}
+:root[data-theme="dark"] .auth-screen{--au-accent:#6AA7F2;--au-on:#0B1220}
+.auth-card .btn:not(.secondary):not(.ghost){background:var(--au-accent);color:var(--au-on)}
+.auth-card .seg button.active{background:var(--au-accent);color:var(--au-on) !important;box-shadow:none}
+.auth-card .field input::placeholder{color:var(--ink-soft);opacity:1}
+.auth-logo{color:var(--au-accent)}
+.pw-toggle{color:var(--au-accent)}
+:root:not([data-theme="dark"]) .auth-msg.error{color:#B42318}
+:root:not([data-theme="dark"]) .auth-msg.ok{color:#14673A}
+/* ===== Coin popup, chip bump, confetti ===== */
+.coin-pop{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;z-index:250;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 12px;border-radius:999px;background:var(--ink);color:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.28);transform:translate(-50%,-140%) scale(.9);opacity:0;transition:transform .45s cubic-bezier(.2,1.3,.4,1),opacity .25s;pointer-events:none;max-width:calc(100vw - 32px)}
+.coin-pop.in{transform:translate(-50%,0) scale(1);opacity:1}
+.coin-pop.out{transform:translate(-50%,-140%) scale(.9);opacity:0}
+:root[data-theme="dark"] .coin-pop{background:#EDEFF7;color:#12141C}
+.coin-pop-ic{display:flex;flex:0 0 30px;width:30px;height:30px;color:#F29A38;animation:coinspin .8s ease-out}
+.coin-pop-ic svg{width:30px;height:30px}
+.coin-pop b{display:block;font:800 16px var(--font-body)}
+.coin-pop-sub{display:block;font-size:12px;opacity:.75;margin-top:1px}
+@keyframes coinspin{0%{transform:rotateY(0) scale(.6)}100%{transform:rotateY(720deg) scale(1)}}
+@media (max-width:639px){.tb-coin{display:none !important}}   /* phones: balance lives in the Home card instead */
+@media (min-width:640px){.hx-coin-card{display:none}}          /* tablet + laptop: balance lives next to the bell */
+.tb-coin.bump{animation:coinbump .6s ease}
+@keyframes coinbump{0%{transform:scale(1)}35%{transform:scale(1.22)}100%{transform:scale(1)}}
+.confetti-host{position:fixed;inset:0;pointer-events:none;z-index:260;overflow:hidden}
+.confetti-host i{position:absolute;display:block;border-radius:2px}
+@media (prefers-reduced-motion:reduce){.coin-pop-ic,.tb-coin.bump{animation:none}}
 /* ===== Notifications ===== */
 .nt-head{display:flex;align-items:center;justify-content:space-between;margin:0 2px 12px}
 .nt-head b{font:700 16px var(--font-head)}
@@ -1461,6 +1488,7 @@ function saveData(){
     toast('Storage full — could not save.');
   }
   fbSave(); // no-op automatically if Firebase isn't configured
+  setTimeout(coinCheck, 0);   // pops up "+N coins" if this save earned any
 }
 function updateData(mutatorFn){
   mutatorFn(DATA);
@@ -1474,6 +1502,7 @@ function deleteData(collection, id){
   return {item, idx};
 }
 function resetAllData(){
+  COIN_PREV = null;
   DATA = defaultData();
   saveData();
   applyTheme();
@@ -2348,6 +2377,7 @@ $('#modalBackdrop').addEventListener('click', e=>{
 let APP_STARTED = false;
 
 function mergeCloud(cloud){
+  COIN_PREV = null;   // data replaced: don't pop up its old coins as "new"
   DATA = Object.assign(defaultData(), cloud);
   DATA.settings = Object.assign(defaultData().settings, cloud.settings||{});
   DATA.streaks = Object.assign(defaultData().streaks, cloud.streaks||{});
@@ -2393,6 +2423,8 @@ async function startSession(user){
   buildBottomNav();
   updateTopDate();
   syncBonusDays();
+  COIN_PREV = null; coinCheck();   // silent starting point for the coin popup
+  initPhoneBack();
   switchView('home');
   updateDeadlineFab();
   maybeShowDailyPopup();
@@ -2441,6 +2473,8 @@ function tickCountdowns(){ if(CURRENT_VIEW==='home') renderHomeCountdownOnly(); 
 function updateCoinChip(viewId){
   const chip = $('#tbCoin');
   if(!chip || !DATA) return;
+  const cn = document.querySelector('.hx-coin-card .hx-sn');   // the Home card shown on phones
+  if(cn){ const b = coinBalance(); cn.textContent = b; const cs = document.querySelector('.hx-coin-card .cc-sub'); if(cs) cs.textContent = coinSubText(b); }
   const onHome = (viewId || CURRENT_VIEW)==='home';
   chip.hidden = !onHome;
   if(!onHome) return;
@@ -2632,15 +2666,20 @@ function coinCardHtml(){
   const bal = coinBalance();
   const items = ensureRewards().items.slice().sort((a,b)=>a.cost-b.cost);
   const next = items.find(i=>i.cost>bal);
-  const sub = !items.length ? 'Add a reward to spend them on' : next ? `${next.cost-bal} more for ${next.name}` : 'You can afford every reward';
-  return `<div class="hx-card hx-streak" onclick="switchView('rewards')">
-    <div class="hx-h">Coins</div>
+  const sub = coinSubText(bal);
+  return `<div class="hx-card hx-streak hx-coin-card" onclick="switchView('rewards')">
+    <div class="hx-h">Rewards</div>
     <div class="hx-streak-in">
       <span style="color:#F29A38;display:flex;width:44px;height:44px;flex:0 0 44px">${ICONS.coin}</span>
       <div class="hx-sn">${bal}</div>
-      <div style="min-width:0"><b>coins</b><span>${esc(sub)}</span></div>
+      <div style="min-width:0"><b>coins</b><span class="cc-sub">${esc(sub)}</span></div>
     </div>
   </div>`;
+}
+function coinSubText(bal){
+  const items = ensureRewards().items.slice().sort((a,b)=>a.cost-b.cost);
+  const next = items.find(i=>i.cost>bal);
+  return !items.length ? 'Add a reward to spend them on' : next ? `${next.cost-bal} more for ${next.name}` : 'You can afford every reward';
 }
 function renderRewards(){
   const r = ensureRewards(), b = coinsBreakdown(), spent = coinsSpent(), bal = Math.max(0, b.total-spent);
@@ -2719,7 +2758,8 @@ function confirmRedeem(id){
     if(it.kind==='freeze') r.freezes += 1;
   });
   closeModal(); renderAll();
-  toast(it.kind==='freeze' ? 'Streak freeze added' : 'Enjoy your reward!');
+  toast(it.kind==='freeze' ? 'Streak freeze added' : `Enjoy: ${it.name}!`);
+  confettiBurst();
 }
 function openRewardModal(id){
   const it = id ? ensureRewards().items.find(x=>x.id===id) : null;
@@ -2786,6 +2826,212 @@ function confirmUseFreeze(){
   });
   closeModal(); renderAll(); toast('Streak freeze used');
 }
+
+/* ---------- Coin popup: "+N coins" whenever something earns coins ---------- */
+let COIN_PREV = null, COIN_POP = null;
+const COIN_LABELS = {study:'Study', questions:'Questions', chapters:'Chapters', revisions:'Revisions', tasks:'Tasks', tests:'Mock test', bonus:'Daily target'};
+function coinCheck(){
+  if(!DATA || coinCheck._busy) return;
+  coinCheck._busy = true;
+  try{
+    const now = coinsBreakdown(), prev = COIN_PREV;
+    COIN_PREV = now;                       // first call (prev empty) only sets the starting point
+    if(prev && now.total > prev.total){
+      const parts = Object.keys(COIN_LABELS).map(k=>[COIN_LABELS[k], now[k]-prev[k]]).filter(x=>x[1]>0);
+      showCoinPop(now.total-prev.total, parts);
+    }
+    updateCoinChip();
+  } finally { coinCheck._busy = false; }
+}
+function showCoinPop(amount, parts){
+  let c = COIN_POP;
+  if(c && document.body.contains(c.el)){   // another earn while it's still showing: add up
+    clearTimeout(c.tm); clearTimeout(c.rm);
+    c.amount += amount;
+    parts.forEach(p=>{ const f = c.parts.find(x=>x[0]===p[0]); if(f) f[1]+=p[1]; else c.parts.push(p.slice()); });
+  } else {
+    const el = document.createElement('div'); el.className = 'coin-pop'; el.setAttribute('role','status');
+    document.body.appendChild(el);
+    c = COIN_POP = {el, amount, parts: parts.map(p=>p.slice()), tm:null, rm:null};
+  }
+  c.el.innerHTML = `<span class="coin-pop-ic">${ICONS.coin}</span><div><b>+${c.amount} coins</b><span class="coin-pop-sub">${esc(c.parts.map(p=>p[0]+' +'+p[1]).join(' · '))}</span></div>`;
+  c.el.classList.remove('out');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>c.el.classList.add('in')));
+  c.tm = setTimeout(()=>{
+    c.el.classList.remove('in'); c.el.classList.add('out');
+    c.rm = setTimeout(()=>{ c.el.remove(); if(COIN_POP===c) COIN_POP = null; }, 450);
+  }, 2600);
+  const chip = $('#tbCoin');
+  if(chip){ chip.classList.remove('bump'); void chip.offsetWidth; chip.classList.add('bump'); }
+  try{ if(navigator.vibrate) navigator.vibrate(20); }catch(e){}
+}
+function confettiBurst(){
+  try{
+    if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cols = ['#F29A38','#3B82D6','#3DBE7E','#E5484D','#8B5CF6','#F5C84C'];
+    const host = document.createElement('div'); host.className = 'confetti-host'; document.body.appendChild(host);
+    const cx = innerWidth/2, cy = innerHeight*0.42;
+    for(let i=0;i<48;i++){
+      const p = document.createElement('i'), w = 6+Math.random()*6;
+      p.style.cssText = `background:${cols[i%cols.length]};width:${w}px;height:${w*1.6}px;left:${cx}px;top:${cy}px`;
+      host.appendChild(p);
+      if(!p.animate) continue;
+      const a = Math.random()*Math.PI*2, d = 100+Math.random()*190;
+      p.animate([
+        {transform:'translate(0,0) rotate(0deg)', opacity:1},
+        {transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d+240}px) rotate(${Math.random()*720-360}deg)`, opacity:0}
+      ], {duration:1100+Math.random()*500, easing:'cubic-bezier(.2,.7,.3,1)', fill:'forwards'});
+    }
+    setTimeout(()=>host.remove(), 1800);
+    if(navigator.vibrate) navigator.vibrate([30,40,30]);
+  }catch(e){}
+}
+
+/* ---------- Phone back button ----------
+   One guard entry sits in the browser history. Each phone-Back press first closes an open popup,
+   then returns to the previous in-app page, and on Home asks to press Back again to exit. */
+let BACK_LAST_HOME = 0;
+function initPhoneBack(){
+  try{
+    // Browsers skip history entries created before the first tap, so the guard is added on the first tap.
+    if(!(history.state && history.state.jee==='guard')){
+      const evs = ['pointerup','click','keydown'];
+      const arm = ()=>{
+        evs.forEach(e=>document.removeEventListener(e, arm, true));
+        try{
+          if(history.state && history.state.jee==='guard') return;
+          history.replaceState({jee:'base'}, '');
+          history.pushState({jee:'guard'}, '');
+        }catch(e){}
+      };
+      evs.forEach(e=>document.addEventListener(e, arm, true));
+    }
+    window.addEventListener('popstate', ()=>{
+      let keep = true;
+      if($('#modalBackdrop').classList.contains('open')) closeModal();
+      else if(CURRENT_VIEW!=='home') goBack();
+      else if(Date.now()-BACK_LAST_HOME > 2000){ BACK_LAST_HOME = Date.now(); toast('Press back again to exit'); }
+      else keep = false;
+      if(keep) history.pushState({jee:'guard'}, '');
+      else history.back();
+    });
+  }catch(e){}
+}
+
+/* ---------- Auto-fit text ----------
+   Any text that spills out of its box (tile, card, button, chip, popup...) gets a smaller font
+   until it fits. It is re-measured whenever the page content changes or the window is resized,
+   so text goes back to full size when there is room again. Add data-nofit to an element to skip it. */
+const FIT = {roots:new Set(), tm:null, rtm:null};
+function fitHasOwnText(el){
+  for(const n of el.childNodes) if(n.nodeType===3 && n.nodeValue.trim()) return true;
+  return false;
+}
+function fitTextRect(el){
+  let l=Infinity, t=Infinity, r=-Infinity, b=-Infinity;
+  const rg = document.createRange();
+  for(const n of el.childNodes){
+    if(n.nodeType!==3 || !n.nodeValue.trim()) continue;
+    rg.selectNodeContents(n);
+    for(const q of rg.getClientRects()){
+      if(!q.width && !q.height) continue;
+      l=Math.min(l,q.left); t=Math.min(t,q.top); r=Math.max(r,q.right); b=Math.max(b,q.bottom);
+    }
+  }
+  return l===Infinity ? null : {left:l, top:t, right:r, bottom:b};
+}
+function fitOverflows(el){
+  const rect = el.getBoundingClientRect();
+  if(rect.width<4 || rect.height<4) return false;          // hidden or a 1px helper
+  const tr = fitTextRect(el);
+  if(!tr) return false;
+  const cs = getComputedStyle(el);
+  // 1) text running out of its own element (single-line, ellipsis or clipped text)
+  if(cs.display!=='inline' && (cs.whiteSpace.startsWith('nowrap') || cs.overflowX!=='visible' || cs.textOverflow==='ellipsis')){
+    // clipping and "..." happen at the content edge, so the padding does not count as room
+    if(tr.right > rect.right - (parseFloat(cs.borderRightWidth)||0) - (parseFloat(cs.paddingRight)||0) + 1) return true;
+  }
+  // 2) text running out of the nearest box (something with a background, border or clipping)
+  let box = el, bcs = cs;
+  while(box){
+    if(bcs.overflowX==='auto' || bcs.overflowX==='scroll') return false;     // scrolling strip: text may be off-screen on purpose
+    const hasBg = (bcs.backgroundColor!=='rgba(0, 0, 0, 0)' && bcs.backgroundColor!=='transparent') || bcs.backgroundImage!=='none';
+    const hasBorder = (parseFloat(bcs.borderLeftWidth)||0)>0 || (parseFloat(bcs.borderRightWidth)||0)>0;
+    if(hasBg || hasBorder || bcs.overflowX!=='visible' || box===document.body) break;
+    box = box.parentElement; if(box) bcs = getComputedStyle(box);
+  }
+  if(!box) return false;
+  const br = box===document.body || box===document.documentElement
+    ? {left:0, top:-Infinity, right:document.documentElement.clientWidth, bottom:Infinity}
+    : box.getBoundingClientRect();
+  const padR = (parseFloat(bcs.paddingRight)||0)*0.5, padL = (parseFloat(bcs.paddingLeft)||0)*0.5;
+  const bR = br.right - (parseFloat(bcs.borderRightWidth)||0) - padR;
+  const bL = br.left + (parseFloat(bcs.borderLeftWidth)||0) + padL;
+  if(tr.right > bR + 1 || tr.left < bL - 1) return true;
+  if(box!==document.body && tr.bottom > br.bottom - (parseFloat(bcs.borderBottomWidth)||0) + 1) return true;
+  return false;
+}
+/* Puts back whatever inline font-size the element had before we shrank it. */
+function fitReset(el){
+  if(!el.hasAttribute('data-fit') && !el.hasAttribute('data-fit-o')) return;
+  const o = el.getAttribute('data-fit-o');
+  if(o) el.style.setProperty('font-size', o); else el.style.removeProperty('font-size');
+  el.removeAttribute('data-fit'); el.removeAttribute('data-fit-o');
+}
+function fitOne(el){
+  if(!fitOverflows(el)) return;
+  const orig = parseFloat(getComputedStyle(el).fontSize);
+  const min = Math.max(8, orig*0.55);
+  el.setAttribute('data-fit-o', el.style.getPropertyValue('font-size'));
+  let size = orig;
+  while(size>min && fitOverflows(el)){
+    size = Math.max(min, size - Math.max(0.5, size*0.04));
+    el.style.setProperty('font-size', size.toFixed(1)+'px', 'important');
+  }
+  if(fitOverflows(el)) fitReset(el);          // shrinking would not help: leave it as designed
+  else el.setAttribute('data-fit','1');
+}
+function fitScan(root){
+  if(!root || !root.isConnected) return;
+  root.querySelectorAll('[data-fit]').forEach(fitReset);
+  fitReset(root);
+  const found = new Set();
+  const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  for(let n=tw.nextNode(); n; n=tw.nextNode()){
+    if(!n.nodeValue.trim()) continue;
+    const p = n.parentElement;
+    if(!p || found.has(p)) continue;
+    if(p.closest('svg,pre,textarea,select,option,script,style,[data-nofit]')) continue;
+    found.add(p);
+  }
+  found.forEach(fitOne);
+}
+function fitRun(){
+  FIT.tm = null;
+  const roots = [...FIT.roots].filter(r=>r.isConnected); FIT.roots.clear();
+  const top = roots.filter(r=>!roots.some(o=>o!==r && o.contains(r)));   // skip roots inside other roots
+  top.forEach(fitScan);
+}
+function fitQueue(root){
+  if(root) FIT.roots.add(root);
+  if(!FIT.tm) FIT.tm = setTimeout(fitRun, 60);
+}
+function initAutoFit(){
+  if(initAutoFit.done || !document.body) return;
+  initAutoFit.done = true;
+  new MutationObserver(ms=>{
+    for(const m of ms){
+      if(m.type==='characterData'){ if(m.target.parentElement) fitQueue(m.target.parentElement); }
+      else if(m.target.nodeType===1) fitQueue(m.target);
+    }
+  }).observe(document.body, {childList:true, subtree:true, characterData:true, attributes:true, attributeFilter:['class','hidden']});
+  const all = ()=>{ clearTimeout(FIT.rtm); FIT.rtm = setTimeout(()=>fitQueue(document.body), 150); };
+  window.addEventListener('resize', all);
+  window.addEventListener('orientationchange', all);
+  if(document.fonts){ document.fonts.ready.then(all); document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', all); }
+  fitQueue(document.body);
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initAutoFit); else initAutoFit();
 
 let DEFERRED_INSTALL_PROMPT = null;
 window.addEventListener('beforeinstallprompt', (e)=>{ e.preventDefault(); DEFERRED_INSTALL_PROMPT = e; });
@@ -3161,6 +3407,8 @@ function renderHome(){
       <div><b>days streak</b><span>${st.current>0?'Awesome! Keep it up!':'Study today to start a streak'}</span></div>
     </div>
   </div>
+
+  ${coinCardHtml()}
 
   <div class="hd-head" style="margin:0 2px 10px"><div class="hx-h" style="margin:0">Quick tiles</div><button class="pf-edit" id="qaCustom">Customise</button></div>
   <div class="qa-grid" id="qaGrid" style="margin-bottom:12px"></div>
