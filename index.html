@@ -636,6 +636,11 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .tt-day{padding:7px 11px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); font-size:12px; font-weight:600; cursor:pointer;}
 .tt-day.active{background:var(--indigo); border-color:var(--indigo); color:#fff;}
 .upnext{border-left:4px solid var(--kc); cursor:pointer;}
+.tt-sec{margin:20px 2px 10px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--indigo);}
+.sg-card{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--kc); border-radius:14px; padding:10px 12px; margin-bottom:8px;}
+.sg-t{font-weight:600; font-size:14px; overflow-wrap:anywhere;}
+.sg-s{font-size:12px; color:var(--ink-soft); margin-top:2px;}
+.sg-act{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;}
 /* ---------- Avatar / Profile / new Settings look ---------- */
 .avatar-btn{flex:0 0 38px;min-width:38px;aspect-ratio:1/1;box-sizing:border-box;width:38px;height:38px;border-radius:50%;border:2px solid var(--indigo);padding:0;overflow:hidden;cursor:pointer;background:var(--indigo-tint);color:var(--indigo);font:700 16px var(--font-head);display:flex;align-items:center;justify-content:center}
 .avatar-btn img,.pf-avatar img{width:100%;height:100%;object-fit:cover;display:block}
@@ -665,6 +670,19 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 #view-settings .field input,#view-settings .field select,#view-settings .field textarea{border-radius:12px;background:var(--paper-2);border-color:transparent}
 #view-settings .btn{border-radius:999px}
 #view-settings .seg{border-radius:999px}
+.mr-lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:18px 4px 8px}
+.mr-lbl:first-child{margin-top:4px}
+.mr-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.mr-row{width:100%;display:flex;align-items:center;gap:14px;padding:14px 16px;border:none;background:transparent;color:var(--ink);text-align:left;cursor:pointer;font-family:var(--font-body);-webkit-tap-highlight-color:transparent}
+.mr-row+.mr-row{border-top:1px solid var(--line)}
+.mr-row:active{background:var(--paper-2)}
+.mr-ic{width:40px;height:40px;border-radius:12px;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;flex:0 0 40px}
+.mr-ic svg{width:21px;height:21px}
+.mr-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.mr-main b{font-size:15px;font-weight:600}
+.mr-main small{font-size:12px;color:var(--ink-soft)}
+.mr-chev{font-size:22px;color:var(--ink-soft);line-height:1}
+.mb-badge2{min-width:22px;height:22px;padding:0 7px;border-radius:11px;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .more-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .more-box{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:18px 16px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 14px var(--font-body);text-align:left;cursor:pointer;position:relative}
 .more-box:active{transform:scale(.98)}
@@ -838,6 +856,9 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .hx-un-m{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
 .hx-un-m span{display:inline-flex;align-items:center;gap:6px}
 .bottomnav{background:var(--card);border-top:none}
+.bottomnav{left:50%;right:auto;transform:translateX(-50%);width:100%;max-width:440px;border-radius:20px 20px 0 0;box-shadow:0 -4px 18px rgba(0,0,0,.08)}
+.sidebar{width:208px}
+@media (min-width:900px) and (max-width:1099px){.sidebar{width:184px;padding:20px 10px}.nav-item{padding:10px 12px;font-size:13px;gap:10px}}
 .bn-item{color:var(--ink);position:relative;font-size:12px;font-weight:600}
 .bn-item svg{width:24px;height:24px}
 .bn-item.active{color:#3B82D6}
@@ -1059,7 +1080,6 @@ h1,h2,h3,h4{font-family:inherit}
     <!-- HOME -->
     <section class="view" id="view-home"></section>
     <!-- PLANNER -->
-    <section class="view" id="view-planner"></section>
     <!-- TIMETABLE -->
     <section class="view" id="view-timetable"></section>
     <!-- CHAPTERS -->
@@ -1430,8 +1450,6 @@ function defaultData(){
       customCollegeName: '',
       customCollegePercentile: null,
     },
-    tasks:[],
-    recurringTasks:[],
     timeBlocks:[],
     chapters,
     practiceSessions:[],
@@ -1604,12 +1622,6 @@ function subjectStats(subject){
     remaining: chs.filter(c=>c.status==='Not Started'||c.status==='Studying').length,
     weak: chs.filter(c=>c.confidence==='Weak').length
   };
-}
-function todaysTasks(){
-  return DATA.tasks.filter(t=>t.date===todayStr());
-}
-function pendingTasksAll(){
-  return DATA.tasks.filter(t=>!t.completed);
 }
 function practiceForDate(dateStr){
   return DATA.practiceSessions.filter(p=>p.date===dateStr);
@@ -1850,7 +1862,7 @@ function buildDailyPlan(){
   plan.revisionDue = revisionsDueToday().length;
   const lt = latestTest();
   plan.mockGap = Math.ceil(7/tier.mocks);
-  plan.mockSince = lt ? daysBetween(lt.date, todayStr()) : null;
+  const lm = lastMockDate(); plan.mockSince = lm ? daysBetween(lm, todayStr()) : null;
   plan.targetsBelow = s.dailyStudyHours <= tier.hours - 1;
   return plan;
 }
@@ -2109,8 +2121,7 @@ ICONS.reward = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 ICONS.coin = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5a3 3 0 1 0 0 5M12 6.5v2M12 15.5v2"/></svg>`;
 const NAV_ITEMS = [
   {id:'home', label:'Home', icon:'home'},
-  {id:'planner', label:'Planner', icon:'planner'},
-  {id:'timetable', label:'Timetable', icon:'clock'},
+  {id:'timetable', label:'Timetable', icon:'planner'},
   {id:'chapters', label:'Chapters', icon:'chapters'},
   {id:'practice', label:'Practice', icon:'practice'},
   {id:'tests', label:'Tests', icon:'tests'},
@@ -2123,7 +2134,7 @@ const NAV_ITEMS = [
   {id:'rewards', label:'Rewards', icon:'reward'},
   {id:'more', label:'More', icon:'more'},
 ];
-const BOTTOM_NAV_IDS = ['home','planner','chapters','tests','more'];
+const BOTTOM_NAV_IDS = ['home','timetable','chapters','tests','more'];
 const BOTTOM_LABELS = {};
 ICONS.user = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-5.5 8-5.5s6.5 1.5 8 5.5"/></svg>`;
 
@@ -2139,7 +2150,6 @@ function checkDateRollover(){
   const t = todayStr();
   if(t !== APP_TODAY){
     APP_TODAY = t;
-    ensureRecurringTasksForToday();
     renderAll();
   }
 }
@@ -2238,6 +2248,7 @@ function buildBottomNav(){
   $all('.bn-item', bn).forEach(btn=>btn.addEventListener('click', ()=>switchView(btn.dataset.view)));
 }
 function switchView(viewId, fromBack){
+  if(viewId==='planner') viewId='timetable';   // Planner now lives inside Timetable
   if(!fromBack && viewId!==CURRENT_VIEW){
     if(viewId==='home') VIEW_STACK.length = 0;
     else {
@@ -2306,26 +2317,14 @@ function openStreakDetails(kind){
     <div class="modal-actions" style="margin-top:18px;"><button class="btn secondary" onclick="closeModal()">Close</button></div>
   `);
 }
-/* Past tasks: completed ones are removed, unfinished ones roll over to today
-   (keeping originalDate so the row can say how many days overdue it is). */
-function rolloverTasks(){
-  const t=todayStr(); let changed=false;
-  DATA.tasks = DATA.tasks.filter(x=>{
-    if(!x.date || x.date>=t) return true;
-    if(x.completed || x.recurringId){ changed=true; return false; }
-    x.originalDate = x.originalDate || x.date; x.date = t; changed=true;
-    return true;
-  });
-  if(changed) saveData();
-}
 function renderView(viewId){
-  rolloverTasks();
+  const carried=carryOverBlocks();
+  if(carried) setTimeout(()=>toast(carried+' unfinished slot'+(carried===1?'':'s')+' carried to the next day'),0);
   updateAvatarBtn();
   updateNotifDot();
   updateCoinChip(viewId);
   if(viewId==='notifications') renderNotifications();
   else if(viewId==='home') renderHome();
-  else if(viewId==='planner') renderPlanner();
   else if(viewId==='timetable') renderTimetable();
   else if(viewId==='chapters') renderChapters();
   else if(viewId==='practice') renderPractice();
@@ -2418,7 +2417,6 @@ async function startSession(user){
 
   hideAuthScreen();
   applyTheme();
-  ensureRecurringTasksForToday();
   buildSidebar();
   buildBottomNav();
   updateTopDate();
@@ -2512,13 +2510,6 @@ function buildNotifications(){
     const isNow = hmToMin(nb.start) <= now;
     add('tt-'+nb.id, isNow?2:3, BLU, `${isNow?'Now':'Up next'}: ${blockTitle(nb)}`, `${fmtTime12(nb.start)} - ${fmtTime12(nb.end)}`, {view:'timetable', today:true});
   }
-
-  // 5. tasks
-  const pend = todaysTasks().filter(x=>!x.completed);
-  const late = pend.filter(x=>x.originalDate && x.originalDate < x.date);
-  if(late.length>0) add('task-late', 2, RED, `${late.length} task${late.length===1?'':'s'} carried over from earlier days`, 'Still pending in your planner', {view:'planner'});
-  const fresh = pend.length - late.length;
-  if(fresh>0) add('task-today', 3, BLU, `${fresh} task${fresh===1?'':'s'} pending today`, 'Open the planner to tick them off', {view:'planner'});
 
   // 6-7. study hours and questions target (evening)
   if(hr >= NOTIF_STUDY_HOUR){
@@ -2687,7 +2678,7 @@ function renderRewards(){
   const earnRows = [
     ['Study time','1 per minute',b.study], ['Questions','1 each, 2 if correct',b.questions],
     ['Chapters completed','50 each',b.chapters], ['Revisions done','20 each',b.revisions],
-    ['Tasks done','10 each',b.tasks], ['Mock tests','100 each',b.tests],
+    ['Mock tests','100 each',b.tests],
     ['Daily target hit','30 per day',b.bonus]
   ];
   view('rewards').innerHTML = `
@@ -3244,15 +3235,12 @@ function drawShareCard(){
 
   const hrs = studyHoursOn(todayStr());
   const q = questionsSolvedOn(todayStr());
-  const tTasks = todaysTasks();
-  const doneTasks = tTasks.filter(t=>t.completed).length;
   const streak = DATA.streaks.study.current;
   const testsToday = DATA.tests.filter(t=>t.date===todayStr());
 
   const stats = [
     {label:'Hours studied', value: hoursToHM(hrs)},
     {label:'Questions solved', value: String(q)},
-    {label:'Tasks completed', value: `${doneTasks}/${tTasks.length}`},
     {label:'Current streak', value: `${streak} day${streak===1?'':'s'}`},
   ];
   if(testsToday.length){
@@ -3363,9 +3351,6 @@ function renderHome(){
   const todayQ = questionsSolvedOn(todayStr());
   const todayHrs = studyHoursOn(todayStr());
   const studyBehindAlert = new Date().getHours()>=20 && (s.dailyStudyHours-todayHrs)>0.5;
-  const tTasks = todaysTasks();
-  const doneTasks = tTasks.filter(t=>t.completed).length;
-  const pendingCount = pendingTasksAll().length;
   const revDue = revisionsDueToday().length;
   const revDueTodayAll = DATA.revisions.filter(r=>r.dueDate===todayStr());
   const revDoneToday = revDueTodayAll.filter(r=>r.completed).length;
@@ -3381,7 +3366,7 @@ function renderHome(){
   const subj=(n,v,c)=>`<div class="pf-box"><div class="l">${n}</div><div class="n">${v}<small>%</small></div><div class="pbar" style="margin-top:8px"><div style="width:${v}%;background:${c}"></div></div></div>`;
   const st=DATA.streaks.study, qp=pct(todayQ,s.dailyQuestionTarget);
   const mDays=Math.max(daysUntil(s.jeeMainDate),0), aDays=Math.max(daysUntil(s.jeeAdvancedDate),0);
-  const extra=[tTasks.length>0?`Tasks ${doneTasks}/${tTasks.length}`:'', revDueTodayAll.length>0?`Revision ${revDoneToday}/${revDueTodayAll.length}`:''].filter(Boolean).join('  ·  ');
+  const extra=[revDueTodayAll.length>0?`Revision ${revDoneToday}/${revDueTodayAll.length}`:''].filter(Boolean).join('  ·  ');
   const IC='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
   const ring=(label,val,sub,p,col)=>`<div class="hp-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-opacity=".2" stroke-width="10"/><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="${314.16*(1-Math.min(100,p)/100)}" transform="rotate(-90 60 60)"/></svg><div class="hp-ring-t"><span class="hp-k">${label}</span><b>${val}</b><span>${sub}</span><em style="color:${col}">${Math.min(100,p)}%</em></div></div>`;
   const html = `
@@ -3433,7 +3418,6 @@ function upNextHtml(){
   const hrs = Math.round((hmToMin(nb.end)-hmToMin(nb.start))/60*10)/10;
   const CK='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
   return `<div class="hx-card" id="upNextCard" style="cursor:pointer">
-    <div class="hx-un-k">${isNow?'Now':'Up next'}</div>
     <div class="hx-un-h">${isNow?'Current session':'Upcoming session'}</div>
     <div class="hx-un-t">${esc(blockTitle(nb))}</div>
     <div class="hx-un-m"><span>${CK}${fmtTime12(nb.start)} - ${fmtTime12(nb.end)}</span><span>${CK}${hrs} Hrs</span></div>
@@ -3443,46 +3427,22 @@ function view(id){ return $('#view-'+id); }
 
 function handleQuickAction(type){
   if(type==='session') switchView('timer');
-  else if(type==='task') openTaskModal();
+  else if(type==='block') openBlockModal();
   else if(type==='practice') openPracticeModal();
   else if(type==='test') openTestModal();
-  else if(type==='revision') openQuickRevisionModal();
 }
 function openQuickAddMenu(){
   const map = {
-    home:'task', planner:'task', chapters:'chapter', practice:'practice',
-    tests:'test', revision:'revision-manual', analytics:'task', settings:'task', timer:'task', timetable:'block', rewards:'reward'
+    home:'block', planner:'block', chapters:'chapter', practice:'practice',
+    tests:'test', revision:'revision-add', analytics:'block', settings:'block', timer:'block', timetable:'block', rewards:'reward'
   };
-  const action = map[CURRENT_VIEW] || 'task';
-  if(action==='task') openTaskModal();
-  else if(action==='chapter') openChapterModal();
+  const action = map[CURRENT_VIEW] || 'block';
+  if(action==='chapter') openChapterModal();
   else if(action==='block') openBlockModal();
   else if(action==='reward') openRewardModal();
   else if(action==='practice') openPracticeModal();
   else if(action==='test') openTestModal();
-  else if(action==='revision-manual') openQuickRevisionModal();
-}
-function openQuickRevisionModal(){
-  const pending = DATA.revisions.filter(r=>!r.completed);
-  if(pending.length===0){ toast('No pending revisions. Chapters get scheduled after you mark them Completed.'); return; }
-  const options = pending.map(r=>{
-    const ch = DATA.chapters.find(c=>c.id===r.chapterId);
-    return `<option value="${r.id}">${esc(ch?ch.name:'Chapter')} — Rev ${r.round} (${revisionStatusOf(r)})</option>`;
-  }).join('');
-  openModal(`
-    <div class="modal-head"><h3>Mark revision complete</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    <div class="field"><label>Select revision</label><select id="qrevSel">${options}</select></div>
-    <div class="modal-actions">
-      <button class="btn secondary" onclick="closeModal()">Cancel</button>
-      <button class="btn" onclick="completeQuickRevision()">Mark Done</button>
-    </div>
-  `);
-}
-function completeQuickRevision(){
-  const id = $('#qrevSel').value;
-  completeRevision(id);
-  closeModal();
-  renderAll();
+  else if(action==='revision-add') openCustomRevisionModal();
 }
 /* ============================================================
    PLANNER
@@ -3495,55 +3455,67 @@ function plannerDayLabel(d){
   const w=new Date(d+'T00:00:00').toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
   return d===t?'Today, '+w : d===addDays(t,1)?'Tomorrow, '+w : w;
 }
-let PLANNER_DATE = null;
-function renderPlanner(){
-  const t=todayStr();
-  PLANNER_TAB='day';
-  if(!PLANNER_DATE || PLANNER_DATE<t) PLANNER_DATE=t;
-  let list;
-  if(PLANNER_TAB==='day') list = DATA.tasks.filter(x=>x.date===PLANNER_DATE);
-  else if(PLANNER_TAB==='completed') list = DATA.tasks.filter(x=>x.completed);
-  else list = DATA.tasks.slice();
-  list = list.slice().sort((a,b)=> (a.date+(a.startTime||'')).localeCompare(b.date+(b.startTime||'')));
-  const done=list.filter(x=>x.completed).length, pending=list.length-done;
-  const mins=list.filter(x=>!x.completed).reduce((a,x)=>a+(Number(x.duration)||0),0);
-  const progress=list.length?Math.round(done/list.length*100):0;
+var TT_CAL_OPEN=false, TT_MONTH=null;
+function ttCalendarHtml(){
+  const t=todayStr(), date=ttDate();
+  if(!TT_MONTH){ const d=new Date(date+'T00:00:00'); TT_MONTH={y:d.getFullYear(),m:d.getMonth()}; }
+  const y=TT_MONTH.y, m=TT_MONTH.m, first=new Date(y,m,1), days=new Date(y,m+1,0).getDate(), offset=(first.getDay()+6)%7;
+  const dayInfo=iso=>{
+    const o={miss:0,pend:0,done:0};
+    blocksForDate(iso).forEach(b=>{ if(blockIsDone(b,iso)) o.done++; else if(iso<t) o.miss++; else o.pend++; });
+    return (o.miss+o.pend+o.done)?o:null;
+  };
+  let cells='';
+  for(let k=0;k<offset;k++) cells+='<span class="rv-c empty"></span>';
+  if(TT_CAL_OPEN) for(let d=1; d<=days; d++){
+    const iso=isoDate(y,m,d), o=dayInfo(iso);
+    const dot=!o?'transparent':o.miss?'#E5484D':o.pend?'#F29A38':'#3DBE7E';
+    cells+=`<button class="rv-c ${iso===date?'on':''} ${iso===t?'today':''}" data-tdate="${iso}"><b>${d}</b><i style="background:${iso===date&&o?'#fff':dot}"></i></button>`;
+  }
+  const label=first.toLocaleDateString('en-IN',{month:'long',year:'numeric'}), o=dayInfo(date);
+  const chip=o?(o.miss?`<em style="background:#E5484D">${o.miss} missed</em>`:'')+(o.pend?`<em style="background:#F29A38">${o.pend} pending</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
+  const CAL='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>';
+  return `<div class="hx-card rv-cal" style="margin-bottom:12px;">
+    <button class="rv-toggle" id="ttCalToggle" aria-expanded="${TT_CAL_OPEN}">${CAL}<span class="rv-sel">${plannerDayLabel(date)}</span>${chip}<span class="rv-chev ${TT_CAL_OPEN?'open':''}">&#9662;</span></button>
+    ${TT_CAL_OPEN?`
+    <div class="rv-body">
+      <div class="hd-head"><button class="rv-nav" data-tmonth="-1" aria-label="Previous month">&#8249;</button><div class="hx-h" style="margin:0">${label}</div><button class="rv-nav" data-tmonth="1" aria-label="Next month">&#8250;</button></div>
+      <div class="rv-grid rv-head"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+      <div class="rv-grid">${cells}</div>
+      <div class="rv-legend"><span><i style="background:#E5484D"></i>Missed</span><span><i style="background:#F29A38"></i>Pending</span><span><i style="background:#3DBE7E"></i>Done</span></div>
+    </div>`:''}
+  </div>`;
+}
+function plannerHtml(){
+  const t=todayStr(), date=ttDate();
+  const ents=ttEntries(date);
+  const done=ents.filter(e=>e.done).length, pending=ents.length-done;
+  const mins=ents.filter(e=>!e.done).reduce((a,e)=>a+hmToMin(e.end)-hmToMin(e.start),0);
+  const progress=ents.length?Math.round(done/ents.length*100):0;
   const strip=[0,1,2,3,4,5,6].map(n=>{
-    const d=addDays(t,n), cnt=DATA.tasks.filter(x=>x.date===d && !x.completed).length;
-    const dt=new Date(d+'T00:00:00');
-    const sel=PLANNER_TAB==='day' && PLANNER_DATE===d;
+    const d=addDays(t,n), cnt=blocksForDate(d).filter(b=>!blockIsDone(b,d)).length;
+    const dt=new Date(d+'T00:00:00'), sel=date===d;
     return `<button class="pl-day ${sel?'on':''}" data-date="${d}"><span>${n===0?'Today':dt.toLocaleDateString('en-IN',{weekday:'short'})}</span><b>${dt.getDate()}</b><i style="background:${cnt?(sel?'#fff':'#F29A38'):'transparent'}"></i></button>`;
   }).join('');
-  let body='';
-  if(!list.length){
-    body=`<div class="hx-card" style="text-align:center;color:var(--ink-soft)">${PLANNER_TAB==='completed'?'No completed tasks yet.':'No tasks here. Tap "Add task" to plan your day.'}</div>`;
-  } else if(PLANNER_TAB==='day'){
-    body=list.map(taskRowHtml).join('');
-  } else {
-    const dates=[...new Set(list.map(x=>x.date))];
-    body=dates.map(d=>`<div class="dl-grp"><span class="dl-dot" style="background:${d<t?'#E5484D':d===t?'#3B82D6':'#3DBE7E'}"></span><span>${plannerDayLabel(d)}</span><em>${list.filter(x=>x.date===d).length}</em></div>${list.filter(x=>x.date===d).map(taskRowHtml).join('')}`).join('');
-  }
-  view('planner').innerHTML = `
+  return ttCalendarHtml() + `
     <div class="pl-strip">${strip}</div>
     <div class="hx-card">
-      <div class="hx-h" style="margin-bottom:8px">${plannerDayLabel(PLANNER_DATE)}</div>
       <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:#3DBE7E"><b>${done}</b><span>Done</span></div>
         <div class="dl-tile" style="background:#F29A38"><b>${pending}</b><span>Pending</span></div>
         <div class="dl-tile" style="background:#3B82D6"><b>${mins>=60?Math.floor(mins/60)+'h'+(mins%60?(mins%60)+'m':''):mins+'m'}</b><span>Planned</span></div>
       </div>
-    </div>
-    <button class="btn block" style="margin:2px 0 14px;" onclick="openTaskModal(null,'${PLANNER_DATE}')">+ Add task</button>
-    <div id="taskList">${body}</div>`;
-  $all('.pl-day', view('planner')).forEach(b=>b.addEventListener('click', ()=>{ PLANNER_TAB='day'; PLANNER_DATE=b.dataset.date; renderPlanner(); }));
-  $all('[data-taskaction]', view('planner')).forEach(b=>b.addEventListener('click', ()=>{
-    const id = b.closest('[data-id]').dataset.id;
-    const act = b.dataset.taskaction;
-    if(act==='toggle') toggleTask(id);
-    else if(act==='edit') openTaskModal(id);
-    else if(act==='delete') confirmDelete('task', id, 'Delete this task?');
+    </div>`;
+}
+function bindPlanner(v){
+  const tg=$('#ttCalToggle'); if(tg) tg.addEventListener('click', ()=>{ TT_CAL_OPEN=!TT_CAL_OPEN; if(TT_CAL_OPEN){ const d=new Date(ttDate()+'T00:00:00'); TT_MONTH={y:d.getFullYear(),m:d.getMonth()}; } renderTimetable(); });
+  $all('[data-tdate]', v).forEach(b=>b.addEventListener('click', ()=>{ TT_DATE=b.dataset.tdate; TT_CAL_OPEN=false; renderTimetable(); }));
+  $all('[data-tmonth]', v).forEach(b=>b.addEventListener('click', ()=>{
+    let {y,m}=TT_MONTH; m+=Number(b.dataset.tmonth); if(m<0){m=11;y--;} if(m>11){m=0;y++;}
+    TT_MONTH={y,m}; renderTimetable();
   }));
+  $all('.pl-day', v).forEach(b=>b.addEventListener('click', ()=>{ TT_DATE=b.dataset.date; renderTimetable(); }));
 }
 function emptyState(emoji,title,sub){
   return `<div class="empty"><div class="ee">${emoji}</div><h4>${title}</h4><p>${sub}</p></div>`;
@@ -3599,8 +3571,8 @@ function bindCalendarHeatmapEvents(){
 }
 function openDayAnalyticsModal(dateStr){
   const hrs = studyHoursOn(dateStr);
-  const dayTasks = DATA.tasks.filter(t=>t.date===dateStr);
-  const doneTasks = dayTasks.filter(t=>t.completed).length;
+  const dayTasks = blocksForDate(dateStr);
+  const doneTasks = dayTasks.filter(b=>blockIsDone(b,dateStr)).length;
   const q = questionsSolvedOn(dateStr);
   const testsOnDay = DATA.tests.filter(t=>t.date===dateStr);
   const subjMins = {Physics:0, Chemistry:0, Mathematics:0};
@@ -3610,7 +3582,7 @@ function openDayAnalyticsModal(dateStr){
     <div class="grid grid-2" style="margin-bottom:14px;">
       <div class="stat"><div class="val">${hoursToHM(hrs)}</div><div class="lbl">Studied</div></div>
       <div class="stat"><div class="val">${q}</div><div class="lbl">Questions solved</div></div>
-      <div class="stat"><div class="val">${doneTasks}/${dayTasks.length}</div><div class="lbl">Tasks done</div></div>
+      <div class="stat"><div class="val">${doneTasks}/${dayTasks.length}</div><div class="lbl">Slots done</div></div>
       <div class="stat"><div class="val">${testsOnDay.length}</div><div class="lbl">Mock tests</div></div>
     </div>
     ${hrs>0 ? `
@@ -3619,140 +3591,6 @@ function openDayAnalyticsModal(dateStr){
     ` : `<p class="muted">No study session logged on this day.</p>`}
     <div class="modal-actions" style="margin-top:18px;"><button class="btn secondary" onclick="closeModal()">Close</button></div>
   `);
-}
-function taskRowHtml(t){
-  return `
-  <div class="row-item tk-row" data-id="${t.id}" style="border-left:4px solid ${t.priority==='High'?'#E5484D':t.priority==='Low'?'#3DBE7E':'#F29A38'};margin-bottom:10px;">
-    <button class="icon-btn" data-taskaction="toggle" style="${t.completed?'background:var(--green-tint); color:var(--green); border-color:var(--green-tint);':''}">${ICONS.check}</button>
-    <div class="ri-main">
-      <div class="ri-title" style="${t.completed?'text-decoration:line-through; color:var(--ink-soft);':''}">${t.recurringId?'↻ ':''}${esc(t.title)} <span class="badge ${t.priority.toLowerCase()}">${t.priority}</span></div>
-      <div class="ri-sub">${(t.originalDate && t.originalDate<t.date && t.date<=todayStr() && !t.completed) ? `<span style="color:var(--red);font-weight:600">${Math.round((new Date(t.date)-new Date(t.originalDate))/864e5)} day${Math.round((new Date(t.date)-new Date(t.originalDate))/864e5)===1?'':'s'} overdue (was ${fmtDateShort(t.originalDate)})</span> · `:''}${esc(t.subject||'General')}${t.chapter?' · '+esc(t.chapter):''} · ${fmtDateShort(t.date)}${t.startTime?', '+t.startTime:''}${t.duration?' · '+t.duration+'m':''}</div>
-    </div>
-    <div class="ri-actions">
-      <button class="icon-btn" data-taskaction="edit">${ICONS.edit}</button>
-      <button class="icon-btn" data-taskaction="delete">${ICONS.trash}</button>
-    </div>
-  </div>`;
-}
-function ensureRecurringTasksForToday(){
-  if(!DATA.recurringTasks || !DATA.recurringTasks.length) return;
-  const t = todayStr();
-  let changed = false;
-  DATA.recurringTasks.forEach(rt=>{
-    if(!rt.active) return;
-    const exists = DATA.tasks.some(x=>x.recurringId===rt.id && x.date===t);
-    if(!exists){
-      DATA.tasks.push({id:uid(), title:rt.title, subject:rt.subject, chapter:rt.chapter, date:t, startTime:rt.startTime, duration:rt.duration, priority:rt.priority, completed:false, recurringId:rt.id});
-      changed = true;
-    }
-  });
-  if(changed) saveData();
-}
-function toggleTask(id){
-  updateData(d=>{
-    const t = d.tasks.find(x=>x.id===id);
-    if(t){
-      t.completed = !t.completed;
-      const r = ensureRewards(d);   // 10 coins per task, kept as a counter because finished tasks are cleared the next day
-      r.taskCount = Math.max(0, r.taskCount + (t.completed ? 1 : -1));
-    }
-  });
-  renderAll();
-  toast('Task updated');
-}
-function openTaskModal(id, prefillDate){
-  const editing = id ? DATA.tasks.find(t=>t.id===id) : null;
-  const chapterOptions = subj => DATA.chapters.filter(c=>c.subject===subj).map(c=>`<option ${editing&&editing.chapter===c.name?'selected':''}>${esc(c.name)}</option>`).join('');
-  openModal(`
-    <div class="modal-head"><h3>${editing?'Edit Task':'Add Study Task'}</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    <div class="field"><label>Task title</label><input id="tf-title" value="${editing?esc(editing.title):''}" placeholder="e.g. Solve Rotational Motion PYQs"></div>
-    <div class="field-row">
-      <div class="field"><label>Subject</label>
-        <select id="tf-subject" onchange="refreshTaskChapterOptions()">
-          <option value="">General</option>
-          <option ${editing&&editing.subject==='Physics'?'selected':''}>Physics</option>
-          <option ${editing&&editing.subject==='Chemistry'?'selected':''}>Chemistry</option>
-          <option ${editing&&editing.subject==='Mathematics'?'selected':''}>Mathematics</option>
-        </select>
-      </div>
-      <div class="field"><label>Chapter / Topic</label>
-        <select id="tf-chapter"><option value="">—</option>${editing?chapterOptions(editing.subject):''}</select>
-      </div>
-    </div>
-    <div class="field-row">
-      <div class="field"><label>Date</label><input type="date" id="tf-date" value="${editing?editing.date:(prefillDate||todayStr())}"></div>
-      <div class="field"><label>Start time</label><input type="time" id="tf-time" value="${editing?editing.startTime||'':''}"></div>
-    </div>
-    <div class="field-row">
-      <div class="field"><label>Duration (minutes)</label><input type="number" id="tf-duration" min="0" value="${editing?editing.duration||60:60}"></div>
-      <div class="field"><label>Priority</label>
-        <select id="tf-priority">
-          <option ${editing&&editing.priority==='High'?'selected':''}>High</option>
-          <option ${(!editing)||editing.priority==='Medium'?'selected':''}>Medium</option>
-          <option ${editing&&editing.priority==='Low'?'selected':''}>Low</option>
-        </select>
-      </div>
-    </div>
-    ${!editing ? `
-    <label class="checkline" style="margin-bottom:14px;">
-      <input type="checkbox" id="tf-repeat"> Repeat this task every day
-    </label>` : editing.recurringId ? `
-    <p class="muted" style="margin-bottom:14px; font-size:14px;">↻ This task repeats daily. <a href="#" id="tf-stop-repeat" style="color:var(--red);">Stop repeating</a></p>
-    ` : ''}
-    <div class="modal-actions">
-      <button class="btn secondary" onclick="closeModal()">Cancel</button>
-      <button class="btn" onclick="saveTask('${editing?editing.id:''}')">${editing?'Save Changes':'Add Task'}</button>
-    </div>
-  `);
-  if(editing) refreshTaskChapterOptions();
-  const stopBtn = document.getElementById('tf-stop-repeat');
-  if(stopBtn) stopBtn.addEventListener('click', (e)=>{
-    e.preventDefault();
-    updateData(d=>{
-      const rt = d.recurringTasks.find(r=>r.id===editing.recurringId);
-      if(rt) rt.active = false;
-    });
-    toast('This task will no longer repeat');
-    closeModal();
-  });
-}
-function refreshTaskChapterOptions(){
-  const subj = $('#tf-subject').value;
-  const sel = $('#tf-chapter');
-  const current = sel.value;
-  const opts = DATA.chapters.filter(c=>c.subject===subj).map(c=>`<option>${esc(c.name)}</option>`).join('');
-  sel.innerHTML = `<option value="">—</option>${opts}`;
-  if([...sel.options].some(o=>o.value===current)) sel.value = current;
-}
-function saveTask(id){
-  const title = $('#tf-title').value.trim();
-  if(!title){ toast('Please enter a task title'); return; }
-  const payload = {
-    title,
-    subject: $('#tf-subject').value,
-    chapter: $('#tf-chapter').value,
-    date: $('#tf-date').value || todayStr(),
-    startTime: $('#tf-time').value,
-    duration: Number($('#tf-duration').value)||0,
-    priority: $('#tf-priority').value,
-  };
-  updateData(d=>{
-    if(id){
-      Object.assign(d.tasks.find(t=>t.id===id), payload);
-    } else {
-      const newTask = Object.assign({id:uid(), completed:false}, payload);
-      const repeatEl = document.getElementById('tf-repeat');
-      if(repeatEl && repeatEl.checked){
-        const rt = {id:uid(), title:payload.title, subject:payload.subject, chapter:payload.chapter, startTime:payload.startTime, duration:payload.duration, priority:payload.priority, active:true};
-        d.recurringTasks.push(rt);
-        newTask.recurringId = rt.id;
-      }
-      d.tasks.push(newTask);
-    }
-  });
-  closeModal();
-  renderAll();
-  toast(id?'Task updated':'Task added');
 }
 function confirmDelete(kind, id, msg){
   openModal(`
@@ -3766,6 +3604,7 @@ function confirmDelete(kind, id, msg){
 }
 const KIND_TO_COLLECTION = {timeBlock:'timeBlocks', task:'tasks', chapter:'chapters', practice:'practiceSessions', test:'tests', revision:'revisions', studySession:'studySessions'};
 function performDelete(kind, id){
+  if(kind==='revision') DATA.timeBlocks=(DATA.timeBlocks||[]).filter(b=>!(b.link&&b.link.type==='revision'&&b.link.id===id));
   const collection = KIND_TO_COLLECTION[kind];
   const result = collection ? deleteData(collection, id) : null;
   closeModal();
@@ -4487,22 +4326,41 @@ function saveTest(id){
    ============================================================ */
 let REVISION_TAB = 'due';
 
-function completeRevision(revId){
-  updateData(d=>{
-    const r = d.revisions.find(x=>x.id===revId);
-    if(!r) return;
-    r.completed = true;
-    r.completedDate = todayStr();
-    const chapter = d.chapters.find(c=>c.id===r.chapterId);
-    if(chapter){
-      const totalRounds = d.revisions.filter(x=>x.chapterId===r.chapterId).length;
-      chapter.revisionStatus = (r.round>=totalRounds) ? 'Completed' : 'In Progress';
-      chapter.status = 'Revised';
-      if(!chapter.completedOn) chapter.completedOn = todayStr();
-    }
-  });
+function completeRevision(revId){ updateData(d=>applyRevisionComplete(d,revId)); }
+function applyRevisionComplete(d,revId,date){
+  const r = d.revisions.find(x=>x.id===revId);
+  if(!r) return;
+  r.completed = true;
+  r.completedDate = date||todayStr();
+  const chapter = d.chapters.find(c=>c.id===r.chapterId);
+  if(chapter){
+    const totalRounds = d.revisions.filter(x=>x.chapterId===r.chapterId).length;
+    chapter.revisionStatus = (r.round>=totalRounds) ? 'Completed' : 'In Progress';
+    chapter.status = 'Revised';
+    if(!chapter.completedOn) chapter.completedOn = todayStr();
+  }
 }
-
+function sessionRevisionDone(d,x){
+  if(x.type!=='Revision'||!x.chapter) return false;
+  const ch=d.chapters.find(c=>c.subject===x.subject&&c.name===x.chapter); if(!ch) return false;
+  const r=d.revisions.filter(v=>v.chapterId===ch.id&&!v.completed&&v.dueDate<=x.date).sort((a,b)=>a.dueDate.localeCompare(b.dueDate))[0];
+  if(!r) return false; applyRevisionComplete(d,r.id,x.date); return true;
+}
+function uncompleteRevision(d,revId){ const r=d.revisions.find(x=>x.id===revId); if(r){ r.completed=false; r.completedDate=null; } }
+function applyChapterField(d,id,field,val){
+  const ch=d.chapters.find(c=>c.id===id); if(!ch) return;
+  ch[field]=val;
+  const all=!!(ch.notesDone&&ch.questionsDone&&ch.pyqsDone), any=!!(ch.notesDone||ch.questionsDone||ch.pyqsDone);
+  if(ch.status!=='Revised'){
+    if(all){ ch.status='Completed'; if(!ch.completedOn) ch.completedOn=todayStr(); scheduleRevisionsForChapter(id); }
+    else if(any && ch.status==='Not Started') ch.status='Studying';
+    else if(!all && ch.status==='Completed'){ ch.status='Studying'; ch.completedOn=null; }
+  }
+}
+function revSchedTag(id){
+  const b=linkedBlockFor('revision',id);
+  return b ? ` · <b>Slot ${esc(fmtDateShort(b.date))}, ${fmtTime12(b.start)}</b>` : '';
+}
 let REVISION_DATE = null, REVISION_MODE = 'daily', REVISION_MONTH = null, REVISION_CAL_OPEN = false;
 function isoDate(y,m,d){ return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'); }
 function revisionCalendarHtml(){
@@ -4622,7 +4480,7 @@ function revisionRowHtml(r){
   <div class="row-item tk-row" data-id="${r.id}" style="border-left:4px solid ${{'Due Today':'#F29A38','Overdue':'#E5484D','Upcoming':'#3B82D6','Completed':'#3DBE7E'}[status]};margin-bottom:10px;">
     <div class="ri-main">
       <div class="ri-title">${esc(chapter?chapter.name:'Chapter')} <span class="badge ${statusClass}">${status}</span></div>
-      <div class="ri-sub">${esc(chapter?chapter.subject:'')} · Revision round ${r.round} · ${r.completed? 'Done '+fmtDateShort(r.completedDate) : 'Due '+fmtDateShort(r.dueDate)}</div>
+      <div class="ri-sub">${esc(chapter?chapter.subject:'')} · Revision round ${r.round} · ${r.completed? 'Done '+fmtDateShort(r.completedDate) : 'Due '+fmtDateShort(r.dueDate)}${r.completed?'':revSchedTag(r.id)}</div>
     </div>
     <div class="ri-actions">
       ${!r.completed ? `<button class="icon-btn" data-revaction="complete">${ICONS.check}</button><button class="icon-btn" data-revaction="edit">${ICONS.edit}</button>` : ''}
@@ -4648,6 +4506,7 @@ function saveRevisionDate(id){
   updateData(d=>{
     const r = d.revisions.find(x=>x.id===id);
     if(r) r.dueDate = newDate;
+    (d.timeBlocks||[]).forEach(b=>{ if(b.link&&b.link.type==='revision'&&b.link.id===id&&b.repeat==='once') b.date=newDate; });
   });
   closeModal();
   renderAll();
@@ -4894,7 +4753,6 @@ function renderSettings(){
         <div class="field"><label>Daily question target</label><input type="number" id="st-qTarget" value="${s.dailyQuestionTarget}"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Daily task target</label><input type="number" id="st-taskTarget" value="${s.dailyTaskTarget}"></div>
         <div class="field"><label>Daily revision target</label><input type="number" id="st-revTarget" value="${s.dailyRevisionTarget}"></div>
       </div>
     </div>
@@ -4977,7 +4835,6 @@ function saveSettings(){
     d.settings.jeeAdvancedDate = $('#st-advDate').value || d.settings.jeeAdvancedDate;
     d.settings.dailyStudyHours = Number($('#st-studyHrs').value)||1;
     d.settings.dailyQuestionTarget = Number($('#st-qTarget').value)||1;
-    d.settings.dailyTaskTarget = Number($('#st-taskTarget').value)||1;
     d.settings.dailyRevisionTarget = Number($('#st-revTarget').value)||1;
     d.settings.pomodoroMinutes = Number($('#st-pomo').value)||25;
     d.settings.pomodoroBreak = Number($('#st-pomoBreak').value)||5;
@@ -5034,7 +4891,35 @@ function weekdayOf(dateStr){ return new Date(dateStr+'T00:00:00').getDay(); }
 function nowMinutes(){ const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
 function blockMins(b){ return Math.max(0, hmToMin(b.end) - hmToMin(b.start)); }
 function blockTitle(b){ return b.title || b.chapter || b.kind; }
-function blockIsDone(b, dateStr){ return (b.doneDates||[]).includes(dateStr); }
+function mockOn(d){ return DATA.studySessions.some(x=>x.type==='Mock'&&x.date===d); }
+function lastMockDate(){
+  const lt=latestTest(), ms=DATA.studySessions.filter(x=>x.type==='Mock').map(x=>x.date);
+  return [lt&&lt.date,...ms].filter(Boolean).sort().pop()||null;
+}
+/* Blocks finished by what was logged that day (any time of day, several sessions add up). */
+function autoDoneIds(date){
+  const out=new Set(), pools={Study:[],Revision:[],Practice:[]};
+  DATA.studySessions.filter(x=>x.date===date).forEach(x=>{
+    const k=x.type==='Revision'?'Revision':(x.type==='Practice'||x.type==='Mock')?null:'Study';
+    if(k) pools[k].push({subject:x.subject||'',chapter:x.chapter||'',rem:Number(x.minutes)||0});
+  });
+  DATA.practiceSessions.filter(x=>x.date===date).forEach(x=>pools.Practice.push({subject:x.subject||'',chapter:x.chapter||'',rem:Number(x.timeMinutes)||0}));
+  blocksForDate(date).filter(b=>pools[b.kind]&&(!b.link||b.link.type==='pyq')).forEach(b=>{
+    let need=blockMins(b); if(need<=0) return;
+    pools[b.kind].filter(x=>(!b.subject||x.subject===b.subject)&&(!b.chapter||x.chapter===b.chapter)).forEach(x=>{ const t=Math.min(x.rem,need); x.rem-=t; need-=t; });
+    if(need<=0) out.add(b.id);
+  });
+  return out;
+}
+function blockIsDone(b, dateStr){
+  if((b.doneDates||[]).includes(dateStr)) return true;
+  if((b.noAuto||[]).includes(dateStr)) return false;
+  const L=b.link;
+  if(L&&L.type==='revision'){ const r=DATA.revisions.find(x=>x.id===L.id); return !!(r&&r.completed); }
+  if(b.kind==='Test'||(L&&L.type==='test')) return DATA.tests.some(t=>t.date===dateStr)||mockOn(dateStr);
+  if(L&&L.type==='pyq'){ const c=DATA.chapters.find(x=>x.id===L.id); if(c&&c.pyqsDone) return true; }
+  return autoDoneIds(dateStr).has(b.id);
+}
 function blocksForDate(dateStr){
   const wd = weekdayOf(dateStr);
   return (DATA.timeBlocks||[]).filter(b=>{
@@ -5066,96 +4951,249 @@ function ttDateLabel(dateStr){
 function ttShift(n){ TT_DATE = addDays(ttDate(), n); renderTimetable(); }
 function ttGoToday(){ TT_DATE = todayStr(); renderTimetable(); }
 
+var TT_SUG_ALL=false;
+function ttEntries(date){
+  const e=blocksForDate(date).map(b=>({src:'b',id:b.id,b,title:blockTitle(b),kind:b.kind,start:b.start,end:b.end,done:blockIsDone(b,date),st:blockStatus(b,date)}));
+  return e.sort((a,b)=>hmToMin(a.start)-hmToMin(b.start)||hmToMin(a.end)-hmToMin(b.end));
+}
+function mockStatus(){
+  const lm=lastMockDate(), since=lm?daysBetween(lm,todayStr()):null;
+  let gap=7; const p=DATA.settings.goal?buildDailyPlan():null; if(p&&!p.expired) gap=p.mockGap;
+  return {due: since===null||since>=gap, text: since===null?'No mock test logged yet':`Last test ${since} day${since===1?'':'s'} ago · due every ${gap} days`};
+}
+function linkedBlockFor(type,id){
+  return (DATA.timeBlocks||[]).filter(b=>b.link&&b.link.type===type&&b.link.id===id&&!blockIsDone(b,b.date))
+    .sort((a,b)=>(b.date||'').localeCompare(a.date||''))[0]||null;
+}
+function sugInfo(type,id){
+  const t=todayStr();
+  if(type==='revision'){
+    const r=DATA.revisions.find(x=>x.id===id), c=r&&DATA.chapters.find(x=>x.id===r.chapterId); if(!c) return null;
+    return {type,id,kind:'Revision',subject:c.subject,chapter:c.name,mins:45,color:'#E5484D',title:'Revise '+c.name,pri:r.dueDate<t?1:2,
+      sub:`Revision ${r.round} · `+(r.dueDate<t?'overdue since '+fmtDateShort(r.dueDate):r.dueDate===t?'due today':'due '+fmtDateShort(r.dueDate))};
+  }
+  if(type==='pyq'){
+    const c=DATA.chapters.find(x=>x.id===id); if(!c) return null;
+    return {type,id,kind:'Practice',subject:c.subject,chapter:c.name,mins:60,color:'#F29A38',title:'PYQs: '+c.name,pri:(c.important||c.weightage==='High')?3:4,
+      sub:`${c.subject} · PYQs pending`+(c.important?' · important':'')};
+  }
+  if(type==='test') return {type,id:'mock',kind:'Test',subject:'',chapter:'',mins:180,color:'#64748B',title:'Take a mock test',pri:2,sub:mockStatus().text};
+  return null;
+}
+function ttSuggestions(date){
+  const out=[]; const add=(type,id)=>{ const s=sugInfo(type,id); if(s){ s.block=linkedBlockFor(type,s.id); out.push(s); } };
+  DATA.revisions.filter(r=>!r.completed&&r.dueDate<=date).sort((a,b)=>a.dueDate.localeCompare(b.dueDate)).forEach(r=>add('revision',r.id));
+  if(mockStatus().due || linkedBlockFor('test','mock')) add('test','mock');
+  const w={High:0,Medium:1,Low:2};
+  DATA.chapters.filter(c=>(c.status==='Completed'||c.status==='Revised')&&!c.pyqsDone)
+    .sort((a,b)=>(b.important?1:0)-(a.important?1:0)||w[a.weightage||'Medium']-w[b.weightage||'Medium']).forEach(c=>add('pyq',c.id));
+  return out.sort((a,b)=>a.pri-b.pri);
+}
+function suggestionsHtml(date){
+  const all=ttSuggestions(date), t=todayStr();
+  if(!all.length) return `<div class="tt-sec">Suggestions</div><div class="hx-card" style="text-align:center;color:var(--ink-soft)">All caught up. No pending revisions, PYQs or tests.</div>`;
+  const list=TT_SUG_ALL?all:all.slice(0,5);
+  return `<div class="tt-sec">Suggested for your timetable · ${all.length}</div>`+list.map(s=>{
+    const b=s.block; let state='', act;
+    if(b){
+      const miss=b.date<t||(b.date===t&&hmToMin(b.end)<=nowMinutes());
+      state=`<div class="tt-tags"><span class="badge ${miss?'overdue':'upcoming'}">${miss?'Missed · ':'Scheduled · '}${esc(fmtDateShort(b.date))}, ${fmtTime12(b.start)} – ${fmtTime12(b.end)}</span></div>`;
+      act=`<button type="button" class="btn secondary sm" data-sg="resched">Reschedule</button><button type="button" class="btn secondary sm" style="color:var(--red)" data-sg="remove">Remove</button>`;
+    } else act=`<button type="button" class="btn sm" data-sg="add">+ Add to timetable</button>`;
+    return `<div class="sg-card" style="--kc:${s.color}" data-type="${s.type}" data-id="${esc(s.id)}" data-bid="${b?b.id:''}"><div class="sg-t">${esc(s.title)}</div><div class="sg-s">${esc(s.sub)}</div>${state}<div class="sg-act">${act}</div></div>`;
+  }).join('')+(all.length>5?`<button type="button" class="btn ghost sm block" data-sg="more">${TT_SUG_ALL?'Show less':'Show all '+all.length}</button>`:'');
+}
 function renderTimetable(){
   const v = view('timetable');
   if(!v) return;
   const date = ttDate(), isToday = date===todayStr();
-  const blocks = blocksForDate(date);
-  const lab = ttDateLabel(date);
+  const ents = ttEntries(date), blocks = blocksForDate(date), lab = ttDateLabel(date);
   const countKinds = ['Study','Practice','Revision','Test'];
   const planned = blocks.filter(b=>countKinds.includes(b.kind)).reduce((a,b)=>a+blockMins(b),0);
   const doneMins = blocks.filter(b=>countKinds.includes(b.kind) && blockIsDone(b,date)).reduce((a,b)=>a+blockMins(b),0);
-  const doneCount = blocks.filter(b=>blockIsDone(b,date)).length;
+  const doneCount = ents.filter(e=>e.done).length;
   const target = DATA.settings.dailyStudyHours || 0;
-
-  let rows = '';
-  let maxEnd = null;
-  blocks.forEach(b=>{
-    const st = blockStatus(b, date);
-    const s0 = hmToMin(b.start), e0 = hmToMin(b.end);
-    let overlap = false;
+  let rows = '', maxEnd = null;
+  ents.forEach(e=>{
+    const s0=hmToMin(e.start), e0=hmToMin(e.end); let overlap=false;
     if(maxEnd!==null){
       const gap = s0 - maxEnd;
       if(gap >= 30) rows += `<div class="tt-gap">Free · ${hoursToHM(gap/60)}</div>`;
       else if(gap < 0) overlap = true;
     }
     maxEnd = maxEnd===null ? e0 : Math.max(maxEnd, e0);
-    const done = st==='done';
-    const canStart = isToday && !done && (b.kind==='Study' || b.kind==='Practice' || b.kind==='Revision');
-    const subBits = [b.kind];
-    if(b.subject) subBits.push(b.subject);
-    if(b.title && b.chapter) subBits.push(b.chapter);
-    subBits.push(hoursToHM(blockMins(b)/60));
+    const b=e.b, linked=!!(b&&b.link&&!e.done);
+    const canStart = isToday && b && !e.done && ['Study','Practice','Revision'].includes(b.kind);
+    const subBits=[e.kind];
+    if(b){ if(b.subject) subBits.push(b.subject); if(b.title && b.chapter) subBits.push(b.chapter); }
+    subBits.push(hoursToHM((e0-s0)/60));
     rows += `
-    <div class="tt-block ${st}" data-id="${b.id}" style="--kc:${blockColor(b.kind)};">
-      <div class="tt-time"><b>${fmtTime12(b.start)}</b><span>${fmtTime12(b.end)}</span></div>
+    <div class="tt-block ${e.st}" data-id="${e.id}" data-src="${e.src}" style="--kc:${blockColor(e.kind)};">
+      <div class="tt-time"><b>${fmtTime12(e.start)}</b><span>${fmtTime12(e.end)}</span></div>
       <div class="tt-card">
         <div class="tt-top">
-          <div class="tt-title">${esc(blockTitle(b))}</div>
-          <button type="button" class="tt-check ${done?'on':''}" data-ttaction="toggle" aria-label="${done?'Mark not done':'Mark done'}">${ICONS.check}</button>
+          <div class="tt-title">${esc(e.title)}</div>
+          <button type="button" class="tt-check ${e.done?'on':''}" data-ttaction="toggle" aria-label="${e.done?'Mark not done':'Mark done'}">${ICONS.check}</button>
         </div>
         <div class="tt-sub">${subBits.map(esc).join(' · ')}</div>
         <div class="tt-tags">
-          ${st==='now' ? '<span class="badge duetoday">Now</span>' : ''}
-          ${st==='missed' ? '<span class="badge overdue">Missed</span>' : ''}
+          ${e.st==='now' ? '<span class="badge duetoday">Now</span>' : ''}
+          ${e.st==='missed' ? '<span class="badge overdue">Missed</span>' : ''}
           ${overlap ? '<span class="badge high">Overlaps</span>' : ''}
-          ${b.repeat==='days' ? '<span class="badge pending">Repeats</span>' : ''}
+          ${b&&b.repeat==='days' ? '<span class="badge pending">Repeats</span>' : ''}
+          ${b&&b.carriedFrom ? `<span class="badge pending">Carried from ${esc(fmtDateShort(b.carriedFrom))}</span>` : ''}
+          ${linked ? '<button type="button" class="btn secondary sm" data-ttaction="resched" style="padding:4px 10px; font-size:12px;">Reschedule</button><button type="button" class="btn secondary sm" data-ttaction="remove" style="padding:4px 10px; font-size:12px; color:var(--red);">Remove</button>' : ''}
           ${canStart ? '<button type="button" class="btn secondary sm" data-ttaction="start" style="padding:4px 10px; font-size:12px; margin-left:auto;">Start timer</button>' : ''}
         </div>
       </div>
     </div>`;
   });
-
-  v.innerHTML = `
-    <div class="tt-nav">
-      <button type="button" class="icon-btn" onclick="ttShift(-1)" aria-label="Previous day">&lsaquo;</button>
-      <div class="tt-date">${esc(lab.main)}${lab.sub ? `<small>${esc(lab.sub)}</small>` : ''}</div>
-      <button type="button" class="icon-btn" onclick="ttShift(1)" aria-label="Next day">&rsaquo;</button>
-    </div>
-    ${isToday ? '' : `<button type="button" class="btn ghost sm block" style="margin-bottom:10px;" onclick="ttGoToday()">Back to today</button>`}
-    <button type="button" class="btn block" style="margin-bottom:14px;" onclick="openBlockModal()">+ Add Time Block</button>
-    ${blocks.length ? `
+  const slotsCard = ents.length ? `
     <div class="card" style="margin-bottom:14px;">
-      <div class="pbar-row"><span>Blocks done</span><span>${doneCount} / ${blocks.length}</span></div>
-      <div class="pbar green"><div style="width:${pct(doneCount, blocks.length)}%"></div></div>
+      <div class="pbar-row"><span>Slots done</span><span>${doneCount} / ${ents.length}</span></div>
+      <div class="pbar green"><div style="width:${pct(doneCount, ents.length)}%"></div></div>
       <p class="muted" style="margin-top:8px; font-size:12px;">Planned study ${hoursToHM(planned/60)}${target ? ' of '+target+'h target' : ''}${doneMins>0 ? ' · done '+hoursToHM(doneMins/60) : ''}</p>
-    </div>` : ''}
-    <div>
-      ${blocks.length ? rows : emptyState('', 'No blocks for this day', 'Plan your day with time blocks. Repeat them on chosen weekdays to build a weekly routine.')}
-    </div>
+    </div>` : '';
+  v.innerHTML = plannerHtml() + slotsCard + suggestionsHtml(date) + `
+    <div style="height:14px"></div>
+    <button type="button" class="btn block" style="margin-bottom:14px;" onclick="openBlockModal()">+ Add Time Block</button>
+    <div>${ents.length ? rows : emptyState('', 'Nothing scheduled', 'Add a suggestion above or tap + Add Time Block.')}</div>
   `;
+  bindPlanner(v);
+  $all('.sg-card [data-sg]', v).forEach(btn=>btn.addEventListener('click', ()=>{
+    const c=btn.closest('.sg-card');
+    if(btn.dataset.sg==='remove') removeSlot(c.dataset.bid); else openSlotModal(c.dataset.type, c.dataset.id);
+  }));
+  const more=v.querySelector('[data-sg="more"]'); if(more) more.addEventListener('click', ()=>{ TT_SUG_ALL=!TT_SUG_ALL; renderTimetable(); });
   $all('.tt-block', v).forEach(el=>{
-    const id = el.dataset.id;
-    el.querySelector('.tt-card').addEventListener('click', e=>{
-      if(e.target.closest('button')) return;
-      openBlockModal(id);
-    });
-    const tg = el.querySelector('[data-ttaction="toggle"]');
-    if(tg) tg.addEventListener('click', ()=>toggleBlockDone(id, date));
-    const st = el.querySelector('[data-ttaction="start"]');
-    if(st) st.addEventListener('click', ()=>startBlock(id, date));
+    const id=el.dataset.id;
+    el.querySelector('.tt-card').addEventListener('click', ev=>{ if(ev.target.closest('button')) return; openBlockModal(id); });
+    el.querySelector('[data-ttaction="toggle"]').addEventListener('click', ()=>toggleBlockDone(id,date));
+    const st=el.querySelector('[data-ttaction="start"]'); if(st) st.addEventListener('click', ()=>startBlock(id,date));
+    const rs=el.querySelector('[data-ttaction="resched"]'); if(rs) rs.addEventListener('click', ()=>{ const b=(DATA.timeBlocks||[]).find(x=>x.id===id); if(b&&b.link) openSlotModal(b.link.type,b.link.id); });
+    const rm=el.querySelector('[data-ttaction="remove"]'); if(rm) rm.addEventListener('click', ()=>removeSlot(id));
   });
 }
 function toggleBlockDone(id, date){
+  const b=(DATA.timeBlocks||[]).find(x=>x.id===id); if(!b) return;
+  const was=blockIsDone(b,date), L=b.link;
+  if(!was && L && L.type==='pyq'){ askPyqDone(id,date); return; }
   updateData(d=>{
-    const b = (d.timeBlocks||[]).find(x=>x.id===id);
-    if(!b) return;
-    b.doneDates = b.doneDates || [];
-    const i = b.doneDates.indexOf(date);
-    if(i>-1) b.doneDates.splice(i,1); else b.doneDates.push(date);
+    const x=d.timeBlocks.find(y=>y.id===id); x.doneDates=x.doneDates||[];
+    const i=x.doneDates.indexOf(date);
+    if(was){
+      if(i>-1) x.doneDates.splice(i,1);
+      if(L&&L.type==='revision') uncompleteRevision(d,L.id);
+      if(L&&L.type==='pyq') applyChapterField(d,L.id,'pyqsDone',false);
+      if(blockIsDone(x,date)){ x.noAuto=x.noAuto||[]; if(!x.noAuto.includes(date)) x.noAuto.push(date); }
+    } else {
+      x.doneDates.push(date);
+      if(L&&L.type==='revision') applyRevisionComplete(d,L.id);
+    }
   });
   renderAll();
+  if(!was && L && L.type==='test' && !DATA.tests.some(t=>t.date===date)) toast('Test slot done', {label:'Add result', onClick:()=>openTestModal()});
 }
+function askPyqDone(id,date){
+  const b=(DATA.timeBlocks||[]).find(x=>x.id===id), c=b&&DATA.chapters.find(x=>x.id===b.link.id);
+  openModal(`
+    <div class="modal-head"><h3>PYQs finished?</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <p class="muted" style="font-size:14px; margin-bottom:16px;">Did you finish all PYQs of ${esc(c?c.name:'this chapter')}?</p>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="finishPyqSlot('${id}','${date}',false)">Not yet</button>
+      <button class="btn" onclick="finishPyqSlot('${id}','${date}',true)">Yes, all done</button>
+    </div>`);
+}
+function finishPyqSlot(id,date,all){
+  updateData(d=>{
+    const b=d.timeBlocks.find(x=>x.id===id); if(!b) return;
+    b.doneDates=b.doneDates||[]; if(!b.doneDates.includes(date)) b.doneDates.push(date);
+    if(all) applyChapterField(d,b.link.id,'pyqsDone',true);
+  });
+  closeModal(); renderAll(); toast(all?'PYQs marked done in Chapters':'Slot marked done');
+}
+function findFreeSlot(date,mins,ignoreId){
+  const busy=ttEntries(date).filter(e=>e.id!==ignoreId).map(e=>[hmToMin(e.start),hmToMin(e.end)]);
+  let s=6*60; if(date===todayStr()) s=Math.max(s,Math.ceil((nowMinutes()+5)/15)*15);
+  for(const [a,b] of busy){ if(a>=s+mins) break; if(b>s) s=b; }
+  return minToHM(Math.min(s,1440-mins));
+}
+function openSlotModal(type,id){
+  const s=sugInfo(type,id); if(!s) return;
+  const ex=linkedBlockFor(type,s.id), t=todayStr();
+  let date=ex?ex.date:ttDate(); if(date<t) date=t;
+  const mins=ex?blockMins(ex):s.mins;
+  const start=(ex&&ex.date===date)?ex.start:findFreeSlot(date,mins,ex&&ex.id);
+  openModal(`
+    <div class="modal-head"><h3>${ex?'Reschedule':'Add to timetable'}</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <p style="font-weight:600; margin:0 0 2px;">${esc(s.title)}</p>
+    <p class="muted" style="font-size:12px; margin:0 0 12px;">${esc(s.sub)}</p>
+    <div class="field"><label>Date</label><input type="date" id="sl-date" min="${t}" value="${date}" onchange="slotHint()"></div>
+    <div class="field-row">
+      <div class="field"><label>Start</label><input type="time" id="sl-start" value="${start}" oninput="slotHint()"></div>
+      <div class="field"><label>Duration (min)</label><input type="number" id="sl-dur" min="5" step="5" value="${mins}" oninput="slotHint()"></div>
+    </div>
+    <p class="muted" id="sl-hint" data-ex="${ex?ex.id:''}" style="font-size:12px; margin:-4px 0 12px;"></p>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn" onclick="saveSlot('${type}','${s.id}')">${ex?'Save':'Add'}</button>
+    </div>`);
+  slotHint();
+}
+function slotHint(){
+  const el=$('#sl-hint'); if(!el) return;
+  const date=$('#sl-date').value, start=$('#sl-start').value, dur=Number($('#sl-dur').value)||0;
+  if(!date||!start||dur<=0){ el.textContent=''; return; }
+  const a=hmToMin(start), b=a+dur;
+  const hit=ttEntries(date).find(e=>e.id!==el.dataset.ex && hmToMin(e.start)<b && hmToMin(e.end)>a);
+  el.textContent = hit ? `Overlaps with "${hit.title}" (${fmtTime12(hit.start)} – ${fmtTime12(hit.end)})` : `Ends at ${fmtTime12(minToHM(b))} · slot is free`;
+  el.style.color = hit ? 'var(--red)' : 'var(--ink-soft)';
+}
+function saveSlot(type,id){
+  const s=sugInfo(type,id); if(!s) return;
+  const date=$('#sl-date').value, start=$('#sl-start').value, dur=Number($('#sl-dur').value)||0;
+  if(!date||!start||dur<=0){ toast('Set date, start time and duration'); return; }
+  if(hmToMin(start)+dur>1439){ toast('Slot must end before midnight'); return; }
+  const end=minToHM(hmToMin(start)+dur), ex=linkedBlockFor(type,s.id);
+  updateData(d=>{
+    d.timeBlocks=d.timeBlocks||[];
+    const payload={title:s.title,kind:s.kind,start,end,subject:s.subject||'',chapter:s.chapter||'',repeat:'once',date,days:[],link:{type:s.type,id:s.id}};
+    const x=ex&&d.timeBlocks.find(b=>b.id===ex.id);
+    if(x) Object.assign(x,payload); else d.timeBlocks.push(Object.assign({id:uid(),from:date,doneDates:[],skipDates:[]},payload));
+    if(type==='revision'){ const r=d.revisions.find(r=>r.id===s.id); if(r) r.dueDate=date; }
+  });
+  TT_DATE=date; closeModal(); renderAll();
+  toast(ex?'Rescheduled':'Added to timetable');
+}
+function removeSlot(bid){
+  const r=deleteData('timeBlocks',bid); renderAll();
+  if(r.item) toast('Removed from timetable',{label:'Undo',onClick:()=>{ updateData(d=>{ d.timeBlocks.push(r.item); }); renderAll(); }});
+}
+/* After midnight, unfinished one-day blocks of earlier days are copied to the new day automatically.
+   The original stays behind as "Missed" history; the copy carries a "Carried from" tag. */
+function carryOverBlocks(){
+  const t=todayStr(), now=nowMinutes(), kinds=['Study','Practice','Revision','Test'];
+  let moved=0, changed=false;
+  (DATA.timeBlocks||[]).slice().forEach(o=>{   // original finished later on -> its pending copy is no longer needed
+    if(!o.carriedTo || !blockIsDone(o,o.date)) return;
+    const c=DATA.timeBlocks.find(x=>x.id===o.carriedTo);
+    if(c && !blockIsDone(c,c.date)){ DATA.timeBlocks=DATA.timeBlocks.filter(x=>x.id!==c.id); o.carriedTo=null; changed=true; }
+  });
+  (DATA.timeBlocks||[]).slice().forEach(o=>{
+    if(o.repeat!=='once' || o.carriedTo || !o.date || !kinds.includes(o.kind)) return;
+    if(o.date>=t || blockIsDone(o,o.date)) return;
+    const T = t, mins=blockMins(o);
+    const busy = ttEntries(T).some(e=>hmToMin(e.start)<hmToMin(o.end) && hmToMin(e.end)>hmToMin(o.start));
+    let start=o.start, end=o.end;
+    if(busy || hmToMin(o.end)<=now){ start=findFreeSlot(T,mins); end=minToHM(hmToMin(start)+mins); }
+    const c=Object.assign({},o,{id:uid(),date:T,from:T,start,end,doneDates:[],skipDates:[],noAuto:[],carriedTo:null,carriedFrom:o.carriedFrom||o.date});
+    DATA.timeBlocks.push(c); o.carriedTo=c.id; moved++;
+    if(o.link && o.link.type==='revision'){ const r=DATA.revisions.find(x=>x.id===o.link.id); if(r && !r.completed && r.dueDate<T) r.dueDate=T; }
+  });
+  if(moved||changed) saveData();
+  return moved;
+}
+setInterval(()=>{ if(DATA && !document.hidden && !$('#modalBackdrop').classList.contains('open') && carryOverBlocks()) renderAll(); }, 60000);
 function startBlock(id, date){
   const b = (DATA.timeBlocks||[]).find(x=>x.id===id);
   if(!b) return;
@@ -5299,6 +5337,7 @@ function saveBlock(id){
       if(x){
         if(x.repeat!=='days' && payload.repeat==='days') x.from = ttDate();
         Object.assign(x, payload);
+        if(x.link&&x.link.type==='revision'&&x.repeat==='once'){ const rv=d.revisions.find(r=>r.id===x.link.id); if(rv) rv.dueDate=x.date; }
       }
     } else {
       d.timeBlocks.push(Object.assign({id:uid(), from: ttDate(), doneDates:[], skipDates:[]}, payload));
@@ -5415,8 +5454,11 @@ function openManualSessionModal(){
           <option>Physics</option><option>Chemistry</option><option>Mathematics</option><option value="">General / Other</option>
         </select>
       </div>
-      <div class="field"><label>Chapter / Topic</label><select id="ms-chapter"><option value="">—</option>${chapterOptions('Physics')}</select></div>
     </div>
+    <div class="field"><label>This was…</label>
+      <select id="ms-type" onchange="$('#ms-chapter').parentNode.style.display=this.value==='Mock'?'none':''"><option>Study</option><option>Revision</option><option>Mock</option></select>
+    </div>
+    <div class="field"><label>Chapter / Topic</label><select id="ms-chapter"><option value="">—</option>${chapterOptions('Physics')}</select></div>
     <div class="field-row">
       <div class="field"><label>Hours</label><input type="number" id="ms-hours" min="0" max="23" step="1" value="1"></div>
       <div class="field"><label>Minutes</label><input type="number" id="ms-minutes" min="0" max="59" step="1" value="0"></div>
@@ -5451,13 +5493,19 @@ function saveManualSession(){
   if(totalMinutes<=0){ toast('Enter how long you studied'); return; }
   const date = $('#ms-date').value || todayStr();
   const subject = $('#ms-subject').value;
-  const chapter = $('#ms-chapter').value;
+  const type = $('#ms-type').value;
+  const chapter = type==='Mock' ? '' : $('#ms-chapter').value;
+  const mockWasDue = type==='Mock' && mockStatus().due;
+  let revDone = false;
   updateData(d=>{
-    d.studySessions.push({id:uid(), date, minutes: totalMinutes, subject, chapter});
+    const ses={id:uid(), date, minutes: totalMinutes, subject, chapter, type};
+    d.studySessions.push(ses);
+    revDone = sessionRevisionDone(d, ses);
   });
   closeModal();
   renderAll();
-  toast('Study session logged');
+  if(mockWasDue) toast('Mock marked complete', {label:'Add result', onClick:()=>openTestModal()});
+  else toast(revDone ? 'Session logged · revision marked complete' : 'Study session logged');
 }
 function setTimerMode(mode){
   if(TimerState.running) return toast('Stop the current session first');
@@ -5599,7 +5647,10 @@ function logStudyMinutesPrompt(minutes){
         <option>Physics</option><option>Chemistry</option><option>Mathematics</option><option value="">General / Other</option>
       </select>
     </div>
-    <div class="field"><label>Chapter / Topic</label><select id="ss-chapter"><option value="">—</option>${chapterOptions('Physics')}</select></div>
+    <div class="field" id="ss-type-wrap"><label>This was…</label>
+      <select id="ss-type" onchange="syncSessionFields()"><option>Study</option><option>Revision</option><option>Mock</option></select>
+    </div>
+    <div class="field" id="ss-chap-wrap"><label>Chapter / Topic</label><select id="ss-chapter"><option value="">—</option>${chapterOptions('Physics')}</select></div>
     <div class="modal-actions">
       <button class="btn secondary" onclick="discardSession()">Discard</button>
       <button class="btn" id="ss-save-btn" onclick="saveStudySession(${minutes})">Save Session</button>
@@ -5615,7 +5666,10 @@ function logStudyMinutesPrompt(minutes){
       if(lb.chapter) $('#ss-chapter').value = lb.chapter;
     }
     if(lb.kind==='Practice') setSessionKind('practice');
+    if(lb.kind==='Revision') $('#ss-type').value='Revision';
+    if(lb.kind==='Test') $('#ss-type').value='Mock';
   }
+  syncSessionFields();
 }
 let SESSION_KIND = 'basic';
 function setSessionKind(kind){
@@ -5623,6 +5677,12 @@ function setSessionKind(kind){
   $('#ss-kind-basic').classList.toggle('active', kind==='basic');
   $('#ss-kind-practice').classList.toggle('active', kind==='practice');
   $('#ss-save-btn').textContent = kind==='practice' ? 'Save & fill practice form' : 'Save Session';
+  syncSessionFields();
+}
+function syncSessionFields(){
+  const prac=SESSION_KIND==='practice', mock=!prac&&$('#ss-type').value==='Mock';
+  $('#ss-type-wrap').style.display=prac?'none':'';
+  $('#ss-chap-wrap').style.display=mock?'none':'';
 }
 function refreshSessionChapterOptions(){
   const subj = $('#ss-subject').value;
@@ -5634,14 +5694,19 @@ function discardSession(){
 }
 function saveStudySession(minutes){
   const subject = $('#ss-subject').value;
-  const chapter = $('#ss-chapter').value;
   const kind = SESSION_KIND;
+  const type = kind==='practice' ? 'Practice' : $('#ss-type').value;
+  const chapter = type==='Mock' ? '' : $('#ss-chapter').value;
   const link = LINKED_BLOCK; LINKED_BLOCK = null;
+  const mockWasDue = type==='Mock' && mockStatus().due;
+  let revDone = false;
   updateData(d=>{
-    d.studySessions.push({id:uid(), date:todayStr(), minutes, subject, chapter});
+    const ses={id:uid(), date:todayStr(), minutes, subject, chapter, type};
+    d.studySessions.push(ses);
+    revDone = sessionRevisionDone(d, ses);
     if(link){
       const lb = (d.timeBlocks||[]).find(x=>x.id===link.id);
-      if(lb){ lb.doneDates = lb.doneDates || []; if(!lb.doneDates.includes(link.date)) lb.doneDates.push(link.date); }
+      if(lb){ lb.doneDates = lb.doneDates || []; if(!lb.doneDates.includes(link.date)) lb.doneDates.push(link.date); if(lb.link&&lb.link.type==='revision') applyRevisionComplete(d, lb.link.id); }
     }
   });
   closeModal();
@@ -5650,8 +5715,10 @@ function saveStudySession(minutes){
     // study time is already saved above; open the practice form with subject, chapter and time pre-filled
     openPracticeModal(null, {subject: subject||'Physics', chapter, timeMinutes: Math.max(1, Math.round(minutes))});
     toast('Session saved — now add your questions');
+  } else if(mockWasDue){
+    toast('Mock marked complete', {label:'Add result', onClick:()=>openTestModal()});
   } else {
-    toast('Study session saved');
+    toast(revDone ? 'Session saved · revision marked complete' : 'Study session saved');
   }
 }
 
@@ -5776,16 +5843,35 @@ function openProfileEdit(){
 
 function renderMore(){
   const ICO = moreIco();
-  const od = dueNowChapters().length;
-  const items = [
-    ['analytics','Analytics',ICONS.analytics],['timetable','Timetable',ICONS.clock],['goal','My Goal',ICONS.goal],['practice','Practice',ICONS.practice],
-    ['revision','Revision',ICONS.revision],['timer','Study Timer',ICONS.timer],
-    ['chapters','Chapters',ICONS.chapters],['tests','Tests',ICONS.tests],['rewards','Rewards',ICONS.reward],
-    ['deadlines','Deadlines',ICO.deadline,od]
+  const od = dueNowChapters().length, rv = revisionsOverdue().length + revisionsDueToday().length;
+  // [key, title, subtitle, icon, badge]
+  const groups = [
+    ['Study', [
+      ['timer','Study Timer','Start a focus session',ICONS.timer],
+      ['practice','Practice','Log your questions',ICONS.practice],
+      ['revision','Revision', rv ? rv+' due or overdue' : 'Nothing pending',ICONS.revision, rv],
+    ]],
+    ['Track', [
+      ['analytics','Progress','Hours, accuracy and trends',ICONS.analytics],
+      ['goal','My Goal','Target and daily plan',ICONS.goal],
+      ['deadlines','Deadlines', od ? od+' chapter'+(od===1?'':'s')+' need attention' : 'Chapter due dates',ICO.deadline, od],
+    ]],
+    ['Extras', [
+      ['rewards','Rewards', coinBalance()+' coins',ICONS.reward],
+      ['share','Share Progress',"Send today's summary",ICO.share],
+    ]]
   ];
-  if(DEFERRED_INSTALL_PROMPT) items.push(['install','Install App',ICO.install]);
-  items.push(['share','Share Progress',ICO.share]);
-  $('#view-more').innerHTML = '<div class="more-grid">' + items.map(i=>`<button class="more-box" data-more="${i[0]}">${i[2]}<span>${i[1]}</span>${i[3]?`<span class="mb-badge">${i[3]}</span>`:''}</button>`).join('') + '</div>';
+  if(DEFERRED_INSTALL_PROMPT) groups[2][1].push(['install','Install App','Add to your home screen',ICO.install]);
+  $('#view-more').innerHTML = groups.map(g=>`
+    <div class="mr-lbl">${g[0]}</div>
+    <div class="mr-card">${g[1].map(i=>`
+      <button type="button" class="mr-row" data-more="${i[0]}">
+        <span class="mr-ic">${i[3]}</span>
+        <span class="mr-main"><b>${i[1]}</b><small>${i[2]}</small></span>
+        ${i[4]?`<span class="mb-badge2">${i[4]}</span>`:''}
+        <span class="mr-chev">&#8250;</span>
+      </button>`).join('')}
+    </div>`).join('');
   $all('[data-more]', $('#view-more')).forEach(b=>b.addEventListener('click', async ()=>{
     const k=b.dataset.more;
     if(k==='share') openShareCardModal();
@@ -5802,12 +5888,10 @@ function qaPool(){
   const I=moreIco();
   return [
     {id:'session',label:'Start Session',ic:ICONS.timer,run:()=>handleQuickAction('session')},
-    {id:'task',label:'Add Task',ic:ICONS.add_task,run:()=>handleQuickAction('task')},
+    {id:'task',label:'Add Slot',ic:ICONS.add_task,run:()=>handleQuickAction('block')},
     {id:'questions',label:'Add Questions',ic:ICONS.practice,run:()=>handleQuickAction('practice')},
     {id:'test',label:'Add Test',ic:ICONS.tests,run:()=>handleQuickAction('test')},
-    {id:'markrev',label:'Mark Revision',ic:ICONS.revision,run:()=>handleQuickAction('revision')},
     {id:'timetable',label:'Timetable',ic:ICONS.clock,run:()=>switchView('timetable')},
-    {id:'planner',label:'Planner',ic:ICONS.planner,run:()=>switchView('planner')},
     {id:'chapters',label:'Chapters',ic:ICONS.chapters,run:()=>switchView('chapters')},
     {id:'goal',label:'My Goal',ic:ICONS.goal,run:()=>switchView('goal')},
     {id:'practice',label:'Practice',ic:ICONS.practice,run:()=>switchView('practice')},
