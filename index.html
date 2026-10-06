@@ -934,7 +934,7 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .pill-searchbar{margin-bottom:10px}
 .dl-sum .dl-tile{min-width:0}
 /* ===== No horizontal scroll anywhere ===== */
-html,body,.main,.view,#app{max-width:100%;overflow-x:hidden}
+html,body,.main,.view,#app{max-width:100%;overflow-x:hidden;overflow-x:clip}
 .tabs{flex-wrap:wrap;overflow:visible;gap:8px}
 .tab{border-radius:999px;padding:8px 14px;white-space:normal;text-align:center}
 .filter-row{flex-wrap:wrap;overflow:visible}
@@ -1053,6 +1053,11 @@ h1,h2,h3,h4{font-family:inherit}
 #view-settings .muted{font-size:12px}
 #view-settings .btn.danger{background:#E5484D;color:#fff}
 #view-settings>.btn.block{margin:6px 0 18px}
+/* ===== Fixed top bar: stays visible while scrolling ===== */
+.topbar{position:sticky;top:0;z-index:60;background:var(--paper);margin:-8px -16px 12px !important;padding:8px 16px !important;padding-top:calc(8px + env(safe-area-inset-top,0px)) !important}
+@media (min-width:900px){.topbar{margin:-20px -34px 12px !important;padding:12px 34px !important}}
+.modal-backdrop.center{align-items:center;padding:16px}
+.modal-backdrop.center .modal{border-radius:22px;max-height:82vh}
 </style>
 </head>
 <body>
@@ -2266,8 +2271,16 @@ function switchView(viewId, fromBack){
   $all('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   $all('.bn-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   updateTopStreak(viewId);
-  window.scrollTo({top:0, behavior:'instant' in window ? 'instant':'auto'});
+  resetScrollTop();
   renderView(viewId);
+  resetScrollTop();
+  requestAnimationFrame(resetScrollTop);
+}
+/* html/body have overflow-x:hidden, which can turn body (or .main) into the scroll container,
+   so window.scrollTo alone is not enough: reset every possible scroller. */
+function resetScrollTop(){
+  try{ window.scrollTo(0,0); }catch(e){}
+  [document.scrollingElement, document.documentElement, document.body, document.getElementById('main')].forEach(el=>{ if(el) el.scrollTop = 0; });
 }
 function updateTopStreak(viewId){
   const el = $('#topStreak');
@@ -2365,7 +2378,7 @@ function openModal(html){
   $('#modalBackdrop').classList.add('open');
 }
 function closeModal(){
-  $('#modalBackdrop').classList.remove('open');
+  $('#modalBackdrop').classList.remove('open','center');
   $('#modalBody').innerHTML = '';
 }
 $('#modalBackdrop').addEventListener('click', e=>{
@@ -2694,7 +2707,6 @@ function renderRewards(){
       </div>
     </div>
     <div class="dl-grp"><span>Reward shop</span></div>
-    <button type="button" class="btn block" style="margin:0 0 12px" onclick="openRewardModal()">+ Add reward</button>
     <div class="list">
       ${items.length ? items.map(i=>{
         const ok = bal >= i.cost;
@@ -2709,7 +2721,7 @@ function renderRewards(){
             <button type="button" class="icon-btn" data-rw="delete" aria-label="Delete">${ICONS.trash}</button>
           </div>
         </div>`;
-      }).join('') : '<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No rewards yet. Tap "+ Add reward".</div>'}
+      }).join('') : '<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No rewards yet. Tap the + button to add one.</div>'}
     </div>
     <div class="dl-grp" style="margin-top:20px"><span>How you earn</span></div>
     <div class="hx-card">
@@ -3178,7 +3190,7 @@ function openShareCardModal(){
   openModal(`
     <div class="modal-head"><h3>Share Today's Progress</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
     <div style="display:flex; justify-content:center; margin-bottom:14px;">
-      <canvas id="shareCanvas" width="1080" height="1350" style="width:100%; max-width:320px; border-radius:14px; box-shadow:var(--shadow); background:#1F2A78;"></canvas>
+      <canvas id="shareCanvas" width="1080" height="1350" style="width:100%; max-width:360px; border-radius:16px; background:#1A2766;"></canvas>
     </div>
     <div class="modal-actions">
       <button class="btn secondary" onclick="closeModal()">Close</button>
@@ -3212,60 +3224,138 @@ function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight){
   const startY = y - (lines.length-1)*lineHeight;
   lines.forEach((l,i)=>ctx.fillText(l, x, startY+i*lineHeight));
 }
-function drawShareCard(){
-  const canvas = document.getElementById('shareCanvas');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-
-  const grad = ctx.createLinearGradient(0,0,0,H);
-  grad.addColorStop(0, '#3E4FD9');
-  grad.addColorStop(1, '#1F2A78');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0,0,W,H);
-
-  const dateLabel = new Date().toLocaleDateString('en-IN', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
-  ctx.textAlign = 'center';
-  ctx.fillStyle = 'rgba(255,255,255,0.75)';
-  ctx.font = '600 30px system-ui, sans-serif';
-  ctx.fillText(dateLabel, W/2, 110);
-
-  ctx.fillStyle = '#fff';
-  ctx.font = '800 56px system-ui, sans-serif';
-  ctx.fillText("Today's Progress", W/2, 190);
-
-  const hrs = studyHoursOn(todayStr());
-  const q = questionsSolvedOn(todayStr());
-  const streak = DATA.streaks.study.current;
-  const testsToday = DATA.tests.filter(t=>t.date===todayStr());
-
-  const stats = [
-    {label:'Hours studied', value: hoursToHM(hrs)},
-    {label:'Questions solved', value: String(q)},
-    {label:'Current streak', value: `${streak} day${streak===1?'':'s'}`},
-  ];
-  if(testsToday.length){
-    stats.push({label:'Mock test score', value: String(testsToday[testsToday.length-1].total)});
-  }
-
-  const startY = 280, cardH = 150, gap = 28, cardW = W-160;
-  stats.forEach((st,i)=>{
-    const y = startY + i*(cardH+gap);
-    ctx.fillStyle = 'rgba(255,255,255,0.12)';
-    roundRectPath(ctx, 80, y, cardW, cardH, 24);
-    ctx.fill();
-    ctx.textAlign = 'left';
-    ctx.fillStyle = '#fff';
-    ctx.font = '800 64px system-ui, sans-serif';
-    ctx.fillText(st.value, 120, y+95);
-    ctx.font = '500 28px system-ui, sans-serif';
-    ctx.fillStyle = 'rgba(255,255,255,0.8)';
-    ctx.fillText(st.label, 120, y+130);
+function shareCollect(){
+  const t=todayStr(), s=DATA.settings;
+  const chName=id=>{ const c=DATA.chapters.find(x=>x.id===id); return c?c.name:'Chapter'; };
+  const chSub=id=>{ const c=DATA.chapters.find(x=>x.id===id); return c?c.subject:''; };
+  const study=allStudy().filter(x=>x.date===t);
+  const subjMin={Physics:0,Chemistry:0,Mathematics:0,General:0};
+  study.forEach(x=>{ const k=subjMin[x.subject]!=null?x.subject:'General'; subjMin[k]+=Number(x.minutes||0); });
+  const prac=DATA.practiceSessions.filter(p=>p.date===t);
+  const att=prac.reduce((a,p)=>a+Number(p.attempted||0),0), cor=prac.reduce((a,p)=>a+Number(p.correct||0),0), wr=prac.reduce((a,p)=>a+Number(p.wrong||0),0);
+  const chapStudied={};
+  study.forEach(x=>{ if(!x.chapter) return; const k=x.subject+'|'+x.chapter; (chapStudied[k]=chapStudied[k]||{t:x.chapter,subject:x.subject||'',min:0}).min+=Number(x.minutes||0); });
+  const blocks=blocksForDate(t), blocksDone=blocks.filter(b=>blockIsDone(b,t)).length;
+  const revs=DATA.revisions.filter(r=>r.completed&&r.completedDate===t);
+  const chDone=DATA.chapters.filter(c=>c.completedOn===t&&(c.status==='Completed'||c.status==='Revised'));
+  const tests=DATA.tests.filter(x=>x.date===t);
+  return {
+    name:(profileName().split(/\s+/)[0])||'Student',
+    hrs:studyHoursOn(t), target:Number(s.dailyStudyHours)||0,
+    subjMin, att, acc:(cor+wr)?Math.round(cor/(cor+wr)*100):null, qTarget:Number(s.dailyQuestionTarget)||0,
+    streak:DATA.streaks.study.current, mainDays:s.jeeMainDate?Math.max(0,daysUntil(s.jeeMainDate)):null,
+    blocksDone, blocksTotal:blocks.length, revCount:revs.length, chCount:chDone.length,
+    sections:[
+      {title:'Chapters completed', col:'#3DBE7E', items:chDone.map(c=>({t:c.name,s:c.subject}))},
+      {title:'Revisions done', col:'#F29A38', items:revs.map(r=>({t:chName(r.chapterId),s:chSub(r.chapterId)+' · Round '+r.round}))},
+      {title:'Chapters studied', col:'#6AA6EE', items:Object.values(chapStudied).map(c=>({t:c.t,s:c.subject+' · '+hoursToHM(c.min/60)}))},
+      {title:'Question practice', col:'#3FA5B5', items:prac.map(p=>{ const a=(Number(p.correct||0)+Number(p.wrong||0)); return {t:p.chapter||p.subject, s:p.subject+' · '+Number(p.attempted||0)+' Qs'+(a?' · '+Math.round(Number(p.correct||0)/a*100)+'% acc':'')}; })},
+      {title:'Mock tests', col:'#E5484D', items:tests.map(x=>({t:x.name,s:'Score '+x.total+' · '+testAccuracy(x)+'% accuracy'+(x.percentile!=null?' · '+x.percentile+' %ile':'')}))}
+    ].filter(x=>x.items.length)
+  };
+}
+function paintShare(ctx,d,W,H){
+  const F='Inter, system-ui, -apple-system, sans-serif', P=64, CW=W-2*P;
+  const fit=(txt,max)=>{ txt=String(txt); if(ctx.measureText(txt).width<=max) return txt; while(txt.length>1&&ctx.measureText(txt+'…').width>max) txt=txt.slice(0,-1); return txt.trimEnd()+'…'; };
+  const rr=(x,y,w,h,r)=>roundRectPath(ctx,x,y,w,h,r);
+  // background
+  const g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,'#0E1430'); g.addColorStop(.55,'#1A2766'); g.addColorStop(1,'#10303F');
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  [[W*0.95,120,420,'#3B82D6'],[W*0.05,Math.min(H*0.55,1100),380,'#F29A38']].forEach(c=>{
+    const rg=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],c[2]); rg.addColorStop(0,c[3]+'44'); rg.addColorStop(1,c[3]+'00');
+    ctx.fillStyle=rg; ctx.fillRect(0,0,W,H);
   });
-
-  ctx.textAlign = 'center';
-  ctx.fillStyle = 'rgba(255,255,255,0.85)';
-  ctx.font = 'italic 500 30px system-ui, sans-serif';
-  wrapCanvasText(ctx, '"'+pickDailyQuote()+'"', W/2, H-90, W-160, 40);
+  ctx.textBaseline='alphabetic';
+  let y=P+10;
+  // header
+  ctx.font='800 26px '+F; const brand='JEE TRACKER'; const bw=ctx.measureText(brand).width+48;
+  ctx.fillStyle='rgba(255,255,255,.12)'; rr(P,y,bw,56,28); ctx.fill();
+  ctx.fillStyle='#fff'; ctx.textAlign='left'; ctx.fillText(brand,P+24,y+37);
+  ctx.textAlign='right'; ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font='600 28px '+F;
+  ctx.fillText(new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'}),W-P,y+37);
+  y+=56+70;
+  ctx.textAlign='left'; ctx.fillStyle='#fff'; ctx.font='800 72px '+F; ctx.fillText(fit(d.name+"'s study day",CW),P,y);
+  y+=48; ctx.font='600 30px '+F; ctx.fillStyle='#F5B85A';
+  if(d.mainDays!=null) ctx.fillText('JEE Main in '+d.mainDays+' days',P,y);
+  y+=50;
+  // hero card
+  const hh=380;
+  ctx.fillStyle='rgba(255,255,255,.09)'; rr(P,y,CW,hh,36); ctx.fill();
+  const cx=P+210, cy=y+hh/2, R=130, pr=d.target>0?Math.min(1,d.hrs/d.target):(d.hrs>0?1:0);
+  ctx.lineWidth=30; ctx.lineCap='round';
+  ctx.strokeStyle='rgba(255,255,255,.16)'; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.stroke();
+  if(pr>0){ ctx.strokeStyle=pr>=1?'#3DBE7E':'#6AA6EE'; ctx.beginPath(); ctx.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+Math.PI*2*pr); ctx.stroke(); }
+  ctx.textAlign='center'; ctx.fillStyle='#fff'; ctx.font='800 50px '+F; ctx.fillText(hoursToHM(d.hrs),cx,cy+10);
+  ctx.font='600 24px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText(d.target?'of '+d.target+'h goal':'studied today',cx,cy+48);
+  // right stats
+  const rx=P+430; ctx.textAlign='left';
+  ctx.font='600 24px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText('QUESTIONS SOLVED',rx,y+110);
+  ctx.font='800 76px '+F; ctx.fillStyle='#fff'; const qs=String(d.att); ctx.fillText(qs,rx,y+185);
+  const qw=ctx.measureText(qs).width;
+  ctx.font='600 28px '+F; ctx.fillStyle='#8FD8B1';
+  ctx.fillText((d.qTarget?'/ '+d.qTarget:'')+(d.acc!=null?'   '+d.acc+'% accurate':''),rx+qw+14,y+185);
+  ctx.strokeStyle='rgba(255,255,255,.14)'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(rx,y+225); ctx.lineTo(P+CW-40,y+225); ctx.stroke();
+  ctx.font='600 24px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText('CURRENT STREAK',rx,y+275);
+  ctx.font='800 64px '+F; ctx.fillStyle='#F5B85A'; const sk=String(d.streak); ctx.fillText(sk,rx,y+340); const skw=ctx.measureText(sk).width;
+  ctx.font='600 28px '+F; ctx.fillStyle='#fff'; ctx.fillText(d.streak===1?'day':'days',rx+skw+14,y+340);
+  y+=hh+24;
+  // tiles
+  const tw=(CW-40)/3, th=150;
+  [['Chapters done',d.chCount,'#3DBE7E'],['Revisions',d.revCount,'#F29A38'],['Slots done',d.blocksDone+'/'+d.blocksTotal,'#3B82D6']].forEach((t,i)=>{
+    const x=P+i*(tw+20);
+    ctx.fillStyle=t[2]; rr(x,y,tw,th,28); ctx.fill();
+    ctx.textAlign='left'; ctx.fillStyle='#fff'; ctx.font='800 56px '+F; ctx.fillText(String(t[1]),x+26,y+84);
+    ctx.font='700 22px '+F; ctx.fillStyle='rgba(255,255,255,.92)'; ctx.fillText(t[0].toUpperCase(),x+26,y+124);
+  });
+  y+=th+56;
+  // subject time
+  ctx.textAlign='left'; ctx.font='800 26px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText('TIME BY SUBJECT',P,y); y+=34;
+  const colors={Physics:'#6AA6EE',Chemistry:'#3DBE7E',Mathematics:'#F29A38',General:'#9AA0B4'};
+  const keys=Object.keys(d.subjMin).filter(k=>k!=='General'||d.subjMin.General>0);
+  const mx=Math.max(1,...keys.map(k=>d.subjMin[k]));
+  keys.forEach(k=>{
+    ctx.font='700 28px '+F; ctx.fillStyle='#fff'; ctx.textAlign='left'; ctx.fillText(k,P,y+38);
+    const bx=P+220, bwid=CW-220-150;
+    ctx.fillStyle='rgba(255,255,255,.12)'; rr(bx,y+16,bwid,28,14); ctx.fill();
+    const w=Math.max(d.subjMin[k]>0?28:0,bwid*d.subjMin[k]/mx);
+    if(w>0){ ctx.fillStyle=colors[k]; rr(bx,y+16,w,28,14); ctx.fill(); }
+    ctx.textAlign='right'; ctx.fillStyle='#fff'; ctx.font='700 28px '+F; ctx.fillText(hoursToHM(d.subjMin[k]/60),W-P,y+38);
+    y+=64;
+  });
+  y+=26;
+  // detail sections
+  if(!d.sections.length){
+    ctx.fillStyle='rgba(255,255,255,.09)'; rr(P,y,CW,120,28); ctx.fill();
+    ctx.textAlign='center'; ctx.fillStyle='rgba(255,255,255,.75)'; ctx.font='600 28px '+F; ctx.fillText('No chapters, revisions or tests logged yet today',W/2,y+70); y+=150;
+  }
+  d.sections.forEach(sec=>{
+    ctx.textAlign='left'; ctx.fillStyle=sec.col; ctx.beginPath(); ctx.arc(P+8,y-9,8,0,Math.PI*2); ctx.fill();
+    ctx.font='800 26px '+F; ctx.fillStyle='rgba(255,255,255,.8)'; ctx.fillText(sec.title.toUpperCase()+'  ·  '+sec.items.length,P+30,y); y+=26;
+    sec.items.slice(0,6).forEach(it=>{
+      ctx.fillStyle='rgba(255,255,255,.09)'; rr(P,y,CW,100,24); ctx.fill();
+      ctx.fillStyle=sec.col; rr(P,y+18,8,64,4); ctx.fill();
+      ctx.textAlign='left'; ctx.fillStyle='#fff'; ctx.font='700 32px '+F; ctx.fillText(fit(it.t,CW-70),P+30,y+44);
+      ctx.fillStyle='rgba(255,255,255,.68)'; ctx.font='500 25px '+F; ctx.fillText(fit(it.s,CW-70),P+30,y+80);
+      y+=112;
+    });
+    if(sec.items.length>6){ ctx.fillStyle='rgba(255,255,255,.7)'; ctx.font='600 26px '+F; ctx.fillText('+ '+(sec.items.length-6)+' more',P+30,y+22); y+=40; }
+    y+=34;
+  });
+  // footer
+  y+=10; ctx.textAlign='center'; ctx.fillStyle='rgba(255,255,255,.85)'; ctx.font='italic 500 30px '+F;
+  const words=('"'+pickDailyQuote()+'"').split(' '); let line=''; const lines=[];
+  words.forEach(w=>{ const tt=line?line+' '+w:w; if(ctx.measureText(tt).width>CW-60&&line){ lines.push(line); line=w; } else line=tt; });
+  lines.push(line); lines.forEach(l=>{ ctx.fillText(l,W/2,y); y+=42; });
+  y+=24; ctx.fillStyle='rgba(255,255,255,.5)'; ctx.font='700 24px '+F; ctx.fillText('Tracked with JEE Tracker',W/2,y);
+  return y+P;
+}
+function drawShareCard(){
+  const canvas=document.getElementById('shareCanvas'), ctx=canvas.getContext('2d'), W=1080, d=shareCollect();
+  canvas.width=W; canvas.height=4000;
+  const end=paintShare(ctx,d,W,4000);
+  const H=Math.max(1350,Math.round(end));
+  canvas.width=W; canvas.height=H;   // resizing clears the canvas
+  paintShare(ctx,d,W,H);
 }
 function shareOrDownloadCard(){
   const canvas = document.getElementById('shareCanvas');
@@ -3695,7 +3785,6 @@ function renderChapters(){
       </select>
       <button type="button" id="chImportantFilter" class="pill-toggle ${CHAPTER_FILTER.important?'active':''}">${ICONS.star} Important</button>
       <button type="button" id="chPyqPendingFilter" class="pill-toggle ${CHAPTER_FILTER.pyqPending?'active':''}">${ICONS.practice} PYQ Pending</button>
-      <button class="btn sm" onclick="openChapterModal()">+ Add chapter</button>
     </div>
     <div class="ch-grid">
       ${chs.length ? chs.map(chapterRowHtml).join('') : `<div style="grid-column:1/-1;">${emptyState('📘','No chapters found','Try a different filter or add a chapter.')}</div>`}
@@ -3984,7 +4073,6 @@ function renderPractice(){
         <div class="hbar-row"><div class="hb-label">${subj}</div><div class="hb-track"><div style="width:${pct(n,maxSubj)}%; background:var(--indigo);"></div></div><div class="hb-val">${n} · ${formatSeconds(avgTimePerQuestion(subj))}/q</div></div>
       `).join('')}
     </div>` : ''}
-    <button class="btn block" style="margin:4px 0 14px;" onclick="openPracticeModal()">+ Log practice</button>
     <div class="dl-grp" style="margin-top:6px"><span>Practice log</span></div>
     <div class="filter-row"><select id="pracSubjFilter" class="pill-select">
         <option value="">All subjects</option>
@@ -4188,7 +4276,6 @@ function renderTests(){
         ${['JEE Main','JEE Advanced','Chapter Test','Full Syllabus','Custom'].map(t=>`<option ${TEST_FILTER.type===t?'selected':''}>${t}</option>`).join('')}
       </select>
     </div>
-    <button class="btn block" style="margin-bottom:14px;" onclick="openTestModal()">+ Add Mock Test</button>
     <div class="list">
       ${tests.length ? tests.map(testRowHtml).join('') : emptyState('📝','No tests added yet','Start tracking your first mock test.')}
     </div>
@@ -4455,7 +4542,6 @@ function renderRevision(){
       <button class="pl-chip ${REVISION_MODE==='all'?'on':''}" data-rmode="all">All</button>
     </div>
     ${head}
-    <button class="btn block" style="margin:2px 0 14px;" onclick="openCustomRevisionModal()">+ Add revision</button>
     <div class="list">${body}</div>`;
   $all('[data-rmode]', view('revision')).forEach(b=>b.addEventListener('click', ()=>{ REVISION_MODE=b.dataset.rmode; renderRevision(); }));
   const tg=$('#rvToggle'); if(tg) tg.addEventListener('click', ()=>{ REVISION_CAL_OPEN=!REVISION_CAL_OPEN; if(REVISION_CAL_OPEN){ const n=new Date(); REVISION_MONTH={y:n.getFullYear(),m:n.getMonth()}; } renderRevision(); });
@@ -4951,7 +5037,7 @@ function ttDateLabel(dateStr){
 function ttShift(n){ TT_DATE = addDays(ttDate(), n); renderTimetable(); }
 function ttGoToday(){ TT_DATE = todayStr(); renderTimetable(); }
 
-var TT_SUG_ALL=false;
+var TT_SUG_ALL=false, TT_SUG_OPEN=false;
 function ttEntries(date){
   const e=blocksForDate(date).map(b=>({src:'b',id:b.id,b,title:blockTitle(b),kind:b.kind,start:b.start,end:b.end,done:blockIsDone(b,date),st:blockStatus(b,date)}));
   return e.sort((a,b)=>hmToMin(a.start)-hmToMin(b.start)||hmToMin(a.end)-hmToMin(b.end));
@@ -4990,10 +5076,14 @@ function ttSuggestions(date){
   return out.sort((a,b)=>a.pri-b.pri);
 }
 function suggestionsHtml(date){
-  const all=ttSuggestions(date), t=todayStr();
+  const all=ttSuggestions(date);
   if(!all.length) return `<div class="tt-sec">Suggestions</div><div class="hx-card" style="text-align:center;color:var(--ink-soft)">All caught up. No pending revisions, PYQs or tests.</div>`;
-  const list=TT_SUG_ALL?all:all.slice(0,5);
-  return `<div class="tt-sec">Suggested for your timetable · ${all.length}</div>`+list.map(s=>{
+  return `<button type="button" class="hx-card rv-toggle" data-sg="toggle" style="margin:20px 0 10px;padding:14px 16px;width:100%"><span class="rv-sel">Suggested for your timetable</span><em style="background:#3B82D6">${all.length}</em><span class="mr-chev">&#8250;</span></button>`;
+}
+function suggestionCardsHtml(date){
+  const all=ttSuggestions(date), t=todayStr();
+  if(!all.length) return `<div class="hx-card" style="text-align:center;color:var(--ink-soft);margin:0">All caught up. No pending revisions, PYQs or tests.</div>`;
+  return all.map(s=>{
     const b=s.block; let state='', act;
     if(b){
       const miss=b.date<t||(b.date===t&&hmToMin(b.end)<=nowMinutes());
@@ -5001,7 +5091,18 @@ function suggestionsHtml(date){
       act=`<button type="button" class="btn secondary sm" data-sg="resched">Reschedule</button><button type="button" class="btn secondary sm" style="color:var(--red)" data-sg="remove">Remove</button>`;
     } else act=`<button type="button" class="btn sm" data-sg="add">+ Add to timetable</button>`;
     return `<div class="sg-card" style="--kc:${s.color}" data-type="${s.type}" data-id="${esc(s.id)}" data-bid="${b?b.id:''}"><div class="sg-t">${esc(s.title)}</div><div class="sg-s">${esc(s.sub)}</div>${state}<div class="sg-act">${act}</div></div>`;
-  }).join('')+(all.length>5?`<button type="button" class="btn ghost sm block" data-sg="more">${TT_SUG_ALL?'Show less':'Show all '+all.length}</button>`:'');
+  }).join('');
+}
+function openSuggestionsModal(){
+  const date=ttDate();
+  document.getElementById('modalBackdrop').classList.add('center');
+  openModal(`<div class="modal-head"><h3>Suggested for your timetable</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <div id="sgList">${suggestionCardsHtml(date)}</div>`);
+  $all('#sgList [data-sg]').forEach(btn=>btn.addEventListener('click', ()=>{
+    const c=btn.closest('.sg-card');
+    if(btn.dataset.sg==='remove'){ removeSlot(c.dataset.bid); openSuggestionsModal(); }
+    else openSlotModal(c.dataset.type, c.dataset.id);
+  }));
 }
 function renderTimetable(){
   const v = view('timetable');
@@ -5056,15 +5157,14 @@ function renderTimetable(){
     </div>` : '';
   v.innerHTML = plannerHtml() + slotsCard + suggestionsHtml(date) + `
     <div style="height:14px"></div>
-    <button type="button" class="btn block" style="margin-bottom:14px;" onclick="openBlockModal()">+ Add Time Block</button>
-    <div>${ents.length ? rows : emptyState('', 'Nothing scheduled', 'Add a suggestion above or tap + Add Time Block.')}</div>
+    <div>${ents.length ? rows : emptyState('', 'Nothing scheduled', 'Open the suggestions above or tap the + button to add a time block.')}</div>
   `;
   bindPlanner(v);
   $all('.sg-card [data-sg]', v).forEach(btn=>btn.addEventListener('click', ()=>{
     const c=btn.closest('.sg-card');
     if(btn.dataset.sg==='remove') removeSlot(c.dataset.bid); else openSlotModal(c.dataset.type, c.dataset.id);
   }));
-  const more=v.querySelector('[data-sg="more"]'); if(more) more.addEventListener('click', ()=>{ TT_SUG_ALL=!TT_SUG_ALL; renderTimetable(); });
+  const tgs=v.querySelector('[data-sg="toggle"]'); if(tgs) tgs.addEventListener('click', openSuggestionsModal);
   $all('.tt-block', v).forEach(el=>{
     const id=el.dataset.id;
     el.querySelector('.tt-card').addEventListener('click', ev=>{ if(ev.target.closest('button')) return; openBlockModal(id); });
