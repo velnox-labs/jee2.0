@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAEU0lEQVR4nO3bTYiUdQDH8ZldayNsNQoxI4texCCKtKAgQw9d6uKprkIQRaeii0FQQYegoEPRJSQIhPLQIRSRIqSMSjFx0y211TQ1Xdc139adfZkuC0sgyj6/J559nM/n/v/zY/gyu/Mw01y+cl0DiuqqegD1JiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICJzqh4wizz91D1vv/5ksbNvvfv9V5v3l7unFrwDEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQFNazabhc9OTrZLXFIjApp209zrC58dbY2XuKRGBDQtCmh0osQlNSKgafPn3VD47Oiod6COt3TJLYXPDp+5VOKSGhHQlO7urqX3FQ/oxOCFEsfUiICmPPTAgp6e7mJnL42Onz3XKndPXQhoyrOr7y989vCRsyUuqRcBNRqNxqKFc1etWFz4eP++UyWOqRcBNbqazTfXrujuLv5S9O8bKnFPvQio8dLzy5Y9uDC5YVffibLG1M6cqgdUqbu7a+0rj69+ZklyybG/zx8YGC5rUu10aEDNZmPVE3e+sObhe+++Obzqux+OlDKppjoloOvmdPX29szr7blr8fxHl9322COL7ri9t5SbN245UMo9NXWNB7Rpw3MLbr3x/7u/b+/g3t879yNYwz/RofUb9lQ9oWICKm7Pb4Nfbz1Y9YqKCaigdrvx/oc/tzv0a2TTBFTQZ5/37d5zsuoV1RNQEX17Bz/6ZGfVK2YFAc3Y4b/OvvbGNxMTk1UPmRUENDPHjp978dXNQ6dHqh4yWwhoBnb1nVjz8saTnfrdscu6xh8klmWy3f7iy/4PPt4+Pu4v138I6Or2Dwy/8962X/sHqx4yGwnoSg4MDH+6fveWbw927O8Gr0pAl3FxZGzrtsObtvzx446jHhVemYCmtNuNgUPD2385vn3n8Z92HLvUqb/zmqkOCmiy3R5rTbbGJlqtiXPnW0OnR4ZOj5w8deHgn/8MHBoeOHTmwsWxqjfWT3P5ynVVb6DGPAciIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICL/AnsxzJFSkfP+AAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   box-sizing:border-box;
@@ -38,9 +38,9 @@
   --radius-md:16px;
   --radius-lg:22px;
   --shadow:0 1px 2px rgba(27,34,51,.04), 0 6px 20px rgba(27,34,51,.06);
-  --font-head:'Lexend',system-ui,sans-serif;
+  --font-head:'Inter',system-ui,sans-serif;
   --font-body:'Inter',system-ui,sans-serif;
-  --font-mono:'JetBrains Mono',monospace;
+  --font-mono:'Inter',system-ui,sans-serif;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
@@ -75,18 +75,16 @@ body{
   -webkit-font-smoothing:antialiased;
   transition:background .25s ease, color .25s ease;
 }
-h1,h2,h3,h4{font-family:var(--font-head); margin:0; color:var(--ink); letter-spacing:-0.01em;}
+h1, h2, h3, h4{font-family:var(--font-head); margin:0; color:var(--ink); letter-spacing:-0.01em;}
 p{margin:0}
 button{font-family:inherit}
-input,select,textarea{font-family:inherit}
+input, select, textarea{font-family:inherit}
 a{color:inherit}
 ::selection{background:var(--indigo); color:#fff;}
-
 .app{
   display:flex;
   min-height:100%;
 }
-
 /* ---------- Sidebar (desktop) ---------- */
 .sidebar{
   width:236px;
@@ -133,7 +131,6 @@ a{color:inherit}
 .nav-item:hover{background:var(--indigo-tint); color:var(--indigo);}
 .nav-item.active{background:var(--indigo); color:#fff;}
 .sidebar-foot{margin-top:auto; padding:12px; font-size:12px; color:var(--slate);}
-
 /* ---------- Main ---------- */
 .main{
   flex:1;
@@ -147,39 +144,22 @@ a{color:inherit}
   margin-bottom:18px;
 }
 .topbar h1{font-size:24px; font-weight:700;}
-.topbar .date-pill{
-  font-size:12px; color:var(--ink-soft); font-weight:600;
-  background:var(--paper-2); padding:6px 12px; border-radius:20px; border:1px solid var(--line);
-}
-
-.streak-chips{display:flex; gap:6px; align-items:center;}
-.streak-chip{
-  display:inline-flex; align-items:center; gap:6px; padding:3px 11px 3px 3px; border-radius:999px;
-  background:var(--paper-2); border:1px solid var(--line); color:var(--ink);
-  font-family:var(--font-head); font-weight:600; font-size:14px; line-height:1;
-}
-button.streak-chip{cursor:pointer;}
-button.streak-chip:active{transform:scale(.97);}
-button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset:2px;}
-.sc-ico{width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;}
-.sc-ico{font-size:14px; line-height:1;}
-.sc-ico.fire{background:var(--amber-tint); color:var(--amber);}
-.sc-ico.trophy{background:var(--indigo-tint); color:var(--indigo);}
 .bs-count{font-family:var(--font-head); font-size:40px; font-weight:700; color:var(--indigo); line-height:1.1;}
 .bs-range{margin-top:10px; font-size:14px; line-height:1.5;}
 .view{display:none;}
 .view.active{display:block; animation:fadein .28s ease;}
 @keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
-@media (prefers-reduced-motion:reduce){.view.active{animation:none} *{transition:none !important}}
-
+@media (prefers-reduced-motion:reduce){
+.view.active{animation:none}
+*{transition:none !important}}
 /* ---------- Cards & Grid ---------- */
 .grid{display:grid; gap:12px;}
 .grid-2{grid-template-columns:repeat(2,1fr);}
 .grid-3{grid-template-columns:repeat(3,1fr);}
 .grid-4{grid-template-columns:repeat(4,1fr);}
 @media (max-width:640px){
-  .grid-3{grid-template-columns:repeat(2,1fr);}
-  .grid-4{grid-template-columns:repeat(2,1fr);}
+.grid-3{grid-template-columns:repeat(2,1fr);}
+.grid-4{grid-template-columns:repeat(2,1fr);}
 }
 .card{
   background:var(--card);
@@ -200,7 +180,6 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 }
 .section-title:first-child{margin-top:0;}
 .muted{color:var(--ink-soft); font-size:12px;}
-
 /* ---------- Hero countdown ---------- */
 .hero{
   background:linear-gradient(135deg, var(--indigo-deep), var(--indigo));
@@ -210,14 +189,6 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
   position:relative;
   overflow:hidden;
 }
-.hero-row{display:flex; gap:14px; flex-wrap:wrap;}
-.hero-exam{flex:1; min-width:130px;}
-.hero-exam .label{font-size:12px; opacity:.75; font-weight:600; text-transform:none;}
-.hero-exam .num{font-family:var(--font-head); font-size:40px; font-weight:700; line-height:1.05; margin-top:2px;}
-.hero-exam .num span{font-size:16px; font-weight:600; opacity:.8;}
-.hero-exam .sub{font-size:12px; opacity:.7; margin-top:2px;}
-.hero-divider{width:1px; background:rgba(255,255,255,.2); align-self:stretch;}
-
 /* ---------- Stat tiles ---------- */
 .stat{
   background:var(--card); border:1px solid var(--line); border-radius:var(--radius-md);
@@ -227,25 +198,12 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .stat .icon svg{width:16px; height:16px;}
 .stat .val{font-family:var(--font-head); font-size:24px; font-weight:700;}
 .stat .lbl{font-size:12px; color:var(--ink-soft); font-weight:600;}
-
 /* progress bars */
 .pbar{height:8px; border-radius:6px; background:var(--paper-2); overflow:hidden; margin-top:8px;}
 .pbar > div{height:100%; border-radius:6px; background:var(--indigo); transition:width .4s ease;}
 .pbar.amber > div{background:var(--amber);}
 .pbar.green > div{background:var(--green);}
 .pbar-row{display:flex; justify-content:space-between; font-size:12px; color:var(--ink-soft); margin-bottom:2px;}
-
-/* quick actions */
-.qa-row{display:flex; gap:10px; overflow-x:auto; padding-bottom:4px; -webkit-overflow-scrolling:touch;}
-.qa-btn{
-  flex:0 0 auto; display:flex; flex-direction:column; align-items:center; gap:6px;
-  background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 16px;
-  cursor:pointer; min-width:84px; font-size:12px; font-weight:600; color:var(--ink);
-}
-.qa-btn .qico{width:34px; height:34px; border-radius:10px; background:var(--indigo-tint); color:var(--indigo); display:flex; align-items:center; justify-content:center;}
-.qa-btn .qico svg{width:17px; height:17px;}
-.qa-btn:active{transform:scale(.96);}
-
 /* buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:7px;
@@ -265,13 +223,17 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
   cursor:pointer;
 }
 .fab svg{width:24px; height:24px;}
-@media (min-width:900px){.fab{bottom:28px;}}
+@media (min-width:900px){
+.fab{bottom:28px;}}
 .fab-alert{
   bottom:154px; width:44px; height:44px; background:var(--red);
   box-shadow:0 8px 20px rgba(209,75,75,.4); font-weight:700; font-size:16px;
 }
-@media (min-width:900px){.fab-alert{bottom:96px;}}
-
+@media (min-width:900px){
+.fab-alert{bottom:96px;}}
+body.nofab .fab-alert{bottom:20px;}
+@media (min-width:900px){
+body.nofab .fab-alert{bottom:28px;}}
 /* forms */
 .field{margin-bottom:13px;}
 .field label{display:block; font-size:12px; font-weight:600; color:var(--ink-soft); margin-bottom:5px;}
@@ -286,7 +248,6 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .seg button{flex:1; padding:9px 6px; background:var(--paper); border:none; font-size:12px; font-weight:600; color:var(--ink-soft); cursor:pointer; border-right:1px solid var(--line);}
 .seg button:last-child{border-right:none;}
 .seg button.active{background:var(--indigo); color:#fff;}
-
 /* list rows */
 .list{display:flex; flex-direction:column; gap:8px;}
 .row-item{
@@ -303,7 +264,6 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 }
 .icon-btn svg{width:15px; height:15px;}
 .icon-btn:hover{color:var(--indigo); border-color:var(--indigo);}
-
 .badge{
   font-size:11px; font-weight:700; padding:3px 8px; border-radius:20px; white-space:nowrap;
 }
@@ -322,15 +282,9 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .badge.weak{background:var(--red-tint); color:var(--red);}
 .badge.average{background:var(--amber-tint); color:var(--amber);}
 .badge.strong{background:var(--green-tint); color:var(--green);}
-
 .checkline{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--ink-soft);}
 .checkline input{width:16px; height:16px;}
-
-/* tabs (subject/section tabs) */
-.tabs{display:flex; gap:6px; overflow-x:auto; margin-bottom:14px; -webkit-overflow-scrolling:touch;}
-
 .cal-header{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;}
-.readiness-num{font-size:40px; font-weight:700; line-height:1;}
 .cal-title{font-weight:700; font-size:16px;}
 .cal-weekdays{display:grid; grid-template-columns:repeat(7,1fr); text-align:center; font-size:11px; color:var(--ink-soft); font-weight:600; margin-bottom:4px;}
 .cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:4px;}
@@ -345,9 +299,7 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .cal-cell.cal-lv4{background:var(--indigo); border-color:var(--indigo);}
 .cal-cell.cal-lv3 .cal-daynum, .cal-cell.cal-lv4 .cal-daynum{color:#fff;}
 .cal-daynum{font-size:12px; font-weight:700; color:var(--ink);}
-.cal-dots{display:flex; flex-wrap:wrap; gap:2px; margin-top:auto;}
 .cal-dot{width:6px; height:6px; border-radius:50%; display:inline-block;}
-.cal-more{font-size:11px; color:var(--ink-soft); font-weight:600;}
 .cal-legend{display:flex; align-items:center; gap:4px; justify-content:flex-end; margin-top:10px; font-size:11px; color:var(--ink-soft);}
 .cal-legend .cal-dot{width:12px; height:12px; border-radius:3px; background:var(--paper-2);}
 .cal-legend .cal-lv0{background:var(--paper-2);}
@@ -360,10 +312,6 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
   font-size:14px; font-weight:600; color:var(--ink-soft); cursor:pointer; white-space:nowrap;
 }
 .tab.active{background:var(--indigo); color:#fff; border-color:var(--indigo);}
-
-.searchbar{display:flex; gap:8px; margin-bottom:12px;}
-.searchbar input{flex:1;}
-
 .pill-searchbar{
   display:flex; align-items:center; gap:8px; margin-bottom:12px;
   background:var(--card); border:1px solid var(--line); border-radius:24px;
@@ -377,7 +325,6 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
   flex:0 0 auto; border:none; background:var(--paper-2); color:var(--ink-soft); width:20px; height:20px;
   border-radius:50%; font-size:14px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
 }
-
 .filter-row select.pill-select{
   appearance:none; -webkit-appearance:none;
   flex:0 0 auto; min-width:0; padding:8px 30px 8px 15px; border-radius:20px;
@@ -391,12 +338,9 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 }
 .filter-row .pill-toggle svg{width:14px; height:14px;}
 .filter-row .pill-toggle.active{background:var(--amber-tint); border-color:var(--amber); color:var(--amber);}
-
 .star-mark{color:var(--amber);}
-.card.is-important{border:1px solid var(--amber);}
 .filter-row{display:flex; gap:8px; overflow-x:auto; margin-bottom:12px;}
 .filter-row select{flex:0 0 auto; min-width:120px;}
-
 /* empty state */
 .empty{
   text-align:center; padding:38px 20px; color:var(--ink-soft);
@@ -404,7 +348,6 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .empty .ee{font-size:40px; margin-bottom:10px;}
 .empty h4{color:var(--ink); font-size:16px; margin-bottom:4px;}
 .empty p{font-size:14px;}
-
 /* modal */
 .modal-backdrop{
   position:fixed; inset:0; background:rgba(20,22,35,.45); z-index:100; display:none;
@@ -417,8 +360,8 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
   animation:slideup .25s ease;
 }
 @media (min-width:640px){
-  .modal-backdrop{align-items:center;}
-  .modal{border-radius:22px; max-height:82vh;}
+.modal-backdrop{align-items:center;}
+.modal{border-radius:22px; max-height:82vh;}
 }
 @keyframes slideup{from{transform:translateY(30px); opacity:.6;} to{transform:translateY(0); opacity:1;}}
 .modal-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
@@ -426,7 +369,6 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .modal-close{width:30px; height:30px; border-radius:50%; border:none; background:var(--paper-2); color:var(--ink-soft); cursor:pointer; display:flex; align-items:center; justify-content:center;}
 .modal-actions{display:flex; gap:10px; margin-top:6px;}
 .modal-actions .btn{flex:1;}
-
 /* toast */
 .toast{
   position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
@@ -438,8 +380,8 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .toast.show{opacity:1; transform:translateX(-50%) translateY(-6px); pointer-events:auto;}
 .toast-action{background:none; border:none; color:#8FB0FF; font-weight:700; font-size:14px; cursor:pointer; padding:0;}
 :root[data-theme="dark"] .toast-action{color:#3E4FD9;}
-@media (min-width:900px){.toast{bottom:24px;}}
-
+@media (min-width:900px){
+.toast{bottom:24px;}}
 /* bottom nav mobile */
 .bottomnav{
   position:fixed; left:0; right:0; bottom:0; z-index:50;
@@ -453,14 +395,13 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 .bn-item svg{width:20px; height:20px;}
 .bn-item.active{color:var(--indigo);}
 @media (min-width:900px){
-  .bottomnav{display:none;}
-  .sidebar{display:flex;}
-  .main{padding:28px 34px 40px 34px;}
+.bottomnav{display:none;}
+.sidebar{display:flex;}
+.main{padding:28px 34px 40px 34px;}
 }
 @media (max-width:899px){
-  .main{padding-bottom:88px;}
+.main{padding-bottom:88px;}
 }
-
 /* timer */
 .timer-mode-label{text-align:center; font-size:12px; color:var(--ink-soft); font-weight:600;}
 .timer-controls{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap;}
@@ -488,48 +429,25 @@ button.streak-chip:focus-visible{outline:2px solid var(--indigo); outline-offset
 @keyframes tblink{0%,100%{opacity:1;} 50%{opacity:.4;}}
 @keyframes tdone{0%{transform:scale(1);} 30%{transform:scale(1.07);} 60%{transform:scale(.98);} 100%{transform:scale(1);}}
 @media (prefers-reduced-motion:reduce){
-  .timer-ring.running .timer-glow, .timer-ring.running .timer-dot, .timer-ring.paused .timer-digits, .timer-ring.done{animation:none;}
+.timer-ring.running .timer-glow, .timer-ring.running .timer-dot, .timer-ring.paused .timer-digits, .timer-ring.done{animation:none;}
 }
-
 /* bar chart (css based) */
 .barchart{display:flex; align-items:flex-end; gap:8px; height:140px; padding-top:10px;}
 .barchart .bcol{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:6px;}
 .barchart .bcol .bar{width:100%; max-width:26px; border-radius:6px 6px 3px 3px; background:var(--indigo); min-height:3px;}
 .barchart .bcol .blabel{font-size:11px; color:var(--ink-soft);}
 .barchart .bcol .bval{font-size:11px; color:var(--ink-soft); font-weight:600;}
-
 .hbar-row{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
 .hbar-row .hb-label{width:88px; flex-shrink:0; font-size:12px; font-weight:600; color:var(--ink-soft);}
 .hbar-row .hb-track{flex:1; height:10px; background:var(--paper-2); border-radius:6px; overflow:hidden;}
 .hbar-row .hb-track > div{height:100%; border-radius:6px;}
 .hbar-row .hb-val{width:38px; text-align:right; font-size:12px; font-weight:700; flex-shrink:0;}
-
 .two-col{display:grid; grid-template-columns:1fr; gap:12px;}
-@media (min-width:760px){.two-col{grid-template-columns:1.3fr 1fr;}}
-
+@media (min-width:760px){
+.two-col{grid-template-columns:1.3fr 1fr;}}
 .chip-row{display:flex; gap:8px; flex-wrap:wrap;}
 .chip{padding:6px 12px; border-radius:20px; background:var(--paper-2); border:1px solid var(--line); font-size:12px; font-weight:600; color:var(--ink-soft);}
-
-table.simple{width:100%; border-collapse:collapse; font-size:14px;}
-table.simple th{text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:var(--slate); padding:6px 8px; border-bottom:1px solid var(--line);}
-table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
-.table-wrap{overflow-x:auto;}
-
-.streak-flame{display:flex; align-items:center; gap:8px;}
-.streak-flame .num{font-family:var(--font-head); font-size:28px; font-weight:700; color:var(--amber);}
-
-
-/* ---------- Portrait only ---------- */
-.rotate-notice{
-  display:none; position:fixed; inset:0; z-index:300; background:var(--paper); color:var(--ink);
-  flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; padding:24px;
-}
-.rotate-notice svg{width:54px; height:54px; color:var(--indigo); animation:rotphone 2.4s ease-in-out infinite;}
-.rotate-notice h2{font-size:18px; font-weight:700;}
-.rotate-notice p{color:var(--ink-soft); font-size:14px;}
 @keyframes rotphone{0%,25%{transform:rotate(90deg);} 60%,100%{transform:rotate(0deg);}}
-@media (prefers-reduced-motion:reduce){ .rotate-notice svg{animation:none;} }
-
 /* ---------- Auth screen ---------- */
 .auth-screen{
   position:fixed; inset:0; z-index:150; background:var(--paper); overflow-y:auto;
@@ -566,32 +484,23 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .auth-loading{display:flex; align-items:center; justify-content:center; gap:10px; color:var(--ink-soft); font-size:14px; margin:auto;}
 .auth-spinner{width:18px; height:18px; border-radius:50%; border:2.5px solid var(--line); border-top-color:var(--indigo); animation:authspin .8s linear infinite;}
 @keyframes authspin{to{transform:rotate(360deg);}}
-@media (prefers-reduced-motion:reduce){ .auth-spinner{animation-duration:2.4s;} }
-.home-greet{margin-bottom:16px;}
-.home-greet h2{font-size:24px; font-weight:700; line-height:1.25;}
-.home-greet p{color:var(--ink-soft); font-size:14px; margin-top:3px;}
-.plan-head{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:14px;}
-.plan-goal{font-weight:700; font-size:16px; line-height:1.3;}
-.plan-dream{color:var(--ink-soft); font-size:14px; margin-top:2px;}
-.plan-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px;}
-.plan-stat{background:var(--paper-2); border-radius:12px; padding:10px 6px; text-align:center;}
-.plan-stat .v{font-family:var(--font-head); font-weight:700; font-size:18px; line-height:1.1;}
-.plan-stat .l{font-size:11px; color:var(--ink-soft); margin-top:4px; line-height:1.25;}
+@media (prefers-reduced-motion:reduce){
+.auth-spinner{animation-duration:2.4s;} }
 .plan-pace{font-size:14px; line-height:1.45; margin-bottom:12px; color:var(--ink-soft);}
 .plan-pace b.ok{color:var(--green);}
 .plan-pace b.behind{color:var(--red);}
-.plan-dot{width:9px; height:9px; border-radius:50%; flex-shrink:0;}
 .plan-note{background:var(--indigo-tint); border-radius:12px; padding:10px 12px; font-size:14px; line-height:1.5; margin-top:12px;}
 .plan-link{background:none; border:none; color:var(--indigo); font-weight:600; font-size:14px; padding:0; cursor:pointer; text-decoration:underline;}
 .plan-foot{font-size:12px; color:var(--ink-soft); margin-top:12px; line-height:1.4;}
 .gl-check{display:flex; align-items:center; gap:8px; font-size:14px; margin-bottom:4px;}
 .gl-check input{width:18px; height:18px;}
 .account-email{font-family:var(--font-mono); font-size:14px; word-break:break-all; margin-bottom:14px;}
-@media print{ .sidebar,.bottomnav,.fab{display:none;} }
-
+@media print{
+.sidebar, .bottomnav, .fab{display:none;} }
 /* Chapter list: square tiles with outer progress ring */
 .ch-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
-@media(min-width:600px){ .ch-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));} }
+@media(min-width:600px){
+.ch-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));} }
 .ch-tile-wrap{position:relative; display:flex; flex-direction:column; align-items:center; gap:4px;}
 .ch-badge{position:absolute; top:-7px; right:-7px; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center;
   color:#fff; border:2.5px solid var(--paper); box-shadow:0 1px 4px rgba(0,0,0,.18); z-index:2; pointer-events:none;}
@@ -611,11 +520,6 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
   display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;}
 .ch-tile.gold .ch-tile-in{background:linear-gradient(135deg,#FCE38A,#F2B705); color:#4A3500;}
 .ch-pct{font-size:12px; font-weight:700; color:var(--ink-soft);}
-
-/* Timetable */
-.tt-nav{display:flex; align-items:center; gap:8px; margin-bottom:12px;}
-.tt-nav .tt-date{flex:1; text-align:center; font-weight:700; font-size:14px;}
-.tt-nav .tt-date small{display:block; font-weight:600; font-size:12px; color:var(--ink-soft);}
 .tt-block{display:flex; gap:10px; margin-bottom:8px;}
 .tt-time{width:62px; flex-shrink:0; text-align:right; font-size:11px; color:var(--ink-soft); display:flex; flex-direction:column; padding-top:12px; line-height:1.35;}
 .tt-time b{color:var(--ink); font-size:12px; font-weight:700;}
@@ -635,7 +539,6 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .tt-days{display:flex; gap:6px; flex-wrap:wrap;}
 .tt-day{padding:7px 11px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); font-size:12px; font-weight:600; cursor:pointer;}
 .tt-day.active{background:var(--indigo); border-color:var(--indigo); color:#fff;}
-.upnext{border-left:4px solid var(--kc); cursor:pointer;}
 .tt-sec{margin:20px 2px 10px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--indigo);}
 .sg-card{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--kc); border-radius:14px; padding:10px 12px; margin-bottom:8px;}
 .sg-t{font-weight:600; font-size:14px; overflow-wrap:anywhere;}
@@ -643,10 +546,8 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .sg-act{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;}
 /* ---------- Avatar / Profile / new Settings look ---------- */
 .avatar-btn{flex:0 0 38px;min-width:38px;aspect-ratio:1/1;box-sizing:border-box;width:38px;height:38px;border-radius:50%;border:2px solid var(--indigo);padding:0;overflow:hidden;cursor:pointer;background:var(--indigo-tint);color:var(--indigo);font:700 16px var(--font-head);display:flex;align-items:center;justify-content:center}
-.avatar-btn img,.pf-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar-btn img, .pf-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .pf-top{position:relative;text-align:center;padding:10px 0 22px}
-.pf-gear{position:absolute;top:0;right:0;width:38px;height:38px;border-radius:50%;border:none;background:transparent;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center}
-.pf-gear svg{width:21px;height:21px}
 .pf-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 12px;overflow:hidden;background:var(--indigo-tint);color:var(--indigo);display:flex;align-items:center;justify-content:center;font:700 40px var(--font-head)}
 .pf-name{font:700 18px var(--font-head);word-break:break-word}
 .pf-sub{font-size:12px;color:var(--ink-soft);margin:2px 0 8px}
@@ -656,18 +557,15 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .pf-box .l{font-size:12px;color:var(--ink-soft);margin-bottom:4px}
 .pf-box .n{font:700 28px var(--font-head);color:var(--ink);line-height:1.1}
 .pf-box .n small{font-size:12px;font-weight:600;color:var(--ink-soft);margin-left:4px}
-.pf-tap{cursor:pointer}.pf-tap:active{background:var(--paper-2)}
+.pf-tap{cursor:pointer}
+.pf-tap:active{background:var(--paper-2)}
 .pf-lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:22px 2px 10px}
-.pf-more{display:block;margin:18px auto 0;background:none;border:none;color:var(--ink-soft);font-size:12px;cursor:pointer}
 .pf-ph{width:104px;height:104px;border-radius:50%;margin:0 auto 14px;overflow:hidden;background:var(--paper-2);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font:700 40px var(--font-head);color:var(--indigo)}
 .pf-ph img{width:100%;height:100%;object-fit:cover}
-.st-head{display:flex;align-items:center;gap:12px;padding:18px;margin-bottom:16px;border-radius:22px;color:#fff;background:linear-gradient(145deg,#4452C4,#242C74)}
-.st-head h2{font-size:18px}.st-head p{font-size:12px;opacity:.75;margin-top:2px}
-.st-back{width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,.18);color:#fff;font-size:18px;cursor:pointer}
 #view-settings .card{border-radius:22px;border:none;box-shadow:var(--shadow)}
 #view-settings .section-title{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--indigo);display:flex;align-items:center;gap:8px}
 #view-settings .section-title::before{content:"";width:4px;height:14px;border-radius:2px;background:var(--amber)}
-#view-settings .field input,#view-settings .field select,#view-settings .field textarea{border-radius:12px;background:var(--paper-2);border-color:transparent}
+#view-settings .field input, #view-settings .field select, #view-settings .field textarea{border-radius:12px;background:var(--paper-2);border-color:transparent}
 #view-settings .btn{border-radius:999px}
 #view-settings .seg{border-radius:999px}
 .mr-lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:18px 4px 8px}
@@ -683,19 +581,6 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .mr-main small{font-size:12px;color:var(--ink-soft)}
 .mr-chev{font-size:22px;color:var(--ink-soft);line-height:1}
 .mb-badge2{min-width:22px;height:22px;padding:0 7px;border-radius:11px;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.more-box{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:18px 16px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 14px var(--font-body);text-align:left;cursor:pointer;position:relative}
-.more-box:active{transform:scale(.98)}
-.more-box svg{width:24px;height:24px;color:var(--indigo)}
-.more-box .mb-badge{position:absolute;top:12px;right:12px;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--red);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
-.hm-today{display:flex;align-items:center;gap:18px;margin-bottom:0}
-.hm-ring{position:relative;width:92px;height:92px;flex:0 0 92px}
-.hm-ring svg{width:100%;height:100%}
-.hm-ring-t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15}
-.hm-ring-t b{font:700 16px var(--font-head)}.hm-ring-t span{font-size:11px;color:var(--ink-soft)}
-.hm-bars{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0}
-.hm-lblrow{display:flex;align-items:center;justify-content:space-between}
-.hm-lblrow .pf-edit{padding:0 2px;text-transform:none;letter-spacing:0}
 .pf-box .n span{font-size:12px;font-weight:600;color:var(--ink-soft)}
 .qa-grid{display:grid;grid-template-columns:repeat(var(--cols,3),1fr);gap:10px}
 .qa-tile{aspect-ratio:1/1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:6px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font:600 12px/1.2 var(--font-body);text-align:center}
@@ -706,7 +591,8 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .qa-row2 label{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer}
 .qa-ico svg{width:18px;height:18px;color:var(--indigo);display:block}
 .qa-mv{border:none;background:var(--paper-2);color:var(--ink-soft);width:30px;height:28px;border-radius:8px;margin-left:4px;font-size:11px;cursor:pointer}
-.an-tab{display:none}.an-tab.on{display:block}
+.an-tab{display:none}
+.an-tab.on{display:block}
 .an-seg{border-radius:999px}
 /* ---------- Minimal login ---------- */
 .auth-screen{align-items:center}
@@ -726,28 +612,24 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .auth-foot{margin-top:14px}
 .auth-link{color:var(--ink-soft);font-weight:600}
 /* ===================== Global minimal layer (all pages) ===================== */
-:root,:root[data-theme="dark"]{--shadow:none;--radius-md:16px;--radius-lg:20px}
+:root, :root[data-theme="dark"]{--shadow:none;--radius-md:16px;--radius-lg:20px}
 .sidebar{background:var(--paper)}
 .nav-item{font-weight:600;border-radius:999px}
 .nav-item.active{background:var(--indigo-tint);color:var(--indigo)}
 .topbar h1{font-size:18px;font-weight:600}
-.topbar .date-pill{border:none}
-.card,.stat,.row-item,.pill-searchbar{background:transparent;box-shadow:none;border:1px solid var(--line);border-radius:16px}
+.card, .stat, .row-item, .pill-searchbar{background:transparent;box-shadow:none;border:1px solid var(--line);border-radius:16px}
 .card-flat{background:var(--paper-2);border:none;border-radius:16px}
-.card.is-important{border-color:var(--amber)}
 .section-title{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:26px 2px 10px}
 .stat .val{font-weight:700}
 .stat .icon{background:transparent !important;padding:0;width:auto;height:auto;justify-content:flex-start}
 .hero{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.hero-exam .label,.hero-exam .sub,.hero-exam .num span{opacity:1;color:var(--ink-soft)}
-.hero-divider{background:var(--line)}
 .btn{border-radius:999px;font-weight:600}
 .btn.sm{border-radius:999px}
 .btn.secondary{background:transparent}
-.fab,.fab-alert{box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.fab, .fab-alert{box-shadow:0 2px 10px rgba(0,0,0,.18)}
 .field label{font-weight:600;font-size:12px}
-.field input,.field select,.field textarea{border-radius:12px;background:var(--paper-2);border:1px solid transparent}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--indigo);background:var(--paper)}
+.field input, .field select, .field textarea{border-radius:12px;background:var(--paper-2);border:1px solid transparent}
+.field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--indigo);background:var(--paper)}
 .seg{border:none;background:var(--paper-2);border-radius:999px;padding:3px;gap:3px;overflow:visible}
 .seg button{border:none !important;border-radius:999px;background:transparent}
 .seg button.active{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
@@ -757,58 +639,39 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .badge{font-weight:600;border-radius:999px}
 .pbar{height:6px}
 .pill-searchbar{border-radius:999px}
-.filter-row select.pill-select,.filter-row .pill-toggle{background-color:transparent;border-color:var(--line);font-weight:600}
+.filter-row select.pill-select, .filter-row .pill-toggle{background-color:transparent;border-color:var(--line);font-weight:600}
 .empty .ee{display:none}
 .modal{border-radius:24px 24px 0 0}
 .modal-backdrop{backdrop-filter:blur(3px)}
 .bottomnav{background:var(--paper)}
 .bn-item{font-weight:600}
 .ch-tile.gold .ch-tile-in{background:var(--amber-tint);color:var(--amber)}
-.st-head{background:transparent;color:var(--ink);padding:4px 0;margin-bottom:10px}
-.st-head p{opacity:1;color:var(--ink-soft)}
-.st-back{background:var(--paper-2);color:var(--ink)}
 #view-settings .card{box-shadow:none;border:1px solid var(--line);border-radius:16px}
 #view-settings .section-title{color:var(--ink-soft)}
 #view-settings .section-title::before{display:none}
-#view-settings .field input,#view-settings .field select,#view-settings .field textarea{border-color:transparent}
-.more-box,.qa-tile{background:transparent}
-.bt-hero{display:flex;align-items:center;justify-content:space-between;background:var(--ink);color:var(--paper);border-radius:20px;padding:18px 18px;margin-bottom:10px}
-.bt-l{font-size:12px;opacity:.7}
-.bt-big{font:700 40px/1.1 var(--font-head);margin-top:2px}
-.bt-mid{font:700 28px/1.2 var(--font-head);margin-top:2px}
-.bt-big span,.bt-mid span{font:600 12px var(--font-body);opacity:.7}
-.bt-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.bt-tile{border-radius:18px;padding:14px;min-width:0}
-.bt-tile .bt-l{opacity:1}
-.bt-ringrow{display:flex;align-items:center;gap:10px;margin-top:8px}
-.bt-ringrow b,.bt-flat b{display:block;font:700 18px/1.2 var(--font-head)}
-.bt-ringrow span,.bt-flat span{display:block;font-size:11px;opacity:.85}
-.bt-num{font:700 28px/1.1 var(--font-head);margin-top:10px}
-.bt-num span{font:600 14px var(--font-body)}
-.bt-track{height:6px;border-radius:3px;background:rgba(127,127,127,.25);margin-top:10px}
-.bt-track div{height:6px;border-radius:3px;background:currentColor}
-.bt-flat{cursor:pointer;display:flex;align-items:center;min-height:62px}
-.bt-extra{font-size:12px;color:var(--ink-soft);margin:-2px 2px 10px}
-.hm-lblrow{margin-top:18px}
+#view-settings .field input, #view-settings .field select, #view-settings .field textarea{border-color:transparent}
+.qa-tile{background:transparent}
 /* ===== Bento look on every page ===== */
-.card,.stat,.row-item,.pf-box,.more-box,.qa-tile,.pill-searchbar{border:none;background:var(--paper-2);border-radius:18px}
+.card, .stat, .row-item, .pf-box, .qa-tile, .pill-searchbar{border:none;background:var(--paper-2);border-radius:18px}
 .card-flat{background:var(--paper-2);border-radius:18px}
-.card .field input,.card .field select,.card .field textarea,.card .pill-select{background:var(--paper)}
+.card .field input, .card .field select, .card .field textarea, .card .pill-select{background:var(--paper)}
 .stat .val{color:inherit}
 .stat .lbl{color:inherit;opacity:.8}
 .grid>.stat:nth-child(4n+1){background:var(--indigo-tint);color:var(--indigo)}
 .grid>.stat:nth-child(4n+2){background:var(--green-tint);color:var(--green)}
 .grid>.stat:nth-child(4n+3){background:var(--amber-tint);color:var(--amber)}
-.pf-c-g{background:var(--green-tint)}.pf-c-g .n,.pf-c-g .l{color:var(--green)}
-.pf-c-i{background:var(--indigo-tint)}.pf-c-i .n,.pf-c-i .l{color:var(--indigo)}
-.pf-c-a{background:var(--amber-tint)}.pf-c-a .n,.pf-c-a .l{color:var(--amber)}
-.pf-box .n small,.pf-box .n span{color:inherit;opacity:.75}
-.qa-tile,.more-box{background:var(--paper-2)}
-.more-grid .more-box:nth-child(4n+1) svg,.more-grid .more-box:nth-child(4n+4) svg{color:var(--indigo)}
+.pf-c-g{background:var(--green-tint)}
+.pf-c-g .n, .pf-c-g .l{color:var(--green)}
+.pf-c-i{background:var(--indigo-tint)}
+.pf-c-i .n, .pf-c-i .l{color:var(--indigo)}
+.pf-c-a{background:var(--amber-tint)}
+.pf-c-a .n, .pf-c-a .l{color:var(--amber)}
+.pf-box .n small, .pf-box .n span{color:inherit;opacity:.75}
+.qa-tile{background:var(--paper-2)}
 #view-settings .card{border:none;background:var(--paper-2)}
-#view-settings .field input,#view-settings .field select,#view-settings .field textarea{background:var(--paper)}
+#view-settings .field input, #view-settings .field select, #view-settings .field textarea{background:var(--paper)}
 .tab{border:none;background:var(--paper-2)}
-.filter-row select.pill-select,.filter-row .pill-toggle{background-color:var(--paper-2);border:none}
+.filter-row select.pill-select, .filter-row .pill-toggle{background-color:var(--paper-2);border:none}
 /* ===== Home: colour-tile layout ===== */
 .hx-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .hx-cd{border-radius:16px;padding:14px 14px 12px;color:#fff;min-width:0}
@@ -838,7 +701,7 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .qa-tile:nth-child(3n+1){background:#3B82D6}
 .qa-tile:nth-child(3n+2){background:#3FA5B5}
 .qa-tile:nth-child(3n){background:#3DBE7E}
-#view-home .pf-box,#view-home .pf-box.hm-today{background:var(--card)}
+#view-home .pf-box{background:var(--card)}
 /* ===== Header, nav and cards like the reference ===== */
 :root:not([data-theme="dark"]){--paper:#EBF0F6}
 .topbar{background:transparent;border:none;justify-content:space-between;padding-top:calc(14px + env(safe-area-inset-top,0px))}
@@ -850,7 +713,6 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .tb-ic{position:relative;width:40px;height:40px;border:none;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%}
 .tb-ic svg{width:24px;height:24px}
 .tb-dot{position:absolute;top:7px;right:8px;width:9px;height:9px;border-radius:50%;background:#E5484D;border:2px solid var(--paper)}
-.hx-un-k{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
 .hx-un-h{font:700 18px var(--font-head);margin:4px 0 8px}
 .hx-un-t{font-size:16px;line-height:1.35;margin-bottom:10px}
 .hx-un-m{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
@@ -858,7 +720,9 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .bottomnav{background:var(--card);border-top:none}
 .bottomnav{left:50%;right:auto;transform:translateX(-50%);width:100%;max-width:440px;border-radius:20px 20px 0 0;box-shadow:0 -4px 18px rgba(0,0,0,.08)}
 .sidebar{width:208px}
-@media (min-width:900px) and (max-width:1099px){.sidebar{width:184px;padding:20px 10px}.nav-item{padding:10px 12px;font-size:13px;gap:10px}}
+@media (min-width:900px) and (max-width:1099px){
+.sidebar{width:184px;padding:20px 10px}
+.nav-item{padding:10px 12px;font-size:13px;gap:10px}}
 .bn-item{color:var(--ink);position:relative;font-size:12px;font-weight:600}
 .bn-item svg{width:24px;height:24px}
 .bn-item.active{color:#3B82D6}
@@ -870,13 +734,13 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
   --amber:#A85F00;--amber-tint:#FDEEDB;--green:#1E7F52;--green-tint:#E1F6EA;--red:#E5484D;--red-tint:#FDE7E8;
 }
 :root[data-theme="dark"]{--indigo:#6AA6EE;--indigo-deep:#3B82D6;--indigo-tint:#1E2B3F}
-.card,.row-item,.pill-searchbar,.pf-box,.stat{background:var(--card);border:none;border-radius:18px}
+.card, .row-item, .pill-searchbar, .pf-box, .stat{background:var(--card);border:none;border-radius:18px}
 .card-flat{background:var(--card);border-radius:18px}
-.field input,.field select,.field textarea,.card .field input,.card .field select,.card .field textarea,#view-settings .field input,#view-settings .field select,#view-settings .field textarea{background:var(--paper-2);border-radius:12px}
-.section-title,.pf-lbl{font:700 18px var(--font-head);text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 2px 10px}
+.field input, .field select, .field textarea, .card .field input, .card .field select, .card .field textarea, #view-settings .field input, #view-settings .field select, #view-settings .field textarea{background:var(--paper-2);border-radius:12px}
+.section-title, .pf-lbl{font:700 18px var(--font-head);text-transform:none;letter-spacing:0;color:var(--ink);margin:20px 2px 10px}
 .btn{border-radius:14px}
 .btn.sm{border-radius:12px}
-.seg,.tab,.filter-row select.pill-select,.filter-row .pill-toggle{background:var(--card)}
+.seg, .tab, .filter-row select.pill-select, .filter-row .pill-toggle{background:var(--card)}
 .seg button.active{background:var(--indigo);color:#fff;box-shadow:none}
 .tab.active{background:var(--indigo);color:#fff}
 .grid>.stat{color:#fff}
@@ -884,27 +748,21 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .grid>.stat:nth-child(4n+2){background:#F29A38}
 .grid>.stat:nth-child(4n+3){background:#3FA5B5}
 .grid>.stat:nth-child(4n){background:#3DBE7E}
-.grid>.stat .val,.grid>.stat .lbl{color:#fff}
+.grid>.stat .val, .grid>.stat .lbl{color:#fff}
 .grid>.stat .lbl{text-transform:uppercase;font-size:11px;letter-spacing:.03em;opacity:.95}
 .grid>.stat .icon{color:#fff}
-.pf-c-g{background:#3DBE7E}.pf-c-i{background:#3B82D6}.pf-c-a{background:#F29A38}
-.pf-c-g,.pf-c-i,.pf-c-a{color:#fff}
-.pf-c-g .n,.pf-c-g .l,.pf-c-i .n,.pf-c-i .l,.pf-c-a .n,.pf-c-a .l{color:#fff}
+.pf-c-g{background:#3DBE7E}
+.pf-c-i{background:#3B82D6}
+.pf-c-a{background:#F29A38}
+.pf-c-g, .pf-c-i, .pf-c-a{color:#fff}
+.pf-c-g .n, .pf-c-g .l, .pf-c-i .n, .pf-c-i .l, .pf-c-a .n, .pf-c-a .l{color:#fff}
 .hx-k{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
 .hx-big2{font:700 28px/1.15 var(--font-head);margin-top:6px}
 .hx-big2 span{font:600 14px var(--font-body);color:var(--ink-soft)}
-.more-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.more-box{aspect-ratio:1/1;align-items:center;justify-content:center;text-align:center;gap:8px;padding:6px;border:none;border-radius:16px;color:#fff;font:600 11px/1.2 var(--font-body);text-transform:uppercase;letter-spacing:.02em}
-.more-box svg{width:26px;height:26px;color:#fff !important}
-.more-box:nth-child(3n+1){background:#3B82D6}
-.more-box:nth-child(3n+2){background:#3FA5B5}
-.more-box:nth-child(3n){background:#3DBE7E}
-.more-box .mb-badge{background:#E5484D}
 .fab{background:#3B82D6;color:#fff}
 .nav-item.active{background:var(--indigo-tint);color:var(--indigo)}
 .modal{background:var(--card)}
-.st-head h2,.st-head p{color:var(--ink)}
-.pbar>div,.hb-track>div{border-radius:3px}
+.pbar>div, .hb-track>div{border-radius:3px}
 .dl-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:6px}
 .dl-tile{border-radius:16px;padding:14px 12px;color:#fff}
 .dl-tile b{display:block;font:700 28px/1.1 var(--font-head)}
@@ -924,7 +782,8 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .pl-day span{font-size:11px;color:var(--ink-soft)}
 .pl-day b{font:700 16px var(--font-head)}
 .pl-day i{width:5px;height:5px;border-radius:50%}
-.pl-day.on{background:#3B82D6;color:#fff}.pl-day.on span{color:#fff;opacity:.85}
+.pl-day.on{background:#3B82D6;color:#fff}
+.pl-day.on span{color:#fff;opacity:.85}
 .pl-filters{display:flex;gap:8px;margin-bottom:12px}
 .pl-chip{border:none;background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 14px var(--font-body);cursor:pointer}
 .pl-chip.on{background:#3B82D6;color:#fff}
@@ -934,39 +793,38 @@ table.simple td{padding:9px 8px; border-bottom:1px solid var(--line);}
 .pill-searchbar{margin-bottom:10px}
 .dl-sum .dl-tile{min-width:0}
 /* ===== No horizontal scroll anywhere ===== */
-html,body,.main,.view,#app{max-width:100%;overflow-x:hidden;overflow-x:clip}
-.tabs{flex-wrap:wrap;overflow:visible;gap:8px}
+html, body, .main, .view, #app{max-width:100%;overflow-x:hidden;overflow-x:clip}
 .tab{border-radius:999px;padding:8px 14px;white-space:normal;text-align:center}
 .filter-row{flex-wrap:wrap;overflow:visible}
-.filter-row select,.filter-row select.pill-select{flex:1 1 calc(50% - 8px);min-width:0;max-width:100%}
-.filter-row .pill-toggle,.filter-row .btn{flex:1 1 auto}
-.table-wrap{overflow-x:visible}
-.grid-3,.grid-4{grid-template-columns:repeat(auto-fit,minmax(98px,1fr))}
-.card svg,.hx-card svg{max-width:100%}
-.ri-main,.dl-name,.tt-card{min-width:0;overflow-wrap:anywhere}
+.filter-row select, .filter-row select.pill-select{flex:1 1 calc(50% - 8px);min-width:0;max-width:100%}
+.filter-row .pill-toggle, .filter-row .btn{flex:1 1 auto}
+.grid-3, .grid-4{grid-template-columns:repeat(auto-fit,minmax(98px,1fr))}
+.card svg, .hx-card svg{max-width:100%}
+.ri-main, .dl-name, .tt-card{min-width:0;overflow-wrap:anywhere}
 .toast{white-space:normal;max-width:calc(100vw - 32px)}
 .row-item{flex-wrap:wrap}
 .ri-actions{flex-wrap:wrap}
-img,canvas{max-width:100%}
+img, canvas{max-width:100%}
 /* ===== Tighter top spacing ===== */
 .main{padding-top:8px}
 .topbar{padding-top:0 !important;margin-bottom:12px}
 .avatar-btn{flex:0 0 46px;width:46px;min-width:46px;height:46px}
 .tb-ic{width:38px;height:38px}
-@media (min-width:900px){.main{padding-top:20px}}
+@media (min-width:900px){
+.main{padding-top:20px}}
 /* ===== Contrast: text and icons on coloured fills ===== */
-.hx-date,.hx-num span{opacity:1}
-.hx-cd,.dl-tile,.qa-tile,.more-box,.grid>.stat,.pf-c-g,.pf-c-i,.pf-c-a{color:#fff}
-.hx-cd svg,.qa-tile svg,.more-box svg,.grid>.stat svg{color:#fff;stroke:currentColor}
-.dl-tile span,.grid>.stat .lbl{opacity:1}
+.hx-date, .hx-num span{opacity:1}
+.hx-cd, .dl-tile, .qa-tile, .grid>.stat, .pf-c-g, .pf-c-i, .pf-c-a{color:#fff}
+.hx-cd svg, .qa-tile svg, .grid>.stat svg{color:#fff;stroke:currentColor}
+.dl-tile span, .grid>.stat .lbl{opacity:1}
 .badge{font-weight:700}
-.grid>.stat .val,.grid>.stat .lbl,.grid>.stat .icon,.grid>.stat .icon svg{color:#fff !important}
+.grid>.stat .val, .grid>.stat .lbl, .grid>.stat .icon, .grid>.stat .icon svg{color:#fff !important}
 .grid>.stat .icon{background:transparent !important}
-.seg button.active,.tab.active,.pl-chip.on,.pl-day.on{color:#fff !important}
+.seg button.active, .tab.active, .pl-chip.on, .pl-day.on{color:#fff !important}
 .grid>.stat .cmp-delta{color:#fff !important}
 /* lighter tiles: keep text readable with weight + soft shadow */
-.hx-cd,.dl-tile,.qa-tile,.more-box,.grid>.stat,.pf-c-g,.pf-c-i,.pf-c-a{text-shadow:0 1px 2px rgba(0,0,0,.22)}
-.hx-cd svg,.qa-tile svg,.more-box svg{filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+.hx-cd, .dl-tile, .qa-tile, .grid>.stat, .pf-c-g, .pf-c-i, .pf-c-a{text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.hx-cd svg, .qa-tile svg{filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
 .hd-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .hd-more{font:600 14px var(--font-body);color:var(--indigo)}
 .hd-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-left:4px solid var(--line);padding:6px 0 6px 10px;margin-bottom:6px}
@@ -981,8 +839,6 @@ img,canvas{max-width:100%}
 .tb-coin b{font:700 14px var(--font-body)}
 .avatar-btn.back-mode{background:var(--card);color:var(--ink);border:none}
 .avatar-btn.back-mode svg{width:24px;height:24px}
-.st-back{display:flex;align-items:center;justify-content:center;padding:0}
-.st-back svg{width:20px;height:20px}
 /* ===== Login page: readable colours in light and dark ===== */
 .auth-screen{--au-accent:#2B66C2;--au-on:#fff}
 :root[data-theme="dark"] .auth-screen{--au-accent:#6AA7F2;--au-on:#0B1220}
@@ -1003,13 +859,17 @@ img,canvas{max-width:100%}
 .coin-pop b{display:block;font:800 16px var(--font-body)}
 .coin-pop-sub{display:block;font-size:12px;opacity:.75;margin-top:1px}
 @keyframes coinspin{0%{transform:rotateY(0) scale(.6)}100%{transform:rotateY(720deg) scale(1)}}
-@media (max-width:639px){.tb-coin{display:none !important}}   /* phones: balance lives in the Home card instead */
-@media (min-width:640px){.hx-coin-card{display:none}}          /* tablet + laptop: balance lives next to the bell */
+@media (max-width:639px){
+.tb-coin{display:none !important}}
+/* phones: balance lives in the Home card instead */
+@media (min-width:640px){.hx-coin-card{display:none}}
+/* tablet + laptop: balance lives next to the bell */
 .tb-coin.bump{animation:coinbump .6s ease}
 @keyframes coinbump{0%{transform:scale(1)}35%{transform:scale(1.22)}100%{transform:scale(1)}}
 .confetti-host{position:fixed;inset:0;pointer-events:none;z-index:260;overflow:hidden}
 .confetti-host i{position:absolute;display:block;border-radius:2px}
-@media (prefers-reduced-motion:reduce){.coin-pop-ic,.tb-coin.bump{animation:none}}
+@media (prefers-reduced-motion:reduce){
+.coin-pop-ic, .tb-coin.bump{animation:none}}
 /* ===== Notifications ===== */
 .nt-head{display:flex;align-items:center;justify-content:space-between;margin:0 2px 12px}
 .nt-head b{font:700 16px var(--font-head)}
@@ -1020,9 +880,9 @@ img,canvas{max-width:100%}
 .nt-x{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:none;background:var(--paper-2);color:var(--ink-soft);font-size:16px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
 /* ===== One typeface, one size scale (11 / 12 / 14 / 16 / 18 / 24 / 28 / 40) ===== */
 :root{--font-head:'Inter',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'Inter',system-ui,sans-serif}
-html,body,button,input,select,textarea{font-family:'Inter',system-ui,sans-serif}
+html, body, button, input, select, textarea{font-family:'Inter',system-ui,sans-serif}
 body{font-size:14px;line-height:1.45;font-variant-numeric:tabular-nums}
-h1,h2,h3,h4{font-family:inherit}
+h1, h2, h3, h4{font-family:inherit}
 .rv-cal{padding:14px}
 .rv-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
 .rv-head span{text-align:center;font:600 11px var(--font-body);color:var(--ink-soft);padding:6px 0}
@@ -1041,7 +901,8 @@ h1,h2,h3,h4{font-family:inherit}
 .rv-toggle svg{color:var(--indigo);flex:0 0 auto}
 .rv-sel{flex:1;min-width:0}
 .rv-toggle em{font:700 11px var(--font-body);font-style:normal;color:#fff;border-radius:999px;padding:2px 8px;white-space:nowrap}
-.rv-chev{transition:transform .2s;color:var(--ink-soft)}.rv-chev.open{transform:rotate(180deg)}
+.rv-chev{transition:transform .2s;color:var(--ink-soft)}
+.rv-chev.open{transform:rotate(180deg)}
 .rv-body{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
 .rv-c{aspect-ratio:auto;height:38px;border-radius:10px}
 .rv-grid{gap:3px}
@@ -1055,9 +916,52 @@ h1,h2,h3,h4{font-family:inherit}
 #view-settings>.btn.block{margin:6px 0 18px}
 /* ===== Fixed top bar: stays visible while scrolling ===== */
 .topbar{position:sticky;top:0;z-index:60;background:var(--paper);margin:-8px -16px 12px !important;padding:8px 16px !important;padding-top:calc(8px + env(safe-area-inset-top,0px)) !important}
-@media (min-width:900px){.topbar{margin:-20px -34px 12px !important;padding:12px 34px !important}}
+@media (min-width:900px){
+.topbar{margin:-20px -34px 12px !important;padding:12px 34px !important}}
 .modal-backdrop.center{align-items:center;padding:16px}
 .modal-backdrop.center .modal{border-radius:22px;max-height:82vh}
+
+/* ===== Chapter detail, same look as Home ===== */
+.modal:has(.cd){background:var(--paper)}
+.cd .hx-card{background:var(--card);margin-bottom:12px}
+.cd .hx-h{font-size:16px;margin-bottom:10px}
+.cd-hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.cd-st{color:#fff;font:700 11px var(--font-body);text-transform:uppercase;letter-spacing:.04em;border-radius:999px;padding:4px 10px}
+.cd .dl-sum{margin-bottom:12px}
+.cd .dl-tile b{font-size:22px;white-space:nowrap}
+.cd .chip-row select.pill-select{appearance:none;-webkit-appearance:none;padding:8px 28px 8px 14px;border-radius:20px;border:none;background:var(--paper-2) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%235B6178" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right 10px center/12px;font:600 13px var(--font-body);color:var(--ink)}
+.cd .chip-row select.pill-select{flex:1 1 auto;min-width:0}
+.cd-task{display:flex;align-items:center;gap:12px;padding:12px 2px;border-top:1px solid var(--line);font:600 15px var(--font-body);color:var(--ink);cursor:pointer}
+.cd-task:first-of-type{border-top:none}
+.cd-task input{width:20px;height:20px;accent-color:#3DBE7E}
+.cd-task.on span{color:var(--ink-soft);text-decoration:line-through}
+.cd-split{display:flex;height:10px;border-radius:6px;overflow:hidden;background:var(--paper-2)}
+.cd-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink-soft);margin-top:10px}
+.cd-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.cd-dl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cd-dl input{font-size:14px;padding:8px 10px;border-radius:12px;border:none;background:var(--paper-2);color:var(--ink)}
+.cd-rev{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.cd-rev:first-of-type{border-top:none}
+.cd-dot{width:10px;height:10px;border-radius:50%;flex:0 0 10px}
+.cd-rev-m b{display:block;font:600 15px var(--font-body)}
+.cd-rev-m small{font-size:12px;color:var(--ink-soft)}
+/* long values like 1m 30s stay on one line */
+.grid>.stat .val{font-size:clamp(20px,6vw,28px);white-space:nowrap}
+
+/* ===== Tests / Practice / Analytics, same look as Home ===== */
+.modal:has(.cd){background:var(--paper)}
+.dl-tile b{font-size:clamp(20px,6vw,28px);white-space:nowrap}
+.hbar-row{flex-wrap:wrap;gap:6px 10px;margin-bottom:14px}
+.hbar-row:last-child{margin-bottom:0}
+.hbar-row .hb-label{width:auto;flex:1;min-width:0;font:600 14px var(--font-body);color:var(--ink)}
+.hbar-row .hb-label small{display:block;font:400 12px var(--font-body);color:var(--ink-soft);margin-top:1px}
+.hbar-row .hb-val{width:auto;font:700 14px var(--font-body);white-space:nowrap}
+.hbar-row .hb-track{order:3;flex:0 0 100%;height:8px}
+.tt-row{align-items:center;gap:12px}
+.tt-score{flex:0 0 58px;height:58px;border-radius:16px;background:#3B82D6;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.tt-score b{font:700 20px var(--font-head)}
+.tt-score span{font:600 9px var(--font-body);text-transform:uppercase;letter-spacing:.04em;opacity:.9}
+.cd .hx-card{background:var(--card)}
 </style>
 </head>
 <body>
@@ -1201,8 +1105,64 @@ async function fbLoad(){
 }
 function fbSave(){
   if(!fbReady || !DATA) return;
-  fbDb.collection('users').doc(fbUid).set(DATA).catch(e=>console.error('Firestore save failed', e));
+  fbSave._pending = true;
+  clearTimeout(fbSave._t);
+  fbSave._t = setTimeout(fbFlush, 1200);   // batch quick edits into one write
 }
+function fbFlush(){
+  clearTimeout(fbSave._t);
+  if(!fbReady || !DATA || !fbSave._pending) return;
+  fbSave._pending = false;
+  fbDb.collection('users').doc(fbUid).set(DATA).then(()=>{
+    if(fbFlush._failed){ fbFlush._failed = false; toast('Synced'); }
+  }).catch(e=>{
+    console.error('Firestore save failed', e);
+    fbSave._pending = true;
+    if(!fbFlush._failed){ fbFlush._failed = true; toast('Sync failed. Will retry'); }
+    setTimeout(fbFlush, 15000);
+  });
+}
+function localStamp(){ return Number(DATA && DATA.updatedAt) || 0; }
+/* Decides whether the cloud copy or this device's copy is newer, and never lets an empty/stale copy overwrite real data. */
+async function fbApplyCloud(cloud, hadLocal){
+  if(cloud){
+    if(hadLocal && localStamp() > (Number(cloud.updatedAt)||0)){
+      saveDataLocalOnly(); fbReady = true; fbSave._pending = true; fbFlush();   // this device is newer: push it
+    } else {
+      mergeCloud(cloud); saveDataLocalOnly(); fbReady = true;
+    }
+  } else {   // null: brand-new account
+    const legacy = !hadLocal ? localStorage.getItem(LEGACY_LS_KEY) : null;
+    if(legacy){ try{ mergeCloud(JSON.parse(legacy)); localStorage.removeItem(LEGACY_LS_KEY); }catch(e){} }
+    if(pendingName) DATA.settings.studentName = pendingName;
+    saveDataLocalOnly(); fbReady = true; fbSave._pending = true; fbFlush();
+  }
+}
+/* Cloud could not be read: do NOT sync (that could overwrite the cloud copy). Keep retrying until it can be read. */
+function fbStartRetry(hadLocal){
+  if(fbStartRetry._on) return;
+  fbStartRetry._on = true;
+  const attempt = async ()=>{
+    if(fbReady) return;
+    const cloud = await fbLoad();
+    if(cloud === undefined) return;
+    await fbApplyCloud(cloud, hadLocal);
+    fbStartRetry._on = false; clearInterval(iv); window.removeEventListener('online', attempt);
+    renderAll(); toast('Back online. Synced');
+  };
+  const iv = setInterval(attempt, 20000);
+  window.addEventListener('online', attempt);
+}
+/* When the app comes back to the foreground, pick up changes made on another device. */
+async function fbPullIfNewer(){
+  if(!fbReady || !fbUid || fbSave._pending) return;
+  if(document.getElementById('modalBackdrop').classList.contains('open')) return;
+  const cloud = await fbLoad();
+  if(!cloud || fbSave._pending) return;
+  if((Number(cloud.updatedAt)||0) > localStamp()){ mergeCloud(cloud); saveDataLocalOnly(); renderAll(); }
+}
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden) fbFlush(); else fbPullIfNewer(); });
+window.addEventListener('pagehide', fbFlush);
 
 /* ---------------- Auth (email + password) ---------------- */
 let authMode = 'login';   // 'login' | 'signup'
@@ -1448,8 +1408,6 @@ function defaultData(){
       theme: 'light',
       revisionIntervals: [1,3,7,15],
       minStudyMinutesForStreak: 15,
-      minQuestionsForStreak: 10,
-      minRevisionsForStreak: 1,
       goal: null,   // {type, value, dream}
       targetCollegeId: '',
       customCollegeName: '',
@@ -1461,7 +1419,7 @@ function defaultData(){
     tests:[],
     revisions:[],
     studySessions:[],
-    streaks:{ study:{current:0,longest:0,lastDate:null,startDate:null,bestStart:null,bestEnd:null}, question:{current:0,longest:0,lastDate:null,startDate:null,bestStart:null,bestEnd:null}, revision:{current:0,longest:0,lastDate:null,startDate:null,bestStart:null,bestEnd:null} }
+    streaks:{ study:{current:0,longest:0,lastDate:null,startDate:null,bestStart:null,bestEnd:null} }
   };
 }
 function nextJuneDate(offsetDays){
@@ -1492,18 +1450,45 @@ function loadData(){
       DATA.streaks = Object.assign(defaultData().streaks, parsed.streaks||{});
       if(!DATA.chapters || DATA.chapters.length===0) DATA.chapters = defaultData().chapters;
       DATA.chapters.forEach(c=>{ if(c.weightage) c.weightage = normalizeWeightage(c.weightage); });
+      normalizeData();
     } else {
       DATA = defaultData();
-      saveData();
+      saveDataLocalOnly();   // a fresh default copy must never look "newer" than the cloud copy
     }
   }catch(e){
     console.error('Load failed, resetting', e);
     DATA = defaultData();
-    saveData();
+    saveDataLocalOnly();
   }
   return DATA;
 }
+/* One place that brings any saved/cloud data into the current shape. Safe to run many times. */
+function normalizeData(){
+  DATA.streaks = {study: Object.assign({current:0,longest:0,lastDate:null,startDate:null,bestStart:null,bestEnd:null}, (DATA.streaks&&DATA.streaks.study)||{})};
+  delete DATA.settings.minQuestionsForStreak; delete DATA.settings.minRevisionsForStreak;
+  ['timeBlocks','practiceSessions','tests','revisions','studySessions'].forEach(k=>{ if(!Array.isArray(DATA[k])) DATA[k]=[]; });
+  // Practice time: remember once whether it was already counted by a timer session (so it is never counted twice).
+  const ss = DATA.studySessions, used = new Set();
+  DATA.practiceSessions.forEach(p=>{
+    if(typeof p.fromTimer==='boolean') return;
+    const m = Number(p.timeMinutes)||0;
+    if(m<=0){ p.fromTimer = false; return; }
+    const hit = ss.findIndex((x,i)=>!used.has(i)&&x.date===p.date&&(x.subject||'')===(p.subject||'')&&(x.chapter||'')===(p.chapter||'')&&Math.abs(Number(x.minutes||0)-m)<=1);
+    if(hit>-1){ used.add(hit); p.fromTimer = true; } else p.fromTimer = false;
+  });
+  // Chapter ticks and status always agree with each other.
+  DATA.chapters.forEach(c=>{
+    const done = c.status==='Completed'||c.status==='Revised';
+    if(done){ c.notesDone = c.questionsDone = c.pyqsDone = true; }
+    else {
+      const n = (c.notesDone?1:0)+(c.questionsDone?1:0)+(c.pyqsDone?1:0);
+      if(n===3) c.pyqsDone = false;
+      if(c.status==='Not Started' && (c.notesDone||c.questionsDone||c.pyqsDone)) c.status = 'Studying';
+    }
+  });
+}
 function saveData(){
+  DATA.updatedAt = Date.now();   // used to tell which copy (this device or cloud) is newer
   try{
     localStorage.setItem(LS_KEY, JSON.stringify(DATA));
   }catch(e){
@@ -1539,20 +1524,13 @@ function overdueChapters(){
   const t = todayStr();
   return DATA.chapters.filter(c=>c.completeByDate && c.completeByDate<t && c.status!=='Completed' && c.status!=='Revised');
 }
-function upcomingDeadlineChapters(){
-  const t = todayStr();
-  return DATA.chapters.filter(c=>c.completeByDate && c.completeByDate>=t && c.status!=='Completed' && c.status!=='Revised')
-    .sort((a,b)=>a.completeByDate.localeCompare(b.completeByDate));
+function chapterProgress(c){
+  return ((c.notesDone?1:0)+(c.questionsDone?1:0)+(c.pyqsDone?1:0))/3;   // Notes, Questions, PYQs: one third each
 }
 function chapterCompletionPct(subject){
   const chs = DATA.chapters.filter(c=> !subject || c.subject===subject);
   if(chs.length===0) return 0;
-  const doneWeight = chs.reduce((sum,c)=>{
-    if(c.status==='Completed' || c.status==='Revised') return sum+1;
-    if(c.status==='Studying') return sum+0.5;
-    return sum;
-  },0);
-  return pct(doneWeight, chs.length);
+  return pct(chs.reduce((sum,c)=>sum+chapterProgress(c),0), chs.length);
 }
 function overallSyllabusPct(){
   return chapterCompletionPct(null);
@@ -1560,12 +1538,7 @@ function overallSyllabusPct(){
 function importantSyllabusPct(){
   const chs = DATA.chapters.filter(c=>c.important);
   if(chs.length===0) return 0;
-  const doneWeight = chs.reduce((sum,c)=>{
-    if(c.status==='Completed' || c.status==='Revised') return sum+1;
-    if(c.status==='Studying') return sum+0.5;
-    return sum;
-  },0);
-  return pct(doneWeight, chs.length);
+  return pct(chs.reduce((sum,c)=>sum+chapterProgress(c),0), chs.length);
 }
 // Rough JEE Main marks(out of 300) -> percentile curve, based on commonly observed
 // past-year trends for a candidate pool of roughly 17 lakh. This is an ESTIMATE only —
@@ -1637,16 +1610,13 @@ function questionsSolvedOn(dateStr){
 /* Study time = timer sessions + time logged in practice entries
    (practice entries created from the timer are skipped: that time is already a session). */
 function allStudy(){
-  const ss=DATA.studySessions, used=new Set();
   const extra=[];
   DATA.practiceSessions.forEach(p=>{
-    const m=Number(p.timeMinutes)||0; if(m<=0||p.fromTimer===true) return;
-    if(p.fromTimer===false){ extra.push({id:p.id,date:p.date,minutes:m,subject:p.subject,chapter:p.chapter,fromPractice:true}); return; }
-    const hit=ss.findIndex((x,i)=>!used.has(i)&&x.date===p.date&&(x.subject||'')===(p.subject||'')&&(x.chapter||'')===(p.chapter||'')&&Math.abs(Number(x.minutes||0)-m)<=1);
-    if(hit>-1){ used.add(hit); return; }
-    extra.push({id:p.id,date:p.date,minutes:m,subject:p.subject,chapter:p.chapter,fromPractice:true});
+    const m=Number(p.timeMinutes)||0;
+    // fromTimer===true means that time already exists as a timer session, so it is not counted again
+    if(m>0 && p.fromTimer===false) extra.push({id:p.id,date:p.date,minutes:m,subject:p.subject,chapter:p.chapter,fromPractice:true});
   });
-  return ss.concat(extra);
+  return DATA.studySessions.concat(extra);
 }
 function studyHoursOn(dateStr){
   const mins = allStudy().filter(s=>s.date===dateStr).reduce((s,x)=>s+Number(x.minutes||0),0);
@@ -1665,9 +1635,6 @@ function revisionsDueToday(){
 }
 function revisionsOverdue(){
   return DATA.revisions.filter(r=>!r.completed && r.dueDate < todayStr());
-}
-function revisionsUpcoming(){
-  return DATA.revisions.filter(r=>!r.completed && r.dueDate > todayStr());
 }
 function revisionStatusOf(r){
   if(r.completed) return 'Completed';
@@ -1694,61 +1661,19 @@ function todayHasStudyActivity(){
   if(minMinutes<=0) return minutesToday > 0;
   return minutesToday >= minMinutes;
 }
-function todayHasQuestionActivity(){
-  const minQ = Math.max(0, Number(DATA.settings.minQuestionsForStreak)||0);
-  const qToday = questionsSolvedOn(todayStr());
-  if(minQ<=0) return qToday > 0;
-  return qToday >= minQ;
-}
-function todayHasRevisionActivity(){
-  const minRev = Math.max(0, Number(DATA.settings.minRevisionsForStreak)||0);
-  const count = DATA.revisions.filter(r=> r.completedDate === todayStr()).length;
-  if(minRev<=0) return count > 0;
-  return count >= minRev;
-}
-function bumpStreak(key, activeToday){
-  const s = DATA.streaks[key];
-  if(!activeToday) return;
-  if(s.lastDate === todayStr()) return; // already counted today
-  if(s.lastDate === addDays(todayStr(),-1)){
-    s.current += 1;
-  } else {
-    s.current = 1;
-    s.startDate = todayStr();
-  }
-  s.lastDate = todayStr();
-  if(s.current > s.longest){
-    s.longest = s.current;
-    s.bestStart = s.startDate;
-    s.bestEnd = todayStr();
-  }
-}
 /* Older saved data has no start/end dates — rebuild them where they can be worked out. */
-function ensureStreakDates(s){
-  if(s.lastDate && s.current>0 && !s.startDate) s.startDate = addDays(s.lastDate, -(s.current-1));
-  if(s.longest>0 && !s.bestStart && s.longest===s.current && s.startDate){
-    s.bestStart = s.startDate;
-    s.bestEnd = s.lastDate;
-  }
-}
 /* Streaks are rebuilt from the real history every time, so deleting a session,
    practice entry or revision can never leave a fake streak behind. */
-function streakActiveDates(key){
-  const st=DATA.settings;
-  if(key==='study'){
-    const min=Math.max(0,Number(st.minStudyMinutesForStreak)||0);
-    const active = [...new Set(allStudy().map(x=>x.date).filter(Boolean))].filter(d=>{ const m=studyHoursOn(d)*60; return min<=0 ? m>0 : m>=min; });
-    return [...new Set(active.concat(ensureRewards().frozenDates))];   // streak freezes count as active days
-  }
-  if(key==='question'){
-    const min=Math.max(0,Number(st.minQuestionsForStreak)||0);
-    return [...new Set(DATA.practiceSessions.map(x=>x.date).filter(Boolean))].filter(d=>{ const q=questionsSolvedOn(d); return min<=0 ? q>0 : q>=min; });
-  }
-  const min=Math.max(0,Number(st.minRevisionsForStreak)||0);
-  return [...new Set(DATA.revisions.map(r=>r.completedDate).filter(Boolean))].filter(d=>{ const c=DATA.revisions.filter(r=>r.completedDate===d).length; return min<=0 ? c>0 : c>=min; });
+function streakActiveDates(){
+  const min = Math.max(0, Number(DATA.settings.minStudyMinutesForStreak)||0), today = todayStr();
+  const mins = {};
+  allStudy().forEach(x=>{ if(x.date) mins[x.date] = (mins[x.date]||0) + Number(x.minutes||0); });
+  const active = Object.keys(mins).filter(d=> min<=0 ? mins[d]>0 : mins[d]>=min);
+  // streak freezes count as active days; days in the future never count
+  return [...new Set(active.concat(ensureRewards().frozenDates))].filter(d=>d<=today);
 }
-function rebuildStreak(key){
-  const s=DATA.streaks[key], dates=streakActiveDates(key).sort();
+function rebuildStreak(){
+  const s=DATA.streaks.study, dates=streakActiveDates().sort();
   let longest=0,bestStart=null,bestEnd=null,runStart=null,prev=null,len=0;
   dates.forEach(d=>{
     if(prev && addDays(prev,1)===d){ len++; } else { len=1; runStart=d; }
@@ -1761,8 +1686,9 @@ function rebuildStreak(key){
   else { s.current=0; s.startDate=null; }
 }
 function recomputeStreaks(){
-  ['study','question','revision'].forEach(rebuildStreak);
-  saveData();
+  const before = JSON.stringify(DATA.streaks);
+  rebuildStreak();
+  if(JSON.stringify(DATA.streaks)!==before) saveData();   // only write when something really changed
 }
 /* ============================================================
    GOAL & DAILY PLAN
@@ -1809,7 +1735,7 @@ function goalText(g){
 function remainingChapterWork(subject){
   return DATA.chapters
     .filter(c=>!subject || c.subject===subject)
-    .reduce((sum,c)=> c.status==='Not Started' ? sum+1 : c.status==='Studying' ? sum+0.5 : sum, 0);
+    .reduce((sum,c)=> sum + (1-chapterProgress(c)), 0);
 }
 function nextFocusChapter(subject){
   const chs = DATA.chapters.filter(c=>c.subject===subject).sort((a,b)=>(a.order||0)-(b.order||0));
@@ -2270,7 +2196,7 @@ function switchView(viewId, fromBack){
   $('#viewTitle').innerHTML = viewId==='home' ? homeTitle() : esc(item ? item.label : (viewId==='timer'?'Study Timer':viewId==='profile'?'Profile':viewId==='analytics'?'Analytics':viewId==='deadlines'?'Deadlines':viewId==='notifications'?'Notifications':'JEE Tracker'));
   $all('.nav-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
   $all('.bn-item').forEach(b=>b.classList.toggle('active', b.dataset.view===viewId));
-  updateTopStreak(viewId);
+  updateFab();
   resetScrollTop();
   renderView(viewId);
   resetScrollTop();
@@ -2281,18 +2207,6 @@ function switchView(viewId, fromBack){
 function resetScrollTop(){
   try{ window.scrollTo(0,0); }catch(e){}
   [document.scrollingElement, document.documentElement, document.body, document.getElementById('main')].forEach(el=>{ if(el) el.scrollTop = 0; });
-}
-function updateTopStreak(viewId){
-  const el = $('#topStreak');
-  if(!el) return;
-  if((viewId||CURRENT_VIEW)!=='home'){ el.style.display = 'none'; return; }
-  const st = DATA.streaks.study;
-  const cur = st.current, best = st.longest;
-  el.style.display = 'flex';
-  $('#streakCurrent b').textContent = cur;
-  $('#streakCurrent').setAttribute('aria-label', `Current streak: ${cur} ${cur===1?'day':'days'}. Tap to see dates`);
-  $('#streakBest b').textContent = best;
-  $('#streakBest').setAttribute('aria-label', `Best streak: ${best} ${best===1?'day':'days'}. Tap to see dates`);
 }
 /* Shows when a streak started and ended. kind: 'current' | 'best' */
 function openStreakDetails(kind){
@@ -2355,7 +2269,6 @@ function renderView(viewId){
 function renderAll(){
   syncBonusDays();
   recomputeStreaks();
-  updateTopStreak();
   updateDeadlineFab();
   updateAvatarBtn();
   if(CURRENT_VIEW==='home') $('#viewTitle').innerHTML = homeTitle();
@@ -2394,6 +2307,7 @@ function mergeCloud(cloud){
   DATA.settings = Object.assign(defaultData().settings, cloud.settings||{});
   DATA.streaks = Object.assign(defaultData().streaks, cloud.streaks||{});
   if(!DATA.chapters || DATA.chapters.length===0) DATA.chapters = defaultData().chapters;
+  normalizeData();
 }
 
 /* Runs once a user is logged in (or immediately if Firebase isn't configured). */
@@ -2411,21 +2325,13 @@ async function startSession(user){
 
   if(user){
     const cloud = await fbLoad();
-    if(cloud){
-      mergeCloud(cloud);
-      saveDataLocalOnly();
-    } else if(cloud === null){
-      // brand-new account: bring over data from before logins existed (first account on this device only)
-      const legacy = !hadLocal ? localStorage.getItem(LEGACY_LS_KEY) : null;
-      if(legacy){
-        try{ mergeCloud(JSON.parse(legacy)); localStorage.removeItem(LEGACY_LS_KEY); }catch(e){}
-      }
-      if(pendingName) DATA.settings.studentName = pendingName;   // the name typed at signup is the one that stays
-      saveDataLocalOnly();
-      fbReady = true; fbSave();                 // create this user's cloud document
+    if(cloud === undefined){
+      // cloud unreachable: keep working locally, but do not sync until the cloud copy has been read
+      fbStartRetry(hadLocal);
+      setTimeout(()=>toast('Offline. Your changes stay on this device until you are back online'), 800);
+    } else {
+      await fbApplyCloud(cloud, hadLocal);
     }
-    // cloud === undefined: read failed (offline) → keep local data for now
-    fbReady = true;                             // from here on, every change syncs
   }
 
   hideAuthScreen();
@@ -2437,6 +2343,7 @@ async function startSession(user){
   COIN_PREV = null; coinCheck();   // silent starting point for the coin popup
   initPhoneBack();
   switchView('home');
+  restoreTimer();
   updateDeadlineFab();
   maybeShowDailyPopup();
   setInterval(()=>{ updateTopDate(); tickCountdowns(); checkDateRollover(); }, 30000);
@@ -2448,9 +2355,6 @@ async function startSession(user){
   $('#tbGear').addEventListener('click', ()=>switchView('settings'));
   $('#tbBell').addEventListener('click', ()=>switchView('notifications'));
   $('#tbCoin').addEventListener('click', ()=>switchView('rewards'));
-  const sc=$('#streakCurrent'), sb=$('#streakBest');
-  if(sc) sc.addEventListener('click', ()=>openStreakDetails('current'));
-  if(sb) sb.addEventListener('click', ()=>openStreakDetails('best'));
 }
 function saveDataLocalOnly(){
   try{ localStorage.setItem(LS_KEY, JSON.stringify(DATA)); }catch(e){ console.error('Save failed', e); }
@@ -2926,10 +2830,6 @@ function initPhoneBack(){
    until it fits. It is re-measured whenever the page content changes or the window is resized,
    so text goes back to full size when there is room again. Add data-nofit to an element to skip it. */
 const FIT = {roots:new Set(), tm:null, rtm:null};
-function fitHasOwnText(el){
-  for(const n of el.childNodes) if(n.nodeType===3 && n.nodeValue.trim()) return true;
-  return false;
-}
 function fitTextRect(el){
   let l=Infinity, t=Infinity, r=-Infinity, b=-Infinity;
   const rg = document.createRange();
@@ -3041,7 +2941,6 @@ window.addEventListener('beforeinstallprompt', (e)=>{ e.preventDefault(); DEFERR
 document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) checkDateRollover(); });
 window.addEventListener('focus', checkDateRollover);
 
-let DEADLINE_TAB = 'overdue';
 function updateDeadlineFab(){
   const btn = document.getElementById('deadlineFabBtn');
   if(!btn) return;
@@ -3054,7 +2953,6 @@ function dueNowChapters(){
   return DATA.chapters.filter(c=>c.completeByDate && c.completeByDate<=t && c.status!=='Completed' && c.status!=='Revised');
 }
 function openDeadlinePanel(){ switchView('deadlines'); }
-function renderDeadlinePanel(){ if(CURRENT_VIEW==='deadlines') renderDeadlinesPage(); else switchView('deadlines'); }
 function deadlineGroups(){
   const t=todayStr();
   const pending=DATA.chapters.filter(c=>c.completeByDate && c.status!=='Completed' && c.status!=='Revised')
@@ -3146,45 +3044,6 @@ function confirmReschedule(chapterId){
   renderAll();
   toast('Deadline updated');
 }
-function openMoreMenu(){
-  const extra = ['timetable','goal','practice','revision','timer','settings'];
-  const showInstall = !!DEFERRED_INSTALL_PROMPT;
-  openModal(`
-    <div class="modal-head"><h3>More</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    <div class="list">
-      ${extra.map(id=>{
-        const item = NAV_ITEMS.find(n=>n.id===id);
-        return `<button class="row-item" style="width:100%; border:1px solid var(--line); cursor:pointer;" data-goto="${id}">
-          <span class="icon-btn" style="pointer-events:none;">${ICONS[item.icon]}</span>
-          <div class="ri-main" style="pointer-events:none;"><div class="ri-title">${item.label}</div></div>
-        </button>`;
-      }).join('')}
-      ${showInstall ? `<button class="row-item" style="width:100%; border:1px solid var(--line); cursor:pointer;" id="installAppBtn">
-          <span class="icon-btn" style="pointer-events:none;">${ICONS.home}</span>
-          <div class="ri-main" style="pointer-events:none;"><div class="ri-title">Install App on Home Screen</div></div>
-        </button>` : ''}
-      <button class="row-item" style="width:100%; border:1px solid var(--line); cursor:pointer;" id="shareProgressBtn">
-        <span class="icon-btn" style="pointer-events:none;">📤</span>
-        <div class="ri-main" style="pointer-events:none;"><div class="ri-title">Share Today's Progress</div></div>
-      </button>
-      <button class="row-item" style="width:100%; border:1px solid var(--line); cursor:pointer;" id="chapterDeadlinesBtn">
-        <span class="icon-btn" style="pointer-events:none;">📅</span>
-        <div class="ri-main" style="pointer-events:none;"><div class="ri-title">Chapter Deadlines${overdueChapters().length?` (${overdueChapters().length})`:''}</div></div>
-      </button>
-    </div>
-  `);
-  $all('[data-goto]').forEach(b=>b.addEventListener('click', ()=>{ closeModal(); switchView(b.dataset.goto); }));
-  const installBtn = document.getElementById('installAppBtn');
-  if(installBtn) installBtn.addEventListener('click', async ()=>{
-    closeModal();
-    if(!DEFERRED_INSTALL_PROMPT) return;
-    DEFERRED_INSTALL_PROMPT.prompt();
-    await DEFERRED_INSTALL_PROMPT.userChoice;
-    DEFERRED_INSTALL_PROMPT = null;
-  });
-  document.getElementById('shareProgressBtn').addEventListener('click', ()=>{ closeModal(); openShareCardModal(); });
-  document.getElementById('chapterDeadlinesBtn').addEventListener('click', ()=>{ closeModal(); openDeadlinePanel(); });
-}
 
 function openShareCardModal(){
   openModal(`
@@ -3208,21 +3067,6 @@ function roundRectPath(ctx,x,y,w,h,r){
   ctx.arcTo(x,y+h,x,y,r);
   ctx.arcTo(x,y,x+w,y,r);
   ctx.closePath();
-}
-function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight){
-  const words = text.split(' ');
-  let line = '';
-  const lines = [];
-  words.forEach(w=>{
-    const test = line + w + ' ';
-    if(ctx.measureText(test).width > maxWidth && line){
-      lines.push(line.trim());
-      line = w + ' ';
-    } else line = test;
-  });
-  lines.push(line.trim());
-  const startY = y - (lines.length-1)*lineHeight;
-  lines.forEach((l,i)=>ctx.fillText(l, x, startY+i*lineHeight));
 }
 function shareCollect(){
   const t=todayStr(), s=DATA.settings;
@@ -3521,12 +3365,15 @@ function handleQuickAction(type){
   else if(type==='practice') openPracticeModal();
   else if(type==='test') openTestModal();
 }
+const FAB_ACTIONS = {home:'block', timetable:'block', chapters:'chapter', practice:'practice', tests:'test', revision:'revision-add', rewards:'reward'};
+function updateFab(){
+  const on = !!FAB_ACTIONS[CURRENT_VIEW];
+  const b = $('#fabBtn'); if(b) b.style.display = on ? '' : 'none';
+  document.body.classList.toggle('nofab', !on);
+}
 function openQuickAddMenu(){
-  const map = {
-    home:'block', planner:'block', chapters:'chapter', practice:'practice',
-    tests:'test', revision:'revision-add', analytics:'block', settings:'block', timer:'block', timetable:'block', rewards:'reward'
-  };
-  const action = map[CURRENT_VIEW] || 'block';
+  const action = FAB_ACTIONS[CURRENT_VIEW];
+  if(!action) return;
   if(action==='chapter') openChapterModal();
   else if(action==='block') openBlockModal();
   else if(action==='reward') openRewardModal();
@@ -3537,7 +3384,6 @@ function openQuickAddMenu(){
 /* ============================================================
    PLANNER
    ============================================================ */
-let PLANNER_TAB = 'today';
 let CALENDAR_MONTH = (()=>{ const d=new Date(); return {y:d.getFullYear(), m:d.getMonth()}; })();
 
 function plannerDayLabel(d){
@@ -3549,7 +3395,7 @@ var TT_CAL_OPEN=false, TT_MONTH=null;
 function ttCalendarHtml(){
   const t=todayStr(), date=ttDate();
   if(!TT_MONTH){ const d=new Date(date+'T00:00:00'); TT_MONTH={y:d.getFullYear(),m:d.getMonth()}; }
-  const y=TT_MONTH.y, m=TT_MONTH.m, first=new Date(y,m,1), days=new Date(y,m+1,0).getDate(), offset=(first.getDay()+6)%7;
+  const y=TT_MONTH.y, m=TT_MONTH.m, first=new Date(y,m,1), days=new Date(y,m+1,0).getDate(), offset=first.getDay();
   const dayInfo=iso=>{
     const o={miss:0,pend:0,done:0};
     blocksForDate(iso).forEach(b=>{ if(blockIsDone(b,iso)) o.done++; else if(iso<t) o.miss++; else o.pend++; });
@@ -3570,7 +3416,7 @@ function ttCalendarHtml(){
     ${TT_CAL_OPEN?`
     <div class="rv-body">
       <div class="hd-head"><button class="rv-nav" data-tmonth="-1" aria-label="Previous month">&#8249;</button><div class="hx-h" style="margin:0">${label}</div><button class="rv-nav" data-tmonth="1" aria-label="Next month">&#8250;</button></div>
-      <div class="rv-grid rv-head"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+      <div class="rv-grid rv-head"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
       <div class="rv-grid">${cells}</div>
       <div class="rv-legend"><span><i style="background:#E5484D"></i>Missed</span><span><i style="background:#F29A38"></i>Pending</span><span><i style="background:#3DBE7E"></i>Done</span></div>
     </div>`:''}
@@ -3694,14 +3540,28 @@ function confirmDelete(kind, id, msg){
 }
 const KIND_TO_COLLECTION = {timeBlock:'timeBlocks', task:'tasks', chapter:'chapters', practice:'practiceSessions', test:'tests', revision:'revisions', studySession:'studySessions'};
 function performDelete(kind, id){
+  let extra = null;
   if(kind==='revision') DATA.timeBlocks=(DATA.timeBlocks||[]).filter(b=>!(b.link&&b.link.type==='revision'&&b.link.id===id));
+  if(kind==='chapter'){
+    const rids = new Set(DATA.revisions.filter(r=>r.chapterId===id).map(r=>r.id));
+    extra = {
+      revs: DATA.revisions.filter(r=>rids.has(r.id)),
+      blocks: (DATA.timeBlocks||[]).filter(b=>b.link && ((b.link.type==='revision' && rids.has(b.link.id)) || (b.link.type==='pyq' && b.link.id===id)))
+    };
+    const bids = new Set(extra.blocks.map(b=>b.id));
+    DATA.revisions = DATA.revisions.filter(r=>!rids.has(r.id));
+    DATA.timeBlocks = (DATA.timeBlocks||[]).filter(b=>!bids.has(b.id));
+  }
   const collection = KIND_TO_COLLECTION[kind];
   const result = collection ? deleteData(collection, id) : null;
   closeModal();
   renderAll();
   if(result && result.item){
     toast('Deleted', {label:'Undo', onClick:()=>{
-      updateData(d=>{ d[collection].splice(Math.min(result.idx, d[collection].length), 0, result.item); });
+      updateData(d=>{
+        d[collection].splice(Math.min(result.idx, d[collection].length), 0, result.item);
+        if(extra){ d.revisions = d.revisions.concat(extra.revs); d.timeBlocks = (d.timeBlocks||[]).concat(extra.blocks); }
+      });
       renderAll();
       toast('Restored');
     }});
@@ -3716,16 +3576,32 @@ let CHAPTER_SUBJECT = 'Physics';
 let CHAPTER_FILTER = { status:'', confidence:'', weightage:'', important:false, pyqPending:false, search:'' };
 
 function scheduleRevisionsForChapter(chapterId){
-  const exists = DATA.revisions.some(r=>r.chapterId===chapterId);
-  if(exists) return;
+  // custom (hand-added) revisions must not stop the normal schedule from being created
+  if(DATA.revisions.some(r=>r.chapterId===chapterId && !r.custom)) return;
   const gaps = (DATA.settings.revisionIntervals && DATA.settings.revisionIntervals.length) ? DATA.settings.revisionIntervals : [1,3,7,15];
+  const base = DATA.revisions.filter(r=>r.chapterId===chapterId).length;
   gaps.forEach((gap,i)=>{
     DATA.revisions.push({
-      id: uid(), chapterId, round: i+1,
+      id: uid(), chapterId, round: base+i+1,
       dueDate: addDays(todayStr(), gap),
       completed:false, completedDate:null
     });
   });
+}
+/* Removes every revision (and its timetable slot) of a chapter. */
+function clearChapterRevisions(d, chapterId){
+  const ids = new Set(d.revisions.filter(r=>r.chapterId===chapterId).map(r=>r.id));
+  d.revisions = d.revisions.filter(r=>r.chapterId!==chapterId);
+  d.timeBlocks = (d.timeBlocks||[]).filter(b=>!(b.link && b.link.type==='revision' && ids.has(b.link.id)));
+  const ch = d.chapters.find(c=>c.id===chapterId);
+  if(ch) ch.revisionStatus = 'Not Started';
+}
+/* Moves a revision to a new date but remembers the date it was first due. */
+function setRevisionDue(r, newDate){
+  if(!r || !newDate || r.dueDate===newDate) return;
+  if(!r.origDue) r.origDue = r.dueDate;
+  r.dueDate = newDate;
+  if(r.origDue===r.dueDate) r.origDue = null;
 }
 
 function renderChapters(){
@@ -3822,7 +3698,12 @@ function chapterPracticeStats(c){
   const correct = sessions.reduce((s,p)=>s+Number(p.correct||0),0);
   const wrong = sessions.reduce((s,p)=>s+Number(p.wrong||0),0);
   const accuracy = (correct+wrong) ? pct(correct, correct+wrong) : 0;
-  return {attempted, correct, wrong, accuracy, sessionCount: sessions.length};
+  // average time per question: only entries that have both a time and a question count
+  const timed = sessions.filter(p=>Number(p.timeMinutes)>0 && Number(p.attempted)>0);
+  const tq = timed.reduce((s,p)=>s+Number(p.attempted),0);
+  const avgSec = tq>0 ? Math.round(timed.reduce((s,p)=>s+Number(p.timeMinutes)*60,0)/tq) : null;
+  const last = sessions.map(p=>p.date).filter(Boolean).sort().pop() || null;
+  return {attempted, correct, wrong, accuracy, avgSec, lastDate:last, sessionCount: sessions.length};
 }
 function chapterStudyMinutes(c){
   return allStudy().filter(s=>s.subject===c.subject && s.chapter===c.name).reduce((s,x)=>s+Number(x.minutes||0),0);
@@ -3832,30 +3713,7 @@ const WEIGHTAGE_COLORS = {
   Medium: 'color:var(--amber); background:var(--amber-tint);',
   Low: 'color:var(--green); background:var(--green-tint);',
 };
-function chapterLastStudiedDate(c){
-  let last = null;
-  allStudy().forEach(s=>{ if(s.subject===c.subject && s.chapter===c.name && (!last || s.date>last)) last = s.date; });
-  DATA.practiceSessions.forEach(p=>{ if(p.subject===c.subject && p.chapter===c.name && (!last || p.date>last)) last = p.date; });
-  return last;
-}
-function relativeDayLabel(dateStr){
-  const diff = daysBetween(dateStr, todayStr());
-  if(diff<=0) return 'today';
-  if(diff===1) return 'yesterday';
-  if(diff<=6) return diff+' days ago';
-  return fmtDateShort(dateStr);
-}
-function chapterAvgTimePerQuestion(c){
-  const sessions = DATA.practiceSessions.filter(p=>p.subject===c.subject && p.chapter===c.name && Number(p.timeMinutes)>0 && Number(p.attempted)>0);
-  const totalSec = sessions.reduce((s,p)=>s+Number(p.timeMinutes)*60,0);
-  const totalQ = sessions.reduce((s,p)=>s+Number(p.attempted),0);
-  if(totalQ<=0) return null;
-  return Math.round(totalSec/totalQ);
-}
-function chapterProgressPct(c){
-  const done = [c.notesDone, c.questionsDone, c.pyqsDone, (c.status==='Completed'||c.status==='Revised')].filter(Boolean).length;
-  return Math.round(done/4*100);
-}
+function chapterProgressPct(c){ return Math.round(chapterProgress(c)*100); }
 function chapterRowHtml(c){
   const pctV = chapterProgressPct(c);
   const isRev = c.status==='Revised', isDone = c.status==='Completed';
@@ -3891,28 +3749,32 @@ function setChapterField(id, field, val){
   updateData(d=>{
     const ch = d.chapters.find(c=>c.id===id);
     if(!ch) return;
+    const wasDone = ch.status==='Completed' || ch.status==='Revised';
     ch[field] = val;
-    let newStatus = (field==='status') ? val : null;
-
-    // auto status from the Notes / Questions / PYQs ticks
+    let newStatus = null;
+    if(field==='status'){
+      newStatus = val;
+      // ticks always match the status
+      if(val==='Completed' || val==='Revised'){ ch.notesDone = ch.questionsDone = ch.pyqsDone = true; }
+      else if(val==='Not Started'){ ch.notesDone = ch.questionsDone = ch.pyqsDone = false; }
+      else if(val==='Studying' && wasDone){ ch.pyqsDone = false; }
+    }
     if(field==='notesDone' || field==='questionsDone' || field==='pyqsDone'){
       const all = !!(ch.notesDone && ch.questionsDone && ch.pyqsDone);
       const any = !!(ch.notesDone || ch.questionsDone || ch.pyqsDone);
-      if(ch.status!=='Revised'){
-        if(all) newStatus = 'Completed';
-        else if(any && ch.status==='Not Started') newStatus = 'Studying';
-        else if(!all && ch.status==='Completed') newStatus = 'Studying';
-      }
+      if(all){ if(!wasDone) newStatus = 'Completed'; }
+      else if(wasDone) newStatus = 'Studying';
+      else if(any && ch.status==='Not Started') newStatus = 'Studying';
       if(newStatus && newStatus!==ch.status) toastMsg = 'Status: ' + newStatus;
     }
-
     if(newStatus){
       ch.status = newStatus;
-      if(newStatus==='Completed'||newStatus==='Revised'){
+      if(newStatus==='Completed' || newStatus==='Revised'){
         if(!ch.completedOn) ch.completedOn = todayStr();   // used to measure your pace
         scheduleRevisionsForChapter(id);
       } else {
         ch.completedOn = null;
+        if(wasDone) clearChapterRevisions(d, id);   // chapter is being studied again: its revision schedule goes away
       }
     }
   });
@@ -3929,59 +3791,86 @@ function openChapterDetail(id){
   const revs = DATA.revisions.filter(r=>r.chapterId===c.id).sort((a,b)=>a.round-b.round);
   const doneRevs = revs.filter(r=>r.completed).length;
   const nextRev = revs.find(r=>!r.completed);
-  const tasksDone = [c.notesDone,c.questionsDone,c.pyqsDone].filter(Boolean).length;
-  const remaining = [];
-  if(!c.notesDone) remaining.push('Notes');
-  if(!c.questionsDone) remaining.push('Practice questions');
-  if(!c.pyqsDone) remaining.push('PYQs');
-  if(c.status!=='Revised' && c.status!=='Completed') remaining.push('Mark chapter complete');
+  const p = chapterProgressPct(c);
+  const t = todayStr();
+  const lastStudied = [ps.lastDate, ...allStudy().filter(x=>x.subject===c.subject && x.chapter===c.name).map(x=>x.date)].filter(Boolean).sort().pop() || null;
+  const lastTxt = lastStudied ? (lastStudied===t ? 'Today' : daysBetween(lastStudied,t)+'d ago') : '—';
+  const tasks = [['notesDone','Notes'],['questionsDone','Practice questions'],['pyqsDone','PYQs']];
+  const stCol = {'Not Started':'#8A94A6','Studying':'#F29A38','Completed':'#3DBE7E','Revised':'#3B82D6'}[c.status]||'#3B82D6';
+  const tile = (col,val,lbl)=>`<div class="dl-tile" style="background:${col}"><b>${val}</b><span>${lbl}</span></div>`;
+  const wrongPct = (ps.correct+ps.wrong) ? 100-ps.accuracy : 0;
+  const revRows = revs.map(r=>{
+    const late = !r.completed && r.dueDate<t;
+    return `<div class="cd-rev ${r.completed?'done':''}">
+      <span class="cd-dot" style="background:${r.completed?'#3DBE7E':late?'#E5484D':'#3B82D6'}"></span>
+      <div class="cd-rev-m"><b>Revision ${r.round}</b>
+        <small>${r.completed ? 'Done '+fmtDateShort(r.completedDate) : (late?'Overdue · was due ':'Due ')+fmtDateShort(r.dueDate)}${(r.origDue&&r.origDue!==r.dueDate)?' · originally '+fmtDateShort(r.origDue):''}</small></div>
+    </div>`;}).join('');
+  const dl = c.completeByDate && c.status!=='Completed' && c.status!=='Revised';
 
   openModal(`
+  <div class="cd">
     <div class="modal-head"><h3>${c.important?'<span class="star-mark">★</span> ':''}${esc(c.name)}</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    <p class="muted" style="margin-bottom:14px;">${esc(c.subject)} · ${chapterProgressPct(c)}% done</p>
 
-    <div class="chip-row">
-      <select class="chip" style="border:none; font-weight:700;" onchange="setChapterField('${c.id}','status',this.value)">
-        ${['Not Started','Studying','Completed','Revised'].map(x=>`<option ${c.status===x?'selected':''}>${x}</option>`).join('')}
-      </select>
-      <select class="chip" style="border:none; font-weight:700;" onchange="setChapterField('${c.id}','confidence',this.value)">
-        ${['Weak','Average','Strong'].map(x=>`<option ${c.confidence===x?'selected':''}>${x}</option>`).join('')}
-      </select>
-      <select class="chip" style="border:none; font-weight:700; ${WEIGHTAGE_COLORS[c.weightage||'Medium']}" onchange="setChapterField('${c.id}','weightage',this.value)">
-        ${['High','Medium','Low'].map(x=>`<option value="${x}" ${(c.weightage||'Medium')===x?'selected':''}>${x} weightage</option>`).join('')}
-      </select>
-    </div>
-    <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:12px;">
-      <label class="checkline"><input type="checkbox" ${c.notesDone?'checked':''} onchange="setChapterField('${c.id}','notesDone',this.checked)"> Notes</label>
-      <label class="checkline"><input type="checkbox" ${c.questionsDone?'checked':''} onchange="setChapterField('${c.id}','questionsDone',this.checked)"> Questions</label>
-      <label class="checkline"><input type="checkbox" ${c.pyqsDone?'checked':''} onchange="setChapterField('${c.id}','pyqsDone',this.checked)"> PYQs</label>
-    </div>
-    <div style="margin:12px 0 4px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-      <label class="muted" style="font-size:12px;">Complete by</label>
-      <input type="date" value="${c.completeByDate||''}" onchange="setChapterField('${c.id}','completeByDate',this.value)" style="font-size:12px; padding:4px 8px; border-radius:8px; border:1px solid var(--line); background:var(--paper); color:var(--ink);">
-      ${c.completeByDate ? `<button type="button" class="btn ghost sm" style="color:var(--red);" onclick="setChapterField('${c.id}','completeByDate','')">Remove</button>` : ''}
-      ${chapterDeadlineNote(c)}
+    <div class="hx-card cd-hero">
+      <div class="cd-hero-top"><span class="hx-k">${esc(c.subject)}</span><span class="cd-st" style="background:${stCol}">${esc(c.status)}</span></div>
+      <div class="hx-big2">${p}%<span> complete</span></div>
+      <div class="pbar"><div style="width:${p}%;background:${stCol}"></div></div>
+      <div class="chip-row" style="margin-top:14px;">
+        <select class="pill-select" onchange="setChapterField('${c.id}','status',this.value)">
+          ${['Not Started','Studying','Completed','Revised'].map(x=>`<option ${c.status===x?'selected':''}>${x}</option>`).join('')}
+        </select>
+        <select class="pill-select" onchange="setChapterField('${c.id}','confidence',this.value)">
+          ${['Weak','Average','Strong'].map(x=>`<option value="${x}" ${c.confidence===x?'selected':''}>${x==='Average'?'Average':x} confidence</option>`).join('')}
+        </select>
+        <select class="pill-select" onchange="setChapterField('${c.id}','weightage',this.value)">
+          ${['High','Medium','Low'].map(x=>`<option value="${x}" ${(c.weightage||'Medium')===x?'selected':''}>${x} weightage</option>`).join('')}
+        </select>
+      </div>
     </div>
 
-    <div class="section-title" style="margin-top:0;">Progress so far</div>
-    <div class="grid grid-2" style="margin-bottom:14px;">
-      <div class="card-flat"><div class="lbl muted">Study time</div><div style="font-weight:700; font-size:18px;">${hoursToHM(studyMin/60)}</div></div>
-      <div class="card-flat"><div class="lbl muted">Tasks done</div><div style="font-weight:700; font-size:18px;">${tasksDone}/3</div></div>
-      <div class="card-flat"><div class="lbl muted">Questions solved</div><div style="font-weight:700; font-size:18px;">${ps.attempted}</div></div>
-      <div class="card-flat"><div class="lbl muted">Accuracy</div><div style="font-weight:700; font-size:18px;">${ps.accuracy}%</div></div>
-      <div class="card-flat"><div class="lbl muted">Revisions done</div><div style="font-weight:700; font-size:18px;">${doneRevs}/${revs.length||0}</div></div>
-      <div class="card-flat"><div class="lbl muted">Next revision</div><div style="font-weight:700; font-size:18px;">${nextRev?fmtDateShort(nextRev.dueDate):'—'}</div></div>
+    <div class="dl-sum">
+      ${tile('#3B82D6', hoursToHM(studyMin/60), 'Study time')}
+      ${tile('#3FA5B5', ps.avgSec==null?'—':formatSeconds(ps.avgSec), 'Avg / question')}
+      ${tile('#3DBE7E', ps.accuracy+'%', 'Accuracy')}
+      ${tile('#F29A38', ps.attempted, 'Questions')}
+      ${tile('#8B6FD6', doneRevs+'/'+(revs.length||0), 'Revisions')}
+      ${tile('#E5484D', lastTxt, 'Last studied')}
     </div>
 
-    <div class="section-title">Still pending</div>
-    <div class="list" style="margin-bottom:14px;">
-      ${remaining.length ? remaining.map(r=>`<div class="row-item"><div class="ri-main"><div class="ri-title">${esc(r)}</div></div></div>`).join('') : emptyState('✅','All caught up','Nothing pending for this chapter.')}
+    <div class="hx-card">
+      <div class="hx-h">Checklist</div>
+      ${tasks.map(([k,l])=>`<label class="cd-task ${c[k]?'on':''}"><input type="checkbox" ${c[k]?'checked':''} onchange="setChapterField('${c.id}','${k}',this.checked)"><span>${l}</span></label>`).join('')}
+    </div>
+
+    ${(ps.correct+ps.wrong)>0 ? `
+    <div class="hx-card">
+      <div class="hx-h">Question results</div>
+      <div class="cd-split"><div style="width:${ps.accuracy}%;background:#3DBE7E"></div><div style="width:${wrongPct}%;background:#E5484D"></div></div>
+      <div class="cd-legend"><span><i style="background:#3DBE7E"></i>${ps.correct} correct</span><span><i style="background:#E5484D"></i>${ps.wrong} wrong</span><span>${ps.sessionCount} ${ps.sessionCount===1?'entry':'entries'}</span></div>
+    </div>` : ''}
+
+    <div class="hx-card">
+      <div class="hx-h">Deadline</div>
+      <div class="cd-dl">
+        <input type="date" value="${c.completeByDate||''}" onchange="setChapterField('${c.id}','completeByDate',this.value)">
+        ${c.completeByDate ? `<button type="button" class="btn ghost sm" style="color:var(--red);" onclick="setChapterField('${c.id}','completeByDate','')">Remove</button>` : ''}
+        ${dl ? chapterDeadlineNote(c) : ''}
+      </div>
+    </div>
+
+    <div class="hx-card">
+      <div class="hx-h">Revision schedule</div>
+      ${revs.length ? revRows : `<p class="muted">${c.status==='Completed'||c.status==='Revised' ? 'No revisions scheduled.' : 'Revisions get scheduled once the chapter is completed.'}</p>`}
+      ${nextRev ? `<div class="hx-extra">Next revision: <b>${fmtDateShort(nextRev.dueDate)}</b></div>` : ''}
     </div>
 
     ${ps.sessionCount>0 ? `
-    <div class="section-title">Recent practice entries</div>
-    <div class="list" style="margin-bottom:14px;">
-      ${DATA.practiceSessions.filter(p=>p.subject===c.subject && p.chapter===c.name).slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5).map(practiceRowHtml).join('')}
+    <div class="hx-card">
+      <div class="hx-h">Recent practice</div>
+      <div class="list">
+        ${DATA.practiceSessions.filter(x=>x.subject===c.subject && x.chapter===c.name).slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5).map(practiceRowHtml).join('')}
+      </div>
     </div>` : ''}
 
     <div class="modal-actions"><button class="btn block" onclick="closeModal()">Close</button></div>
@@ -3989,7 +3878,7 @@ function openChapterDetail(id){
       <button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:12px; ${c.important?'color:var(--amber); border-color:var(--amber);':''}" onclick="setChapterField('${c.id}','important',${!c.important})">${c.important?'★ Important':'☆ Mark important'}</button>
       <button type="button" class="btn secondary sm" style="padding:5px 10px; font-size:12px; color:var(--red);" onclick="confirmDelete('chapter','${c.id}','Delete this chapter and its revision schedule?')">Delete</button>
     </div>
-  `);
+  </div>`);
 }
 function openChapterModal(){
   openModal(`
@@ -4059,18 +3948,19 @@ function renderPractice(){
       <div class="pbar-row"><span>Solved</span><span>${todayQ} / ${target}</span></div>
       <div class="pbar amber"><div style="width:${pct(todayQ,target)}%"></div></div>
     </div>
-    <div class="grid grid-4" style="margin-bottom:16px;">
-      <div class="stat"><div class="val">${todayQ}</div><div class="lbl">Today</div></div>
-      <div class="stat"><div class="val">${weekQ}</div><div class="lbl">This week</div></div>
-      <div class="stat"><div class="val">${monthQ}</div><div class="lbl">This month</div></div>
-      <div class="stat"><div class="val">${totalQ}</div><div class="lbl">Total solved</div></div>
-      <div class="stat"><div class="val">${formatSeconds(avgTPQ)}</div><div class="lbl">Avg time / question</div></div>
+    <div class="dl-sum" style="margin-bottom:12px;">
+      <div class="dl-tile" style="background:#3B82D6"><b>${todayQ}</b><span>Today</span></div>
+      <div class="dl-tile" style="background:#F29A38"><b>${weekQ}</b><span>This week</span></div>
+      <div class="dl-tile" style="background:#3FA5B5"><b>${monthQ}</b><span>This month</span></div>
+      <div class="dl-tile" style="background:#3DBE7E"><b>${totalQ}</b><span>Total solved</span></div>
+      <div class="dl-tile" style="background:#8B6FD6"><b>${formatSeconds(avgTPQ)}</b><span>Avg / question</span></div>
+      <div class="dl-tile" style="background:#E5484D"><b>${practiceAccuracyAll()}%</b><span>Accuracy</span></div>
     </div>
     ${Object.keys(bySubject).length ? `
     <div class="section-title">Subject-wise questions</div>
-    <div class="card" style="margin-bottom:16px;">
+    <div class="hx-card">
       ${Object.entries(bySubject).map(([subj,n])=>`
-        <div class="hbar-row"><div class="hb-label">${subj}</div><div class="hb-track"><div style="width:${pct(n,maxSubj)}%; background:var(--indigo);"></div></div><div class="hb-val">${n} · ${formatSeconds(avgTimePerQuestion(subj))}/q</div></div>
+        <div class="hbar-row"><div class="hb-label">${subj}<small>${formatSeconds(avgTimePerQuestion(subj))} per question</small></div><div class="hb-val">${n}</div><div class="hb-track"><div style="width:${pct(n,maxSubj)}%; background:var(--indigo);"></div></div></div>
       `).join('')}
     </div>` : ''}
     <div class="dl-grp" style="margin-top:6px"><span>Practice log</span></div>
@@ -4092,6 +3982,10 @@ function renderPractice(){
     if(act==='edit') openPracticeModal(id);
     else if(act==='delete') confirmDelete('practice', id, 'Delete this practice entry?');
   }));
+}
+function practiceAccuracyAll(){
+  const c = DATA.practiceSessions.reduce((a,p)=>a+Number(p.correct||0),0), w = DATA.practiceSessions.reduce((a,p)=>a+Number(p.wrong||0),0);
+  return (c+w) ? pct(c,c+w) : 0;
 }
 function practiceRowHtml(p){
   const attempted = Number(p.attempted||0);
@@ -4216,32 +4110,27 @@ function renderTests(){
   const rkTests = DATA.tests.filter(t=>t.percentile!=null && t.percentile!=='' && !isNaN(Number(t.percentile)));
   const avgPct = rkTests.length ? rkTests.reduce((a,t)=>a+Number(t.percentile),0)/rkTests.length : null;
   const avgRank = avgPct==null ? null : estRank(avgPct);
-  const avgRankCard = avgPct==null ? '' : `<div class="card" style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;"><div><div class="lbl muted">Average rank</div><div style="font:700 28px var(--font-head);">~${avgRank.toLocaleString('en-IN')}</div></div><div class="muted" style="text-align:right;font-size:12px;">Avg percentile ${avgPct.toFixed(2)}<br>out of 17,00,000 candidates<br>${rkTests.length} test${rkTests.length>1?'s':''}</div></div>`;
+  const avgRankCard = avgPct==null ? '' : `<div class="hx-card"><div class="hx-k">Average rank</div><div class="hx-big2">~${avgRank.toLocaleString('en-IN')}</div><div class="hx-extra" style="text-align:left;margin-top:6px;">Avg percentile ${avgPct.toFixed(2)} · out of 17,00,000 candidates · ${rkTests.length} test${rkTests.length>1?'s':''}</div></div>`;
   const wkTests = DATA.tests.filter(t=>t.date>=addDays(todayStr(),-6)).length;
   const prevWkTests = DATA.tests.filter(t=>t.date>=addDays(todayStr(),-13)&&t.date<addDays(todayStr(),-6)).length;
   const withTotalQ = DATA.tests.filter(t=>t.totalQuestions);
-  const avgAttemptRate = withTotalQ.length ? Math.round(withTotalQ.reduce((s,t)=>s+pct(t.questions||0, t.totalQuestions),0)/withTotalQ.length) : null;
+  const avgAttemptRate = withTotalQ.length ? Math.round(withTotalQ.reduce((s,t)=>s+pct(Number(t.correct||0)+Number(t.wrong||0), t.totalQuestions),0)/withTotalQ.length) : null;
 
-  let improvement = '';
+  let improvement = null;
   if(DATA.tests.length>=2){
     const sorted = [...DATA.tests].sort((a,b)=>a.date.localeCompare(b.date));
     const prev = sorted[sorted.length-2], last = sorted[sorted.length-1];
     const diff = Number(last.total||0) - Number(prev.total||0);
-    improvement = `<div class="card-flat" style="margin-bottom:16px;">
-      <div class="lbl muted">Change vs previous test</div>
-      <div style="font-size:18px; font-weight:700; color:${diff>=0?'var(--green)':'var(--red)'};">${diff>=0?'+':''}${diff} marks</div>
-    </div>`;
+    improvement = {txt:(diff>=0?'+':'')+diff, col: diff>=0?'#3DBE7E':'#E5484D'};
   }
 
   const chronological = DATA.tests.slice().sort((a,b)=>a.date.localeCompare(b.date)).slice(-10);
   const scoreChart = chronological.length>=2 ? `
-    <div class="section-title">Score trend (last ${chronological.length} tests)</div>
-    <div class="card" style="padding:14px 10px; margin-bottom:16px;">${sparklineSvg(chronological.map(t=>Number(t.total||0)), 'var(--indigo)')}</div>` : '';
+    <div class="hx-card"><div class="hx-h">Score trend (last ${chronological.length} tests)</div>${sparklineSvg(chronological.map(t=>Number(t.total||0)), 'var(--indigo)')}</div>` : '';
 
   const pctTests = chronological.filter(t=>t.percentile!=null);
   const percentileChart = pctTests.length>=2 ? `
-    <div class="section-title">Percentile trend</div>
-    <div class="card" style="padding:14px 10px; margin-bottom:16px;">${sparklineSvg(pctTests.map(t=>Number(t.percentile)), 'var(--amber)')}</div>` : '';
+    <div class="hx-card"><div class="hx-h">Percentile trend</div>${sparklineSvg(pctTests.map(t=>Number(t.percentile)), 'var(--amber)')}</div>` : '';
 
   const subjAvgs = {Physics: subjectAvgFromTests('physics'), Chemistry: subjectAvgFromTests('chemistry'), Mathematics: subjectAvgFromTests('maths')};
   const subjEntries = Object.entries(subjAvgs).filter(([,v])=>v!==null);
@@ -4250,28 +4139,29 @@ function renderTests(){
     weakest = subjEntries.reduce((a,b)=>a[1]<=b[1]?a:b)[0];
   }
   const subjectAvgCard = subjEntries.length ? `
-    <div class="section-title">Average marks by subject (across mocks)</div>
-    <div class="card" style="margin-bottom:16px;">
-      ${subjEntries.map(([name,v])=>`<div class="hbar-row"><div class="hb-label">${name}</div><div class="hb-track"><div style="width:${Math.min(100,Math.max(0,pct(v,100)))}%; background:${name===weakest?'var(--red)':'var(--indigo)'};"></div></div><div class="hb-val">${v}</div></div>`).join('')}
+    <div class="hx-card">
+      <div class="hx-h">Average marks by subject</div>
+      ${subjEntries.map(([name,v])=>`<div class="hbar-row"><div class="hb-label">${name}</div><div class="hb-val">${v}</div><div class="hb-track"><div style="width:${Math.min(100,Math.max(0,pct(v,100)))}%; background:${name===weakest?'var(--red)':'var(--indigo)'};"></div></div></div>`).join('')}
       ${weakest ? `<p class="muted" style="margin-top:8px;">${weakest} has your lowest average across mocks. Spend extra practice time here.</p>` : ''}
     </div>` : '';
 
   const html = `
-    <div class="grid grid-4" style="margin-bottom:10px;">
-      <div class="stat"><div class="val">${DATA.tests.length}</div><div class="lbl">Tests taken</div></div>
-      <div class="stat"><div class="val">${avgScore}</div><div class="lbl">Average score</div></div>
-      <div class="stat"><div class="val">${avgAcc}%</div><div class="lbl">Average accuracy</div></div>
-      <div class="stat"><div class="val">${best}</div><div class="lbl">Best score</div></div>
+    <div class="dl-sum" style="margin-bottom:12px;">
+      <div class="dl-tile" style="background:#3B82D6"><b>${DATA.tests.length}</b><span>Tests taken</span></div>
+      <div class="dl-tile" style="background:#F29A38"><b>${avgScore}</b><span>Avg score</span></div>
+      <div class="dl-tile" style="background:#3FA5B5"><b>${avgAcc}%</b><span>Avg accuracy</span></div>
+      <div class="dl-tile" style="background:#3DBE7E"><b>${best}</b><span>Best score</span></div>
+      <div class="dl-tile" style="background:#8B6FD6"><b>${wkTests}</b><span>This week${wkTests>prevWkTests?' ▲':wkTests<prevWkTests?' ▼':''}</span></div>
+      ${improvement ? `<div class="dl-tile" style="background:${improvement.col}"><b>${improvement.txt}</b><span>vs last test</span></div>` : `<div class="dl-tile" style="background:#8A94A6"><b>${avgAttemptRate!==null?avgAttemptRate+'%':'—'}</b><span>Attempt rate</span></div>`}
     </div>
-    <div style="margin-bottom:16px;">${compareCard('Tests this week', wkTests, prevWkTests)}</div>
     ${avgRankCard}
-    ${avgAttemptRate!==null ? `<div class="card-flat" style="margin-bottom:16px;"><div class="lbl muted">Average attempt rate</div><div style="font-weight:700; font-size:18px;">${avgAttemptRate}% of paper attempted</div></div>` : ''}
-    ${improvement}
+    ${(improvement && avgAttemptRate!==null) ? `<div class="hx-card"><div class="hx-k">Average attempt rate</div><div class="hx-big2">${avgAttemptRate}%<span> of paper attempted</span></div></div>` : ''}
     ${scoreChart}
     ${percentileChart}
     ${subjectAvgCard}
-    <div class="section-title">Test history
-      <select id="testTypeFilter" style="width:auto; padding:6px 10px; font-size:12px; border-radius:8px; border:1px solid var(--line); background:var(--paper);">
+    <div class="dl-grp" style="margin-top:6px"><span>Test history</span></div>
+    <div class="filter-row">
+      <select id="testTypeFilter" class="pill-select ${TEST_FILTER.type?'active':''}">
         <option value="">All types</option>
         ${['JEE Main','JEE Advanced','Chapter Test','Full Syllabus','Custom'].map(t=>`<option ${TEST_FILTER.type===t?'selected':''}>${t}</option>`).join('')}
       </select>
@@ -4292,14 +4182,15 @@ function renderTests(){
 }
 function estRank(p){ return (p==null||p===''||isNaN(Number(p))) ? null : Math.max(1, Math.round((100-Number(p))/100*1700000)); }
 function testRowHtml(t){
-  const totalQ = t.totalQuestions ? ` (${t.questions||0}/${t.totalQuestions})` : '';
+  const totalQ = t.totalQuestions ? ` · ${Number(t.correct||0)+Number(t.wrong||0)}/${t.totalQuestions} attempted` : '';
   const rk = estRank(t.percentile);
   const pctTxt = t.percentile!=null ? ` · ${t.percentile}%ile${t.percentileEstimated?' (est.)':''}${rk?' · Rank ~'+rk.toLocaleString('en-IN'):''}` : '';
   return `
-  <div class="row-item" data-id="${t.id}" style="align-items:flex-start; cursor:pointer;">
+  <div class="row-item tt-row" data-id="${t.id}" style="cursor:pointer;">
+    <div class="tt-score" data-testaction="view"><b>${t.total}</b><span>marks</span></div>
     <div class="ri-main" data-testaction="view">
       <div class="ri-title">${esc(t.name)} <span class="badge studying">${esc(t.type)}</span></div>
-      <div class="ri-sub">${fmtDateShort(t.date)} · Score ${t.total} · ${testAccuracy(t)}% accuracy${totalQ}${pctTxt}</div>
+      <div class="ri-sub">${fmtDateShort(t.date)} · ${testAccuracy(t)}% accuracy${totalQ}${pctTxt}</div>
     </div>
     <div class="ri-actions">
       <button class="icon-btn" data-testaction="edit">${ICONS.edit}</button>
@@ -4312,34 +4203,42 @@ function viewTestDetails(id){
   if(!t) return;
   const attempted = Number(t.correct||0)+Number(t.wrong||0);
   const totalQ = t.totalQuestions || null;
-  const attemptRate = totalQ ? pct(t.questions||attempted, totalQ) : null;
+  const attemptRate = totalQ ? pct(attempted, totalQ) : null;
+  const rk = estRank(t.percentile);
+  const tile = (col,val,lbl)=>`<div class="dl-tile" style="background:${col}"><b>${val}</b><span>${lbl}</span></div>`;
+  const hasSubj = t.physics!=null || t.chemistry!=null || t.maths!=null;
   openModal(`
+  <div class="cd">
     <div class="modal-head"><h3>${esc(t.name)}</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    <p class="muted" style="margin-bottom:14px;">${esc(t.type)} · ${fmtDate(t.date)}</p>
-    <div class="grid grid-2" style="margin-bottom:14px;">
-      <div class="card-flat"><div class="lbl muted">Physics</div><div style="font-weight:700; font-size:18px;">${t.physics||0}</div></div>
-      <div class="card-flat"><div class="lbl muted">Chemistry</div><div style="font-weight:700; font-size:18px;">${t.chemistry||0}</div></div>
-      <div class="card-flat"><div class="lbl muted">Maths</div><div style="font-weight:700; font-size:18px;">${t.maths||0}</div></div>
-      <div class="card-flat"><div class="lbl muted">Percentile</div><div style="font-weight:700; font-size:18px;">${t.percentile!=null?t.percentile+(t.percentileEstimated?' (est.)':''):'—'}</div></div>
-      <div class="card-flat"><div class="lbl muted">Estimated rank</div><div style="font-weight:700; font-size:18px;">${estRank(t.percentile)?'~'+estRank(t.percentile).toLocaleString('en-IN'):'—'}</div></div>
+    <div class="hx-card cd-hero">
+      <div class="cd-hero-top"><span class="hx-k">${esc(t.type)} · ${fmtDate(t.date)}</span></div>
+      <div class="hx-big2">${t.total}<span> marks</span></div>
+      <div class="hx-extra" style="text-align:left;margin-top:6px;">${t.percentile!=null ? t.percentile+' percentile'+(t.percentileEstimated?' (estimated)':'')+(rk?' · Rank ~'+rk.toLocaleString('en-IN'):'') : 'Percentile not available'}</div>
     </div>
-    <div class="grid grid-2">
-      <div class="card-flat"><div class="lbl muted">Total marks</div><div style="font-weight:700; font-size:18px;">${t.total}</div></div>
-      <div class="card-flat"><div class="lbl muted">Accuracy</div><div style="font-weight:700; font-size:18px;">${testAccuracy(t)}%</div></div>
-      <div class="card-flat"><div class="lbl muted">Attempted</div><div style="font-weight:700; font-size:18px;">${Number(t.correct||0)+Number(t.wrong||0)}/${totalQ || t.questions || '—'}</div></div>
-      <div class="card-flat"><div class="lbl muted">Time taken</div><div style="font-weight:700; font-size:18px;">${t.timeTaken||'—'} min</div></div>
-      ${totalQ ? `
-      <div class="card-flat"><div class="lbl muted">Unattempted</div><div style="font-weight:700; font-size:18px;">${Math.max(0, totalQ-(t.questions||attempted))}</div></div>
-      <div class="card-flat"><div class="lbl muted">Attempt rate</div><div style="font-weight:700; font-size:18px;">${attemptRate}%</div></div>
-      ` : ''}
+    ${hasSubj ? `<div class="dl-sum">
+      ${tile('#3B82D6', t.physics||0, 'Physics')}
+      ${tile('#F29A38', t.chemistry||0, 'Chemistry')}
+      ${tile('#3DBE7E', t.maths||0, 'Maths')}
+    </div>` : ''}
+    <div class="dl-sum">
+      ${tile('#3FA5B5', testAccuracy(t)+'%', 'Accuracy')}
+      ${tile('#8B6FD6', attempted+'/'+(totalQ || t.questions || '—'), 'Attempted')}
+      ${tile('#E5484D', t.timeTaken ? t.timeTaken+'m' : '—', 'Time taken')}
+    </div>
+    <div class="hx-card">
+      <div class="hx-h">Questions</div>
+      <div class="cd-split"><div style="width:${pct(t.correct||0,Math.max(1,totalQ||attempted))}%;background:#3DBE7E"></div><div style="width:${pct(t.wrong||0,Math.max(1,totalQ||attempted))}%;background:#E5484D"></div></div>
+      <div class="cd-legend"><span><i style="background:#3DBE7E"></i>${t.correct||0} correct</span><span><i style="background:#E5484D"></i>${t.wrong||0} wrong</span>${totalQ?`<span>${Math.max(0,totalQ-attempted)} unattempted</span><span>${attemptRate}% attempt rate</span>`:''}</div>
     </div>
     <div class="modal-actions"><button class="btn block" onclick="closeModal()">Close</button></div>
-  `);
+  </div>`);
 }
 function openTestModal(id){
   const editing = id ? DATA.tests.find(t=>t.id===id) : null;
   openModal(`
     <div class="modal-head"><h3>${editing?'Edit Test':'Add Mock Test'}</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+  <div class="cd">
+    <div class="hx-card">
     <div class="field"><label>Test name</label><input id="tt-name" value="${editing?esc(editing.name):''}" placeholder="e.g. FIITJEE AITS Full Test 4"></div>
     <div class="field-row">
       <div class="field"><label>Test type</label>
@@ -4349,28 +4248,34 @@ function openTestModal(id){
       </div>
       <div class="field"><label>Date</label><input type="date" id="tt-date" value="${editing?editing.date:todayStr()}"></div>
     </div>
-    <div class="field"><label>Percentile (optional — leave blank to auto-estimate from marks, JEE Main only)</label><input type="number" step="0.01" id="tt-percentile" value="${editing&&editing.percentile!=null&&!editing.percentileEstimated?editing.percentile:''}" placeholder="e.g. 97.5"></div>
+    </div>
+    <div class="hx-card">
+    <div class="hx-h">Marks</div>
+    <div class="field"><label>Percentile (optional, estimated from marks for JEE Main if blank)</label><input type="number" step="0.01" id="tt-percentile" value="${editing&&editing.percentile!=null&&!editing.percentileEstimated?editing.percentile:''}" placeholder="e.g. 97.5"></div>
     <div class="field-row">
       <div class="field"><label>Physics marks</label><input type="number" id="tt-physics" value="${editing?editing.physics:''}"></div>
       <div class="field"><label>Chemistry marks</label><input type="number" id="tt-chemistry" value="${editing?editing.chemistry:''}"></div>
       <div class="field"><label>Maths marks</label><input type="number" id="tt-maths" value="${editing?editing.maths:''}"></div>
     </div>
+    <p class="muted" style="margin-bottom:12px;">Leave subject marks blank to enter total marks directly.</p>
+    <div class="field"><label>Total marks (auto if subject marks given)</label><input type="number" id="tt-total" value="${editing?editing.total:''}"></div>
+    </div>
+    <div class="hx-card">
+    <div class="hx-h">Questions</div>
     <div class="field-row">
       <div class="field"><label>Total questions in test</label><input type="number" id="tt-totalq" min="0" value="${editing?(editing.totalQuestions??''):''}" placeholder="e.g. 90"></div>
-      <div class="field"><label>Questions attempted</label><input type="number" id="tt-questions" value="${editing?editing.questions:''}"></div>
       <div class="field"><label>Time taken (min)</label><input type="number" id="tt-time" value="${editing?editing.timeTaken:''}"></div>
     </div>
     <div class="field-row">
       <div class="field"><label>Correct</label><input type="number" id="tt-correct" value="${editing?editing.correct:''}"></div>
       <div class="field"><label>Wrong</label><input type="number" id="tt-wrong" value="${editing?editing.wrong:''}"></div>
     </div>
-    <p class="muted" style="margin-bottom:12px;">Leave subject marks blank to enter total marks directly.</p>
-    <div class="field"><label>Total marks (auto if subject marks given)</label><input type="number" id="tt-total" value="${editing?editing.total:''}"></div>
+    </div>
     <div class="modal-actions">
       <button class="btn secondary" onclick="closeModal()">Cancel</button>
       <button class="btn" onclick="saveTest('${editing?editing.id:''}')">${editing?'Save Changes':'Add Test'}</button>
     </div>
-  `);
+  </div>`);
 }
 function saveTest(id){
   const name = $('#tt-name').value.trim();
@@ -4384,7 +4289,13 @@ function saveTest(id){
   }
   if(total===null){ toast('Enter total marks or subject-wise marks'); return; }
   const testType = $('#tt-type').value;
+  const correct = Number($('#tt-correct').value)||0, wrong = Number($('#tt-wrong').value)||0;
+  const totalQ = $('#tt-totalq').value===''?null:Number($('#tt-totalq').value);
+  if(correct<0 || wrong<0 || (totalQ!==null && totalQ<0)){ toast('Question counts cannot be negative'); return; }
+  if(totalQ!==null && correct+wrong>totalQ){ toast('Correct + Wrong cannot exceed total questions'); return; }
+  if(testType==='JEE Main' && total>300){ toast('JEE Main marks cannot be more than 300'); return; }
   let percentile = $('#tt-percentile').value===''?null:Number($('#tt-percentile').value);
+  if(percentile!==null && (!Number.isFinite(percentile) || percentile<0 || percentile>100)){ toast('Percentile must be between 0 and 100'); return; }
   let percentileEstimated = false;
   if(percentile===null && testType==='JEE Main' && total!==null){
     percentile = estimateJeeMainPercentile(total);
@@ -4393,10 +4304,9 @@ function saveTest(id){
   const payload = {
     name, type: testType, date: $('#tt-date').value || todayStr(),
     physics, chemistry, maths, total,
-    totalQuestions: $('#tt-totalq').value===''?null:Number($('#tt-totalq').value),
-    questions: Number($('#tt-questions').value)||0,
-    correct: Number($('#tt-correct').value)||0,
-    wrong: Number($('#tt-wrong').value)||0,
+    totalQuestions: totalQ,
+    questions: correct+wrong,          // attempted is always correct + wrong
+    correct, wrong,
     timeTaken: Number($('#tt-time').value)||0,
     percentile, percentileEstimated,
   };
@@ -4411,7 +4321,6 @@ function saveTest(id){
 /* ============================================================
    REVISION TRACKER
    ============================================================ */
-let REVISION_TAB = 'due';
 
 function completeRevision(revId){ updateData(d=>applyRevisionComplete(d,revId)); }
 function applyRevisionComplete(d,revId,date){
@@ -4423,8 +4332,11 @@ function applyRevisionComplete(d,revId,date){
   if(chapter){
     const totalRounds = d.revisions.filter(x=>x.chapterId===r.chapterId).length;
     chapter.revisionStatus = (r.round>=totalRounds) ? 'Completed' : 'In Progress';
-    chapter.status = 'Revised';
-    if(!chapter.completedOn) chapter.completedOn = todayStr();
+    // only a chapter that is already completed can become "Revised"
+    if(chapter.status==='Completed' || chapter.status==='Revised'){
+      chapter.status = 'Revised';
+      if(!chapter.completedOn) chapter.completedOn = todayStr();
+    }
   }
 }
 function sessionRevisionDone(d,x){
@@ -4433,16 +4345,20 @@ function sessionRevisionDone(d,x){
   const r=d.revisions.filter(v=>v.chapterId===ch.id&&!v.completed&&v.dueDate<=x.date).sort((a,b)=>a.dueDate.localeCompare(b.dueDate))[0];
   if(!r) return false; applyRevisionComplete(d,r.id,x.date); return true;
 }
-function uncompleteRevision(d,revId){ const r=d.revisions.find(x=>x.id===revId); if(r){ r.completed=false; r.completedDate=null; } }
+function uncompleteRevision(d,revId){
+  const r=d.revisions.find(x=>x.id===revId); if(!r) return;
+  r.completed=false; r.completedDate=null;
+  const ch=d.chapters.find(c=>c.id===r.chapterId);
+  if(ch && ch.status==='Revised' && !d.revisions.some(x=>x.chapterId===ch.id && x.completed)) ch.status='Completed';
+}
 function applyChapterField(d,id,field,val){
   const ch=d.chapters.find(c=>c.id===id); if(!ch) return;
+  const wasDone = ch.status==='Completed' || ch.status==='Revised';
   ch[field]=val;
   const all=!!(ch.notesDone&&ch.questionsDone&&ch.pyqsDone), any=!!(ch.notesDone||ch.questionsDone||ch.pyqsDone);
-  if(ch.status!=='Revised'){
-    if(all){ ch.status='Completed'; if(!ch.completedOn) ch.completedOn=todayStr(); scheduleRevisionsForChapter(id); }
-    else if(any && ch.status==='Not Started') ch.status='Studying';
-    else if(!all && ch.status==='Completed'){ ch.status='Studying'; ch.completedOn=null; }
-  }
+  if(all){ if(!wasDone){ ch.status='Completed'; if(!ch.completedOn) ch.completedOn=todayStr(); scheduleRevisionsForChapter(id); } }
+  else if(wasDone){ ch.status='Studying'; ch.completedOn=null; clearChapterRevisions(d,id); }
+  else if(any && ch.status==='Not Started') ch.status='Studying';
 }
 function revSchedTag(id){
   const b=linkedBlockFor('revision',id);
@@ -4454,7 +4370,7 @@ function revisionCalendarHtml(){
   const t=todayStr();
   const y=REVISION_MONTH.y, m=REVISION_MONTH.m;
   const first=new Date(y,m,1), days=new Date(y,m+1,0).getDate();
-  const offset=(first.getDay()+6)%7; // Monday first
+  const offset=first.getDay(); // Sunday first
   const info={};
   DATA.revisions.forEach(r=>{
     const o=info[r.dueDate]||(info[r.dueDate]={over:0,pend:0,done:0});
@@ -4476,7 +4392,7 @@ function revisionCalendarHtml(){
     ${REVISION_CAL_OPEN?`
     <div class="rv-body">
       <div class="hd-head"><button class="rv-nav" data-rmonth="-1" aria-label="Previous month">&#8249;</button><div class="hx-h" style="margin:0">${label}</div><button class="rv-nav" data-rmonth="1" aria-label="Next month">&#8250;</button></div>
-      <div class="rv-grid rv-head"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+      <div class="rv-grid rv-head"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
       <div class="rv-grid">${cells}</div>
       <div class="rv-legend"><span><i style="background:#E5484D"></i>Overdue</span><span><i style="background:#F29A38"></i>Due</span><span><i style="background:#3DBE7E"></i>Done</span></div>
     </div>`:''}
@@ -4566,7 +4482,7 @@ function revisionRowHtml(r){
   <div class="row-item tk-row" data-id="${r.id}" style="border-left:4px solid ${{'Due Today':'#F29A38','Overdue':'#E5484D','Upcoming':'#3B82D6','Completed':'#3DBE7E'}[status]};margin-bottom:10px;">
     <div class="ri-main">
       <div class="ri-title">${esc(chapter?chapter.name:'Chapter')} <span class="badge ${statusClass}">${status}</span></div>
-      <div class="ri-sub">${esc(chapter?chapter.subject:'')} · Revision round ${r.round} · ${r.completed? 'Done '+fmtDateShort(r.completedDate) : 'Due '+fmtDateShort(r.dueDate)}${r.completed?'':revSchedTag(r.id)}</div>
+      <div class="ri-sub">${esc(chapter?chapter.subject:'')} · Revision round ${r.round} · ${r.completed? 'Done '+fmtDateShort(r.completedDate) : 'Due '+fmtDateShort(r.dueDate)}${(r.origDue&&r.origDue!==r.dueDate)?' · <b>Originally due '+fmtDateShort(r.origDue)+'</b>':''}${r.completed?'':revSchedTag(r.id)}</div>
     </div>
     <div class="ri-actions">
       ${!r.completed ? `<button class="icon-btn" data-revaction="complete">${ICONS.check}</button><button class="icon-btn" data-revaction="edit">${ICONS.edit}</button>` : ''}
@@ -4591,7 +4507,7 @@ function saveRevisionDate(id){
   if(!newDate){ toast('Pick a date'); return; }
   updateData(d=>{
     const r = d.revisions.find(x=>x.id===id);
-    if(r) r.dueDate = newDate;
+    if(r) setRevisionDue(r, newDate);
     (d.timeBlocks||[]).forEach(b=>{ if(b.link&&b.link.type==='revision'&&b.link.id===id&&b.repeat==='once') b.date=newDate; });
   });
   closeModal();
@@ -4626,7 +4542,7 @@ function saveCustomRevision(){
   if(!chapterId || !dueDate){ toast('Pick a chapter and date'); return; }
   updateData(d=>{
     const existingRounds = d.revisions.filter(r=>r.chapterId===chapterId).length;
-    d.revisions.push({id:uid(), chapterId, round: existingRounds+1, dueDate, completed:false, completedDate:null});
+    d.revisions.push({id:uid(), chapterId, round: existingRounds+1, dueDate, completed:false, completedDate:null, custom:true});
   });
   closeModal();
   renderAll();
@@ -4852,14 +4768,10 @@ function renderSettings(){
       <p class="muted">Example: "1, 3, 7, 15" schedules 4 revisions. Change the number of values to change how many rounds get scheduled. Applies to chapters completed after saving.</p>
     </div>
 
-    <div class="section-title">Streak minimums</div>
+    <div class="section-title">Study streak</div>
     <div class="card" style="margin-bottom:16px;">
-      <p class="muted" style="margin-bottom:12px;">A day only counts toward a streak once it meets these minimums. Set to 0 to count any activity, however small.</p>
-      <div class="field-row">
-        <div class="field"><label>Min. study minutes / day</label><input type="number" min="0" id="st-minStudy" value="${s.minStudyMinutesForStreak}"></div>
-        <div class="field"><label>Min. questions / day</label><input type="number" min="0" id="st-minQ" value="${s.minQuestionsForStreak}"></div>
-      </div>
-      <div class="field"><label>Min. revisions completed / day</label><input type="number" min="0" id="st-minRev" value="${s.minRevisionsForStreak}"></div>
+      <p class="muted" style="margin-bottom:12px;">A day counts toward your study streak once you study at least this long. Set to 0 to count any study time.</p>
+      <div class="field"><label>Min. study minutes / day</label><input type="number" min="0" id="st-minStudy" value="${s.minStudyMinutesForStreak}"></div>
     </div>
 
     <div class="section-title">Study timer</div>
@@ -4932,8 +4844,6 @@ function saveSettings(){
     d.settings.revisionIntervals = parsedIntervals.length ? parsedIntervals : [1,3,7,15];
 
     d.settings.minStudyMinutesForStreak = Math.max(0, Number($('#st-minStudy').value)||0);
-    d.settings.minQuestionsForStreak = Math.max(0, Number($('#st-minQ').value)||0);
-    d.settings.minRevisionsForStreak = Math.max(0, Number($('#st-minRev').value)||0);
 
     d.settings.targetCollegeId = $('#st-targetCollege').value;
     d.settings.customCollegeName = $('#st-customCollegeName') ? $('#st-customCollegeName').value.trim() : d.settings.customCollegeName;
@@ -5034,10 +4944,7 @@ function ttDateLabel(dateStr){
   else if(dateStr===addDays(t,-1)) tag = 'Yesterday';
   return {main: tag || full, sub: tag ? full : ''};
 }
-function ttShift(n){ TT_DATE = addDays(ttDate(), n); renderTimetable(); }
-function ttGoToday(){ TT_DATE = todayStr(); renderTimetable(); }
 
-var TT_SUG_ALL=false, TT_SUG_OPEN=false;
 function ttEntries(date){
   const e=blocksForDate(date).map(b=>({src:'b',id:b.id,b,title:blockTitle(b),kind:b.kind,start:b.start,end:b.end,done:blockIsDone(b,date),st:blockStatus(b,date)}));
   return e.sort((a,b)=>hmToMin(a.start)-hmToMin(b.start)||hmToMin(a.end)-hmToMin(b.end));
@@ -5056,7 +4963,7 @@ function sugInfo(type,id){
   if(type==='revision'){
     const r=DATA.revisions.find(x=>x.id===id), c=r&&DATA.chapters.find(x=>x.id===r.chapterId); if(!c) return null;
     return {type,id,kind:'Revision',subject:c.subject,chapter:c.name,mins:45,color:'#E5484D',title:'Revise '+c.name,pri:r.dueDate<t?1:2,
-      sub:`Revision ${r.round} · `+(r.dueDate<t?'overdue since '+fmtDateShort(r.dueDate):r.dueDate===t?'due today':'due '+fmtDateShort(r.dueDate))};
+      sub:`Revision ${r.round} · `+(r.dueDate<t?'overdue since '+fmtDateShort(r.dueDate):r.dueDate===t?'due today':'due '+fmtDateShort(r.dueDate))+((r.origDue&&r.origDue!==r.dueDate)?' (originally '+fmtDateShort(r.origDue)+')':'')};
   }
   if(type==='pyq'){
     const c=DATA.chapters.find(x=>x.id===id); if(!c) return null;
@@ -5260,7 +5167,7 @@ function saveSlot(type,id){
     const payload={title:s.title,kind:s.kind,start,end,subject:s.subject||'',chapter:s.chapter||'',repeat:'once',date,days:[],link:{type:s.type,id:s.id}};
     const x=ex&&d.timeBlocks.find(b=>b.id===ex.id);
     if(x) Object.assign(x,payload); else d.timeBlocks.push(Object.assign({id:uid(),from:date,doneDates:[],skipDates:[]},payload));
-    if(type==='revision'){ const r=d.revisions.find(r=>r.id===s.id); if(r) r.dueDate=date; }
+    if(type==='revision'){ const r=d.revisions.find(r=>r.id===s.id); if(r) setRevisionDue(r,date); }
   });
   TT_DATE=date; closeModal(); renderAll();
   toast(ex?'Rescheduled':'Added to timetable');
@@ -5288,7 +5195,7 @@ function carryOverBlocks(){
     if(busy || hmToMin(o.end)<=now){ start=findFreeSlot(T,mins); end=minToHM(hmToMin(start)+mins); }
     const c=Object.assign({},o,{id:uid(),date:T,from:T,start,end,doneDates:[],skipDates:[],noAuto:[],carriedTo:null,carriedFrom:o.carriedFrom||o.date});
     DATA.timeBlocks.push(c); o.carriedTo=c.id; moved++;
-    if(o.link && o.link.type==='revision'){ const r=DATA.revisions.find(x=>x.id===o.link.id); if(r && !r.completed && r.dueDate<T) r.dueDate=T; }
+    if(o.link && o.link.type==='revision'){ const r=DATA.revisions.find(x=>x.id===o.link.id); if(r && !r.completed && r.dueDate<T) setRevisionDue(r,T); }
   });
   if(moved||changed) saveData();
   return moved;
@@ -5437,7 +5344,7 @@ function saveBlock(id){
       if(x){
         if(x.repeat!=='days' && payload.repeat==='days') x.from = ttDate();
         Object.assign(x, payload);
-        if(x.link&&x.link.type==='revision'&&x.repeat==='once'){ const rv=d.revisions.find(r=>r.id===x.link.id); if(rv) rv.dueDate=x.date; }
+        if(x.link&&x.link.type==='revision'&&x.repeat==='once'){ const rv=d.revisions.find(r=>r.id===x.link.id); if(rv) setRevisionDue(rv,x.date); }
       }
     } else {
       d.timeBlocks.push(Object.assign({id:uid(), from: ttDate(), doneDates:[], skipDates:[]}, payload));
@@ -5547,7 +5454,7 @@ function openManualSessionModal(){
   const chapterOptions = subj => DATA.chapters.filter(c=>c.subject===subj).map(c=>`<option>${esc(c.name)}</option>`).join('');
   openModal(`
     <div class="modal-head"><h3>Log Study Session</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    <div class="field"><label>Date</label><input type="date" id="ms-date" value="${todayStr()}"></div>
+    <div class="field"><label>Date</label><input type="date" id="ms-date" max="${todayStr()}" value="${todayStr()}"></div>
     <div class="field-row">
       <div class="field"><label>Subject</label>
         <select id="ms-subject" onchange="refreshManualChapterOptions()">
@@ -5613,7 +5520,80 @@ function setTimerMode(mode){
   TimerState.phase = 'study';
   TimerState.pomoCount = 0;
   TimerState.elapsedSec = 0;
+  persistTimer();
   renderTimer();
+}
+/* ---- the timer survives reloads and closed apps ---- */
+function timerKey(){ return LS_KEY + '_timer'; }
+function persistTimer(){
+  try{
+    if(!TimerState.running && TimerState.elapsedSec<=0){ localStorage.removeItem(timerKey()); return; }
+    localStorage.setItem(timerKey(), JSON.stringify({mode:TimerState.mode, phase:TimerState.phase, pomoCount:TimerState.pomoCount,
+      running:TimerState.running, elapsedSec:TimerState.elapsedSec, baseSec:TimerState.baseSec, startedAtMs:TimerState.startedAtMs, linked:LINKED_BLOCK}));
+  }catch(e){}
+}
+function restoreTimer(){
+  try{
+    const raw = localStorage.getItem(timerKey()); if(!raw) return;
+    const o = JSON.parse(raw);
+    TimerState.mode = o.mode||'stopwatch'; TimerState.phase = o.phase||'study'; TimerState.pomoCount = o.pomoCount||0;
+    LINKED_BLOCK = o.linked||null;
+    if(o.running && o.startedAtMs){
+      TimerState.elapsedSec = (o.baseSec||0) + Math.max(0, Math.floor((Date.now()-o.startedAtMs)/1000));
+      if(TimerState.mode==='pomodoro' && TimerState.elapsedSec >= currentPhaseTotalSec()){
+        TimerState.elapsedSec = currentPhaseTotalSec();
+        handlePomodoroPhaseEnd();      // the phase finished while the app was closed
+      } else startTimer();
+    } else {
+      TimerState.elapsedSec = o.elapsedSec||0; TimerState.baseSec = TimerState.elapsedSec;
+      renderTimer();
+    }
+  }catch(e){}
+}
+function timerAlert(msg){
+  try{ if(navigator.vibrate) navigator.vibrate([200,100,200]); }catch(e){}
+  try{
+    const AC = window.AudioContext||window.webkitAudioContext;
+    if(AC){ const c=new AC(), o=c.createOscillator(), g=c.createGain(); o.connect(g); g.connect(c.destination); o.frequency.value=880;
+      g.gain.setValueAtTime(.2,c.currentTime); g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.8); o.start(); o.stop(c.currentTime+.8); }
+  }catch(e){}
+  try{ if('Notification' in window && Notification.permission==='granted') new Notification('JEE Tracker',{body:msg}); }catch(e){}
+}
+/* Splits minutes that end now across the days they really fall on (a session over midnight becomes two). */
+function splitMinutesAcrossDays(minutes, endMs){
+  const out = []; let rem = minutes, end = new Date(endMs||Date.now()), guard = 0;
+  while(rem>0.0001 && guard++<14){
+    const mid = new Date(end.getFullYear(),end.getMonth(),end.getDate()).getTime();
+    const avail = (end.getTime()-mid)/60000;
+    if(avail<=0.0001){ end = new Date(mid-1); continue; }
+    const take = guard>=14 ? rem : Math.min(rem, avail);
+    out.push({date:ymd(end), minutes:take});
+    rem -= take; end = new Date(mid-1);
+  }
+  return out;
+}
+/* Saves a finished timer run straight away, so nothing is lost if the details popup is closed. */
+function autoSaveTimerSession(minutes, keepLink){
+  const lb = linkedBlockObj(), link = LINKED_BLOCK;
+  let subject='', chapter='', type='Study';
+  if(lb){
+    if(['Physics','Chemistry','Mathematics'].includes(lb.subject)){ subject = lb.subject; chapter = lb.chapter||''; }
+    if(lb.kind==='Revision') type='Revision'; else if(lb.kind==='Test') type='Mock'; else if(lb.kind==='Practice') type='Practice';
+  }
+  const segs = splitMinutesAcrossDays(minutes), ids = [];
+  updateData(d=>{
+    segs.forEach((sg,i)=>{
+      const ses = {id:uid(), date:sg.date, minutes:sg.minutes, subject, chapter, type};
+      d.studySessions.push(ses); ids.push(ses.id);
+      if(i===0) sessionRevisionDone(d, ses);
+    });
+    if(link){
+      const b = (d.timeBlocks||[]).find(x=>x.id===link.id);
+      if(b){ b.doneDates = b.doneDates||[]; if(!b.doneDates.includes(link.date)) b.doneDates.push(link.date); if(b.link&&b.link.type==='revision') applyRevisionComplete(d, b.link.id); }
+    }
+  });
+  if(!keepLink) LINKED_BLOCK = null;
+  return ids;
 }
 function currentPhaseTotalSec(){
   const s = DATA.settings;
@@ -5674,6 +5654,7 @@ function updateTimerVisual(){
 }
 function startTimer(){
   if(TimerState.running) return;
+  if(TimerState.mode==='pomodoro' && 'Notification' in window && Notification.permission==='default'){ try{ Notification.requestPermission(); }catch(e){} }
   TimerState.running = true;
   TimerState.baseSec = TimerState.elapsedSec;
   TimerState.startedAtMs = Date.now();
@@ -5685,27 +5666,34 @@ function startTimer(){
     }
     updateTimerVisual();
   },250);
+  persistTimer();
   renderTimer();
 }
 function pauseTimer(){
   syncTimerElapsed();
   TimerState.running = false;
   clearInterval(TimerState.intervalId);
+  persistTimer();
   renderTimer();
 }
 function handlePomodoroPhaseEnd(){
   clearInterval(TimerState.intervalId);
   TimerState.running = false;
   TimerState.justFinished = true;
+  let ids = null; const mins = DATA.settings.pomodoroMinutes;
   if(TimerState.phase==='study'){
-    logStudyMinutesPrompt(DATA.settings.pomodoroMinutes);
+    ids = autoSaveTimerSession(mins, true);      // saved immediately; details can be added afterwards
     TimerState.pomoCount += 1;
     TimerState.phase = (TimerState.pomoCount % 4 === 0) ? 'longbreak' : 'break';
   } else {
     TimerState.phase = 'study';
   }
-  TimerState.elapsedSec = 0;
-  toast(TimerState.phase==='study' ? 'Break over — back to focus!' : 'Focus session complete — take a break');
+  TimerState.elapsedSec = 0; TimerState.baseSec = 0;
+  persistTimer();
+  const msg = TimerState.phase==='study' ? 'Break over. Back to focus!' : 'Focus session complete. Take a break';
+  timerAlert(msg);
+  if(ids) toast('Focus session saved', {label:'Add details', onClick:()=>openSessionDetails(ids, mins)});
+  else toast(msg);
   renderTimer();
 }
 function stopTimer(){
@@ -5719,8 +5707,9 @@ function stopTimer(){
     resetTimer();
     return;
   }
-  logStudyMinutesPrompt(minutes);
+  const ids = autoSaveTimerSession(minutes);
   resetTimer();
+  openSessionDetails(ids, minutes);
 }
 function resetTimer(){
   clearInterval(TimerState.intervalId);
@@ -5729,17 +5718,22 @@ function resetTimer(){
   TimerState.baseSec = 0;
   TimerState.phase = 'study';
   TimerState.pomoCount = 0;
+  persistTimer();
   renderTimer();
 }
-function logStudyMinutesPrompt(minutes){
-  const chapterOptions = subj => DATA.chapters.filter(c=>c.subject===subj).map(c=>`<option>${esc(c.name)}</option>`).join('');
+let SESSION_IDS = [];
+function openSessionDetails(ids, minutes){
+  SESSION_IDS = ids;
+  const first = DATA.studySessions.find(x=>x.id===ids[0]) || {};
+  const total = DATA.studySessions.filter(x=>ids.includes(x.id)).reduce((a,x)=>a+Number(x.minutes||0),0) || minutes;
+  SESSION_KIND = first.type==='Practice' ? 'practice' : 'basic';
   openModal(`
-    <div class="modal-head"><h3>Session complete</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-    <p class="muted" style="margin-bottom:14px;">You studied for ${hoursToHM(minutes/60)}. What did you cover?</p>
+    <div class="modal-head"><h3>Session saved</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <p class="muted" style="margin-bottom:14px;">You studied for ${hoursToHM(total/60)}${ids.length>1?' (split across '+ids.length+' days)':''}. It is already saved. What did you cover?</p>
     <div class="field"><label>Was this session…</label>
       <div class="seg">
-        <button type="button" id="ss-kind-basic" class="active" onclick="setSessionKind('basic')">Basic study</button>
-        <button type="button" id="ss-kind-practice" onclick="setSessionKind('practice')">Question practice</button>
+        <button type="button" id="ss-kind-basic" class="${SESSION_KIND==='basic'?'active':''}" onclick="setSessionKind('basic')">Basic study</button>
+        <button type="button" id="ss-kind-practice" class="${SESSION_KIND==='practice'?'active':''}" onclick="setSessionKind('practice')">Question practice</button>
       </div>
     </div>
     <div class="field"><label>Subject</label>
@@ -5750,26 +5744,17 @@ function logStudyMinutesPrompt(minutes){
     <div class="field" id="ss-type-wrap"><label>This was…</label>
       <select id="ss-type" onchange="syncSessionFields()"><option>Study</option><option>Revision</option><option>Mock</option></select>
     </div>
-    <div class="field" id="ss-chap-wrap"><label>Chapter / Topic</label><select id="ss-chapter"><option value="">—</option>${chapterOptions('Physics')}</select></div>
+    <div class="field" id="ss-chap-wrap"><label>Chapter / Topic</label><select id="ss-chapter"><option value="">—</option></select></div>
     <div class="modal-actions">
       <button class="btn secondary" onclick="discardSession()">Discard</button>
-      <button class="btn" id="ss-save-btn" onclick="saveStudySession(${minutes})">Save Session</button>
+      <button class="btn" id="ss-save-btn" onclick="saveStudySession()">Save details</button>
     </div>
   `);
-  SESSION_KIND = 'basic';
+  $('#ss-subject').value = first.subject||'';
   refreshSessionChapterOptions();
-  const lb = linkedBlockObj();
-  if(lb){
-    if(['Physics','Chemistry','Mathematics'].includes(lb.subject)){
-      $('#ss-subject').value = lb.subject;
-      refreshSessionChapterOptions();
-      if(lb.chapter) $('#ss-chapter').value = lb.chapter;
-    }
-    if(lb.kind==='Practice') setSessionKind('practice');
-    if(lb.kind==='Revision') $('#ss-type').value='Revision';
-    if(lb.kind==='Test') $('#ss-type').value='Mock';
-  }
-  syncSessionFields();
+  if(first.chapter) $('#ss-chapter').value = first.chapter;
+  if(first.type && first.type!=='Practice') $('#ss-type').value = first.type;
+  setSessionKind(SESSION_KIND);
 }
 let SESSION_KIND = 'basic';
 function setSessionKind(kind){
@@ -5789,32 +5774,34 @@ function refreshSessionChapterOptions(){
   $('#ss-chapter').innerHTML = `<option value="">—</option>` + DATA.chapters.filter(c=>c.subject===subj).map(c=>`<option>${esc(c.name)}</option>`).join('');
 }
 function discardSession(){
+  const ids = SESSION_IDS.slice(); SESSION_IDS = [];
+  updateData(d=>{ d.studySessions = d.studySessions.filter(x=>!ids.includes(x.id)); });
   closeModal();
   renderAll();
+  toast('Session discarded');
 }
-function saveStudySession(minutes){
+function saveStudySession(){
+  const ids = SESSION_IDS.slice(); SESSION_IDS = [];
   const subject = $('#ss-subject').value;
   const kind = SESSION_KIND;
   const type = kind==='practice' ? 'Practice' : $('#ss-type').value;
   const chapter = type==='Mock' ? '' : $('#ss-chapter').value;
-  const link = LINKED_BLOCK; LINKED_BLOCK = null;
   const mockWasDue = type==='Mock' && mockStatus().due;
-  let revDone = false;
+  let revDone = false, total = 0;
   updateData(d=>{
-    const ses={id:uid(), date:todayStr(), minutes, subject, chapter, type};
-    d.studySessions.push(ses);
-    revDone = sessionRevisionDone(d, ses);
-    if(link){
-      const lb = (d.timeBlocks||[]).find(x=>x.id===link.id);
-      if(lb){ lb.doneDates = lb.doneDates || []; if(!lb.doneDates.includes(link.date)) lb.doneDates.push(link.date); if(lb.link&&lb.link.type==='revision') applyRevisionComplete(d, lb.link.id); }
-    }
+    d.studySessions.filter(x=>ids.includes(x.id)).forEach((ses,i)=>{
+      const same = ses.type==='Revision' && type==='Revision' && ses.subject===subject && (ses.chapter||'')===chapter;
+      total += Number(ses.minutes||0);
+      ses.subject = subject; ses.chapter = chapter; ses.type = type;
+      if(i===0 && !same) revDone = sessionRevisionDone(d, ses);
+    });
   });
   closeModal();
   renderAll();
   if(kind==='practice'){
     // study time is already saved above; open the practice form with subject, chapter and time pre-filled
-    openPracticeModal(null, {subject: subject||'Physics', chapter, timeMinutes: Math.max(1, Math.round(minutes))});
-    toast('Session saved — now add your questions');
+    openPracticeModal(null, {subject: subject||'Physics', chapter, timeMinutes: Math.max(1, Math.round(total))});
+    toast('Session saved. Now add your questions');
   } else if(mockWasDue){
     toast('Mock marked complete', {label:'Add result', onClick:()=>openTestModal()});
   } else {
