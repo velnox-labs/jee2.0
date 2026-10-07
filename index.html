@@ -3080,7 +3080,7 @@ function openRevisionResetModal(chapterId){
   openModal(`
     <div class="modal-head"><h3>Reschedule revisions</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
     <p class="muted" style="margin-bottom:12px;">${esc(c.name)}</p>
-    <div class="field"><label>Count revisions from this date</label><input type="date" id="rr-date" value="${todayStr()}"></div>
+    <div class="field"><label>Count revisions from this date</label><input type="date" id="rr-date" value="${c.revisionStartDate||todayStr()}"></div>
     <p class="muted" style="margin-bottom:12px;">All old revisions of this chapter (and their timetable slots) will be deleted, and a new set will be scheduled after this date.</p>
     <div class="modal-actions">
       <button class="btn secondary" onclick="closeModal()">Cancel</button>
@@ -3093,6 +3093,7 @@ function confirmRevisionReset(chapterId){
   if(!start) return;
   updateData(d=>{
     clearChapterRevisions(d, chapterId);
+    const chp = d.chapters.find(x=>x.id===chapterId); if(chp) chp.revisionStartDate = start;   // remembered for next time
     const gaps = (d.settings.revisionIntervals && d.settings.revisionIntervals.length) ? d.settings.revisionIntervals : [1,3,7,15];
     gaps.forEach((gap,i)=>d.revisions.push({id:uid(), chapterId, round:i+1, dueDate:addDays(start,gap), completed:false, completedDate:null}));
   });
