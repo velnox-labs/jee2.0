@@ -3073,6 +3073,34 @@ function openRescheduleModal(chapterId){
     <button class="btn secondary block" style="margin-top:10px; color:var(--red);" onclick="removeDeadline('${chapterId}')">Remove deadline</button>
   `);
 }
+/* Deletes every old revision of a chapter and counts a fresh set from the chosen date. */
+function openRevisionResetModal(chapterId){
+  const c = DATA.chapters.find(x=>x.id===chapterId);
+  if(!c) return;
+  openModal(`
+    <div class="modal-head"><h3>Reschedule revisions</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
+    <p class="muted" style="margin-bottom:12px;">${esc(c.name)}</p>
+    <div class="field"><label>Count revisions from this date</label><input type="date" id="rr-date" value="${todayStr()}"></div>
+    <p class="muted" style="margin-bottom:12px;">All old revisions of this chapter (and their timetable slots) will be deleted, and a new set will be scheduled after this date.</p>
+    <div class="modal-actions">
+      <button class="btn secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn" onclick="confirmRevisionReset('${chapterId}')">Reschedule</button>
+    </div>
+  `);
+}
+function confirmRevisionReset(chapterId){
+  const start = ($('#rr-date')||{}).value;
+  if(!start) return;
+  updateData(d=>{
+    clearChapterRevisions(d, chapterId);
+    const gaps = (d.settings.revisionIntervals && d.settings.revisionIntervals.length) ? d.settings.revisionIntervals : [1,3,7,15];
+    gaps.forEach((gap,i)=>d.revisions.push({id:uid(), chapterId, round:i+1, dueDate:addDays(start,gap), completed:false, completedDate:null}));
+  });
+  closeModal();
+  renderAll();
+  openChapterDetail(chapterId);
+  toast('Revisions rescheduled');
+}
 function confirmReschedule(chapterId){
   const newDate = $('#rs-date').value;
   if(!newDate) return;
@@ -3907,6 +3935,7 @@ function openChapterDetail(id){
       <div class="hx-h">Revision schedule</div>
       ${revs.length ? revRows : `<p class="muted">${c.status==='Completed'||c.status==='Revised' ? 'No revisions scheduled.' : 'Revisions get scheduled once the chapter is completed.'}</p>`}
       ${nextRev ? `<div class="hx-extra">Next revision: <b>${fmtDateShort(nextRev.dueDate)}</b></div>` : ''}
+      <button type="button" class="btn secondary block" style="margin-top:10px;" onclick="openRevisionResetModal('${c.id}')">Reschedule revisions from date</button>
     </div>
 
     ${ps.sessionCount>0 ? `
