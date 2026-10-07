@@ -1479,11 +1479,10 @@ function normalizeData(){
   // Chapter ticks and status always agree with each other.
   DATA.chapters.forEach(c=>{
     const done = c.status==='Completed'||c.status==='Revised';
-    if(done){ c.notesDone = c.questionsDone = c.pyqsDone = true; }
+    if(done){ c.notesDone = c.questionsDone = true; }   // PYQs are never forced
     else {
-      const n = (c.notesDone?1:0)+(c.questionsDone?1:0)+(c.pyqsDone?1:0);
-      if(n===3) c.pyqsDone = false;
-      if(c.status==='Not Started' && (c.notesDone||c.questionsDone||c.pyqsDone)) c.status = 'Studying';
+      if(c.notesDone && c.questionsDone) c.status = 'Completed';   // notes + questions done = chapter completed
+      else if(c.status==='Not Started' && (c.notesDone||c.questionsDone||c.pyqsDone)) c.status = 'Studying';
     }
   });
   // One time: chapters whose notes + questions are already done but have no revisions get a schedule.
@@ -3040,7 +3039,7 @@ function bindDeadlineRowEvents(){
     if(act==='complete'){
       updateData(d=>{
         const c = d.chapters.find(x=>x.id===id);
-        if(c){ c.status='Completed'; if(!c.completedOn) c.completedOn=todayStr(); }
+        if(c){ c.status='Completed'; c.notesDone=c.questionsDone=true; if(!c.completedOn) c.completedOn=todayStr(); syncChapterRevisions(d,c); }
       });
       renderAll();
       toast('Marked completed');
@@ -3767,7 +3766,7 @@ function chapterRowHtml(c){
     <div class="ch-tile ${c.important?'gold':''} ${pctV===100?'full':''}" style="--p:${pctV}" role="button" tabindex="0">
       <div class="ch-tile-in"><span>${esc(c.name)}</span></div>
     </div>
-    <div class="ch-pct ${isRev?'rev':isDone?'done':''}">${pctV}%${isRev?' · Revised':isDone?' · Completed':''}</div>
+    <div class="ch-pct ${isRev?'rev':isDone?'done':''}">${pctV}%${isRev?' · Revised':isDone?' · Completed':''}${(isDone||isRev)&&!c.pyqsDone?' · PYQ pending':''}</div>
   </div>`;
 }
 function chapterDeadlineNote(c){
@@ -3793,12 +3792,12 @@ function setChapterField(id, field, val){
     if(field==='status'){
       newStatus = val;
       // ticks always match the status
-      if(val==='Completed' || val==='Revised'){ ch.notesDone = ch.questionsDone = ch.pyqsDone = true; }
+      if(val==='Completed' || val==='Revised'){ ch.notesDone = ch.questionsDone = true; }   // PYQs stay as they were
       else if(val==='Not Started'){ ch.notesDone = ch.questionsDone = ch.pyqsDone = false; }
       else if(val==='Studying' && wasDone){ ch.pyqsDone = false; }
     }
     if(field==='notesDone' || field==='questionsDone' || field==='pyqsDone'){
-      const all = !!(ch.notesDone && ch.questionsDone && ch.pyqsDone);
+      const all = !!(ch.notesDone && ch.questionsDone);   // PYQs do not decide Completed
       const any = !!(ch.notesDone || ch.questionsDone || ch.pyqsDone);
       if(all){ if(!wasDone) newStatus = 'Completed'; }
       else if(wasDone) newStatus = 'Studying';
@@ -4400,7 +4399,7 @@ function applyChapterField(d,id,field,val){
   const ch=d.chapters.find(c=>c.id===id); if(!ch) return;
   const wasDone = ch.status==='Completed' || ch.status==='Revised';
   ch[field]=val;
-  const all=!!(ch.notesDone&&ch.questionsDone&&ch.pyqsDone), any=!!(ch.notesDone||ch.questionsDone||ch.pyqsDone);
+  const all=!!(ch.notesDone&&ch.questionsDone), any=!!(ch.notesDone||ch.questionsDone||ch.pyqsDone);
   if(all){ if(!wasDone){ ch.status='Completed'; if(!ch.completedOn) ch.completedOn=todayStr(); } }
   else if(wasDone){ ch.status='Studying'; ch.completedOn=null; }
   else if(any && ch.status==='Not Started') ch.status='Studying';
