@@ -1486,6 +1486,24 @@ function normalizeData(){
       if(c.status==='Not Started' && (c.notesDone||c.questionsDone||c.pyqsDone)) c.status = 'Studying';
     }
   });
+  // One time: chapters whose notes + questions are already done but have no revisions get a schedule.
+  // Spread over the coming days so they don't all land on one day.
+  if(!DATA.settings.revBackfillV2){
+    DATA.settings.revBackfillV2 = true;
+    const cap = Math.max(2, Number(DATA.settings.dailyRevisionTarget)||2), cnt = {}, t0 = todayStr();
+    DATA.revisions.filter(r=>!r.completed).forEach(r=>{ cnt[r.dueDate]=(cnt[r.dueDate]||0)+1; });
+    const gaps = (DATA.settings.revisionIntervals && DATA.settings.revisionIntervals.length) ? DATA.settings.revisionIntervals : [1,3,7,15];
+    DATA.chapters.filter(c=>c.notesDone && c.questionsDone && !DATA.revisions.some(r=>r.chapterId===c.id)).forEach(c=>{
+      let prev = null;
+      gaps.forEach((g,i)=>{
+        let d = addDays(t0, g);
+        if(prev && d<=prev) d = addDays(prev,1);
+        while((cnt[d]||0)>=cap) d = addDays(d,1);
+        cnt[d]=(cnt[d]||0)+1; prev=d;
+        DATA.revisions.push({id:uid(), chapterId:c.id, round:i+1, dueDate:d, completed:false, completedDate:null});
+      });
+    });
+  }
 }
 function saveData(){
   DATA.updatedAt = Date.now();   // used to tell which copy (this device or cloud) is newer
@@ -1526,8 +1544,25 @@ function overdueChapters(){
 }
 /* PYQ pending = notes and practice questions done, PYQs not yet done */
 function isPyqPending(c){ return !!(c.notesDone && c.questionsDone && !c.pyqsDone); }
+/* Study-session time only (lecture + notes). Practice sessions are PYQ time and are counted separately. */
+function chapterStudyOnlyMin(c){
+  return allStudy().filter(x=>x.subject===c.subject && x.chapter===c.name && !x.fromPractice && !['Revision','Practice','Mock'].includes(x.type)).reduce((a,x)=>a+Number(x.minutes||0),0);
+}
+function chapterPracticeMin(c){
+  return allStudy().filter(x=>x.subject===c.subject && x.chapter===c.name && (x.fromPractice || x.type==='Practice')).reduce((a,x)=>a+Number(x.minutes||0),0);
+}
+const BIG_CHAPTER_RE = /rotation|electrostatic|magnet|modern physics|electromagnetic|current electricity|thermodynamic|equilibri|general organic|goc|limit|differentiat|integra|derivative|complex|conic/i;
+function chapterTargetHours(c){
+  const t = Number(c.targetHours);
+  if(t>0) return t;
+  return BIG_CHAPTER_RE.test(c.name||'') ? 25 : 13;   // lecture + notes time
+}
+/* Chapter progress: 55% study time, 15% notes, 15% questions, 15% PYQs.
+   Notes + questions both ticked = study counts as fully done (55%) even with no sessions logged. */
 function chapterProgress(c){
-  return ((c.notesDone?1:0)+(c.questionsDone?1:0)+(c.pyqsDone?1:0))/3;   // Notes, Questions, PYQs: one third each
+  let study = Math.min(1, chapterStudyOnlyMin(c)/(chapterTargetHours(c)*60));
+  if(c.notesDone && c.questionsDone) study = 1;
+  return (study*55 + (c.notesDone?15:0) + (c.questionsDone?15:0) + (c.pyqsDone?15:0))/100;
 }
 function chapterCompletionPct(subject){
   const chs = DATA.chapters.filter(c=> !subject || c.subject===subject);
@@ -2269,6 +2304,7 @@ function renderView(viewId){
   else if(viewId==='timer') renderTimer();
 }
 function renderAll(){
+  try{ ensureRevisionBlocks(); }catch(e){ console.error(e); }
   syncBonusDays();
   recomputeStreaks();
   updateDeadlineFab();
@@ -3776,9 +3812,9 @@ function setChapterField(id, field, val){
         scheduleRevisionsForChapter(id);
       } else {
         ch.completedOn = null;
-        if(wasDone) clearChapterRevisions(d, id);   // chapter is being studied again: its revision schedule goes away
       }
     }
+    syncChapterRevisions(d, ch);
   });
   renderAll();
   openChapterDetail(id);
@@ -3832,7 +3868,9 @@ function openChapterDetail(id){
     </div>
 
     <div class="dl-sum">
-      ${tile('#3B82D6', hoursToHM(studyMin/60), 'Study time')}
+      ${tile('#3B82D6', hoursToHM(chapterStudyOnlyMin(c)/60)+' / '+chapterTargetHours(c)+'h', 'Study time')}
+      ${tile('#3FA5B5', hoursToHM(chapterPracticeMin(c)/60), 'PYQ / practice')}
+      ${tile('#64748B', hoursToHM((chapterStudyOnlyMin(c)+chapterPracticeMin(c))/60), 'Total time')}
       ${tile('#3FA5B5', ps.avgSec==null?'—':formatSeconds(ps.avgSec), 'Avg / question')}
       ${tile('#3DBE7E', ps.accuracy+'%', 'Accuracy')}
       ${tile('#F29A38', ps.attempted, 'Questions')}
@@ -3851,6 +3889,11 @@ function openChapterDetail(id){
       <div class="cd-split"><div style="width:${ps.accuracy}%;background:#3DBE7E"></div><div style="width:${wrongPct}%;background:#E5484D"></div></div>
       <div class="cd-legend"><span><i style="background:#3DBE7E"></i>${ps.correct} correct</span><span><i style="background:#E5484D"></i>${ps.wrong} wrong</span><span>${ps.sessionCount} ${ps.sessionCount===1?'entry':'entries'}</span></div>
     </div>` : ''}
+
+    <div class="hx-card">
+      <div class="hx-h">Study target (hours of lecture + notes)</div>
+      <div class="cd-dl"><input type="number" min="1" step="1" value="${chapterTargetHours(c)}" onchange="setChapterField('${c.id}','targetHours',Number(this.value)||0)"></div>
+    </div>
 
     <div class="hx-card">
       <div class="hx-h">Deadline</div>
@@ -4358,9 +4401,17 @@ function applyChapterField(d,id,field,val){
   const wasDone = ch.status==='Completed' || ch.status==='Revised';
   ch[field]=val;
   const all=!!(ch.notesDone&&ch.questionsDone&&ch.pyqsDone), any=!!(ch.notesDone||ch.questionsDone||ch.pyqsDone);
-  if(all){ if(!wasDone){ ch.status='Completed'; if(!ch.completedOn) ch.completedOn=todayStr(); scheduleRevisionsForChapter(id); } }
-  else if(wasDone){ ch.status='Studying'; ch.completedOn=null; clearChapterRevisions(d,id); }
+  if(all){ if(!wasDone){ ch.status='Completed'; if(!ch.completedOn) ch.completedOn=todayStr(); } }
+  else if(wasDone){ ch.status='Studying'; ch.completedOn=null; }
   else if(any && ch.status==='Not Started') ch.status='Studying';
+  syncChapterRevisions(d,ch);
+}
+/* Revisions exist as soon as notes + questions are done (PYQs are not needed). */
+function syncChapterRevisions(d,ch){
+  const ready=!!(ch.notesDone&&ch.questionsDone);
+  const has=d.revisions.some(r=>r.chapterId===ch.id&&!r.custom);
+  if(ready&&!has) scheduleRevisionsForChapter(ch.id);
+  else if(!ready&&has&&!d.revisions.some(r=>r.chapterId===ch.id&&r.completed)) clearChapterRevisions(d,ch.id);
 }
 function revSchedTag(id){
   const b=linkedBlockFor('revision',id);
@@ -4964,7 +5015,7 @@ function sugInfo(type,id){
   const t=todayStr();
   if(type==='revision'){
     const r=DATA.revisions.find(x=>x.id===id), c=r&&DATA.chapters.find(x=>x.id===r.chapterId); if(!c) return null;
-    return {type,id,kind:'Revision',subject:c.subject,chapter:c.name,mins:45,color:'#E5484D',title:'Revise '+c.name,pri:r.dueDate<t?1:2,
+    return {type,id,kind:'Revision',subject:c.subject,chapter:c.name,mins:60,color:'#E5484D',title:'Revise '+c.name,pri:r.dueDate<t?1:2,
       sub:`Revision ${r.round} · `+(r.dueDate<t?'overdue since '+fmtDateShort(r.dueDate):r.dueDate===t?'due today':'due '+fmtDateShort(r.dueDate))+((r.origDue&&r.origDue!==r.dueDate)?' (originally '+fmtDateShort(r.origDue)+')':'')};
   }
   if(type==='pyq'){
@@ -4977,7 +5028,7 @@ function sugInfo(type,id){
 }
 function ttSuggestions(date){
   const out=[]; const add=(type,id)=>{ const s=sugInfo(type,id); if(s){ s.block=linkedBlockFor(type,s.id); out.push(s); } };
-  DATA.revisions.filter(r=>!r.completed&&r.dueDate<=date).sort((a,b)=>a.dueDate.localeCompare(b.dueDate)).forEach(r=>add('revision',r.id));
+  DATA.revisions.filter(r=>!r.completed&&r.dueDate<=date&&(r.removed||r.dueDate<todayStr())).sort((a,b)=>a.dueDate.localeCompare(b.dueDate)).forEach(r=>add('revision',r.id));
   if(mockStatus().due || linkedBlockFor('test','mock')) add('test','mock');
   const w={High:0,Medium:1,Low:2};
   DATA.chapters.filter(isPyqPending)
@@ -5017,6 +5068,7 @@ function renderTimetable(){
   const v = view('timetable');
   if(!v) return;
   const date = ttDate(), isToday = date===todayStr();
+  try{ ensureRevisionBlocks(date); }catch(e){ console.error(e); }
   const ents = ttEntries(date), blocks = blocksForDate(date), lab = ttDateLabel(date);
   const countKinds = ['Study','Practice','Revision','Test'];
   const planned = blocks.filter(b=>countKinds.includes(b.kind)).reduce((a,b)=>a+blockMins(b),0);
@@ -5174,6 +5226,36 @@ function saveSlot(type,id){
   TT_DATE=date; closeModal(); renderAll();
   toast(ex?'Rescheduled':'Added to timetable');
 }
+/* Revisions put themselves in the timetable on their due date (1 hour each, from 8 AM, in free gaps). */
+function ensureRevisionBlocks(extraDate){
+  const t=todayStr(); let horizon=addDays(t,30); if(extraDate && extraDate>horizon) horizon=extraDate;
+  DATA.timeBlocks=DATA.timeBlocks||[]; let changed=false;
+  const slotFor=(date,ignore)=>{
+    const busy=blocksForDate(date).filter(b=>b.id!==ignore).map(b=>[hmToMin(b.start),hmToMin(b.end)]).sort((a,b)=>a[0]-b[0]);
+    let st=480; if(date===t) st=Math.max(st,Math.ceil((nowMinutes()+5)/15)*15);
+    for(const [a,b] of busy){ if(a<st+60 && b>st) st=b; }
+    if(st+60>1439) st=Math.max(0,1439-60);
+    return st;
+  };
+  DATA.revisions.filter(r=>!r.completed).forEach(r=>{
+    const ch=DATA.chapters.find(c=>c.id===r.chapterId); if(!ch) return;
+    const blk=DATA.timeBlocks.find(b=>b.link&&b.link.type==='revision'&&b.link.id===r.id&&b.repeat==='once'&&!blockIsDone(b,b.date));
+    if(blk){
+      if(r.removed){ r.removed=false; changed=true; }
+      if(!r.autoPlaced){ r.autoPlaced=true; changed=true; }
+      if(blk.date!==r.dueDate && r.dueDate>=t && r.dueDate<=horizon){   // keep slot and due date in sync
+        const st=slotFor(r.dueDate,blk.id); blk.date=blk.from=r.dueDate; blk.start=minToHM(st); blk.end=minToHM(st+60); changed=true;
+      }
+      return;
+    }
+    if(r.autoPlaced){ if(!r.removed){ r.removed=true; changed=true; } return; }   // slot was removed by you
+    if(r.dueDate<t || r.dueDate>horizon) return;
+    const st=slotFor(r.dueDate);
+    DATA.timeBlocks.push({id:uid(),title:'Revise '+ch.name,kind:'Revision',start:minToHM(st),end:minToHM(st+60),subject:ch.subject||'',chapter:ch.name,repeat:'once',date:r.dueDate,from:r.dueDate,days:[],doneDates:[],skipDates:[],link:{type:'revision',id:r.id},auto:true});
+    r.autoPlaced=true; changed=true;
+  });
+  if(changed) saveData();
+}
 function removeSlot(bid){
   const r=deleteData('timeBlocks',bid); renderAll();
   if(r.item) toast('Removed from timetable',{label:'Undo',onClick:()=>{ updateData(d=>{ d.timeBlocks.push(r.item); }); renderAll(); }});
@@ -5181,7 +5263,7 @@ function removeSlot(bid){
 /* After midnight, unfinished one-day blocks of earlier days are copied to the new day automatically.
    The original stays behind as "Missed" history; the copy carries a "Carried from" tag. */
 function carryOverBlocks(){
-  const t=todayStr(), now=nowMinutes(), kinds=['Study','Practice','Revision','Test'];
+  const t=todayStr(), now=nowMinutes(), kinds=['Study','Practice','Test'];
   let moved=0, changed=false;
   (DATA.timeBlocks||[]).slice().forEach(o=>{   // original finished later on -> its pending copy is no longer needed
     if(!o.carriedTo || !blockIsDone(o,o.date)) return;
