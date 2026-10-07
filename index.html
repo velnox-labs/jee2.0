@@ -1524,6 +1524,8 @@ function overdueChapters(){
   const t = todayStr();
   return DATA.chapters.filter(c=>c.completeByDate && c.completeByDate<t && c.status!=='Completed' && c.status!=='Revised');
 }
+/* PYQ pending = notes and practice questions done, PYQs not yet done */
+function isPyqPending(c){ return !!(c.notesDone && c.questionsDone && !c.pyqsDone); }
 function chapterProgress(c){
   return ((c.notesDone?1:0)+(c.questionsDone?1:0)+(c.pyqsDone?1:0))/3;   // Notes, Questions, PYQs: one third each
 }
@@ -3615,7 +3617,7 @@ function renderChapters(){
   if(CHAPTER_FILTER.confidence) chs = chs.filter(c=>c.confidence===CHAPTER_FILTER.confidence);
   if(CHAPTER_FILTER.weightage) chs = chs.filter(c=>(c.weightage||'Medium')===CHAPTER_FILTER.weightage);
   if(CHAPTER_FILTER.important) chs = chs.filter(c=>!!c.important);
-  if(CHAPTER_FILTER.pyqPending) chs = chs.filter(c=>(c.status==='Completed'||c.status==='Revised') && !c.pyqsDone);
+  if(CHAPTER_FILTER.pyqPending) chs = chs.filter(isPyqPending);
   if(CHAPTER_FILTER.search) chs = chs.filter(c=>c.name.toLowerCase().includes(CHAPTER_FILTER.search.toLowerCase()));
   chs = chs.slice().sort((a,b)=>a.order-b.order);
 
@@ -3685,7 +3687,7 @@ function renderChaptersListOnly(){
   if(CHAPTER_FILTER.confidence) chs = chs.filter(c=>c.confidence===CHAPTER_FILTER.confidence);
   if(CHAPTER_FILTER.weightage) chs = chs.filter(c=>(c.weightage||'Medium')===CHAPTER_FILTER.weightage);
   if(CHAPTER_FILTER.important) chs = chs.filter(c=>!!c.important);
-  if(CHAPTER_FILTER.pyqPending) chs = chs.filter(c=>(c.status==='Completed'||c.status==='Revised') && !c.pyqsDone);
+  if(CHAPTER_FILTER.pyqPending) chs = chs.filter(isPyqPending);
   if(CHAPTER_FILTER.search) chs = chs.filter(c=>c.name.toLowerCase().includes(CHAPTER_FILTER.search.toLowerCase()));
   chs = chs.slice().sort((a,b)=>a.order-b.order);
   const listEl = view('chapters').querySelector('.ch-grid');
@@ -4264,7 +4266,7 @@ function openTestModal(id){
     <div class="hx-h">Questions</div>
     <div class="field-row">
       <div class="field"><label>Total questions in test</label><input type="number" id="tt-totalq" min="0" value="${editing?(editing.totalQuestions??''):''}" placeholder="e.g. 90"></div>
-      <div class="field"><label>Time taken (min)</label><input type="number" id="tt-time" value="${editing?editing.timeTaken:''}"></div>
+      <div class="field"><label>Time taken (min)</label><input type="number" id="tt-time" value="${editing?editing.timeTaken:180}"></div>
     </div>
     <div class="field-row">
       <div class="field"><label>Correct</label><input type="number" id="tt-correct" value="${editing?editing.correct:''}"></div>
@@ -4978,7 +4980,7 @@ function ttSuggestions(date){
   DATA.revisions.filter(r=>!r.completed&&r.dueDate<=date).sort((a,b)=>a.dueDate.localeCompare(b.dueDate)).forEach(r=>add('revision',r.id));
   if(mockStatus().due || linkedBlockFor('test','mock')) add('test','mock');
   const w={High:0,Medium:1,Low:2};
-  DATA.chapters.filter(c=>(c.status==='Completed'||c.status==='Revised')&&!c.pyqsDone)
+  DATA.chapters.filter(isPyqPending)
     .sort((a,b)=>(b.important?1:0)-(a.important?1:0)||w[a.weightage||'Medium']-w[b.weightage||'Medium']).forEach(c=>add('pyq',c.id));
   return out.sort((a,b)=>a.pri-b.pri);
 }
