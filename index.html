@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>JEE Tracker</title>
-<meta name="theme-color" content="#33409E">
+<meta name="theme-color" content="#CC492B">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -23,9 +23,9 @@
   --ink:#1B2233;
   --ink-soft:#5B6178;
   --line:#E4E1D8;
-  --indigo:#33409E;
-  --indigo-deep:#242C74;
-  --indigo-tint:#EBEDFA;
+  --indigo:#CC492B;
+  --indigo-deep:#C84F34;
+  --indigo-tint:#FDEBE5;
   --amber:#DD9A2E;
   --amber-tint:#FBF0DC;
   --green:#2F9E63;
@@ -45,14 +45,14 @@
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 :root[data-theme="dark"]{
-  --paper:#12141C;
-  --paper-2:#181B26;
-  --ink:#EDEFF7;
-  --ink-soft:#9BA0B4;
-  --line:#2A2E3E;
-  --indigo:#6C7BE8;
-  --indigo-deep:#8993EF;
-  --indigo-tint:#1D2247;
+  --paper:#150D0B;
+  --paper-2:#1E1411;
+  --ink:#F7EEEA;
+  --ink-soft:#B3A29B;
+  --line:#35251F;
+  --indigo:#CC492B;
+  --indigo-deep:#F29A7D;
+  --indigo-tint:#3A1F18;
   --amber:#E8AE4D;
   --amber-tint:#332714;
   --green:#4FBE8A;
@@ -60,7 +60,7 @@
   --red:#E1706F;
   --red-tint:#33191A;
   --slate:#767C93;
-  --card:#1B1E2A;
+  --card:#241816;
   --shadow:0 1px 2px rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.35);
 }
 button{color:inherit;}
@@ -294,8 +294,8 @@ body.nofab .fab-alert{bottom:28px;}}
 .cal-cell.cal-future{opacity:0.45; cursor:default;}
 .cal-cell.cal-lv0{background:var(--paper-2);}
 .cal-cell.cal-lv1{background:var(--indigo-tint);}
-.cal-cell.cal-lv2{background:#B9C7F2;}
-.cal-cell.cal-lv3{background:#7C93E0;}
+.cal-cell.cal-lv2{background:#F5B9A6;}
+.cal-cell.cal-lv3{background:#EE8A6E;}
 .cal-cell.cal-lv4{background:var(--indigo); border-color:var(--indigo);}
 .cal-cell.cal-lv3 .cal-daynum, .cal-cell.cal-lv4 .cal-daynum{color:#fff;}
 .cal-daynum{font-size:12px; font-weight:700; color:var(--ink);}
@@ -304,8 +304,8 @@ body.nofab .fab-alert{bottom:28px;}}
 .cal-legend .cal-dot{width:12px; height:12px; border-radius:3px; background:var(--paper-2);}
 .cal-legend .cal-lv0{background:var(--paper-2);}
 .cal-legend .cal-lv1{background:var(--indigo-tint);}
-.cal-legend .cal-lv2{background:#B9C7F2;}
-.cal-legend .cal-lv3{background:#7C93E0;}
+.cal-legend .cal-lv2{background:#F5B9A6;}
+.cal-legend .cal-lv3{background:#EE8A6E;}
 .cal-legend .cal-lv4{background:var(--indigo);}
 .tab{
   flex:0 0 auto; padding:8px 15px; border-radius:20px; background:var(--paper-2); border:1px solid var(--line);
@@ -376,10 +376,10 @@ body.nofab .fab-alert{bottom:28px;}}
   font-weight:600; z-index:200; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s;
   box-shadow:0 8px 24px rgba(0,0,0,.25); display:flex; align-items:center; gap:10px; white-space:nowrap;
 }
-:root[data-theme="dark"] .toast{background:#EDEFF7; color:#12141C;}
+:root[data-theme="dark"] .toast{background:#F7EEEA; color:#150D0B;}
 .toast.show{opacity:1; transform:translateX(-50%) translateY(-6px); pointer-events:auto;}
-.toast-action{background:none; border:none; color:#8FB0FF; font-weight:700; font-size:14px; cursor:pointer; padding:0;}
-:root[data-theme="dark"] .toast-action{color:#3E4FD9;}
+.toast-action{background:none; border:none; color:#FFB59E; font-weight:700; font-size:14px; cursor:pointer; padding:0;}
+:root[data-theme="dark"] .toast-action{color:#D9573A;}
 @media (min-width:900px){
 .toast{bottom:24px;}}
 /* bottom nav mobile */
@@ -698,12 +698,12 @@ body.nofab .fab-alert{bottom:28px;}}
 .hx-streak-in span{font-size:14px;color:var(--ink-soft)}
 .qa-tile{color:#fff;border-radius:16px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:11px}
 .qa-tile svg{color:#fff}
-.qa-tile:nth-child(3n+1){background:#3B82D6}
-.qa-tile:nth-child(3n+2){background:#3FA5B5}
+.qa-tile:nth-child(3n+1){background:#CC492B}
+.qa-tile:nth-child(3n+2){background:#B8503A}
 .qa-tile:nth-child(3n){background:#3DBE7E}
 #view-home .pf-box{background:var(--card)}
 /* ===== Header, nav and cards like the reference ===== */
-:root:not([data-theme="dark"]){--paper:#EBF0F6}
+:root:not([data-theme="dark"]){--paper:#F0EEEC}
 .topbar{background:transparent;border:none;justify-content:space-between;padding-top:calc(14px + env(safe-area-inset-top,0px))}
 .tb-left{display:flex;align-items:center;gap:12px;min-width:0}
 .tb-right{display:flex;align-items:center;gap:6px}
@@ -712,7 +712,7 @@ body.nofab .fab-alert{bottom:28px;}}
 .avatar-btn{flex:0 0 52px;width:52px;min-width:52px;height:52px;border:none}
 .tb-ic{position:relative;width:40px;height:40px;border:none;background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%}
 .tb-ic svg{width:24px;height:24px}
-.tb-dot{position:absolute;top:7px;right:8px;width:9px;height:9px;border-radius:50%;background:#E5484D;border:2px solid var(--paper)}
+.tb-dot{position:absolute;top:7px;right:8px;width:9px;height:9px;border-radius:50%;background:#C0302D;border:2px solid var(--paper)}
 .hx-un-h{font:700 18px var(--font-head);margin:4px 0 8px}
 .hx-un-t{font-size:16px;line-height:1.35;margin-bottom:10px}
 .hx-un-m{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
@@ -725,15 +725,15 @@ body.nofab .fab-alert{bottom:28px;}}
 .nav-item{padding:10px 12px;font-size:13px;gap:10px}}
 .bn-item{color:var(--ink);position:relative;font-size:12px;font-weight:600}
 .bn-item svg{width:24px;height:24px}
-.bn-item.active{color:#3B82D6}
-.bn-item.active::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:44px;height:3px;border-radius:2px;background:#3B82D6}
+.bn-item.active{color:#CC492B}
+.bn-item.active::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:44px;height:3px;border-radius:2px;background:#CC492B}
 /* ============ Reference design system, applied to every page ============ */
 :root:not([data-theme="dark"]){
-  --paper:#EBF0F6;--paper-2:#F1F4F9;--card:#FFFFFF;--ink:#111827;--ink-soft:#5B6475;--line:#E3E8EF;
-  --indigo:#3B82D6;--indigo-deep:#1F5AA8;--indigo-tint:#E3EEFB;
-  --amber:#A85F00;--amber-tint:#FDEEDB;--green:#1E7F52;--green-tint:#E1F6EA;--red:#E5484D;--red-tint:#FDE7E8;
+  --paper:#F0EEEC;--paper-2:#F6F4F2;--card:#FFFFFF;--ink:#1E1512;--ink-soft:#675C57;--line:#E8E2DD;
+  --indigo:#CC492B;--indigo-deep:#C84F34;--indigo-tint:#FDEBE5;
+  --amber:#A85F00;--amber-tint:#FDEEDB;--green:#1E7F52;--green-tint:#E1F6EA;--red:#C0302D;--red-tint:#FDE7E8;
 }
-:root[data-theme="dark"]{--indigo:#6AA6EE;--indigo-deep:#3B82D6;--indigo-tint:#1E2B3F}
+:root[data-theme="dark"]{--indigo:#CC492B;--indigo-deep:#CC492B;--indigo-tint:#3A1F18}
 .card, .row-item, .pill-searchbar, .pf-box, .stat{background:var(--card);border:none;border-radius:18px}
 .card-flat{background:var(--card);border-radius:18px}
 .field input, .field select, .field textarea, .card .field input, .card .field select, .card .field textarea, #view-settings .field input, #view-settings .field select, #view-settings .field textarea{background:var(--paper-2);border-radius:12px}
@@ -744,22 +744,22 @@ body.nofab .fab-alert{bottom:28px;}}
 .seg button.active{background:var(--indigo);color:#fff;box-shadow:none}
 .tab.active{background:var(--indigo);color:#fff}
 .grid>.stat{color:#fff}
-.grid>.stat:nth-child(4n+1){background:#3B82D6}
-.grid>.stat:nth-child(4n+2){background:#F29A38}
-.grid>.stat:nth-child(4n+3){background:#3FA5B5}
+.grid>.stat:nth-child(4n+1){background:#CC492B}
+.grid>.stat:nth-child(4n+2){background:#E8A04C}
+.grid>.stat:nth-child(4n+3){background:#B8503A}
 .grid>.stat:nth-child(4n){background:#3DBE7E}
 .grid>.stat .val, .grid>.stat .lbl{color:#fff}
 .grid>.stat .lbl{text-transform:uppercase;font-size:11px;letter-spacing:.03em;opacity:.95}
 .grid>.stat .icon{color:#fff}
 .pf-c-g{background:#3DBE7E}
-.pf-c-i{background:#3B82D6}
-.pf-c-a{background:#F29A38}
+.pf-c-i{background:#CC492B}
+.pf-c-a{background:#E8A04C}
 .pf-c-g, .pf-c-i, .pf-c-a{color:#fff}
 .pf-c-g .n, .pf-c-g .l, .pf-c-i .n, .pf-c-i .l, .pf-c-a .n, .pf-c-a .l{color:#fff}
 .hx-k{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
 .hx-big2{font:700 28px/1.15 var(--font-head);margin-top:6px}
 .hx-big2 span{font:600 14px var(--font-body);color:var(--ink-soft)}
-.fab{background:#3B82D6;color:#fff}
+.fab{background:#CC492B;color:#fff}
 .nav-item.active{background:var(--indigo-tint);color:var(--indigo)}
 .modal{background:var(--card)}
 .pbar>div, .hb-track>div{border-radius:3px}
@@ -782,11 +782,11 @@ body.nofab .fab-alert{bottom:28px;}}
 .pl-day span{font-size:11px;color:var(--ink-soft)}
 .pl-day b{font:700 16px var(--font-head)}
 .pl-day i{width:5px;height:5px;border-radius:50%}
-.pl-day.on{background:#3B82D6;color:#fff}
+.pl-day.on{background:#CC492B;color:#fff}
 .pl-day.on span{color:#fff;opacity:.85}
 .pl-filters{display:flex;gap:8px;margin-bottom:12px}
 .pl-chip{border:none;background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 14px var(--font-body);cursor:pointer}
-.pl-chip.on{background:#3B82D6;color:#fff}
+.pl-chip.on{background:#CC492B;color:#fff}
 .tk-row .icon-btn{background:var(--paper-2);border-radius:50%}
 .tk-row .ri-title{font-weight:600}
 .filter-row{margin-bottom:14px}
@@ -834,14 +834,14 @@ img, canvas{max-width:100%}
 .hd-sub{font-size:14px;color:var(--ink-soft)}
 .tb-coin{display:flex;align-items:center;gap:5px;height:32px;padding:0 10px 0 7px;border-radius:999px;border:none;background:var(--card);color:var(--ink);cursor:pointer;margin-right:2px}
 .tb-coin[hidden]{display:none}
-.tb-coin-ic{display:flex;width:18px;height:18px;color:#F29A38}
+.tb-coin-ic{display:flex;width:18px;height:18px;color:#E8A04C}
 .tb-coin-ic svg{width:18px;height:18px}
 .tb-coin b{font:700 14px var(--font-body)}
 .avatar-btn.back-mode{background:var(--card);color:var(--ink);border:none}
 .avatar-btn.back-mode svg{width:24px;height:24px}
 /* ===== Login page: readable colours in light and dark ===== */
-.auth-screen{--au-accent:#2B66C2;--au-on:#fff}
-:root[data-theme="dark"] .auth-screen{--au-accent:#6AA7F2;--au-on:#0B1220}
+.auth-screen{--au-accent:#D9573A;--au-on:#fff}
+:root[data-theme="dark"] .auth-screen{--au-accent:#F2825F;--au-on:#0B1220}
 .auth-card .btn:not(.secondary):not(.ghost){background:var(--au-accent);color:var(--au-on)}
 .auth-card .seg button.active{background:var(--au-accent);color:var(--au-on) !important;box-shadow:none}
 .auth-card .field input::placeholder{color:var(--ink-soft);opacity:1}
@@ -853,8 +853,8 @@ img, canvas{max-width:100%}
 .coin-pop{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;z-index:250;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 12px;border-radius:999px;background:var(--ink);color:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.28);transform:translate(-50%,-140%) scale(.9);opacity:0;transition:transform .45s cubic-bezier(.2,1.3,.4,1),opacity .25s;pointer-events:none;max-width:calc(100vw - 32px)}
 .coin-pop.in{transform:translate(-50%,0) scale(1);opacity:1}
 .coin-pop.out{transform:translate(-50%,-140%) scale(.9);opacity:0}
-:root[data-theme="dark"] .coin-pop{background:#EDEFF7;color:#12141C}
-.coin-pop-ic{display:flex;flex:0 0 30px;width:30px;height:30px;color:#F29A38;animation:coinspin .8s ease-out}
+:root[data-theme="dark"] .coin-pop{background:#F7EEEA;color:#150D0B}
+.coin-pop-ic{display:flex;flex:0 0 30px;width:30px;height:30px;color:#E8A04C;animation:coinspin .8s ease-out}
 .coin-pop-ic svg{width:30px;height:30px}
 .coin-pop b{display:block;font:800 16px var(--font-body)}
 .coin-pop-sub{display:block;font-size:12px;opacity:.75;margin-top:1px}
@@ -890,8 +890,8 @@ h1, h2, h3, h4{font-family:inherit}
 .rv-c.empty{background:transparent;cursor:default}
 .rv-c b{font:600 14px var(--font-body)}
 .rv-c i{width:6px;height:6px;border-radius:50%}
-.rv-c.today{box-shadow:inset 0 0 0 2px #3B82D6}
-.rv-c.on{background:#3B82D6;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.22)}
+.rv-c.today{box-shadow:inset 0 0 0 2px #CC492B}
+.rv-c.on{background:#CC492B;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.22)}
 .rv-nav{border:none;background:var(--paper-2);width:34px;height:34px;border-radius:50%;font-size:20px;color:var(--ink);cursor:pointer;line-height:1}
 .rv-legend{display:flex;gap:14px;justify-content:center;margin-top:10px;font-size:12px;color:var(--ink-soft)}
 .rv-legend span{display:inline-flex;align-items:center;gap:5px}
@@ -912,7 +912,7 @@ h1, h2, h3, h4{font-family:inherit}
 #view-settings .hx-card{margin-bottom:12px}
 #view-settings .field-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
 #view-settings .muted{font-size:12px}
-#view-settings .btn.danger{background:#E5484D;color:#fff}
+#view-settings .btn.danger{background:#C0302D;color:#fff}
 #view-settings>.btn.block{margin:6px 0 18px}
 /* ===== Fixed top bar: stays visible while scrolling ===== */
 .topbar{position:sticky;top:0;z-index:60;background:var(--paper);margin:-8px -16px 12px !important;padding:8px 16px !important;padding-top:calc(8px + env(safe-area-inset-top,0px)) !important}
@@ -958,10 +958,264 @@ h1, h2, h3, h4{font-family:inherit}
 .hbar-row .hb-val{width:auto;font:700 14px var(--font-body);white-space:nowrap}
 .hbar-row .hb-track{order:3;flex:0 0 100%;height:8px}
 .tt-row{align-items:center;gap:12px}
-.tt-score{flex:0 0 58px;height:58px;border-radius:16px;background:#3B82D6;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.tt-score{flex:0 0 58px;height:58px;border-radius:16px;background:#CC492B;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
 .tt-score b{font:700 20px var(--font-head)}
 .tt-score span{font:600 9px var(--font-body);text-transform:uppercase;letter-spacing:.04em;opacity:.9}
 .cd .hx-card{background:var(--card)}
+
+/* ================= NEW DESIGN: warm maroon + coral ================= */
+:root:not([data-theme="dark"]){--paper:#F0EEEC;--paper-2:#F6F4F2;--card:#FFFFFF;--ink:#1E1512;--ink-soft:#675C57;--line:#E8E2DD;--indigo:#CC492B;--indigo-deep:#C84F34;--indigo-tint:#FDEBE5;--green:#1F7A50;--green-tint:#E2F5EB;--red:#B8312F}
+:root[data-theme="dark"]{--paper:#150D0B;--paper-2:#1E1411;--card:#241816;--ink:#F7EEEA;--ink-soft:#B3A29B;--line:#35251F;--indigo:#CC492B;--indigo-tint:#3A1F18}
+.main{--mpx:16px}
+@media (min-width:900px){.main{--mpx:34px}}
+.hx-card,.card,.row-item,.pf-box,.stat,.dl-card,.nt-card,.sg-card{border-radius:22px}
+.hx-card,.card{box-shadow:0 1px 2px rgba(30,21,18,.04),0 8px 24px rgba(30,21,18,.05)}
+:root[data-theme="dark"] .hx-card,:root[data-theme="dark"] .card{box-shadow:none}
+.hx-cd,.dl-tile{border-radius:20px}
+.btn,.btn.sm,.pl-chip,.tab{border-radius:999px}
+.hx-h{font-weight:700}
+/* top bar */
+.topbar{padding-bottom:6px !important}
+.avatar-btn{width:46px;height:46px;flex:0 0 46px;background:#CC492B;color:#fff;border:none}
+.avatar-btn.back-mode{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(30,21,18,.08)}
+.tb-ic{width:42px;height:42px;background:var(--card);box-shadow:0 1px 2px rgba(30,21,18,.08)}
+.topbar h1{font-weight:700;font-size:22px}
+/* Home: dark header continues into the hero */
+body:has(#view-home.active) .topbar{background:#2B1511 !important;margin:-8px calc(-1*var(--mpx)) 0 !important;padding:12px var(--mpx) 6px !important;color:#fff}
+@media (min-width:900px){body:has(#view-home.active) .topbar{margin-top:-20px !important}}
+body:has(#view-home.active) .avatar-btn{box-shadow:none}
+body:has(#view-home.active) #viewTitle{display:none}
+body:has(#view-home.active) .tb-ic,body:has(#view-home.active) .tb-coin{background:rgba(255,255,255,.12);color:#fff;box-shadow:none}
+body:has(#view-home.active) .tb-dot{border-color:#2B1511}
+.home-hero{margin:0 calc(-1*var(--mpx)) 16px;padding:8px calc(var(--mpx) + 4px) 20px;border-radius:0 0 30px 30px;color:#fff;
+  background:radial-gradient(110% 70% at 88% 55%,#5E2B1F 0%,rgba(43,21,17,0) 70%),#2B1511}
+#view-home{overflow:visible !important}
+.hh-greet{font:700 28px/1.2 var(--font-head);letter-spacing:-.01em}
+.hh-row{display:flex;align-items:center;justify-content:space-between;margin-top:20px;font-size:13px;color:rgba(255,255,255,.62)}
+.hh-pill{background:rgba(238,108,77,.22);color:#FF9C80;padding:5px 12px;border-radius:999px;font:700 12px var(--font-body)}
+.hh-big{font:700 46px/1.1 var(--font-head);margin-top:6px;letter-spacing:-.02em}
+.hh-big span{font:500 16px var(--font-body);color:rgba(255,255,255,.55);margin-left:8px;letter-spacing:0}
+.hh-bar{height:6px;border-radius:4px;background:rgba(255,255,255,.14);margin:12px 0 18px;overflow:hidden}
+.hh-bar>div{height:100%;border-radius:4px;background:linear-gradient(90deg,#F2825F,#CC492B)}
+.hh-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hh-tile{background:#FFF1EE;color:#1E1512;border-radius:18px;padding:13px 12px 11px;cursor:pointer;min-width:0}
+.hh-ic{display:flex;width:20px;height:20px;color:#CC492B;margin-bottom:8px}
+.hh-ic svg{width:20px;height:20px}
+.hh-tile b{display:block;font:700 22px/1.1 var(--font-head)}
+.hh-tile small{display:block;font:500 12px var(--font-body);color:#6A5A53;margin-top:2px}
+/* Daily routine */
+.dr-card{padding:16px 16px 8px}
+.dr-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.dr-more{font-size:13px;color:var(--ink-soft)}
+.dr-item{position:relative;display:flex;align-items:center;gap:12px;padding:10px 0}
+.dr-item:not(:last-child)::after{content:"";position:absolute;left:13px;top:42px;bottom:-14px;width:2px;background:var(--line)}
+.dr-check{width:28px;height:28px;flex:0 0 28px;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;color:var(--card);background:transparent;z-index:1}
+.dr-check svg{display:none;width:14px;height:14px}
+.dr-item.done .dr-check{background:var(--ink)}
+.dr-item.done .dr-check svg{display:block}
+.dr-thumb{width:52px;height:52px;flex:0 0 52px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--kc);background:color-mix(in srgb,var(--kc) 16%,transparent)}
+.dr-thumb svg{width:24px;height:24px}
+.dr-m{min-width:0;flex:1}
+.dr-t{font:700 15px/1.25 var(--font-body);overflow-wrap:anywhere}
+.dr-s{font-size:12px;color:var(--ink-soft);margin-top:2px}
+.dr-item.done .dr-t{opacity:.55}
+.dr-next{flex:0 0 auto;background:#CC492B;color:#fff;border-radius:999px;padding:7px 14px;font:700 12px var(--font-body);white-space:nowrap}
+/* floating pill bottom nav (phones) */
+@media (max-width:899px){
+.bottomnav{width:calc(100% - 28px);max-width:420px;bottom:calc(12px + env(safe-area-inset-bottom,0px));border-radius:32px;padding:8px;gap:2px;align-items:center;background:var(--card);border-top:none;box-shadow:0 10px 30px rgba(30,21,18,.16)}
+.bn-item{flex:1 1 0;flex-direction:row;justify-content:center;gap:8px;padding:13px 0;border-radius:999px;color:var(--ink-soft);min-width:0}
+.bn-item svg{width:22px;height:22px}
+.bn-item span{display:none}
+.bn-item.active{flex:2.2 1 0;background:#CC492B;color:#fff}
+.bn-item.active span{display:inline;font-size:14px;font-weight:700;white-space:nowrap}
+.bn-item.active::before{display:none}
+.main{padding-bottom:124px}
+.fab{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+.fab-alert{bottom:calc(168px + env(safe-area-inset-bottom,0px))}
+body.nofab .fab-alert{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+.toast{bottom:108px}
+}
+.nav-item.active{background:#CC492B;color:#fff}
+.fab{background:#CC492B;box-shadow:0 8px 20px rgba(238,108,77,.4)}
+
+/* ===== Whole-app header band (all screens) ===== */
+.topbar{background:#2B1511 !important;margin:-8px calc(-1*var(--mpx)) 16px !important;padding:12px var(--mpx) 18px !important;border-radius:0 0 28px 28px;color:#fff}
+@media (min-width:900px){.topbar{margin-top:-20px !important}}
+.topbar h1,.topbar h1 b{color:#fff}
+.avatar-btn.back-mode{background:rgba(255,255,255,.14);color:#fff;box-shadow:none}
+.tb-ic,.tb-coin{background:rgba(255,255,255,.12) !important;color:#fff !important;box-shadow:none !important}
+.tb-dot{border-color:#2B1511 !important}
+body:has(#view-home.active) .topbar{margin-bottom:0 !important;padding-bottom:6px !important;border-radius:0}
+body:has(#view-home.active) #viewTitle{display:none}
+/* sections & chips */
+.hd-head .hx-h,.view>.hx-h{padding-left:2px}
+.pill-select,.pill-searchbar{background:var(--card);border-color:var(--line)}
+.tt-day.active,.seg button.active{background:#CC492B;border-color:#CC492B;color:#fff}
+.badge.studying,.badge.upcoming{background:#FDEBE5;color:#C84F34}
+:root[data-theme="dark"] .badge.studying,:root[data-theme="dark"] .badge.upcoming{background:#3A1F18;color:#F2825F}
+input:focus,select:focus,textarea:focus{outline-color:#CC492B !important}
+input[type=checkbox],input[type=radio],input[type=range]{accent-color:#CC492B}
+.sheet,.modal,.modal-card,.sheet-card{border-radius:28px 28px 0 0}
+@media (min-width:900px){.sheet,.modal,.modal-card,.sheet-card{border-radius:24px}}
+
+/* ===== Soft cream tiles (match reference) ===== */
+:root{--tile:#FFF1EE;--tile-ink:#1E1512;--tile-sub:#6A5A53}
+:root[data-theme="dark"]{--tile:#2E1D18;--tile-ink:#F7EEEA;--tile-sub:#C9B8B0}
+.hx-cd,.dl-tile,.qa-tile,.grid>.stat,.pf-c-g,.pf-c-i,.pf-c-a{background:var(--tile) !important;color:var(--tile-ink) !important;text-shadow:none !important;border:none !important;border-radius:20px !important}
+.hx-cd svg,.qa-tile svg,.grid>.stat svg,.dl-tile svg{color:#CC492B !important;stroke:currentColor;filter:none !important}
+.hx-cd-top,.hx-date,.dl-tile span,.grid>.stat span,.grid>.stat small,.pf-c-g span,.pf-c-i span,.pf-c-a span,.hx-num span{color:var(--tile-sub) !important;opacity:1}
+.hx-cd-top{font-weight:700}
+.hx-num{color:#CC492B !important}
+.dl-tile b,.grid>.stat b,.grid>.stat .n,.pf-c-g b,.pf-c-i b,.pf-c-a b{color:var(--tile-ink) !important}
+.dl-tile[style*="3DBE7E"] b,.dl-tile[style*="3dbe7e"] b{color:#1F7A50 !important}
+.dl-tile[style*="E5484D"] b,.dl-tile[style*="e5484d"] b{color:#B8312F !important}
+.dl-tile[style*="E8A04C"] b,.dl-tile[style*="E8A04C"] b{color:#8F5A10 !important}
+.qa-tile{text-transform:none !important;letter-spacing:0 !important;font-size:12.5px !important;font-weight:700;gap:10px}
+.qa-tile svg{width:26px;height:26px}
+.qa-tile:nth-child(n){background:var(--tile) !important}
+.hh-ic{color:#CC492B}
+.hh-tile{padding:12px 12px 10px}
+.hh-tile small{font-size:12px}
+.hx-card,.card{border:none}
+.fab{border-radius:50%}
+
+.pf-c-g .n,.pf-c-i .n,.pf-c-a .n,.grid>.stat .n{color:var(--tile-ink) !important}
+.pf-c-g .l,.pf-c-i .l,.pf-c-a .l,.grid>.stat .l{color:var(--tile-sub) !important}
+.pf-c-g .n{color:#1F7A50 !important}
+.pf-c-i .n{color:#CC492B !important}
+.pf-c-a .n{color:#8F5A10 !important}
+
+/* ===== Profile + Settings new format ===== */
+body:has(#view-profile.active) .topbar,body:has(#view-settings.active) .topbar{margin-bottom:0 !important;border-radius:0;padding-bottom:6px !important}
+.pf-hero{padding-top:14px}
+.pf-hrow{display:flex;align-items:center;gap:14px}
+.pf-hav{width:68px;height:68px;margin:0;flex:0 0 68px;background:#CC492B;color:#fff;font-size:28px;border:3px solid rgba(255,255,255,.18)}
+.pf-hmeta{min-width:0;flex:1}
+.pf-hmeta .hh-greet{font-size:24px;word-break:break-word}
+.pf-hsub{font-size:13px;color:rgba(255,255,255,.62);margin-top:2px;overflow:hidden;text-overflow:ellipsis}
+.pf-hedit{background:rgba(255,255,255,.14);color:#fff;border:none;border-radius:999px;padding:9px 16px;font:700 13px var(--font-body);cursor:pointer}
+.pf-adv{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px}
+.pf-advn{font-size:13px;color:var(--ink-soft);margin-top:2px}
+.pf-advn b{font:700 26px var(--font-head);color:#CC492B;margin-right:4px}
+.pf-advd{font-size:13px;color:var(--ink-soft)}
+.pf-lbl{font:700 18px var(--font-head);color:var(--ink);text-transform:none;letter-spacing:0;margin:22px 2px 10px}
+/* Settings: profile hero + accordion rows */
+#view-settings .st-me{background:radial-gradient(110% 70% at 88% 55%,#5E2B1F 0%,rgba(43,21,17,0) 70%),#2B1511;color:#fff;margin:0 calc(-1*var(--mpx)) 16px;padding:8px calc(var(--mpx) + 4px) 22px;border-radius:0 0 30px 30px;box-shadow:none}
+#view-settings .st-me .hx-h{color:#fff;font-size:22px}
+#view-settings .st-me .muted{color:rgba(255,255,255,.62)}
+#view-settings .st-me .pf-avatar{background:#CC492B;color:#fff;border:3px solid rgba(255,255,255,.18)}
+.st-acc{padding:0 !important;overflow:hidden}
+.st-acc .st-h{display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer;margin:0 !important}
+.st-ico{width:42px;height:42px;flex:0 0 42px;border-radius:14px;background:var(--tile);color:#CC492B;display:flex;align-items:center;justify-content:center}
+.st-ico svg{width:22px;height:22px}
+.st-ico.dng{background:#FCE9E7;color:#B8312F}
+.st-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.st-t b{font:700 15px var(--font-body)}
+.st-t small{font:500 12px var(--font-body);color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st-chev{color:var(--ink-soft);display:flex;transition:transform .2s}
+.st-acc.open .st-chev{transform:rotate(90deg)}
+.st-body{display:none;padding:2px 16px 16px}
+.st-acc.open .st-body{display:block}
+.st-body .btn.danger{border-radius:999px}
+
+/* ===== curve fix + profile tabs ===== */
+#view-profile,#view-settings{overflow:visible !important}
+.home-hero,#view-settings .st-me{border-radius:0 0 32px 32px}
+.pf-hero{text-align:center;padding-top:2px}
+.pf-avwrap{display:flex;justify-content:center}
+.pf-hav{width:92px;height:92px;flex:0 0 92px;font-size:38px;margin:0;border:4px solid rgba(255,255,255,.16);box-shadow:0 0 0 6px rgba(238,108,77,.18)}
+.pf-hname{font:700 24px var(--font-head);margin-top:12px;word-break:break-word}
+.pf-hedit{margin-top:12px}
+.pf-cds{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.pf-cds span{background:rgba(255,255,255,.1);border-radius:999px;padding:7px 14px;font-size:12.5px;color:rgba(255,255,255,.7)}
+.pf-cds b{color:#FF9C80;font-weight:700;margin:0 2px}
+.pf-hero .hh-tile{text-align:left}
+.pf-tabs{display:flex;gap:6px;background:var(--card);border-radius:999px;padding:5px;margin:16px 0 14px;box-shadow:0 1px 2px rgba(30,21,18,.06)}
+.pf-tabs button{flex:1;border:none;background:transparent;color:var(--ink-soft);font:700 13px var(--font-body);padding:10px 4px;border-radius:999px;cursor:pointer}
+.pf-tabs button.active{background:#CC492B;color:#fff}
+.pf-panel[hidden]{display:none}
+.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pf-grid .pf-box{margin:0}
+.pf-ready{display:flex;align-items:center;gap:16px}
+.pf-ring{position:relative;width:104px;height:104px;flex:0 0 104px}
+.pf-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 30px var(--font-head)}
+@media (min-width:900px){.pf-grid{grid-template-columns:repeat(3,1fr)}}
+
+.pf-list{padding:4px 16px}
+.pf-li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0}
+.pf-li+.pf-li{border-top:1px solid var(--line)}
+.pf-lt{min-width:0;display:flex;flex-direction:column;gap:2px}
+.pf-lt b{font:600 14px var(--font-body);color:var(--ink)}
+.pf-lt small{font:500 12px var(--font-body);color:var(--ink-soft)}
+.pf-lv{font:700 20px var(--font-head);white-space:nowrap}
+.pf-v-g .pf-lv{color:#1F7A50}.pf-v-i .pf-lv{color:#CC492B}.pf-v-a .pf-lv{color:#8F5A10}
+
+/* ===== Visibility fixes (WCAG AA) ===== */
+:root{--coral-text:#B83C1B;--on-coral:#fff}
+:root[data-theme="dark"]{--coral-text:#F4896A}
+.btn.ghost,.pf-edit,.hd-more,.auth-link,.pw-toggle,.plan-link,.dr-more,.btn.link{color:var(--coral-text)}
+.hx-num{color:var(--coral-text) !important}
+.pf-cds b,.hh-pill{color:#FFB39C}
+.hh-pill{background:rgba(204,73,43,.35)}
+.grid>.stat .val,.grid>.stat .lbl,.grid>.stat .cmp-delta{color:var(--tile-ink) !important}
+.grid>.stat .lbl{color:var(--tile-sub) !important;opacity:1}
+.stat .val{color:var(--tile-ink)}
+em[style*="background:#E8A04C"]{color:#2B1511 !important}
+em[style*="background:#3DBE7E"]{color:#08281A !important}
+em[style*="background:#C0302D"]{color:#fff !important}
+.dl-tile[style*="E8A04C"] b{color:#8F5A10 !important}
+.tt-sub,.tt-block .tt-sub{color:var(--ink-soft) !important;opacity:1 !important}
+.tt-block.done .tt-sub{opacity:.85 !important}
+.badge.studying,.badge.upcoming{color:#A8341A}
+.btn:disabled,.btn.sm:disabled,.btn[disabled]{opacity:1;background:var(--line);color:var(--ink-soft)}
+:root[data-theme="dark"] .btn.danger,:root[data-theme="dark"] #view-settings .btn.danger{background:#C0302D;color:#fff}
+
+.tt-block.done .tt-card{opacity:.85}
+.dr-item.done .dr-t{opacity:.8}
+.tt-day.active span,.tt-day.active small{opacity:1;color:#fff}
+.btn.sm[style*="opacity:.45"]{opacity:1 !important;background:var(--line);color:var(--ink-soft)}
+.ch-pct,.mr-chev,.nt-x,.tt-gap,.mr-lbl,.muted{color:var(--ink-soft)}
+:root[data-theme="dark"] .dl-tile[style*="3DBE7E"] b,:root[data-theme="dark"] .pf-v-g .pf-lv{color:#5FD29A !important}
+:root[data-theme="dark"] .dl-tile[style*="C0302D"] b{color:#FF8C86 !important}
+:root[data-theme="dark"] .dl-tile[style*="E8A04C"] b,:root[data-theme="dark"] .pf-v-a .pf-lv{color:#F0B25A !important}
+:root[data-theme="dark"] .pf-v-i .pf-lv{color:#F4896A}
+:root[data-theme="dark"] .dl-tile b,:root[data-theme="dark"] .grid>.stat .val{color:var(--tile-ink)}
+.hh-tile small,.hh-tile b{color:#1E1512}
+.hh-tile small{color:#6A5A53}
+:root[data-theme="dark"] .badge.studying,:root[data-theme="dark"] .badge.upcoming{color:#F4896A}
+
+.pl-day.on span{opacity:1;color:#fff}
+.tt-block.done .tt-card{opacity:1}
+.tt-block.done .tt-title{color:var(--ink-soft)}
+.hp-ring-t em{color:var(--coral-text)}
+:root[data-theme="dark"] .hp-ring-t em{color:#F4896A}
+
+.tt-sub,.tt-block .tt-sub{color:#5A4F4A !important}
+:root[data-theme="dark"] .tt-sub,:root[data-theme="dark"] .tt-block .tt-sub{color:var(--ink-soft) !important}
+:root[data-theme="dark"] .hp-ring-t em[style*="C0302D"]{color:#FF8C86 !important}
+:root[data-theme="dark"] .hp-ring-t em[style*="color:#CC492B"]{color:#F4896A !important}
+:root[data-theme="dark"] .hp-ring-t em[style*="color:#E8A04C"]{color:#F0B25A !important}
+.hp-ring-t em[style*="color:#E8A04C"]{color:#8F5A10 !important}
+.hp-ring-t em[style*="color:#3DBE7E"]{color:#1F7A50 !important}
+:root[data-theme="dark"] .hp-ring-t em[style*="color:#3DBE7E"]{color:#5FD29A !important}
+
+/* ===== Polish pass ===== */
+.hx-num{font-size:34px !important;line-height:1.1;white-space:nowrap}
+.hx-num span{font-size:12px !important;font-weight:600;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;margin-left:4px}
+.hx-cd{padding:14px 14px 12px !important}
+.hx-date{margin-top:6px;font-size:12px}
+.ch-tile{padding:3px;aspect-ratio:1/.82;border-radius:22px}
+.ch-tile-in{border-radius:19px}
+.pbar>div[style*="3DBE7E"],.pbar>div[style*="var(--green)"]{background:#CC492B !important}
+#view-timer .btn.danger{background:#2B1511;color:#fff}
+:root[data-theme="dark"] #view-timer .btn.danger{background:#3A1F18;color:#fff;box-shadow:inset 0 0 0 1px #5A3A30}
+@media (max-width:899px){
+.fab{width:50px;height:50px;right:14px;bottom:calc(98px + env(safe-area-inset-bottom,0px));box-shadow:0 6px 16px rgba(204,73,43,.38)}
+.fab svg{width:22px;height:22px}
+body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:116px;background:linear-gradient(to top,var(--paper) 45%,rgba(240,238,236,0));z-index:39;pointer-events:none}
+:root[data-theme="dark"] body::after{background:linear-gradient(to top,var(--paper) 45%,rgba(21,13,11,0))}
+}
+#view-timetable .pbar>div{background:#CC492B !important}
 </style>
 </head>
 <body>
@@ -1730,7 +1984,7 @@ function recomputeStreaks(){
    GOAL & DAILY PLAN
    ============================================================ */
 const PLAN_SUBJECTS = ['Physics','Chemistry','Mathematics'];
-const PLAN_COLORS = {Physics:'#3E6FD9', Chemistry:'var(--green)', Mathematics:'var(--amber)'};
+const PLAN_COLORS = {Physics:'#CC492B', Chemistry:'var(--green)', Mathematics:'var(--amber)'};
 // Reference points only — based on recent (2025-26) JoSAA/UPTAC closing ranks for
 // General category CSE, converted to a percentile estimate assuming ~17 lakh JEE Main
 // candidates (same assumption used elsewhere in this app). Actual cutoffs shift every
@@ -1874,7 +2128,7 @@ function goalPlanHtml(){
   let paceBar = '';
   if(p.remainingWork>0 && p.pace!==null && p.perWeekNeeded>0){
     const ratio = Math.min(100, Math.round(p.pace/p.perWeekNeeded*100));
-    paceBar = `<div class="pbar-row"><span>Your pace vs needed</span><span>${ratio}%</span></div><div class="pbar" style="margin-bottom:10px"><div style="width:${ratio}%;background:${ratio>=90?'#3DBE7E':'#E5484D'}"></div></div>`;
+    paceBar = `<div class="pbar-row"><span>Your pace vs needed</span><span>${ratio}%</span></div><div class="pbar" style="margin-bottom:10px"><div style="width:${ratio}%;background:${ratio>=90?'#3DBE7E':'#C0302D'}"></div></div>`;
   }
 
   const rows = p.rows.map(r=>{
@@ -1889,7 +2143,7 @@ function goalPlanHtml(){
   const s2 = DATA.settings;
 
   return `
-  <div class="dl-sum" style="margin-bottom:12px">${tile(p.daysLeft,'Days left','#3B82D6')}${tile(p.perWeekNeeded,'Chapters / week','#F29A38')}${tile(fmtDateShort(p.finishBy),'Finish by','#3DBE7E')}</div>
+  <div class="dl-sum" style="margin-bottom:12px">${tile(p.daysLeft,'Days left','#CC492B')}${tile(p.perWeekNeeded,'Chapters / week','#E8A04C')}${tile(fmtDateShort(p.finishBy),'Finish by','#3DBE7E')}</div>
   <div class="hx-card">
     <div class="hx-h">Pace</div>
     ${paceBar}
@@ -1899,7 +2153,7 @@ function goalPlanHtml(){
   <div class="hx-card">
     <div class="hx-h">Today's plan</div>
     ${rows}
-    <div class="hd-row" style="border-left-color:#F29A38"><div class="hd-n">Revision<span>${revSub}</span></div></div>
+    <div class="hd-row" style="border-left-color:#E8A04C"><div class="hd-n">Revision<span>${revSub}</span></div></div>
     <div class="hd-row" style="border-left-color:#3DBE7E"><div class="hd-n">${mockTitle}<span>${mockSub}</span></div></div>
     ${p.targetsBelow ? `<div class="plan-note">This goal usually calls for about ${p.tier.hours}h a day and ${p.tier.q} questions. Your targets are ${s2.dailyStudyHours}h and ${s2.dailyQuestionTarget}. <button type="button" class="plan-link" onclick="applyGoalTargets()">Use suggested targets</button></div>` : ''}
     <p class="plan-foot">General guidelines, not a rank prediction. Protect your sleep while chasing the hours.</p>
@@ -1931,8 +2185,8 @@ function goalProgressHtml(){
   <div class="hx-card">
     <div class="hx-h">Syllabus progress</div>
     <div class="hx-rings">
-      ${goalRing('Overall', `${doneCh}/${total}`, 'chapters done', overallSyllabusPct(), '#3B82D6')}
-      ${goalRing('Important', `${impDone}/${imp.length}`, 'chapters done', importantSyllabusPct(), '#F29A38')}
+      ${goalRing('Overall', `${doneCh}/${total}`, 'chapters done', overallSyllabusPct(), '#CC492B')}
+      ${goalRing('Important', `${impDone}/${imp.length}`, 'chapters done', importantSyllabusPct(), '#E8A04C')}
     </div>
     <div style="margin-top:14px">${bars}</div>
   </div>`;
@@ -1948,7 +2202,7 @@ function goalLast30Html(){
   return `
   <div class="dl-grp"><span>Last 30 days</span></div>
   <div class="dl-sum" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-    ${tile(hoursToHM(hrs),'Studied','#3B82D6')}${tile(q,'Questions','#F29A38')}${tile(tests,'Mock tests','#3FA5B5')}${tile(revs,'Revisions done','#3DBE7E')}
+    ${tile(hoursToHM(hrs),'Studied','#CC492B')}${tile(q,'Questions','#E8A04C')}${tile(tests,'Mock tests','#B8503A')}${tile(revs,'Revisions done','#3DBE7E')}
   </div>`;
 }
 function goalGapHtml(){
@@ -1962,7 +2216,7 @@ function goalGapHtml(){
     const met = avgAny >= s.goal.value;
     html += `<div class="hx-card">
       <div class="hx-h">Percentile gap</div>
-      <div class="dl-sum" style="${two}">${tile(s.goal.value,'Target percentile','#3B82D6')}${tile(avgAny,'Recent avg (3 mocks)',met?'#3DBE7E':'#E5484D')}</div>
+      <div class="dl-sum" style="${two}">${tile(s.goal.value,'Target percentile','#CC492B')}${tile(avgAny,'Recent avg (3 mocks)',met?'#3DBE7E':'#C0302D')}</div>
       <p class="hd-sub">${met ? 'You are meeting or beating your target in recent mocks.' : `You are ${Math.round((s.goal.value-avgAny)*100)/100} percentile behind your target right now.`}${anyEstimated ? ' Some values are auto-estimated from marks and may differ from the official percentile.' : ''}</p>
     </div>`;
   }
@@ -1972,7 +2226,7 @@ function goalGapHtml(){
     html += `<div class="hx-card">
       <div class="hx-h">College target</div>
       <div class="hd-sub" style="margin-bottom:10px">${esc(college.name)}${college.rankNote ? ' · rank '+esc(college.rankNote) : ''}</div>
-      <div class="dl-sum" style="${two}">${tile(college.percentile,'Cutoff percentile','#3B82D6')}${tile(avgAny!==null?avgAny:'—','Recent avg (3 mocks)',avgAny===null?'#8B90A3':met?'#3DBE7E':'#E5484D')}</div>
+      <div class="dl-sum" style="${two}">${tile(college.percentile,'Cutoff percentile','#CC492B')}${tile(avgAny!==null?avgAny:'—','Recent avg (3 mocks)',avgAny===null?'#8B90A3':met?'#3DBE7E':'#C0302D')}</div>
       <p class="hd-sub">${avgAny===null ? 'Log a mock test with a percentile (or marks, for auto-estimate) to see your gap.' : met ? "You are matching or beating this college's recent cutoff range in your mocks." : `You are about ${Math.round((college.percentile-avgAny)*100)/100} percentile behind this college's recent cutoff range.`}${college.rankNote ? ' Cutoffs shift every year, so treat this as a rough benchmark, not a guarantee.' : ''}</p>
     </div>`;
   }
@@ -2157,7 +2411,7 @@ function weeklyRecapHtml(){
     <div class="stat"><div class="val">${hoursToHM(hrs)}</div><div class="lbl">Studied</div></div>
     <div class="stat"><div class="val">${q}</div><div class="lbl">Questions</div></div>
     <div class="stat"><div class="val">${testsCount}</div><div class="lbl">Mock tests</div></div>
-    <div class="stat" style="background:#F29A38;"><div class="val">${least||'—'}</div><div class="lbl">Needs more focus</div></div>
+    <div class="stat" style="background:#E8A04C;"><div class="val">${least||'—'}</div><div class="lbl">Needs more focus</div></div>
   </div>`;
 }
 function maybeShowDailyPopup(){
@@ -2445,7 +2699,7 @@ function buildNotifications(){
   const out = [];
   const s = DATA.settings, t = todayStr(), hr = new Date().getHours();
   const add = (id, pri, col, title, sub, go)=>out.push({id, pri, col, title, sub, go});
-  const RED='#E5484D', AMB='#F29A38', BLU='#3B82D6', GRN='#3DBE7E';
+  const RED='#C0302D', AMB='#E8A04C', BLU='#CC492B', GRN='#3DBE7E';
 
   // 1-2. chapter deadlines (overdue, due today)
   const g = deadlineGroups();
@@ -2518,7 +2772,7 @@ function updateNotifDot(){
   if(!dot || !DATA) return;
   const list = activeNotifications();
   dot.hidden = list.length===0;
-  dot.style.background = list.some(n=>n.pri===1) ? '#E5484D' : '#F29A38';
+  dot.style.background = list.some(n=>n.pri===1) ? '#C0302D' : '#E8A04C';
 }
 function runNotifAction(go){
   if(!go) return;
@@ -2615,7 +2869,7 @@ function coinCardHtml(){
   return `<div class="hx-card hx-streak hx-coin-card" onclick="switchView('rewards')">
     <div class="hx-h">Rewards</div>
     <div class="hx-streak-in">
-      <span style="color:#F29A38;display:flex;width:44px;height:44px;flex:0 0 44px">${ICONS.coin}</span>
+      <span style="color:#E8A04C;display:flex;width:44px;height:44px;flex:0 0 44px">${ICONS.coin}</span>
       <div class="hx-sn">${bal}</div>
       <div style="min-width:0"><b>coins</b><span class="cc-sub">${esc(sub)}</span></div>
     </div>
@@ -2812,7 +3066,7 @@ function showCoinPop(amount, parts){
 function confettiBurst(){
   try{
     if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const cols = ['#F29A38','#3B82D6','#3DBE7E','#E5484D','#8B5CF6','#F5C84C'];
+    const cols = ['#E8A04C','#CC492B','#3DBE7E','#C0302D','#8B5CF6','#F5C84C'];
     const host = document.createElement('div'); host.className = 'confetti-host'; document.body.appendChild(host);
     const cx = innerWidth/2, cy = innerHeight*0.42;
     for(let i=0;i<48;i++){
@@ -2982,7 +3236,7 @@ function updateDeadlineFab(){
   const btn = document.getElementById('deadlineFabBtn');
   if(!btn) return;
   const n = dueNowChapters().length;
-  if(n>0){ btn.style.display='flex'; btn.textContent = String(n); btn.style.background = overdueChapters().length ? 'var(--red)' : '#F29A38'; }
+  if(n>0){ btn.style.display='flex'; btn.textContent = String(n); btn.style.background = overdueChapters().length ? 'var(--red)' : '#E8A04C'; }
   else { btn.style.display='none'; }
 }
 function dueNowChapters(){
@@ -2996,9 +3250,9 @@ function deadlineGroups(){
     .map(c=>({c, diff:Math.round((new Date(c.completeByDate)-new Date(t))/864e5)}))
     .sort((a,b)=>a.diff-b.diff);
   return [
-    {key:'over', title:'Overdue', col:'#E5484D', items:pending.filter(x=>x.diff<0)},
-    {key:'today', title:'Due today', col:'#F29A38', items:pending.filter(x=>x.diff===0)},
-    {key:'week', title:'Next 7 days', col:'#3B82D6', items:pending.filter(x=>x.diff>0&&x.diff<=7)},
+    {key:'over', title:'Overdue', col:'#C0302D', items:pending.filter(x=>x.diff<0)},
+    {key:'today', title:'Due today', col:'#E8A04C', items:pending.filter(x=>x.diff===0)},
+    {key:'week', title:'Next 7 days', col:'#CC492B', items:pending.filter(x=>x.diff>0&&x.diff<=7)},
     {key:'later', title:'Later', col:'#3DBE7E', items:pending.filter(x=>x.diff>7)}
   ];
 }
@@ -3023,7 +3277,7 @@ function renderDeadlinesPage(){
   const tile=(k,col)=>{ const x=g.find(y=>y.key===k); return `<div class="dl-tile" style="background:${col}"><b>${x.items.length}</b><span>${x.title}</span></div>`; };
   const upc=g.find(x=>x.key==='week').items.length+g.find(x=>x.key==='later').items.length;
   view('deadlines').innerHTML = `
-    <div class="dl-sum">${tile('over','#E5484D')}${tile('today','#F29A38')}<div class="dl-tile" style="background:#3B82D6"><b>${upc}</b><span>Upcoming</span></div></div>
+    <div class="dl-sum">${tile('over','#C0302D')}${tile('today','#E8A04C')}<div class="dl-tile" style="background:#CC492B"><b>${upc}</b><span>Upcoming</span></div></div>
     <div id="deadlineList">
     ${total ? g.filter(x=>x.items.length).map(x=>`
       <div class="dl-grp"><span class="dl-dot" style="background:${x.col}"></span><span>${x.title}</span><em>${x.items.length}</em></div>
@@ -3115,7 +3369,7 @@ function openShareCardModal(){
   openModal(`
     <div class="modal-head"><h3>Share Today's Progress</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
     <div style="display:flex; justify-content:center; margin-bottom:14px;">
-      <canvas id="shareCanvas" width="1080" height="1350" style="width:100%; max-width:360px; border-radius:16px; background:#1A2766;"></canvas>
+      <canvas id="shareCanvas" width="1080" height="1350" style="width:100%; max-width:360px; border-radius:16px; background:#4A2018;"></canvas>
     </div>
     <div class="modal-actions">
       <button class="btn secondary" onclick="closeModal()">Close</button>
@@ -3157,10 +3411,10 @@ function shareCollect(){
     blocksDone, blocksTotal:blocks.length, revCount:revs.length, chCount:chDone.length,
     sections:[
       {title:'Chapters completed', col:'#3DBE7E', items:chDone.map(c=>({t:c.name,s:c.subject}))},
-      {title:'Revisions done', col:'#F29A38', items:revs.map(r=>({t:chName(r.chapterId),s:chSub(r.chapterId)+' · Round '+r.round}))},
-      {title:'Chapters studied', col:'#6AA6EE', items:Object.values(chapStudied).map(c=>({t:c.t,s:c.subject+' · '+hoursToHM(c.min/60)}))},
-      {title:'Question practice', col:'#3FA5B5', items:prac.map(p=>{ const a=(Number(p.correct||0)+Number(p.wrong||0)); return {t:p.chapter||p.subject, s:p.subject+' · '+Number(p.attempted||0)+' Qs'+(a?' · '+Math.round(Number(p.correct||0)/a*100)+'% acc':'')}; })},
-      {title:'Mock tests', col:'#E5484D', items:tests.map(x=>({t:x.name,s:'Score '+x.total+' · '+testAccuracy(x)+'% accuracy'+(x.percentile!=null?' · '+x.percentile+' %ile':'')}))}
+      {title:'Revisions done', col:'#E8A04C', items:revs.map(r=>({t:chName(r.chapterId),s:chSub(r.chapterId)+' · Round '+r.round}))},
+      {title:'Chapters studied', col:'#F2825F', items:Object.values(chapStudied).map(c=>({t:c.t,s:c.subject+' · '+hoursToHM(c.min/60)}))},
+      {title:'Question practice', col:'#B8503A', items:prac.map(p=>{ const a=(Number(p.correct||0)+Number(p.wrong||0)); return {t:p.chapter||p.subject, s:p.subject+' · '+Number(p.attempted||0)+' Qs'+(a?' · '+Math.round(Number(p.correct||0)/a*100)+'% acc':'')}; })},
+      {title:'Mock tests', col:'#C0302D', items:tests.map(x=>({t:x.name,s:'Score '+x.total+' · '+testAccuracy(x)+'% accuracy'+(x.percentile!=null?' · '+x.percentile+' %ile':'')}))}
     ].filter(x=>x.items.length)
   };
 }
@@ -3169,9 +3423,9 @@ function paintShare(ctx,d,W,H){
   const fit=(txt,max)=>{ txt=String(txt); if(ctx.measureText(txt).width<=max) return txt; while(txt.length>1&&ctx.measureText(txt+'…').width>max) txt=txt.slice(0,-1); return txt.trimEnd()+'…'; };
   const rr=(x,y,w,h,r)=>roundRectPath(ctx,x,y,w,h,r);
   // background
-  const g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,'#0E1430'); g.addColorStop(.55,'#1A2766'); g.addColorStop(1,'#10303F');
+  const g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,'#2B1511'); g.addColorStop(.55,'#4A2018'); g.addColorStop(1,'#3A1B14');
   ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-  [[W*0.95,120,420,'#3B82D6'],[W*0.05,Math.min(H*0.55,1100),380,'#F29A38']].forEach(c=>{
+  [[W*0.95,120,420,'#CC492B'],[W*0.05,Math.min(H*0.55,1100),380,'#E8A04C']].forEach(c=>{
     const rg=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],c[2]); rg.addColorStop(0,c[3]+'44'); rg.addColorStop(1,c[3]+'00');
     ctx.fillStyle=rg; ctx.fillRect(0,0,W,H);
   });
@@ -3194,7 +3448,7 @@ function paintShare(ctx,d,W,H){
   const cx=P+210, cy=y+hh/2, R=130, pr=d.target>0?Math.min(1,d.hrs/d.target):(d.hrs>0?1:0);
   ctx.lineWidth=30; ctx.lineCap='round';
   ctx.strokeStyle='rgba(255,255,255,.16)'; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.stroke();
-  if(pr>0){ ctx.strokeStyle=pr>=1?'#3DBE7E':'#6AA6EE'; ctx.beginPath(); ctx.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+Math.PI*2*pr); ctx.stroke(); }
+  if(pr>0){ ctx.strokeStyle=pr>=1?'#3DBE7E':'#F2825F'; ctx.beginPath(); ctx.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+Math.PI*2*pr); ctx.stroke(); }
   ctx.textAlign='center'; ctx.fillStyle='#fff'; ctx.font='800 50px '+F; ctx.fillText(hoursToHM(d.hrs),cx,cy+10);
   ctx.font='600 24px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText(d.target?'of '+d.target+'h goal':'studied today',cx,cy+48);
   // right stats
@@ -3211,7 +3465,7 @@ function paintShare(ctx,d,W,H){
   y+=hh+24;
   // tiles
   const tw=(CW-40)/3, th=150;
-  [['Chapters done',d.chCount,'#3DBE7E'],['Revisions',d.revCount,'#F29A38'],['Slots done',d.blocksDone+'/'+d.blocksTotal,'#3B82D6']].forEach((t,i)=>{
+  [['Chapters done',d.chCount,'#3DBE7E'],['Revisions',d.revCount,'#E8A04C'],['Slots done',d.blocksDone+'/'+d.blocksTotal,'#CC492B']].forEach((t,i)=>{
     const x=P+i*(tw+20);
     ctx.fillStyle=t[2]; rr(x,y,tw,th,28); ctx.fill();
     ctx.textAlign='left'; ctx.fillStyle='#fff'; ctx.font='800 56px '+F; ctx.fillText(String(t[1]),x+26,y+84);
@@ -3220,7 +3474,7 @@ function paintShare(ctx,d,W,H){
   y+=th+56;
   // subject time
   ctx.textAlign='left'; ctx.font='800 26px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText('TIME BY SUBJECT',P,y); y+=34;
-  const colors={Physics:'#6AA6EE',Chemistry:'#3DBE7E',Mathematics:'#F29A38',General:'#9AA0B4'};
+  const colors={Physics:'#F2825F',Chemistry:'#3DBE7E',Mathematics:'#E8A04C',General:'#9AA0B4'};
   const keys=Object.keys(d.subjMin).filter(k=>k!=='General'||d.subjMin.General>0);
   const mx=Math.max(1,...keys.map(k=>d.subjMin[k]));
   keys.forEach(k=>{
@@ -3321,12 +3575,54 @@ function renderHomeCountdownOnly(){
   if(aEl) aEl.innerHTML = `${advDays>=0?advDays:0}<span> days left</span>`;
 }
 
+function homeGreeting(){ const h=new Date().getHours(); return h<12?'Morning':h<17?'Afternoon':'Evening'; }
+function homeHeroHtml(){
+  const s=DATA.settings, t=todayStr();
+  const hrs=studyHoursOn(t), target=Number(s.dailyStudyHours)||0;
+  const p=target>0?Math.min(100,Math.round(hrs/target*100)):0;
+  const q=questionsSolvedOn(t), qT=Number(s.dailyQuestionTarget)||0;
+  const st=DATA.streaks.study.current;
+  const rev=revisionsDueToday().length+revisionsOverdue().length;
+  const name=esc((profileName().split(/\s+/)[0])||'Student');
+  const tile=(ic,val,lbl,click)=>`<div class="hh-tile"${click?` onclick="${click}"`:''}><span class="hh-ic">${ic}</span><b>${val}</b><small>${lbl}</small></div>`;
+  return `<div class="home-hero">
+    <div class="hh-greet">${homeGreeting()}, ${name}</div>
+    <div class="hh-row"><span>Study today</span><span class="hh-pill">${p}% of goal</span></div>
+    <div class="hh-big">${hoursToHM(hrs)}<span>/ ${target}h</span></div>
+    <div class="hh-bar"><div style="width:${p}%"></div></div>
+    <div class="hh-tiles">
+      ${tile(ICONS.practice, q, 'questions', "switchView('practice')")}
+      ${tile(ICONS.flame, st, 'day streak', "openStreakDetails('current')")}
+      ${tile(ICONS.revision, rev, 'revise', "switchView('revision')")}
+    </div>
+  </div>`;
+}
+function dailyRoutineHtml(){
+  const t=todayStr(), now=nowMinutes(), ents=ttEntries(t);
+  const nx=ents.find(e=>!e.done && hmToMin(e.end)>now);
+  const kic={Study:ICONS.book,Practice:ICONS.practice,Revision:ICONS.revision,Test:ICONS.tests,Break:ICONS.clock,Other:ICONS.clock};
+  const rows=ents.slice(0,5).map(e=>{
+    const dur=hoursToHM((hmToMin(e.end)-hmToMin(e.start))/60);
+    const isNext=nx && nx.id===e.id;
+    const isNow=isNext && hmToMin(e.start)<=now;
+    return `<div class="dr-item ${e.done?'done':''}">
+      <span class="dr-check">${ICONS.check}</span>
+      <span class="dr-thumb" style="--kc:${blockColor(e.kind)}">${kic[e.kind]||ICONS.book}</span>
+      <div class="dr-m"><div class="dr-t">${esc(e.title)}</div><div class="dr-s">${fmtTime12(e.start)} · ${dur}</div></div>
+      ${isNext?`<span class="dr-next">${isNow?'Now':'Up next'}</span>`:''}
+    </div>`;
+  }).join('');
+  return `<div class="hx-card dr-card" id="upNextCard" style="cursor:pointer">
+    <div class="dr-head"><div class="hx-h" style="margin:0">Daily routine</div><span class="dr-more">See all</span></div>
+    ${rows || '<div class="hx-extra" style="text-align:left;margin:10px 0 12px">No slots planned for today. Tap to plan your day.</div>'}
+  </div>`;
+}
 function homeDeadlinesCard(){
   const groups=deadlineGroups();
   const urgent=groups[0].items.concat(groups[1].items);
   const upcoming=groups[2].items.concat(groups[3].items);
   const show=(urgent.length?urgent:upcoming).slice(0,3);
-  const col=x=>x.diff<0?'#E5484D':x.diff===0?'#F29A38':'#3B82D6';
+  const col=x=>x.diff<0?'#C0302D':x.diff===0?'#E8A04C':'#CC492B';
   const when=x=>x.diff<0?`${-x.diff} day${x.diff===-1?'':'s'} overdue`:x.diff===0?'Due today':`in ${x.diff} day${x.diff===1?'':'s'}`;
   const rows=show.map(x=>`<div class="hd-row" style="border-left-color:${col(x)}"><div class="hd-n">${esc(x.c.name)}<span>${esc(x.c.subject)}</span></div><b style="color:${col(x)}">${when(x)}</b></div>`).join('');
   return `<div class="hx-card" onclick="switchView('deadlines')" style="cursor:pointer">
@@ -3342,7 +3638,7 @@ function homeLatestMockCard(lt){
   return `<div class="hx-card" onclick="switchView('tests')" style="cursor:pointer">
     <div class="hd-head"><div class="hx-h" style="margin:0">Latest mock test</div><span class="hd-more">All tests</span></div>
     <div class="hd-sub">${esc(lt.name)} <span class="badge studying">${esc(lt.type)}</span> · ${fmtDate(lt.date)}</div>
-    <div class="dl-sum" style="margin:12px 0 0">${tile(lt.total,'Score','#3B82D6')}${tile(testAccuracy(lt)+'%','Accuracy','#F29A38')}${tile(rk?'~'+rk.toLocaleString('en-IN'):'—','Est. rank','#3DBE7E')}</div>
+    <div class="dl-sum" style="margin:12px 0 0">${tile(lt.total,'Score','#CC492B')}${tile(testAccuracy(lt)+'%','Accuracy','#E8A04C')}${tile(rk?'~'+rk.toLocaleString('en-IN'):'—','Est. rank','#3DBE7E')}</div>
   </div>`;
 }
 function renderHome(){
@@ -3370,27 +3666,11 @@ function renderHome(){
   const IC='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
   const ring=(label,val,sub,p,col)=>`<div class="hp-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-opacity=".2" stroke-width="10"/><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="${314.16*(1-Math.min(100,p)/100)}" transform="rotate(-90 60 60)"/></svg><div class="hp-ring-t"><span class="hp-k">${label}</span><b>${val}</b><span>${sub}</span><em style="color:${col}">${Math.min(100,p)}%</em></div></div>`;
   const html = `
+  ${homeHeroHtml()}
+  ${dailyRoutineHtml()}
   <div class="hx-row">
-    <div class="hx-cd" style="background:#3B82D6"><div class="hx-cd-top"><span>JEE Main</span><svg viewBox="0 0 24 24" width="22" height="22" ${IC}><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></div><div class="hx-num" id="cd-main">${mDays}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeMainDate)||'')}</div></div>
-    <div class="hx-cd" style="background:#F29A38"><div class="hx-cd-top"><span>JEE Advanced</span><svg viewBox="0 0 24 24" width="22" height="22" ${IC}><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6M10 17h4"/></svg></div><div class="hx-num" id="cd-adv">${aDays}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeAdvancedDate)||'')}</div></div>
-  </div>
-
-  <div class="hx-card">
-    <div class="hx-h">Today's progress</div>
-    <div class="hx-rings">
-      ${ring('Study hours',`${hoursToHM(todayHrs)} / ${s.dailyStudyHours}h`,'completed',hp,studyBehindAlert?'#E5484D':'#3DBE7E')}
-      ${ring('Questions solved',`${todayQ} / ${s.dailyQuestionTarget}`,'daily goal',qp,'#3B82D6')}
-    </div>
-    ${extra?`<div class="hx-extra">${extra}</div>`:''}
-  </div>
-
-  <div class="hx-card hx-streak" onclick="openStreakDetails('current')">
-    <div class="hx-h">Current streak</div>
-    <div class="hx-streak-in">
-      <svg viewBox="0 0 24 24" width="44" height="44" fill="#F29A38" fill-opacity=".25" stroke="#F29A38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3.5-4 5.5-4 10a4 4 0 0 0 8 0c0-2-1-3.2-2-4.3-.2 2-1 3-2 3 .3-3 .5-5-0-8.7z"/></svg>
-      <div class="hx-sn">${st.current}</div>
-      <div><b>days streak</b><span>${st.current>0?'Awesome! Keep it up!':'Study today to start a streak'}</span></div>
-    </div>
+    <div class="hx-cd" style="background:#CC492B"><div class="hx-cd-top"><span>JEE Main</span><svg viewBox="0 0 24 24" width="22" height="22" ${IC}><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></div><div class="hx-num" id="cd-main">${mDays}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeMainDate)||'')}</div></div>
+    <div class="hx-cd" style="background:#E8A04C"><div class="hx-cd-top"><span>JEE Advanced</span><svg viewBox="0 0 24 24" width="22" height="22" ${IC}><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6M10 17h4"/></svg></div><div class="hx-num" id="cd-adv">${aDays}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeAdvancedDate)||'')}</div></div>
   </div>
 
   ${coinCardHtml()}
@@ -3398,7 +3678,6 @@ function renderHome(){
   <div class="hd-head" style="margin:0 2px 10px"><div class="hx-h" style="margin:0">Quick tiles</div><button class="pf-edit" id="qaCustom">Customise</button></div>
   <div class="qa-grid" id="qaGrid" style="margin-bottom:12px"></div>
 
-  ${upNextHtml()}
 
   ${homeDeadlinesCard()}
 
@@ -3471,11 +3750,11 @@ function ttCalendarHtml(){
   for(let k=0;k<offset;k++) cells+='<span class="rv-c empty"></span>';
   if(TT_CAL_OPEN) for(let d=1; d<=days; d++){
     const iso=isoDate(y,m,d), o=dayInfo(iso);
-    const dot=!o?'transparent':o.miss?'#E5484D':o.pend?'#F29A38':'#3DBE7E';
+    const dot=!o?'transparent':o.miss?'#C0302D':o.pend?'#E8A04C':'#3DBE7E';
     cells+=`<button class="rv-c ${iso===date?'on':''} ${iso===t?'today':''}" data-tdate="${iso}"><b>${d}</b><i style="background:${iso===date&&o?'#fff':dot}"></i></button>`;
   }
   const label=first.toLocaleDateString('en-IN',{month:'long',year:'numeric'}), o=dayInfo(date);
-  const chip=o?(o.miss?`<em style="background:#E5484D">${o.miss} missed</em>`:'')+(o.pend?`<em style="background:#F29A38">${o.pend} pending</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
+  const chip=o?(o.miss?`<em style="background:#C0302D">${o.miss} missed</em>`:'')+(o.pend?`<em style="background:#E8A04C">${o.pend} pending</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
   const CAL='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>';
   return `<div class="hx-card rv-cal" style="margin-bottom:12px;">
     <button class="rv-toggle" id="ttCalToggle" aria-expanded="${TT_CAL_OPEN}">${CAL}<span class="rv-sel">${plannerDayLabel(date)}</span>${chip}<span class="rv-chev ${TT_CAL_OPEN?'open':''}">&#9662;</span></button>
@@ -3484,7 +3763,7 @@ function ttCalendarHtml(){
       <div class="hd-head"><button class="rv-nav" data-tmonth="-1" aria-label="Previous month">&#8249;</button><div class="hx-h" style="margin:0">${label}</div><button class="rv-nav" data-tmonth="1" aria-label="Next month">&#8250;</button></div>
       <div class="rv-grid rv-head"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
       <div class="rv-grid">${cells}</div>
-      <div class="rv-legend"><span><i style="background:#E5484D"></i>Missed</span><span><i style="background:#F29A38"></i>Pending</span><span><i style="background:#3DBE7E"></i>Done</span></div>
+      <div class="rv-legend"><span><i style="background:#C0302D"></i>Missed</span><span><i style="background:#E8A04C"></i>Pending</span><span><i style="background:#3DBE7E"></i>Done</span></div>
     </div>`:''}
   </div>`;
 }
@@ -3497,7 +3776,7 @@ function plannerHtml(){
   const strip=[0,1,2,3,4,5,6].map(n=>{
     const d=addDays(t,n), cnt=blocksForDate(d).filter(b=>!blockIsDone(b,d)).length;
     const dt=new Date(d+'T00:00:00'), sel=date===d;
-    return `<button class="pl-day ${sel?'on':''}" data-date="${d}"><span>${n===0?'Today':dt.toLocaleDateString('en-IN',{weekday:'short'})}</span><b>${dt.getDate()}</b><i style="background:${cnt?(sel?'#fff':'#F29A38'):'transparent'}"></i></button>`;
+    return `<button class="pl-day ${sel?'on':''}" data-date="${d}"><span>${n===0?'Today':dt.toLocaleDateString('en-IN',{weekday:'short'})}</span><b>${dt.getDate()}</b><i style="background:${cnt?(sel?'#fff':'#E8A04C'):'transparent'}"></i></button>`;
   }).join('');
   return ttCalendarHtml() + `
     <div class="pl-strip">${strip}</div>
@@ -3505,8 +3784,8 @@ function plannerHtml(){
       <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:#3DBE7E"><b>${done}</b><span>Done</span></div>
-        <div class="dl-tile" style="background:#F29A38"><b>${pending}</b><span>Pending</span></div>
-        <div class="dl-tile" style="background:#3B82D6"><b>${mins>=60?Math.floor(mins/60)+'h'+(mins%60?(mins%60)+'m':''):mins+'m'}</b><span>Planned</span></div>
+        <div class="dl-tile" style="background:#E8A04C"><b>${pending}</b><span>Pending</span></div>
+        <div class="dl-tile" style="background:#CC492B"><b>${mins>=60?Math.floor(mins/60)+'h'+(mins%60?(mins%60)+'m':''):mins+'m'}</b><span>Planned</span></div>
       </div>
     </div>`;
 }
@@ -3691,13 +3970,13 @@ function renderChapters(){
     </div>
     <div class="hx-card">
       <div class="hx-h" style="margin-bottom:8px">Syllabus progress</div>
-      <div class="pbar"><div style="width:${overall}%;background:#3B82D6"></div></div>
+      <div class="pbar"><div style="width:${overall}%;background:#CC492B"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
-        <div class="dl-tile" style="background:#3B82D6"><b>${overall}%</b><span>Overall</span></div>
-        <div class="dl-tile" style="background:#F29A38"><b>${chapterCompletionPct(CHAPTER_SUBJECT)}%</b><span>${CHAPTER_SUBJECT}</span></div>
+        <div class="dl-tile" style="background:#CC492B"><b>${overall}%</b><span>Overall</span></div>
+        <div class="dl-tile" style="background:#E8A04C"><b>${chapterCompletionPct(CHAPTER_SUBJECT)}%</b><span>${CHAPTER_SUBJECT}</span></div>
         <div class="dl-tile" style="background:#3DBE7E"><b>${stats.completed}</b><span>Completed</span></div>
-        <div class="dl-tile" style="background:#E5484D"><b>${stats.weak}</b><span>Weak</span></div>
-        <div class="dl-tile" style="background:#3FA5B5"><b>${impPct}%</b><span>Important</span></div>
+        <div class="dl-tile" style="background:#C0302D"><b>${stats.weak}</b><span>Weak</span></div>
+        <div class="dl-tile" style="background:#B8503A"><b>${impPct}%</b><span>Important</span></div>
       </div>
     </div>
     <div class="pill-searchbar">
@@ -3862,13 +4141,13 @@ function openChapterDetail(id){
   const lastStudied = [ps.lastDate, ...allStudy().filter(x=>x.subject===c.subject && x.chapter===c.name).map(x=>x.date)].filter(Boolean).sort().pop() || null;
   const lastTxt = lastStudied ? (lastStudied===t ? 'Today' : daysBetween(lastStudied,t)+'d ago') : '—';
   const tasks = [['notesDone','Notes'],['questionsDone','Practice questions'],['pyqsDone','PYQs']];
-  const stCol = {'Not Started':'#8A94A6','Studying':'#F29A38','Completed':'#3DBE7E','Revised':'#3B82D6'}[c.status]||'#3B82D6';
+  const stCol = {'Not Started':'#8A94A6','Studying':'#E8A04C','Completed':'#3DBE7E','Revised':'#CC492B'}[c.status]||'#CC492B';
   const tile = (col,val,lbl)=>`<div class="dl-tile" style="background:${col}"><b>${val}</b><span>${lbl}</span></div>`;
   const wrongPct = (ps.correct+ps.wrong) ? 100-ps.accuracy : 0;
   const revRows = revs.map(r=>{
     const late = !r.completed && r.dueDate<t;
     return `<div class="cd-rev ${r.completed?'done':''}">
-      <span class="cd-dot" style="background:${r.completed?'#3DBE7E':late?'#E5484D':'#3B82D6'}"></span>
+      <span class="cd-dot" style="background:${r.completed?'#3DBE7E':late?'#C0302D':'#CC492B'}"></span>
       <div class="cd-rev-m"><b>Revision ${r.round}</b>
         <small>${r.completed ? 'Done '+fmtDateShort(r.completedDate) : (late?'Overdue · was due ':'Due ')+fmtDateShort(r.dueDate)}${(r.origDue&&r.origDue!==r.dueDate)?' · originally '+fmtDateShort(r.origDue):''}</small></div>
     </div>`;}).join('');
@@ -3896,14 +4175,14 @@ function openChapterDetail(id){
     </div>
 
     <div class="dl-sum">
-      ${tile('#3B82D6', hoursToHM(chapterStudyOnlyMin(c)/60)+' / '+chapterTargetHours(c)+'h', 'Study time')}
-      ${tile('#3FA5B5', hoursToHM(chapterPracticeMin(c)/60), 'PYQ / practice')}
+      ${tile('#CC492B', hoursToHM(chapterStudyOnlyMin(c)/60)+' / '+chapterTargetHours(c)+'h', 'Study time')}
+      ${tile('#B8503A', hoursToHM(chapterPracticeMin(c)/60), 'PYQ / practice')}
       ${tile('#64748B', hoursToHM((chapterStudyOnlyMin(c)+chapterPracticeMin(c))/60), 'Total time')}
-      ${tile('#3FA5B5', ps.avgSec==null?'—':formatSeconds(ps.avgSec), 'Avg / question')}
+      ${tile('#B8503A', ps.avgSec==null?'—':formatSeconds(ps.avgSec), 'Avg / question')}
       ${tile('#3DBE7E', ps.accuracy+'%', 'Accuracy')}
-      ${tile('#F29A38', ps.attempted, 'Questions')}
-      ${tile('#8B6FD6', doneRevs+'/'+(revs.length||0), 'Revisions')}
-      ${tile('#E5484D', lastTxt, 'Last studied')}
+      ${tile('#E8A04C', ps.attempted, 'Questions')}
+      ${tile('#8A5A48', doneRevs+'/'+(revs.length||0), 'Revisions')}
+      ${tile('#C0302D', lastTxt, 'Last studied')}
     </div>
 
     <div class="hx-card">
@@ -3914,8 +4193,8 @@ function openChapterDetail(id){
     ${(ps.correct+ps.wrong)>0 ? `
     <div class="hx-card">
       <div class="hx-h">Question results</div>
-      <div class="cd-split"><div style="width:${ps.accuracy}%;background:#3DBE7E"></div><div style="width:${wrongPct}%;background:#E5484D"></div></div>
-      <div class="cd-legend"><span><i style="background:#3DBE7E"></i>${ps.correct} correct</span><span><i style="background:#E5484D"></i>${ps.wrong} wrong</span><span>${ps.sessionCount} ${ps.sessionCount===1?'entry':'entries'}</span></div>
+      <div class="cd-split"><div style="width:${ps.accuracy}%;background:#3DBE7E"></div><div style="width:${wrongPct}%;background:#C0302D"></div></div>
+      <div class="cd-legend"><span><i style="background:#3DBE7E"></i>${ps.correct} correct</span><span><i style="background:#C0302D"></i>${ps.wrong} wrong</span><span>${ps.sessionCount} ${ps.sessionCount===1?'entry':'entries'}</span></div>
     </div>` : ''}
 
     <div class="hx-card">
@@ -4023,12 +4302,12 @@ function renderPractice(){
       <div class="pbar amber"><div style="width:${pct(todayQ,target)}%"></div></div>
     </div>
     <div class="dl-sum" style="margin-bottom:12px;">
-      <div class="dl-tile" style="background:#3B82D6"><b>${todayQ}</b><span>Today</span></div>
-      <div class="dl-tile" style="background:#F29A38"><b>${weekQ}</b><span>This week</span></div>
-      <div class="dl-tile" style="background:#3FA5B5"><b>${monthQ}</b><span>This month</span></div>
+      <div class="dl-tile" style="background:#CC492B"><b>${todayQ}</b><span>Today</span></div>
+      <div class="dl-tile" style="background:#E8A04C"><b>${weekQ}</b><span>This week</span></div>
+      <div class="dl-tile" style="background:#B8503A"><b>${monthQ}</b><span>This month</span></div>
       <div class="dl-tile" style="background:#3DBE7E"><b>${totalQ}</b><span>Total solved</span></div>
-      <div class="dl-tile" style="background:#8B6FD6"><b>${formatSeconds(avgTPQ)}</b><span>Avg / question</span></div>
-      <div class="dl-tile" style="background:#E5484D"><b>${practiceAccuracyAll()}%</b><span>Accuracy</span></div>
+      <div class="dl-tile" style="background:#8A5A48"><b>${formatSeconds(avgTPQ)}</b><span>Avg / question</span></div>
+      <div class="dl-tile" style="background:#C0302D"><b>${practiceAccuracyAll()}%</b><span>Accuracy</span></div>
     </div>
     ${Object.keys(bySubject).length ? `
     <div class="section-title">Subject-wise questions</div>
@@ -4195,7 +4474,7 @@ function renderTests(){
     const sorted = [...DATA.tests].sort((a,b)=>a.date.localeCompare(b.date));
     const prev = sorted[sorted.length-2], last = sorted[sorted.length-1];
     const diff = Number(last.total||0) - Number(prev.total||0);
-    improvement = {txt:(diff>=0?'+':'')+diff, col: diff>=0?'#3DBE7E':'#E5484D'};
+    improvement = {txt:(diff>=0?'+':'')+diff, col: diff>=0?'#3DBE7E':'#C0302D'};
   }
 
   const chronological = DATA.tests.slice().sort((a,b)=>a.date.localeCompare(b.date)).slice(-10);
@@ -4221,11 +4500,11 @@ function renderTests(){
 
   const html = `
     <div class="dl-sum" style="margin-bottom:12px;">
-      <div class="dl-tile" style="background:#3B82D6"><b>${DATA.tests.length}</b><span>Tests taken</span></div>
-      <div class="dl-tile" style="background:#F29A38"><b>${avgScore}</b><span>Avg score</span></div>
-      <div class="dl-tile" style="background:#3FA5B5"><b>${avgAcc}%</b><span>Avg accuracy</span></div>
+      <div class="dl-tile" style="background:#CC492B"><b>${DATA.tests.length}</b><span>Tests taken</span></div>
+      <div class="dl-tile" style="background:#E8A04C"><b>${avgScore}</b><span>Avg score</span></div>
+      <div class="dl-tile" style="background:#B8503A"><b>${avgAcc}%</b><span>Avg accuracy</span></div>
       <div class="dl-tile" style="background:#3DBE7E"><b>${best}</b><span>Best score</span></div>
-      <div class="dl-tile" style="background:#8B6FD6"><b>${wkTests}</b><span>This week${wkTests>prevWkTests?' ▲':wkTests<prevWkTests?' ▼':''}</span></div>
+      <div class="dl-tile" style="background:#8A5A48"><b>${wkTests}</b><span>This week${wkTests>prevWkTests?' ▲':wkTests<prevWkTests?' ▼':''}</span></div>
       ${improvement ? `<div class="dl-tile" style="background:${improvement.col}"><b>${improvement.txt}</b><span>vs last test</span></div>` : `<div class="dl-tile" style="background:#8A94A6"><b>${avgAttemptRate!==null?avgAttemptRate+'%':'—'}</b><span>Attempt rate</span></div>`}
     </div>
     ${avgRankCard}
@@ -4290,19 +4569,19 @@ function viewTestDetails(id){
       <div class="hx-extra" style="text-align:left;margin-top:6px;">${t.percentile!=null ? t.percentile+' percentile'+(t.percentileEstimated?' (estimated)':'')+(rk?' · Rank ~'+rk.toLocaleString('en-IN'):'') : 'Percentile not available'}</div>
     </div>
     ${hasSubj ? `<div class="dl-sum">
-      ${tile('#3B82D6', t.physics||0, 'Physics')}
-      ${tile('#F29A38', t.chemistry||0, 'Chemistry')}
+      ${tile('#CC492B', t.physics||0, 'Physics')}
+      ${tile('#E8A04C', t.chemistry||0, 'Chemistry')}
       ${tile('#3DBE7E', t.maths||0, 'Maths')}
     </div>` : ''}
     <div class="dl-sum">
-      ${tile('#3FA5B5', testAccuracy(t)+'%', 'Accuracy')}
-      ${tile('#8B6FD6', attempted+'/'+(totalQ || t.questions || '—'), 'Attempted')}
-      ${tile('#E5484D', t.timeTaken ? t.timeTaken+'m' : '—', 'Time taken')}
+      ${tile('#B8503A', testAccuracy(t)+'%', 'Accuracy')}
+      ${tile('#8A5A48', attempted+'/'+(totalQ || t.questions || '—'), 'Attempted')}
+      ${tile('#C0302D', t.timeTaken ? t.timeTaken+'m' : '—', 'Time taken')}
     </div>
     <div class="hx-card">
       <div class="hx-h">Questions</div>
-      <div class="cd-split"><div style="width:${pct(t.correct||0,Math.max(1,totalQ||attempted))}%;background:#3DBE7E"></div><div style="width:${pct(t.wrong||0,Math.max(1,totalQ||attempted))}%;background:#E5484D"></div></div>
-      <div class="cd-legend"><span><i style="background:#3DBE7E"></i>${t.correct||0} correct</span><span><i style="background:#E5484D"></i>${t.wrong||0} wrong</span>${totalQ?`<span>${Math.max(0,totalQ-attempted)} unattempted</span><span>${attemptRate}% attempt rate</span>`:''}</div>
+      <div class="cd-split"><div style="width:${pct(t.correct||0,Math.max(1,totalQ||attempted))}%;background:#3DBE7E"></div><div style="width:${pct(t.wrong||0,Math.max(1,totalQ||attempted))}%;background:#C0302D"></div></div>
+      <div class="cd-legend"><span><i style="background:#3DBE7E"></i>${t.correct||0} correct</span><span><i style="background:#C0302D"></i>${t.wrong||0} wrong</span>${totalQ?`<span>${Math.max(0,totalQ-attempted)} unattempted</span><span>${attemptRate}% attempt rate</span>`:''}</div>
     </div>
     <div class="modal-actions"><button class="btn block" onclick="closeModal()">Close</button></div>
   </div>`);
@@ -4462,12 +4741,12 @@ function revisionCalendarHtml(){
   for(let k=0;k<offset;k++) cells+='<span class="rv-c empty"></span>';
   for(let d=1; d<=days; d++){
     const iso=isoDate(y,m,d), o=info[iso];
-    const dot=!o?'transparent':o.over?'#E5484D':o.pend?'#F29A38':'#3DBE7E';
+    const dot=!o?'transparent':o.over?'#C0302D':o.pend?'#E8A04C':'#3DBE7E';
     cells+=`<button class="rv-c ${iso===REVISION_DATE?'on':''} ${iso===t?'today':''}" data-rdate="${iso}"><b>${d}</b><i style="background:${iso===REVISION_DATE&&o?'#fff':dot}"></i></button>`;
   }
   const label=first.toLocaleDateString('en-IN',{month:'long',year:'numeric'});
   const o=info[REVISION_DATE];
-  const chip=o?(o.over?`<em style="background:#E5484D">${o.over} overdue</em>`:'')+(o.pend?`<em style="background:#F29A38">${o.pend} due</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
+  const chip=o?(o.over?`<em style="background:#C0302D">${o.over} overdue</em>`:'')+(o.pend?`<em style="background:#E8A04C">${o.pend} due</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
   const CAL='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>';
   return `<div class="hx-card rv-cal">
     <button class="rv-toggle" id="rvToggle" aria-expanded="${REVISION_CAL_OPEN}">${CAL}<span class="rv-sel">${plannerDayLabel(REVISION_DATE)}</span>${chip}<span class="rv-chev ${REVISION_CAL_OPEN?'open':''}">&#9662;</span></button>
@@ -4476,7 +4755,7 @@ function revisionCalendarHtml(){
       <div class="hd-head"><button class="rv-nav" data-rmonth="-1" aria-label="Previous month">&#8249;</button><div class="hx-h" style="margin:0">${label}</div><button class="rv-nav" data-rmonth="1" aria-label="Next month">&#8250;</button></div>
       <div class="rv-grid rv-head"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
       <div class="rv-grid">${cells}</div>
-      <div class="rv-legend"><span><i style="background:#E5484D"></i>Overdue</span><span><i style="background:#F29A38"></i>Due</span><span><i style="background:#3DBE7E"></i>Done</span></div>
+      <div class="rv-legend"><span><i style="background:#C0302D"></i>Overdue</span><span><i style="background:#E8A04C"></i>Due</span><span><i style="background:#3DBE7E"></i>Done</span></div>
     </div>`:''}
   </div>`;
 }
@@ -4504,8 +4783,8 @@ function renderRevision(){
       <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:#3DBE7E"><b>${done}</b><span>Done</span></div>
-        <div class="dl-tile" style="background:#F29A38"><b>${pending}</b><span>Pending</span></div>
-        <div class="dl-tile" style="background:#E5484D"><b>${od.length}</b><span>Overdue</span></div>
+        <div class="dl-tile" style="background:#E8A04C"><b>${pending}</b><span>Pending</span></div>
+        <div class="dl-tile" style="background:#C0302D"><b>${od.length}</b><span>Overdue</span></div>
       </div>
     </div>`;
     body=list.length ? list.map(revisionRowHtml).join('') : `<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No revisions on this day.</div>`;
@@ -4516,8 +4795,8 @@ function renderRevision(){
       <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:#3DBE7E"><b>${doneAll}</b><span>Done</span></div>
-        <div class="dl-tile" style="background:#F29A38"><b>${pendAll-od.length}</b><span>Upcoming</span></div>
-        <div class="dl-tile" style="background:#E5484D"><b>${od.length}</b><span>Overdue</span></div>
+        <div class="dl-tile" style="background:#E8A04C"><b>${pendAll-od.length}</b><span>Upcoming</span></div>
+        <div class="dl-tile" style="background:#C0302D"><b>${od.length}</b><span>Overdue</span></div>
       </div>
     </div>`;
     const sec=(title,col,items)=>{
@@ -4531,7 +4810,7 @@ function renderRevision(){
     const today=all.filter(r=>!r.completed && r.dueDate===t);
     const upcoming=all.filter(r=>!r.completed && r.dueDate>t).sort(byDue);
     const completed=all.filter(r=>r.completed).sort((a,b)=>(b.completedDate||'').localeCompare(a.completedDate||''));
-    body = all.length ? sec('Overdue','#E5484D',overdue)+sec('Due today','#F29A38',today)+sec('Upcoming','#3B82D6',upcoming)+sec('Completed','#3DBE7E',completed)
+    body = all.length ? sec('Overdue','#C0302D',overdue)+sec('Due today','#E8A04C',today)+sec('Upcoming','#CC492B',upcoming)+sec('Completed','#3DBE7E',completed)
       : `<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No revisions yet. Complete chapters to auto-schedule spaced revisions.</div>`;
   }
   view('revision').innerHTML = `
@@ -4561,7 +4840,7 @@ function revisionRowHtml(r){
   const status = revisionStatusOf(r);
   const statusClass = {'Due Today':'duetoday','Overdue':'overdue','Upcoming':'upcoming','Completed':'done'}[status];
   return `
-  <div class="row-item tk-row" data-id="${r.id}" style="border-left:4px solid ${{'Due Today':'#F29A38','Overdue':'#E5484D','Upcoming':'#3B82D6','Completed':'#3DBE7E'}[status]};margin-bottom:10px;">
+  <div class="row-item tk-row" data-id="${r.id}" style="border-left:4px solid ${{'Due Today':'#E8A04C','Overdue':'#C0302D','Upcoming':'#CC492B','Completed':'#3DBE7E'}[status]};margin-bottom:10px;">
     <div class="ri-main">
       <div class="ri-title">${esc(chapter?chapter.name:'Chapter')} <span class="badge ${statusClass}">${status}</span></div>
       <div class="ri-sub">${esc(chapter?chapter.subject:'')} · Revision round ${r.round} · ${r.completed? 'Done '+fmtDateShort(r.completedDate) : 'Due '+fmtDateShort(r.dueDate)}${(r.origDue&&r.origDue!==r.dueDate)?' · <b>Originally due '+fmtDateShort(r.origDue)+'</b>':''}${r.completed?'':revSchedTag(r.id)}</div>
@@ -4885,16 +5164,23 @@ function renderSettings(){
   `;
   view('settings').innerHTML = html;
   { // same layout language as the rest of the app: headings live inside white cards
-    const root=view('settings'), cols=['#3B82D6','#F29A38','#3FA5B5','#3DBE7E','#E5484D'];
+    const root=view('settings'), cols=['#CC492B','#E8A04C','#B8503A','#3DBE7E','#C0302D'];
     let ci=0;
     $all('.section-title', root).forEach(t=>{
       const card=t.nextElementSibling;
       if(!card || !card.classList.contains('card')) return;
       const danger=/danger/i.test(t.textContent);
       const h=document.createElement('div'); h.className='hx-h st-h';
-      h.innerHTML=`<span class="dl-dot" style="background:${danger?'#E5484D':cols[ci++%cols.length]}"></span>${esc(t.textContent)}`;
-      card.classList.remove('card'); card.classList.add('hx-card'); card.style.removeProperty('border-color');
-      card.insertBefore(h, card.firstChild); t.remove();
+      const title=t.textContent.trim();
+      const USR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>';
+      const ICM={'Account':USR,'Profile':USR,'Goal':ICONS.goal,'Target college':ICONS.target,'Daily targets':ICONS.target,'Revision schedule':ICONS.revision,'Study streak':ICONS.flame,'Study timer':ICONS.timer,'Appearance':ICONS.star,'Danger zone':ICONS.trash};
+      const SUBM={'Account':(fbUser&&fbUser.email)||'','Profile':s.targetExam||'','Goal':s.goal?goalText(s.goal):'Not set','Target college':'Compare mocks with cutoffs','Daily targets':`${s.dailyStudyHours}h study · ${s.dailyQuestionTarget} questions`,'Revision schedule':(s.revisionIntervals||[1,3,7,15]).join(', ')+' days','Study streak':`${s.minStudyMinutesForStreak||0} min per day`,'Study timer':`${s.pomodoroMinutes} min focus · ${s.pomodoroBreak} min break`,'Appearance':s.theme==='dark'?'Dark':'Light','Danger zone':'Reset all data'};
+      h.innerHTML=`<span class="st-ico${danger?' dng':''}">${ICM[title]||''}</span><span class="st-t"><b>${esc(title)}</b><small>${esc(SUBM[title]||'')}</small></span><span class="st-chev"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>`;
+      card.classList.remove('card'); card.classList.add('hx-card','st-acc'); card.style.removeProperty('border-color');
+      const body=document.createElement('div'); body.className='st-body';
+      while(card.firstChild) body.appendChild(card.firstChild);
+      card.appendChild(h); card.appendChild(body); t.remove();
+      h.addEventListener('click',()=>card.classList.toggle('open'));
     });
     root.insertAdjacentHTML('afterbegin',`<div class="hx-card st-me" onclick="openProfileEdit()"><div class="pf-avatar" style="width:56px;height:56px;margin:0;font-size:24px">${avatarInner()}</div><div><div class="hx-h" style="margin:0">${esc(profileName())}</div><div class="muted">${esc((fbUser&&fbUser.email)||'Tap to edit profile')}</div></div></div>`);
   }
@@ -5044,12 +5330,12 @@ function sugInfo(type,id){
   const t=todayStr();
   if(type==='revision'){
     const r=DATA.revisions.find(x=>x.id===id), c=r&&DATA.chapters.find(x=>x.id===r.chapterId); if(!c) return null;
-    return {type,id,kind:'Revision',subject:c.subject,chapter:c.name,mins:60,color:'#E5484D',title:'Revise '+c.name,pri:r.dueDate<t?1:2,
+    return {type,id,kind:'Revision',subject:c.subject,chapter:c.name,mins:60,color:'#C0302D',title:'Revise '+c.name,pri:r.dueDate<t?1:2,
       sub:`Revision ${r.round} · `+(r.dueDate<t?'overdue since '+fmtDateShort(r.dueDate):r.dueDate===t?'due today':'due '+fmtDateShort(r.dueDate))+((r.origDue&&r.origDue!==r.dueDate)?' (originally '+fmtDateShort(r.origDue)+')':'')};
   }
   if(type==='pyq'){
     const c=DATA.chapters.find(x=>x.id===id); if(!c) return null;
-    return {type,id,kind:'Practice',subject:c.subject,chapter:c.name,mins:60,color:'#F29A38',title:'PYQs: '+c.name,pri:(c.important||c.weightage==='High')?3:4,
+    return {type,id,kind:'Practice',subject:c.subject,chapter:c.name,mins:60,color:'#E8A04C',title:'PYQs: '+c.name,pri:(c.important||c.weightage==='High')?3:4,
       sub:`${c.subject} · PYQs pending`+(c.important?' · important':'')};
   }
   if(type==='test') return {type,id:'mock',kind:'Test',subject:'',chapter:'',mins:180,color:'#64748B',title:'Take a mock test',pri:2,sub:mockStatus().text};
@@ -5067,7 +5353,7 @@ function ttSuggestions(date){
 function suggestionsHtml(date){
   const all=ttSuggestions(date);
   if(!all.length) return `<div class="tt-sec">Suggestions</div><div class="hx-card" style="text-align:center;color:var(--ink-soft)">All caught up. No pending revisions, PYQs or tests.</div>`;
-  return `<button type="button" class="hx-card rv-toggle" data-sg="toggle" style="margin:20px 0 10px;padding:14px 16px;width:100%"><span class="rv-sel">Suggested for your timetable</span><em style="background:#3B82D6">${all.length}</em><span class="mr-chev">&#8250;</span></button>`;
+  return `<button type="button" class="hx-card rv-toggle" data-sg="toggle" style="margin:20px 0 10px;padding:14px 16px;width:100%"><span class="rv-sel">Suggested for your timetable</span><em style="background:#CC492B">${all.length}</em><span class="mr-chev">&#8250;</span></button>`;
 }
 function suggestionCardsHtml(date){
   const all=ttSuggestions(date), t=todayStr();
@@ -5944,7 +6230,7 @@ function profileOverallHtml(){
   const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):null;
   const mx=a=>a.length?Math.max(...a):null;
   const fmt=v=>v==null?'—':v;
-  const tile=(l,v,sub)=>`<div class="pf-box"><div class="l">${l}</div><div class="n">${v}</div>${sub?`<div class="l" style="margin:4px 0 0">${sub}</div>`:''}</div>`;
+  const tile=(l,v,sub)=>`<div class="pf-li"><div class="pf-lt"><b>${l}</b>${sub?`<small>${sub}</small>`:''}</div><div class="pf-lv">${v}</div></div>`;
   const grp=(t,items,c)=>`<div class="pf-lbl">${t}</div><div class="pf-row" style="grid-template-columns:1fr 1fr;flex-wrap:wrap">${items.map(x=>x.replace('class="pf-box"','class="pf-box '+c+'"')).join('')}</div>`;
   const tot=T.map(t=>Number(t.total||0));
   const spanDays=(arr)=>{ const ds=arr.map(x=>x.date).filter(Boolean).sort(); return ds.length ? Math.max(1,Math.round((new Date(todayStr())-new Date(ds[0]))/864e5)+1) : 0; };
@@ -5979,31 +6265,41 @@ function profileOverallHtml(){
     tile('Chapters completed',doneCh,'of '+DATA.chapters.length)
   ];
   const prog=['Physics','Chemistry','Mathematics'].map(n=>[n,chapterCompletionPct(n),'var(--green)']).concat([['Important',importantSyllabusPct(),'var(--amber)']]);
-  return `<div class="pf-lbl">Readiness</div>
-    <div class="pf-box" style="display:flex;align-items:center;gap:16px"><div class="n" style="color:${rc};font-size:40px">${rd.score}</div><div style="flex:1"><div class="l">Out of 100</div><div class="pbar" style="margin-top:6px"><div style="width:${rd.score}%;background:${rc}"></div></div></div></div>
-    ${grp('Best',best,'pf-c-g')}${grp('Average',average,'pf-c-i')}${grp('Total',total,'pf-c-a')}
-    <div class="pf-lbl">Chapter completion</div>
-    <div class="pf-box">${prog.map(x=>`<div class="hbar-row"><div class="hb-label">${x[0]}</div><div class="hb-track"><div style="width:${x[1]}%;background:${x[2]}"></div></div><div class="hb-val">${x[1]}%</div></div>`).join('')}</div>
-    <div class="pf-lbl">Weak chapters</div>
-    <div class="list">${weakChaptersList()}</div>`;
+  const ring=`<svg viewBox="0 0 120 120" width="104" height="104"><circle cx="60" cy="60" r="50" fill="none" stroke="${rc}" stroke-opacity=".18" stroke-width="12"/><circle cx="60" cy="60" r="50" fill="none" stroke="${rc}" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="${314.16*(1-Math.min(100,rd.score)/100)}" transform="rotate(-90 60 60)"/></svg>`;
+  const grid=(items,c)=>`<div class="hx-card pf-list ${c}">${items.join('')}</div>`;
+  const tabs=['Overview','Best','Average','Total'];
+  return `<div class="pf-tabs" id="pfTabs">${tabs.map((t,i)=>`<button type="button" class="${i?'':'active'}" onclick="pfTab(${i})">${t}</button>`).join('')}</div>
+    <div class="pf-panel" data-p="0">
+      <div class="hx-card pf-ready"><div class="pf-ring">${ring}<b style="color:${rc}">${rd.score}</b></div><div><div class="hx-h" style="margin:0 0 4px">Exam readiness</div><div class="muted">Out of 100, based on syllabus, practice and mocks.</div></div></div>
+      <div class="hx-card"><div class="hx-h">Chapter completion</div>${prog.map(x=>`<div class="hbar-row"><div class="hb-label">${x[0]}</div><div class="hb-track"><div style="width:${x[1]}%;background:${x[2]}"></div></div><div class="hb-val">${x[1]}%</div></div>`).join('')}</div>
+      <div class="pf-lbl">Weak chapters</div>
+      <div class="list">${weakChaptersList()}</div>
+    </div>
+    <div class="pf-panel" data-p="1" hidden>${grid(best,'pf-v-g')}</div>
+    <div class="pf-panel" data-p="2" hidden>${grid(average,'pf-v-i')}</div>
+    <div class="pf-panel" data-p="3" hidden>${grid(total,'pf-v-a')}</div>`;
+}
+function pfTab(i){
+  $all('#pfTabs button').forEach((b,j)=>b.classList.toggle('active',i===j));
+  $all('.pf-panel').forEach(p=>{ p.hidden = Number(p.dataset.p)!==i; });
 }
 function renderProfile(){
   const s=DATA.settings, st=DATA.streaks.study;
   const m=Math.max(daysUntil(s.jeeMainDate),0), a=Math.max(daysUntil(s.jeeAdvancedDate),0);
   $('#view-profile').innerHTML=`
-    <div class="pf-top">
-      <div class="pf-avatar">${avatarInner()}</div>
-      <div class="pf-name">${esc(profileName())}</div>
-      <div class="pf-sub">${esc((fbUser&&fbUser.email)||s.targetExam||'')}</div>
-      <button class="pf-edit" onclick="openProfileEdit()">Edit profile</button>
-    </div>
-    <div class="hx-row">
-      <div class="hx-cd" style="background:#3B82D6"><div class="hx-cd-top"><span>JEE Main</span></div><div class="hx-num">${m}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeMainDate)||'')}</div></div>
-      <div class="hx-cd" style="background:#F29A38"><div class="hx-cd-top"><span>JEE Advanced</span></div><div class="hx-num">${a}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeAdvancedDate)||'')}</div></div>
-    </div>
-    <div class="hx-row">
-      <div class="hx-card pf-tap" style="margin:0" onclick="openStreakDetails('current')"><div class="hx-k">Current streak</div><div class="hx-big2">${st.current}<span> days</span></div></div>
-      <div class="hx-card pf-tap" style="margin:0" onclick="openStreakDetails('best')"><div class="hx-k">Best streak</div><div class="hx-big2">${st.longest}<span> days</span></div></div>
+    <div class="home-hero pf-hero">
+      <div class="pf-avwrap"><div class="pf-avatar pf-hav">${avatarInner()}</div></div>
+      <div class="pf-hname">${esc(profileName())}</div>
+      <div class="pf-hsub">${esc((fbUser&&fbUser.email)||s.targetExam||'')}</div>
+      <button class="pf-hedit" onclick="openProfileEdit()">Edit profile</button>
+      <div class="pf-cds">
+        <span>JEE Main <b>${m}</b> days</span><span>JEE Advanced <b>${a}</b> days</span>
+      </div>
+      <div class="hh-tiles" style="margin-top:16px">
+        <div class="hh-tile" onclick="openStreakDetails('current')"><span class="hh-ic">${ICONS.flame}</span><b>${st.current}</b><small>day streak</small></div>
+        <div class="hh-tile" onclick="openStreakDetails('best')"><span class="hh-ic">${ICONS.star}</span><b>${st.longest}</b><small>best streak</small></div>
+        <div class="hh-tile"><span class="hh-ic">${ICONS.target}</span><b>${readinessScore().score}</b><small>readiness</small></div>
+      </div>
     </div>
     ${profileOverallHtml()}
     ${fbUser ? '<button class="btn secondary block" style="margin-top:26px;color:var(--red)" onclick="logout()">Log out</button>' : ''}`;
