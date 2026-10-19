@@ -1236,6 +1236,11 @@ body.nofab .fab.fab-alert{bottom:28px}
 .seg button{white-space:nowrap}
 :root[data-oled="1"] body,:root[data-oled="1"] .main{background:#000}
 :root[data-oled="1"] .hx-card,:root[data-oled="1"] .card{box-shadow:none;border:1px solid #1d1d1d}
+/* ===== chapter deadline chips ===== */
+.ch-dl{display:inline-block;font:700 11px var(--font-body);border-radius:999px;padding:1px 8px;background:var(--accent-tint);color:var(--accent-text);white-space:nowrap}
+.ch-dl.over{background:var(--red-tint);color:var(--red)}
+.ch-dl.today{background:var(--amber-tint);color:var(--amber)}
+.ch-dl.done{background:var(--green-tint);color:var(--green)}
 /* ===== Chapters: grid/list toggle ===== */
 .pl-filters{align-items:center}
 .vw-toggle{margin-left:auto;display:flex;background:var(--card);border-radius:999px;padding:3px;gap:2px;flex:0 0 auto;box-shadow:0 1px 2px rgba(30,21,18,.06)}
@@ -1519,6 +1524,7 @@ function fbStartRetry(hadLocal){
     const cloud = await fbLoad();
     if(cloud === undefined) return;
     await fbApplyCloud(cloud, hadLocal);
+    jee27Run();
     fbStartRetry._on = false; clearInterval(iv); window.removeEventListener('online', attempt);
     renderAll(); toast('Back online. Synced');
   };
@@ -1531,7 +1537,7 @@ async function fbPullIfNewer(){
   if(document.getElementById('modalBackdrop').classList.contains('open')) return;
   const cloud = await fbLoad();
   if(!cloud || fbSave._pending) return;
-  if((Number(cloud.updatedAt)||0) > localStamp()){ mergeCloud(cloud); saveDataLocalOnly(); renderAll(); }
+  if((Number(cloud.updatedAt)||0) > localStamp()){ mergeCloud(cloud); saveDataLocalOnly(); jee27Run(); renderAll(); }
 }
 document.addEventListener('visibilitychange', ()=>{ if(document.hidden) fbFlush(); else fbPullIfNewer(); });
 window.addEventListener('pagehide', fbFlush);
@@ -1750,6 +1756,153 @@ const DEFAULT_CHAPTERS = {
     "Inverse Trigonometric Functions"
   ]
 };
+
+/* ---------------- JEE Main 2027 deadline plan (prep starts 20 Oct 2026) ----------------
+   Each entry: [subject, app chapter name, ISO deadline, plan chapters it covers, optional name aliases].
+   Where the app keeps two plan chapters in one chapter (e.g. "Sets, Relations & Functions"), the LATER date is used.
+   Chapters are matched once by name and then tagged with a stable key (c.syl), so a later rename keeps its deadline. */
+const JEE27_PLAN = [
+  ['Physics','Units & Measurements','2026-10-22','Units & Measurements; Errors in Measurement'],
+  ['Physics','Kinematics','2026-12-03','Kinematics'],
+  ['Physics','Laws of Motion','2026-11-30','Laws of Motion'],
+  ['Physics','Work, Energy & Power','2026-11-28','Work, Energy and Power'],
+  ['Physics','System of Particles & Rotational Motion','2026-12-06','Rotational Motion; Centre of Mass',['Rotational Motion']],
+  ['Physics','Gravitation','2026-12-06','Gravitation'],
+  ['Physics','Mechanical Properties of Solids','2026-12-09','Mechanical Properties of Solids'],
+  ['Physics','Mechanical Properties of Fluids','2026-12-09','Mechanical Properties of Fluids'],
+  ['Physics','Thermal Properties of Matter','2026-12-12','Thermal Properties of Matter'],
+  ['Physics','Thermodynamics','2026-11-22','Thermodynamics'],
+  ['Physics','Kinetic Theory of Gases','2026-11-22','Kinetic Theory of Gases'],
+  ['Physics','Oscillations','2026-11-25','Oscillations (SHM)',['Oscillations (SHM)']],
+  ['Physics','Waves','2026-11-25','Waves'],
+  ['Physics','Electrostatics','2026-11-04','Electrostatics; Capacitance'],
+  ['Physics','Current Electricity','2026-10-31','Current Electricity'],
+  ['Physics','Moving Charges & Magnetism','2026-11-07','Moving Charges and Magnetism'],
+  ['Physics','Magnetism & Matter','2026-11-10','Magnetism and Matter'],
+  ['Physics','Electromagnetic Induction','2026-11-10','Electromagnetic Induction'],
+  ['Physics','Alternating Current','2026-11-13','Alternating Current'],
+  ['Physics','Electromagnetic Waves','2026-11-16','Electromagnetic Waves'],
+  ['Physics','Ray Optics & Optical Instruments','2026-11-16','Ray Optics',['Ray Optics']],
+  ['Physics','Wave Optics','2026-11-19','Wave Optics'],
+  ['Physics','Dual Nature of Radiation & Matter','2026-10-25','Dual Nature of Matter and Radiation',['Dual Nature of Matter and Radiation']],
+  ['Physics','Atoms','2026-10-25','Atoms'],
+  ['Physics','Nuclei','2026-10-28','Nuclei'],
+  ['Physics','Semiconductor Electronics','2026-10-28','Electronic Devices',['Electronic Devices']],
+
+  ['Chemistry','Some Basic Concepts of Chemistry','2026-10-22','Some Basic Concepts of Chemistry'],
+  ['Chemistry','Structure of Atom','2026-10-25','Atomic Structure',['Atomic Structure']],
+  ['Chemistry','Classification of Elements & Periodicity','2026-10-31','Classification of Elements and Periodicity'],
+  ['Chemistry','Chemical Bonding & Molecular Structure','2026-10-28','Chemical Bonding and Molecular Structure'],
+  ['Chemistry','Thermodynamics','2026-11-13','Chemical Thermodynamics',['Chemical Thermodynamics']],
+  ['Chemistry','Equilibrium','2026-11-16','Equilibrium'],
+  ['Chemistry','Redox Reactions','2026-11-04','Redox Reactions'],
+  ['Chemistry','p-Block Elements (Group 13 & 14)','2026-12-09','p-Block Elements'],
+  ['Chemistry','Organic Chemistry \u2014 Basic Principles','2026-11-19','General Organic Chemistry (GOC); Isomerism',['General Organic Chemistry (GOC)','General Organic Chemistry']],
+  ['Chemistry','Hydrocarbons','2026-11-22','Hydrocarbons'],
+  ['Chemistry','Solutions','2026-11-10','Solutions'],
+  ['Chemistry','Electrochemistry','2026-11-04','Electrochemistry'],
+  ['Chemistry','Chemical Kinetics','2026-11-07','Chemical Kinetics'],
+  ['Chemistry','p-Block Elements (Group 15-18)','2026-12-09','p-Block Elements'],
+  ['Chemistry','d and f Block Elements','2026-12-12','d- and f-Block Elements'],
+  ['Chemistry','Coordination Compounds','2026-10-31','Coordination Compounds'],
+  ['Chemistry','Haloalkanes & Haloarenes','2026-11-25','Haloalkanes and Haloarenes'],
+  ['Chemistry','Alcohols, Phenols & Ethers','2026-11-28','Alcohols, Phenols and Ethers'],
+  ['Chemistry','Aldehydes, Ketones & Carboxylic Acids','2026-11-30','Aldehydes, Ketones and Carboxylic Acids'],
+  ['Chemistry','Amines','2026-12-03','Amines'],
+  ['Chemistry','Biomolecules','2026-12-06','Biomolecules'],
+
+  ['Mathematics','Sets, Relations & Functions','2026-10-22','Sets; Relations and Functions'],
+  ['Mathematics','Complex Numbers & Quadratic Equations','2026-11-04','Complex Numbers; Quadratic Equations'],
+  ['Mathematics','Matrices & Determinants','2026-10-31','Matrices; Determinants'],
+  ['Mathematics','Permutations & Combinations','2026-12-09','Permutations and Combinations'],
+  ['Mathematics','Binomial Theorem','2026-11-07','Binomial Theorem'],
+  ['Mathematics','Sequences & Series','2026-10-28','Sequence and Series',['Sequence and Series']],
+  ['Mathematics','Limits, Continuity & Differentiability','2026-11-16','Limits and Continuity; Differentiability'],
+  ['Mathematics','Integral Calculus','2026-11-19','Indefinite Integration; Definite Integration'],
+  ['Mathematics','Differential Equations','2026-11-22','Differential Equations'],
+  ['Mathematics','Coordinate Geometry \u2014 Straight Lines','2026-11-10','Straight Lines'],
+  ['Mathematics','Coordinate Geometry \u2014 Circles','2026-11-10','Circle'],
+  ['Mathematics','Conic Sections','2026-12-18','Parabola, Ellipse and Hyperbola'],
+  ['Mathematics','Three Dimensional Geometry','2026-11-30','Three-Dimensional Geometry'],
+  ['Mathematics','Vector Algebra','2026-11-28','Vectors'],
+  ['Mathematics','Statistics & Probability','2026-12-06','Probability; Statistics'],
+  ['Mathematics','Trigonometry','2026-12-12','Trigonometric Functions and Equations'],
+  ['Mathematics','Application of Derivatives','2026-11-16','Applications of Derivatives',['Applications of Derivatives']],
+  ['Mathematics','Application of Integrals','2026-11-25','Application of Integrals'],
+  ['Mathematics','Inverse Trigonometric Functions','2026-12-15','Inverse Trigonometric Functions'],
+];
+/* Plan items that are NOT syllabus chapters (PYQ sweeps, revision, tests). They go to the Timetable as one-off blocks, never into Chapters.
+   [id, subject, title, date, kind, slot] */
+const JEE27_TASKS = [
+  ['p1','Physics','Remaining Mechanics PYQs and weak topics','2026-12-15','Practice',0],
+  ['p2','Physics','Remaining Waves and Optics PYQs','2026-12-18','Practice',0],
+  ['p3','Physics','Remaining Electricity and Magnetism PYQs','2026-12-21','Practice',0],
+  ['p4','Physics','Physics Formula Revision','2026-12-24','Revision',0],
+  ['p5','Physics','Physics Chapter Tests','2026-12-27','Test',0],
+  ['p6','Physics','Physics Full-Syllabus Test and Error Review','2026-12-31','Test',0],
+  ['c1','Chemistry','Practical Chemistry and relevant qualitative analysis','2026-12-15','Study',1],
+  ['c2','Chemistry','Remaining Organic Chemistry Revision','2026-12-18','Revision',1],
+  ['c3','Chemistry','Inorganic Chemistry Revision','2026-12-21','Revision',1],
+  ['c4','Chemistry','Physical Chemistry Revision','2026-12-24','Revision',1],
+  ['c5','Chemistry','Chemistry Chapter Tests','2026-12-27','Test',1],
+  ['c6','Chemistry','Chemistry Full-Syllabus Test and Error Review','2026-12-31','Test',1],
+  ['m1','Mathematics','Remaining Coordinate Geometry Practice','2026-12-21','Practice',2],
+  ['m2','Mathematics','Calculus Revision','2026-12-24','Revision',2],
+  ['m3','Mathematics','Algebra, Vectors and 3D Revision Tests','2026-12-27','Test',2],
+  ['m4','Mathematics','Mathematics Full-Syllabus Test and Error Review','2026-12-31','Test',2],
+];
+const JEE27_SLOTS = [['18:00','19:00'],['19:00','20:00'],['20:00','21:00']];   // one slot per subject so same-day items do not overlap; edit freely in Timetable
+const jee27Norm = s => String(s||'').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'');
+const jee27Key = e => e[0].slice(0,3).toLowerCase()+':'+jee27Norm(e[1]);
+function jee27Find(c){
+  if(c.syl){ const k = JEE27_PLAN.find(e=>jee27Key(e)===c.syl); if(k) return k; }
+  const n = jee27Norm(c.name);
+  return JEE27_PLAN.find(e=> e[0]===c.subject && (jee27Norm(e[1])===n || (e[4]||[]).some(a=>jee27Norm(a)===n)));
+}
+/* Idempotent. Only fills EMPTY deadlines, once per chapter (c.jee27Set), so a date you later change or remove is never put back.
+   Never touches status, notes, PYQs, revisions or any other progress. Returns true if anything changed. */
+function jee27Apply(){
+  let changed = false;
+  DATA.chapters.forEach(c=>{
+    const e = jee27Find(c); if(!e) return;
+    if(!c.syl){ c.syl = jee27Key(e); changed = true; }
+    if(!c.completeByDate && !c.jee27Set){ c.completeByDate = e[2]; c.jee27Set = true; changed = true; }
+  });
+  if(!DATA.settings.jee27TasksV1){
+    DATA.settings.jee27TasksV1 = true; changed = true;
+    DATA.timeBlocks = DATA.timeBlocks || [];
+    JEE27_TASKS.forEach(t=>{
+      const seed = 'jee27-'+t[0];
+      if(DATA.timeBlocks.some(b=>b.seed===seed)) return;
+      const sl = JEE27_SLOTS[t[5]];
+      DATA.timeBlocks.push({id:uid(), title:t[2], kind:t[4], start:sl[0], end:sl[1],
+        subject: t[4]==='Test' ? '' : t[1], chapter:'', repeat:'once', date:t[3], from:t[3], days:[], doneDates:[], skipDates:[], seed});
+    });
+  }
+  return changed;
+}
+/* Run after the cloud copy has been read, so a stale device can never overwrite newer cloud data with the plan. */
+function jee27Run(){
+  try{ if(jee27Apply()) saveData(); }catch(e){ console.error('JEE27 deadline update failed', e); }
+}
+/* Display helpers (string based, so no timezone shift). */
+const MON3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fmtDeadline(iso){
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso||'');
+  return m ? `${m[3]} ${MON3[+m[2]-1]} ${m[1]}` : (iso||'\u2014');
+}
+function deadlineInfo(c){
+  if(!c || !c.completeByDate) return null;
+  if(c.status==='Completed' || c.status==='Revised') return {state:'done', text:'Completed'};
+  const d = daysBetween(todayStr(), c.completeByDate);
+  if(d<0)  return {state:'over',  text:'Overdue', days:d};
+  if(d===0) return {state:'today', text:'Due Today', days:0};
+  return {state:'soon', text:`${d} day${d===1?'':'s'} left`, days:d};
+}
+function deadlineChipHtml(c){
+  const i = deadlineInfo(c); if(!i) return '';
+  return `<span class="ch-dl ${i.state}">${fmtDeadline(c.completeByDate)} \u00b7 ${i.text}</span>`;
+}
 
 /* ---------------- Data model / storage ---------------- */
 function defaultData(){
@@ -2743,6 +2896,7 @@ async function startSession(user){
     }
   }
 
+  if(!user || fbReady) jee27Run();   // offline-with-account: wait until the cloud copy has been read
   hideAuthScreen();
   applyTheme();
   buildSidebar();
@@ -2820,7 +2974,7 @@ function buildNotifications(){
 
   // 1-2. chapter deadlines (overdue, due today)
   const g = deadlineGroups();
-  g[0].items.forEach(x=>add('ch-'+x.c.id, 1, RED, `${x.c.name} is ${-x.diff} day${x.diff===-1?'':'s'} overdue`, `${x.c.subject} · was due ${fmtDateShort(x.c.completeByDate)}`, {view:'deadlines'}));
+  g[0].items.forEach(x=>add('ch-'+x.c.id, 1, RED, `${x.c.name} is ${-x.diff} day${x.diff===-1?'':'s'} overdue`, `${x.c.subject} · was due ${fmtDeadline(x.c.completeByDate)}`, {view:'deadlines'}));
   g[1].items.forEach(x=>add('ch-'+x.c.id, 2, AMB, `Finish ${x.c.name} today`, `${x.c.subject} · deadline is today`, {view:'deadlines'}));
 
   // 3. revisions
@@ -3375,13 +3529,13 @@ function deadlineGroups(){
 }
 function deadlineRowHtml(x,col){
   const c=x.c, d=x.diff;
-  const when = d<0 ? `${-d} day${d===-1?'':'s'} overdue` : d===0 ? 'Due today' : `in ${d} day${d===1?'':'s'}`;
+  const when = d<0 ? `Overdue · ${-d} day${d===-1?'':'s'}` : d===0 ? 'Due Today' : `${d} day${d===1?'':'s'} left`;
   return `<div class="dl-card" data-id="${c.id}" style="border-left-color:${col}">
     <div class="dl-top">
       <div class="dl-name">${esc(c.name)}</div>
       <span class="dl-when" style="color:${col===ACC.fill?'var(--accent-ink)':col}">${when}</span>
     </div>
-    <div class="dl-meta"><span class="badge medium">${esc(c.subject)}</span><span>Due ${fmtDateShort(c.completeByDate)}</span><span>${esc(c.status||'Not Started')}</span></div>
+    <div class="dl-meta"><span class="badge medium">${esc(c.subject)}</span><span>Due ${fmtDeadline(c.completeByDate)}</span><span>${esc(c.status||'Not Started')}</span></div>
     <div class="dl-actions">
       <button class="btn sm" data-dlaction="complete">Mark done</button>
       <button class="btn secondary sm" data-dlaction="reschedule">Reschedule</button>
@@ -3389,11 +3543,13 @@ function deadlineRowHtml(x,col){
     </div>
   </div>`;
 }
+let DL_SUBJECT = '';
 function renderDeadlinesPage(){
-  const g=deadlineGroups(), total=g.reduce((a,x)=>a+x.items.length,0);
+  const g=deadlineGroups().map(x=>Object.assign({}, x, {items: DL_SUBJECT ? x.items.filter(i=>i.c.subject===DL_SUBJECT) : x.items})), total=g.reduce((a,x)=>a+x.items.length,0);
   const tile=(k,col)=>{ const x=g.find(y=>y.key===k); return `<div class="dl-tile" style="background:${col}"><b>${x.items.length}</b><span>${x.title}</span></div>`; };
   const upc=g.find(x=>x.key==='week').items.length+g.find(x=>x.key==='later').items.length;
   view('deadlines').innerHTML = `
+    <div class="pl-filters">${['','Physics','Chemistry','Mathematics'].map(s=>`<button class="pl-chip ${DL_SUBJECT===s?'on':''}" data-dlsubj="${s}">${s||'All'}</button>`).join('')}</div>
     <div class="dl-sum">${tile('over','#C0302D')}${tile('today','#E8A04C')}<div class="dl-tile" style="background:var(--accent)"><b>${upc}</b><span>Upcoming</span></div></div>
     <div id="deadlineList">
     ${total ? g.filter(x=>x.items.length).map(x=>`
@@ -3401,6 +3557,7 @@ function renderDeadlinesPage(){
       ${x.items.map(i=>deadlineRowHtml(i,x.col)).join('')}`).join('')
       : `<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No deadlines set. Add a "Complete by" date to a chapter and it will show up here.</div>`}
     </div>`;
+  $all('[data-dlsubj]', view('deadlines')).forEach(b=>b.addEventListener('click', ()=>{ DL_SUBJECT=b.dataset.dlsubj; renderDeadlinesPage(); }));
   bindDeadlineRowEvents();
 }
 function bindDeadlineRowEvents(){
@@ -4035,7 +4192,28 @@ function performDelete(kind, id){
    CHAPTERS / SYLLABUS TRACKER
    ============================================================ */
 let CHAPTER_SUBJECT = 'Physics';
-let CHAPTER_FILTER = { status:'', confidence:'', weightage:'', important:false, pyqPending:false, search:'' };
+let CHAPTER_FILTER = { status:'', confidence:'', weightage:'', important:false, pyqPending:false, search:'', deadline:'' };   // deadline: '' | 'overdue' | 'upcoming'
+let CHAPTER_SORT = 'order';   // 'order' | 'deadline'
+function chapterListFiltered(){
+  let chs = DATA.chapters.filter(c=>c.subject===CHAPTER_SUBJECT);
+  if(CHAPTER_FILTER.status) chs = chs.filter(c=>c.status===CHAPTER_FILTER.status);
+  if(CHAPTER_FILTER.confidence) chs = chs.filter(c=>c.confidence===CHAPTER_FILTER.confidence);
+  if(CHAPTER_FILTER.weightage) chs = chs.filter(c=>(c.weightage||'Medium')===CHAPTER_FILTER.weightage);
+  if(CHAPTER_FILTER.important) chs = chs.filter(c=>!!c.important);
+  if(CHAPTER_FILTER.pyqPending) chs = chs.filter(isPyqPending);
+  if(CHAPTER_FILTER.deadline){
+    chs = chs.filter(c=>{ const i = deadlineInfo(c); if(!i || i.state==='done') return false;
+      return CHAPTER_FILTER.deadline==='overdue' ? i.state==='over' : (i.state==='today'||i.state==='soon'); });
+  }
+  if(CHAPTER_FILTER.search) chs = chs.filter(c=>c.name.toLowerCase().includes(CHAPTER_FILTER.search.toLowerCase()));
+  if(CHAPTER_SORT==='deadline'){
+    return chs.slice().sort((a,b)=>{
+      const x = a.completeByDate||'9999-12-31', y = b.completeByDate||'9999-12-31';
+      return x<y?-1:x>y?1:(a.order-b.order);
+    });
+  }
+  return chs.slice().sort((a,b)=>a.order-b.order);
+}
 
 function scheduleRevisionsForChapter(chapterId){
   // custom (hand-added) revisions must not stop the normal schedule from being created
@@ -4073,14 +4251,7 @@ function renderChapters(){
   const overall = overallSyllabusPct();
   const impPct = importantSyllabusPct();
 
-  let chs = DATA.chapters.filter(c=>c.subject===CHAPTER_SUBJECT);
-  if(CHAPTER_FILTER.status) chs = chs.filter(c=>c.status===CHAPTER_FILTER.status);
-  if(CHAPTER_FILTER.confidence) chs = chs.filter(c=>c.confidence===CHAPTER_FILTER.confidence);
-  if(CHAPTER_FILTER.weightage) chs = chs.filter(c=>(c.weightage||'Medium')===CHAPTER_FILTER.weightage);
-  if(CHAPTER_FILTER.important) chs = chs.filter(c=>!!c.important);
-  if(CHAPTER_FILTER.pyqPending) chs = chs.filter(isPyqPending);
-  if(CHAPTER_FILTER.search) chs = chs.filter(c=>c.name.toLowerCase().includes(CHAPTER_FILTER.search.toLowerCase()));
-  chs = chs.slice().sort((a,b)=>a.order-b.order);
+  const chs = chapterListFiltered();
 
   const html = `
     <div class="pl-filters">
@@ -4130,6 +4301,12 @@ function renderChapters(){
       </select>
       <button type="button" id="chImportantFilter" class="pill-toggle ${CHAPTER_FILTER.important?'active':''}">${ICONS.star} Important</button>
       <button type="button" id="chPyqPendingFilter" class="pill-toggle ${CHAPTER_FILTER.pyqPending?'active':''}">${ICONS.practice} PYQ Pending</button>
+      <button type="button" id="chOverdueFilter" class="pill-toggle ${CHAPTER_FILTER.deadline==='overdue'?'active':''}">Overdue</button>
+      <button type="button" id="chUpcomingFilter" class="pill-toggle ${CHAPTER_FILTER.deadline==='upcoming'?'active':''}">Upcoming</button>
+      <select id="chSortSel" class="pill-select ${CHAPTER_SORT==='deadline'?'active':''}">
+        <option value="order" ${CHAPTER_SORT==='order'?'selected':''}>Syllabus order</option>
+        <option value="deadline" ${CHAPTER_SORT==='deadline'?'selected':''}>Earliest deadline</option>
+      </select>
     </div>
     <div class="ch-grid ${CHAPTER_VIEW==="list"?"list":""}">
       ${chs.length ? chs.map(chapterRowHtml).join('') : `<div style="grid-column:1/-1;">${emptyState('📘','No chapters found','Try a different filter or add a chapter.')}</div>`}
@@ -4146,18 +4323,14 @@ function renderChapters(){
   $('#chWeightFilter').addEventListener('change', e=>{ CHAPTER_FILTER.weightage=e.target.value; renderChapters(); });
   $('#chImportantFilter').addEventListener('click', ()=>{ CHAPTER_FILTER.important=!CHAPTER_FILTER.important; renderChapters(); });
   $('#chPyqPendingFilter').addEventListener('click', ()=>{ CHAPTER_FILTER.pyqPending=!CHAPTER_FILTER.pyqPending; renderChapters(); });
+  $('#chOverdueFilter').addEventListener('click', ()=>{ CHAPTER_FILTER.deadline = CHAPTER_FILTER.deadline==='overdue' ? '' : 'overdue'; renderChapters(); });
+  $('#chUpcomingFilter').addEventListener('click', ()=>{ CHAPTER_FILTER.deadline = CHAPTER_FILTER.deadline==='upcoming' ? '' : 'upcoming'; renderChapters(); });
+  $('#chSortSel').addEventListener('change', e=>{ CHAPTER_SORT = e.target.value; renderChapters(); });
   bindChapterRowEvents();
 }
 function renderChaptersListOnly(){
   // lightweight re-render keeping focus on search input
-  let chs = DATA.chapters.filter(c=>c.subject===CHAPTER_SUBJECT);
-  if(CHAPTER_FILTER.status) chs = chs.filter(c=>c.status===CHAPTER_FILTER.status);
-  if(CHAPTER_FILTER.confidence) chs = chs.filter(c=>c.confidence===CHAPTER_FILTER.confidence);
-  if(CHAPTER_FILTER.weightage) chs = chs.filter(c=>(c.weightage||'Medium')===CHAPTER_FILTER.weightage);
-  if(CHAPTER_FILTER.important) chs = chs.filter(c=>!!c.important);
-  if(CHAPTER_FILTER.pyqPending) chs = chs.filter(isPyqPending);
-  if(CHAPTER_FILTER.search) chs = chs.filter(c=>c.name.toLowerCase().includes(CHAPTER_FILTER.search.toLowerCase()));
-  chs = chs.slice().sort((a,b)=>a.order-b.order);
+  const chs = chapterListFiltered();
   const listEl = view('chapters').querySelector('.ch-grid');
   listEl.innerHTML = chs.length ? chs.map(chapterRowHtml).join('') : `<div style="grid-column:1/-1;">${emptyState('📘','No chapters found','Try a different filter or add a chapter.')}</div>`;
   bindChapterRowEvents();
@@ -4193,6 +4366,7 @@ function chapterRowHtml(c){
       <div class="chr-main">
         <div class="chr-top"><span class="chr-name">${esc(c.name)}</span>${c.important?`<span class="chr-star">${ICONS.star}</span>`:''}</div>
         <div class="chr-meta"><span class="chr-st">${esc(st)}</span><span>·</span><span>${esc(wt)} weightage</span>${(st==='Completed'||st==='Revised')&&!c.pyqsDone?'<span class="chr-pyq">PYQ pending</span>':''}</div>
+        ${c.completeByDate?`<div class="chr-meta" style="margin-top:3px">${deadlineChipHtml(c)}</div>`:''}
         <div class="pbar chr-bar"><div style="width:${pctV}%"></div></div>
       </div>
       <div class="chr-pct">${pctV}<small>%</small></div>
@@ -4212,14 +4386,15 @@ function chapterRowHtml(c){
       <div class="ch-tile-in"><span>${esc(c.name)}</span></div>
     </div>
     <div class="ch-pct ${isRev?'rev':isDone?'done':''}">${pctV}%${isRev?' · Revised':isDone?' · Completed':''}${(isDone||isRev)&&!c.pyqsDone?' · PYQ pending':''}</div>
+    ${c.completeByDate?`<div style="text-align:center;margin-top:3px">${deadlineChipHtml(c)}</div>`:''}
   </div>`;
 }
 function chapterDeadlineNote(c){
-  if(!c.completeByDate || c.status==='Completed' || c.status==='Revised') return '';
-  const t = todayStr();
-  if(c.completeByDate < t) return `<span style="color:var(--red); font-size:12px; font-weight:700;">Overdue</span>`;
-  const d = daysBetween(t, c.completeByDate);
-  return `<span class="muted" style="font-size:12px;">${d===0?'Due today':d+'d left'}</span>`;
+  const i = deadlineInfo(c);
+  if(!i) return '';
+  if(i.state==='done') return `<span style="color:var(--green); font-size:12px; font-weight:700;">Completed</span>`;
+  if(i.state==='over') return `<span style="color:var(--red); font-size:12px; font-weight:700;">Overdue</span>`;
+  return `<span class="muted" style="font-size:12px;">${i.state==='today'?'Due Today':i.days+'d left'}</span>`;
 }
 function bindChapterRowEvents(){
   $all('.ch-tile-wrap', view('chapters')).forEach(w=>{
@@ -4344,7 +4519,7 @@ function openChapterDetail(id){
       <div class="cd-dl">
         <input type="date" value="${c.completeByDate||''}" onchange="setChapterField('${c.id}','completeByDate',this.value)">
         ${c.completeByDate ? `<button type="button" class="btn ghost sm" style="color:var(--red);" onclick="setChapterField('${c.id}','completeByDate','')">Remove</button>` : ''}
-        ${dl ? chapterDeadlineNote(c) : ''}
+        ${c.completeByDate ? `<span class="muted" style="font-size:12px;">${fmtDeadline(c.completeByDate)}</span> ${chapterDeadlineNote(c)}` : ''}
       </div>
     </div>
 
