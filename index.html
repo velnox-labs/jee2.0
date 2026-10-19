@@ -1868,6 +1868,14 @@ function jee27Apply(){
     if(!c.syl){ c.syl = jee27Key(e); changed = true; }
     if(!c.completeByDate && !c.jee27Set){ c.completeByDate = e[2]; c.jee27Set = true; changed = true; }
   });
+  // One-time reset: every chapter gets exactly the plan date (chapters not in the plan get none), and any earlier plan blocks are rebuilt.
+  // Runs once per account (flag syncs to cloud); after that your own edits are never overwritten.
+  if(!DATA.settings.jee27ResetV2){
+    DATA.settings.jee27ResetV2 = true; changed = true;
+    DATA.chapters.forEach(c=>{ const e = jee27Find(c); c.completeByDate = e ? e[2] : null; c.jee27Set = true; });
+    DATA.timeBlocks = (DATA.timeBlocks||[]).filter(b=>!String(b.seed||'').startsWith('jee27-'));
+    DATA.settings.jee27TasksV1 = false;
+  }
   if(!DATA.settings.jee27TasksV1){
     DATA.settings.jee27TasksV1 = true; changed = true;
     DATA.timeBlocks = DATA.timeBlocks || [];
