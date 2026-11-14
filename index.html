@@ -1315,6 +1315,126 @@ body.nofab .fab.fab-alert{bottom:28px}
 .auth-screen:has(#authLoading:not([hidden])){padding:0 !important;align-items:flex-start !important}
 .auth-loading{max-width:none !important}
 .sk-card{max-width:none}
+
+/* ===== Home + Rewards redesign (only theme variables, no new colours) ===== */
+.wk{display:flex;justify-content:space-between;gap:6px}
+.wk-d{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
+.wk-d i{width:100%;max-width:38px;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--line);color:transparent}
+.wk-d i svg{width:55%;height:55%}
+.wk-d small{font:600 11px var(--font-body);color:var(--ink-soft)}
+.wk-d.on i{background:var(--accent);color:#fff}
+.wk-d.fz i{background:var(--accent-tint);color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.wk-d.today i{box-shadow:inset 0 0 0 2px var(--accent)}
+.hm-hero .wk-d i{background:rgba(255,255,255,.12)}
+.hm-hero .wk-d.on i{background:var(--accent)}
+.hm-hero .wk-d small{color:rgba(255,255,255,.6)}
+.hm-hero .wk-d.fz i{background:rgba(var(--accent-rgb),.3);color:var(--hero-acc);box-shadow:inset 0 0 0 2px var(--hero-acc)}
+.hm-hero .wk-d.today i{box-shadow:inset 0 0 0 2px var(--hero-acc)}
+.hm-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hm-top small{font:500 13px var(--font-body);color:rgba(255,255,255,.62)}
+.hm-top h2{color:#fff;font:700 28px/1.15 var(--font-head);margin-top:2px}
+.hm-fire{display:flex;align-items:center;gap:6px;border:none;background:rgba(var(--accent-rgb),.28);color:var(--hero-acc);border-radius:999px;padding:8px 14px;font:700 15px var(--font-body);cursor:pointer}
+.hm-fire svg{width:18px;height:18px}.hm-fire span{font-weight:600;font-size:12px;opacity:.85}
+.hm-main{display:flex;align-items:center;gap:18px;margin:18px 0}
+.hm-ring{position:relative;width:128px;flex:0 0 128px;aspect-ratio:1}
+.hm-ring svg{width:100%;height:100%}
+.hm-ring .rt{fill:none;stroke:rgba(255,255,255,.14);stroke-width:9}
+.hm-ring .rf{fill:none;stroke:var(--accent-light);stroke-width:9;stroke-linecap:round}
+.hm-ring>div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.hm-ring b{font:700 22px var(--font-head)}.hm-ring span{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
+.hm-sd{flex:1;min-width:0;display:grid;gap:12px}
+.hm-st{cursor:pointer}.hm-st span{font-size:12px;color:rgba(255,255,255,.62)}
+.hm-st b{display:block;font:700 20px var(--font-head);margin-top:2px}
+.hm-st b i{font:500 13px var(--font-body);font-style:normal;color:rgba(255,255,255,.5);margin-left:4px}
+.hm-st .hh-bar{margin:6px 0 0;height:5px}
+.hm-od{font-size:12px;color:var(--hero-acc);cursor:pointer}
+.hx-card.hm-rescue{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--accent-tint);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.hm-rescue b{display:block;font:700 15px var(--font-head)}.hm-rescue span{font-size:13px;color:var(--ink-soft)}
+.cc{display:flex;align-items:center;gap:14px}
+.cc-ic{width:48px;height:48px;flex:0 0 48px;border-radius:16px;background:var(--tile);color:#E8A04C;display:flex;align-items:center;justify-content:center}
+.cc-ic svg{width:28px;height:28px}
+.cc-m{flex:1;min-width:0}
+.cc-m .hx-sn{font:700 26px/1 var(--font-head)}
+.cc-m em{font:600 13px var(--font-body);font-style:normal;color:var(--ink-soft);margin-left:6px}
+.cc-m .cc-sub{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:4px}
+.rw-meter{height:6px;border-radius:4px;background:var(--line);overflow:hidden}
+.rw-meter>div{height:100%;border-radius:4px;background:var(--accent)}
+.hx-card.hm-cd{display:grid;grid-template-columns:1fr 1fr;padding:0;overflow:hidden}
+.hm-cdi{padding:16px;min-width:0}
+.hm-cdi+.hm-cdi{border-left:1px solid var(--line)}
+.hm-cdi>span{font:700 12px var(--font-head);text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft)}
+.hm-cdi b{display:block;font:700 34px/1.1 var(--font-head);color:var(--accent-ink);margin-top:8px}
+.hm-cdi b span{font:600 11px var(--font-body);text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);margin-left:3px}
+.hm-cdi em{display:block;font-style:normal;font-size:12px;color:var(--ink-soft);margin-top:6px}
+.hm-sjs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hm-sj{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px}
+.hm-sj svg{width:76px;height:76px}
+.hm-sj b{position:absolute;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:center;font:700 15px var(--font-head)}
+.hm-sj span{font:600 12px var(--font-body);color:var(--ink-soft)}
+.rw-hero{margin:0 0 12px;padding:20px;border-radius:26px;color:#fff;background:radial-gradient(110% 90% at 90% 0,var(--hero-glow),rgba(0,0,0,0) 70%),var(--hero)}
+.rw-hl{font:600 13px var(--font-body);color:rgba(255,255,255,.62)}
+.rw-bal{display:flex;align-items:center;gap:10px;font:700 46px/1.1 var(--font-head);margin:6px 0 14px}
+.rw-coin{width:40px;height:40px;color:#F5B85A;display:flex}.rw-coin svg{width:100%;height:100%}
+.rw-hero .rw-meter{background:rgba(255,255,255,.16)}
+.rw-hero .rw-meter>div{background:linear-gradient(90deg,var(--accent-light),#F5B85A)}
+.rw-nx{font-size:13px;color:rgba(255,255,255,.7);margin-top:8px}
+.rw-chips{display:flex;gap:8px;margin-top:14px}
+.rw-chips span{background:rgba(255,255,255,.1);border-radius:999px;padding:6px 12px;font-size:12px;color:rgba(255,255,255,.7)}
+.rw-chips b{color:#fff;margin-left:4px}
+.rw-sh{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.rw-fire{width:46px;height:46px;flex:0 0 46px;border-radius:16px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center}
+.rw-fire svg{width:24px;height:24px}
+.rw-sh>div:nth-child(2){flex:1;min-width:0}
+.rw-sh b{display:block;font:700 17px var(--font-head)}.rw-sh span{font-size:13px;color:var(--ink-soft)}
+.rw-shield{display:flex;align-items:center;gap:6px;background:var(--accent-tint);color:var(--accent-ink);border-radius:999px;padding:7px 12px;font:700 15px var(--font-head)}
+.rw-shield svg{width:18px;height:18px}
+.rw-hint{font-size:13px;color:var(--ink-soft);margin:12px 0}
+.rw-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media (min-width:900px){.rw-grid{grid-template-columns:repeat(3,1fr)}}
+.rw-it{background:var(--card);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 2px rgba(30,21,18,.04),0 8px 24px rgba(30,21,18,.05)}
+:root[data-theme="dark"] .rw-it{box-shadow:none}
+.rw-it.fz{background:var(--accent-tint)}
+.rw-it-h{display:flex;align-items:center;justify-content:space-between}
+.rw-cost{display:inline-flex;align-items:center;gap:5px;font:700 16px var(--font-head)}
+.rw-cost svg{width:18px;height:18px;color:#E8A04C}
+.rw-acts{display:flex;gap:2px}.rw-acts .icon-btn{width:30px;height:30px}
+.rw-it-n{font:600 14px/1.3 var(--font-body);flex:1;overflow-wrap:anywhere}
+.rw-it .btn{width:100%}.rw-off{opacity:.55}
+.rw-earn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rw-e{background:var(--tile);border-radius:18px;padding:12px}
+.rw-e span{font-size:12px;color:var(--ink-soft);display:block}
+.rw-e b{font:700 20px var(--font-head);color:var(--accent-ink)}
+.rw-e small{display:block;font-size:11px;color:var(--ink-soft);margin-top:2px}
+
+/* ===== Home polish ===== */
+.hm-cdi+.hm-cdi{border-left:none}.hm-cdi>span,.hm-cdi b span,.hm-cdi em{color:inherit}
+.hm-hero{padding-bottom:22px}
+.hm-top h2{font-size:30px}
+.hm-ring{width:136px;flex-basis:136px;filter:drop-shadow(0 0 18px rgba(var(--accent-rgb),.45))}
+.hm-ring b{font-size:24px}
+.hm-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:none;border-radius:999px;padding:15px;background:var(--accent);color:#fff;font:700 15px var(--font-body);cursor:pointer;box-shadow:0 8px 20px rgba(var(--accent-rgb),.4)}
+.hm-cta svg{width:20px;height:20px}
+.hm-cta:active{transform:scale(.98)}
+.hm-wkbox{margin-top:14px;background:rgba(255,255,255,.07);border-radius:22px;padding:12px 12px 10px}
+.hm-wkh{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.62);margin:0 4px 10px}
+.hm-wkh b{color:var(--hero-acc);font-weight:700}
+.hm-sec{font:700 13px var(--font-body);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin:20px 4px 10px}
+.hm-cds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.hm-cdi{border-radius:24px;padding:16px;min-width:0;color:#fff}
+.hm-cdi.a{background:linear-gradient(145deg,var(--accent-light),var(--accent) 55%,var(--accent-deep))}
+.hm-cdi.b{background:radial-gradient(120% 90% at 100% 0,var(--hero-glow),rgba(0,0,0,0) 70%),var(--hero)}
+.hm-cdi>span{font:700 12px var(--font-head);text-transform:uppercase;letter-spacing:.04em;opacity:.8}
+.hm-cdi b{display:block;font:700 38px/1.05 var(--font-head);margin-top:10px;color:#fff}
+.hm-cdi b span{display:block;font:600 11px var(--font-body);text-transform:uppercase;letter-spacing:.04em;opacity:.75;margin:4px 0 0}
+.hm-cdi em{display:block;font-style:normal;font-size:12px;opacity:.8;margin-top:10px}
+.hm-sj small{font-size:11px;color:var(--ink-soft);margin-top:-3px}
+.hx-card.hm-rescue{border-radius:22px}
+@keyframes hmIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#view-home.active>*{animation:hmIn .5s cubic-bezier(.2,.8,.2,1) both}
+#view-home.active>*:nth-child(2){animation-delay:.05s}#view-home.active>*:nth-child(3){animation-delay:.1s}
+#view-home.active>*:nth-child(4){animation-delay:.15s}#view-home.active>*:nth-child(5){animation-delay:.2s}
+#view-home.active>*:nth-child(n+6){animation-delay:.25s}
+@media (prefers-reduced-motion:reduce){#view-home.active>*{animation:none}}
 </style>
 </head>
 <body>
@@ -1732,7 +1852,7 @@ const DEFAULT_CHAPTERS = {
     "Kinetic Theory of Gases","Oscillations","Waves","Electrostatics","Current Electricity",
     "Moving Charges & Magnetism","Magnetism & Matter","Electromagnetic Induction",
     "Alternating Current","Electromagnetic Waves","Ray Optics & Optical Instruments",
-    "Wave Optics","Dual Nature of Radiation & Matter","Atoms","Nuclei",
+    "Wave Optics","Dual Nature of Radiation & Matter","Atoms & Nuclei",
     "Semiconductor Electronics","Experimental Skills"
   ],
   Chemistry: [
@@ -1785,8 +1905,7 @@ const JEE27_PLAN = [
   ['Physics','Ray Optics & Optical Instruments','2026-11-16','Ray Optics',['Ray Optics']],
   ['Physics','Wave Optics','2026-11-19','Wave Optics'],
   ['Physics','Dual Nature of Radiation & Matter','2026-10-25','Dual Nature of Matter and Radiation',['Dual Nature of Matter and Radiation']],
-  ['Physics','Atoms','2026-10-25','Atoms'],
-  ['Physics','Nuclei','2026-10-28','Nuclei'],
+  ['Physics','Atoms & Nuclei','2026-10-28','Atoms; Nuclei',['Atoms','Nuclei']],
   ['Physics','Semiconductor Electronics','2026-10-28','Electronic Devices',['Electronic Devices']],
 
   ['Chemistry','Some Basic Concepts of Chemistry','2026-10-22','Some Basic Concepts of Chemistry'],
@@ -1891,7 +2010,7 @@ function jee27Apply(){
 }
 /* Run after the cloud copy has been read, so a stale device can never overwrite newer cloud data with the plan. */
 function jee27Run(){
-  try{ if(jee27Apply()) saveData(); }catch(e){ console.error('JEE27 deadline update failed', e); }
+  try{ const ch=jee27Apply(); if(ch||MERGE_DIRTY){ MERGE_DIRTY=false; saveData(); } }catch(e){ console.error('JEE27 deadline update failed', e); }
 }
 /* Display helpers (string based, so no timezone shift). */
 const MON3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -1996,10 +2115,48 @@ function loadData(){
   return DATA;
 }
 /* One place that brings any saved/cloud data into the current shape. Safe to run many times. */
+let MERGE_DIRTY=false;
+/* One time: joins the old "Atoms" and "Nuclei" chapters into "Atoms & Nuclei", merging progress, revisions and history. */
+function mergeAtomsNuclei(){
+  const st=DATA.settings; if(st.atomsNucleiV1) return;
+  st.atomsNucleiV1=true;
+  const NAME='Atoms & Nuclei', phy=DATA.chapters.filter(c=>c.subject==='Physics');
+  const list=['Atoms','Nuclei',NAME].map(n=>phy.find(c=>c.name===n)).filter(Boolean);
+  if(!list.length) return;
+  MERGE_DIRTY=true;
+  const keep=list[0], ids=new Set(list.slice(1).map(c=>c.id));
+  const rank={'Not Started':0,'Studying':1,'Completed':2,'Revised':3}, rk=c=>rank[c.status]||0, wr={Low:0,Medium:1,High:2};
+  const minR=Math.min(...list.map(rk)), prog=list.some(c=>rk(c)>0||c.notesDone||c.questionsDone||c.pyqsDone);
+  keep.status = minR>=2 ? (minR===3?'Revised':'Completed') : prog?'Studying':'Not Started';   // merged chapter is done only when both parts are done
+  ['notesDone','questionsDone','pyqsDone'].forEach(k=>{ keep[k]=list.every(c=>!!c[k]); });
+  if(list.some(c=>c.confidence==='Weak')) keep.confidence='Weak';
+  keep.weightage=list.reduce((w,c)=>(wr[c.weightage]||0)>(wr[w]||0)?c.weightage:w, keep.weightage||'Medium');
+  keep.important=list.some(c=>c.important);
+  const dl=list.map(c=>c.completeByDate).filter(Boolean).sort();
+  keep.completeByDate=dl.length?dl[dl.length-1]:null; keep.jee27Set=true;
+  const nt=[...new Set(list.map(c=>c.notes).filter(Boolean))]; if(nt.length) keep.notes=nt.join('\n\n');
+  keep.syl='phy:atomsandnuclei'; keep.name=NAME; keep.order=Math.min(...list.map(c=>Number(c.order)||0));
+  // revisions: one per round (done only if both were done, otherwise the earliest pending one)
+  const rv=DATA.revisions.filter(r=>r.chapterId===keep.id||ids.has(r.chapterId)), by={};
+  rv.forEach(r=>(by[r.round]=by[r.round]||[]).push(r));
+  const kept=Object.keys(by).map(k=>{ const g=by[k];
+    return g.every(x=>x.completed) ? g.slice().sort((a,b)=>String(b.completedDate||'').localeCompare(String(a.completedDate||'')))[0]
+      : g.filter(x=>!x.completed).sort((a,b)=>String(a.dueDate).localeCompare(String(b.dueDate)))[0]; });
+  kept.forEach(r=>{ r.chapterId=keep.id; });
+  const gone=new Set(rv.filter(r=>!kept.includes(r)).map(r=>r.id));
+  DATA.revisions=DATA.revisions.filter(r=>!gone.has(r.id));
+  DATA.chapters=DATA.chapters.filter(c=>!ids.has(c.id));
+  // history that points at the old names or ids
+  ['practiceSessions','studySessions','timeBlocks'].forEach(k=>(DATA[k]||[]).forEach(x=>{
+    if(x.subject==='Physics' && (x.chapter==='Atoms'||x.chapter==='Nuclei')) x.chapter=NAME;
+    if(x.link && ids.has(x.link.id)) x.link.id=keep.id;
+  }));
+}
 function normalizeData(){
   DATA.streaks = {study: Object.assign({current:0,longest:0,lastDate:null,startDate:null,bestStart:null,bestEnd:null}, (DATA.streaks&&DATA.streaks.study)||{})};
   delete DATA.settings.minQuestionsForStreak; delete DATA.settings.minRevisionsForStreak;
   ['timeBlocks','practiceSessions','tests','revisions','studySessions'].forEach(k=>{ if(!Array.isArray(DATA[k])) DATA[k]=[]; });
+  mergeAtomsNuclei();
   // Practice time: remember once whether it was already counted by a timer session (so it is never counted twice).
   const ss = DATA.studySessions, used = new Set();
   DATA.practiceSessions.forEach(p=>{
@@ -2241,18 +2398,42 @@ function streakActiveDates(){
   // streak freezes count as active days; days in the future never count
   return [...new Set(active.concat(ensureRewards().frozenDates))].filter(d=>d<=today);
 }
-function rebuildStreak(){
-  const s=DATA.streaks.study, dates=streakActiveDates().sort();
+function calcStreak(dates){   // dates: sorted, unique
   let longest=0,bestStart=null,bestEnd=null,runStart=null,prev=null,len=0;
   dates.forEach(d=>{
     if(prev && addDays(prev,1)===d){ len++; } else { len=1; runStart=d; }
     if(len>longest){ longest=len; bestStart=runStart; bestEnd=d; }
     prev=d;
   });
-  const last=dates.length?dates[dates.length-1]:null;
-  s.lastDate=last; s.longest=longest; s.bestStart=bestStart; s.bestEnd=bestEnd;
-  if(last && last>=addDays(todayStr(),-1)){ s.current=len; s.startDate=runStart; }
-  else { s.current=0; s.startDate=null; }
+  const last=dates.length?dates[dates.length-1]:null, alive=!!last && last>=addDays(todayStr(),-1);
+  return {last, longest, bestStart, bestEnd, current:alive?len:0, startDate:alive?runStart:null};
+}
+function rebuildStreak(){
+  const s=DATA.streaks.study, c=calcStreak(streakActiveDates().sort());
+  s.lastDate=c.last; s.longest=c.longest; s.bestStart=c.bestStart; s.bestEnd=c.bestEnd; s.current=c.current; s.startDate=c.startDate;
+}
+/* Missed days (last 14) where a freeze would actually help: only days touching a study day, with the streak you would get. */
+function freezeOptions(){
+  const t=todayStr(), base=streakActiveDates(), set=new Set(base), cur=calcStreak(base.slice().sort()).current, out=[];
+  for(let i=1;i<=14;i++){
+    const d=addDays(t,-i); if(set.has(d)) continue;
+    if(!set.has(addDays(d,-1)) && !set.has(addDays(d,1))) continue;
+    const n=calcStreak(base.concat(d).sort()).current;
+    out.push({date:d, streak:n, gain:n-cur});
+  }
+  return out.sort((a,b)=>b.gain-a.gain || b.date.localeCompare(a.date));
+}
+function streakRescue(){ return freezeOptions().find(x=>x.gain>0)||null; }
+const SHIELD='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/></svg>';
+/* Last 7 days: studied, frozen, missed, today */
+function weekStripHtml(){
+  const t=todayStr(), act=new Set(streakActiveDates()), fz=new Set(ensureRewards().frozenDates), L='SMTWTFS';
+  let h='';
+  for(let i=6;i>=0;i--){
+    const d=addDays(t,-i), cl=fz.has(d)?'fz':act.has(d)?'on':d===t?'today':'off';
+    h+=`<span class="wk-d ${cl}"><i>${cl==='fz'?SHIELD:cl==='on'?ICONS.flame:''}</i><small>${L[new Date(d+'T00:00:00').getDay()]}</small></span>`;
+  }
+  return `<div class="wk">${h}</div>`;
 }
 function recomputeStreaks(){
   const before = JSON.stringify(DATA.streaks);
@@ -3012,6 +3193,9 @@ function buildNotifications(){
     add('streak-risk', 1, RED, `Your ${st.current}-day streak is at risk`, `Study at least ${s.minStudyMinutesForStreak||1} min today to keep it`, {view:'timer'});
   }
 
+  const rs = streakRescue();
+  if(rs && ensureRewards().freezes>0) add('streak-save', 1, RED, `Save your ${rs.streak}-day streak`, `Use a streak freeze on ${fmtDate(rs.date)}`, {fn:'freeze'});
+
   // 9. mock test
   if(s.goal){
     const p = buildDailyPlan();
@@ -3059,6 +3243,7 @@ function runNotifAction(go){
     openModal(`<div class="modal-head"><h3>Last week's recap</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>${weeklyRecapHtml()}<div class="modal-actions" style="margin-top:18px;"><button class="btn block" onclick="closeModal()">Close</button></div>`);
     return;
   }
+  if(go.fn==='freeze'){ openUseFreezeModal(); return; }
   if(go.today) TT_DATE = todayStr();
   switchView(go.view);
 }
@@ -3141,17 +3326,13 @@ function coinsBreakdown(){
 function coinsSpent(){ return ensureRewards().history.reduce((a,h)=>a+Number(h.cost||0),0); }
 function coinBalance(){ return Math.max(0, coinsBreakdown().total - coinsSpent()); }
 function coinCardHtml(){
-  const bal = coinBalance();
-  const items = ensureRewards().items.slice().sort((a,b)=>a.cost-b.cost);
-  const next = items.find(i=>i.cost>bal);
-  const sub = coinSubText(bal);
+  const bal = coinBalance(), items = ensureRewards().items.slice().sort((a,b)=>a.cost-b.cost), next = items.find(i=>i.cost>bal);
+  const p = next ? Math.min(100,Math.round(bal/next.cost*100)) : 100;
   return `<div class="hx-card hx-streak hx-coin-card" onclick="switchView('rewards')">
-    <div class="hx-h">Rewards</div>
-    <div class="hx-streak-in">
-      <span style="color:#E8A04C;display:flex;width:44px;height:44px;flex:0 0 44px">${ICONS.coin}</span>
-      <div class="hx-sn">${bal}</div>
-      <div style="min-width:0"><b>coins</b><span class="cc-sub">${esc(sub)}</span></div>
+    <div class="cc"><span class="cc-ic">${ICONS.coin}</span>
+      <div class="cc-m"><div><span class="hx-sn">${bal}</span><em>coins</em></div><span class="cc-sub">${esc(coinSubText(bal))}</span></div>
     </div>
+    <div class="rw-meter" style="margin-top:12px"><div style="width:${p}%"></div></div>
   </div>`;
 }
 function coinSubText(bal){
@@ -3161,48 +3342,51 @@ function coinSubText(bal){
 }
 function renderRewards(){
   const r = ensureRewards(), b = coinsBreakdown(), spent = coinsSpent(), bal = Math.max(0, b.total-spent);
-  const items = r.items.slice().sort((a,c)=>a.cost-c.cost);
-  const earnRows = [
-    ['Study time','1 per minute',b.study], ['Questions','1 each, 2 if correct',b.questions],
-    ['Chapters completed','50 each',b.chapters], ['Revisions done','20 each',b.revisions],
-    ['Mock tests','100 each',b.tests],
-    ['Daily target hit','30 per day',b.bonus]
-  ];
+  const items = r.items.slice().sort((a,c)=>a.cost-c.cost), next = items.find(i=>i.cost>bal);
+  const prog = next ? Math.min(100,Math.round(bal/next.cost*100)) : 100;
+  const st = DATA.streaks.study, rs = streakRescue(), fzItem = items.find(i=>i.kind==='freeze'), min = DATA.settings.minStudyMinutesForStreak||1;
+  let cta = '';
+  if(rs && r.freezes>0) cta = `<button type="button" class="btn block" id="rwFreeze">Save my ${rs.streak}-day streak</button>`;
+  else if(r.freezes>0 && freezeOptions().length) cta = `<button type="button" class="btn secondary block" id="rwFreeze">Use a freeze</button>`;
+  else if(r.freezes<=0 && fzItem) cta = `<button type="button" class="btn block" data-buy="${fzItem.id}">Get a freeze · ${fzItem.cost} coins</button>`;
+  const hint = rs ? `You missed ${fmtDateShort(rs.date)}. A freeze keeps ${rs.streak} days alive.`
+    : st.current>0 ? (todayHasStudyActivity() ? 'Today is done. Your streak is safe.' : 'Study today to keep it going.')
+    : `Study ${min} min today to start a streak.`;
+  const earn = [['Study time','1 per minute',b.study],['Questions','1 each, 2 if correct',b.questions],['Chapters completed','50 each',b.chapters],
+    ['Revisions done','20 each',b.revisions],['Mock tests','100 each',b.tests],['Daily target hit','30 per day',b.bonus]];
   view('rewards').innerHTML = `
-    <div class="hx-card">
-      <div class="hx-k">Coin balance</div>
-      <div class="hx-big2" style="font-size:40px">${bal}<span> coins</span></div>
-      <div class="hx-extra" style="text-align:left;margin-top:8px">Earned ${b.total} · Spent ${spent}</div>
+    <div class="rw-hero">
+      <div class="rw-hl">Coin balance</div>
+      <div class="rw-bal"><span class="rw-coin">${ICONS.coin}</span>${bal}</div>
+      <div class="rw-meter"><div style="width:${prog}%"></div></div>
+      <div class="rw-nx">${esc(coinSubText(bal))}</div>
+      <div class="rw-chips"><span>Earned <b>${b.total}</b></span><span>Spent <b>${spent}</b></span></div>
     </div>
-    <div class="hx-card">
-      <div class="hd-head" style="margin:0">
-        <div><div class="hx-h" style="margin:0 0 2px">Streak freezes</div><div class="hd-sub">${r.freezes>0 ? `You have ${r.freezes}. Use one on a day you missed.` : 'Buy one below to save a missed day.'}</div></div>
-        ${r.freezes>0 ? '<button type="button" class="btn sm" id="rwFreeze">Use one</button>' : ''}
+    <div class="hx-card rw-streak">
+      <div class="rw-sh">
+        <div class="rw-fire">${ICONS.flame}</div>
+        <div><b>${st.current}-day streak</b><span>Best ${st.longest} days</span></div>
+        <div class="rw-shield" title="Streak freezes">${SHIELD}${r.freezes}</div>
       </div>
+      ${weekStripHtml()}
+      <p class="rw-hint">${esc(hint)}</p>
+      ${cta}
     </div>
     <div class="dl-grp"><span>Reward shop</span></div>
-    <div class="list">
-      ${items.length ? items.map(i=>{
-        const ok = bal >= i.cost;
-        return `<div class="row-item" data-id="${i.id}">
-          <div class="ri-main">
-            <div class="ri-title">${esc(i.name)}${i.kind==='freeze' ? ' <span class="badge studying">Streak</span>' : ''}</div>
-            <div class="ri-sub">${i.cost} coins${ok ? '' : ` · need ${i.cost-bal} more`}</div>
-          </div>
-          <div class="ri-actions">
-            <button type="button" class="btn sm" data-rw="redeem" ${ok ? '' : 'style="opacity:.45"'}>Redeem</button>
-            <button type="button" class="icon-btn" data-rw="edit" aria-label="Edit">${ICONS.edit}</button>
-            <button type="button" class="icon-btn" data-rw="delete" aria-label="Delete">${ICONS.trash}</button>
-          </div>
-        </div>`;
-      }).join('') : '<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No rewards yet. Tap the + button to add one.</div>'}
-    </div>
+    ${items.length ? `<div class="rw-grid">${items.map(i=>{
+      const ok = bal >= i.cost, pc = Math.min(100,Math.round(bal/i.cost*100));
+      return `<div class="rw-it ${i.kind==='freeze'?'fz':''}" data-id="${i.id}">
+        <div class="rw-it-h"><span class="rw-cost">${ICONS.coin}${i.cost}</span>
+          <span class="rw-acts"><button type="button" class="icon-btn" data-rw="edit" aria-label="Edit">${ICONS.edit}</button><button type="button" class="icon-btn" data-rw="delete" aria-label="Delete">${ICONS.trash}</button></span></div>
+        <div class="rw-it-n">${esc(i.name)}${i.kind==='freeze' ? ' <span class="badge studying">Streak</span>' : ''}</div>
+        <div class="rw-meter"><div style="width:${pc}%"></div></div>
+        <button type="button" class="btn sm ${ok?'':'rw-off'}" data-rw="redeem">${ok?'Redeem':`Need ${i.cost-bal} more`}</button>
+      </div>`;
+    }).join('')}</div>` : '<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No rewards yet. Tap the + button to add one.</div>'}
     <div class="dl-grp" style="margin-top:20px"><span>How you earn</span></div>
-    <div class="hx-card">
-      ${earnRows.map(x=>`<div class="pbar-row" style="margin-bottom:8px"><span>${x[0]} <span class="muted">· ${x[1]}</span></span><span><b>+${x[2]}</b></span></div>`).join('')}
-    </div>
+    <div class="rw-earn">${earn.map(x=>`<div class="rw-e"><span>${x[0]}</span><b>+${x[2]}</b><small>${x[1]}</small></div>`).join('')}</div>
     ${r.history.length ? `
-    <div class="dl-grp"><span>Redeemed</span><em>${r.history.length}</em></div>
+    <div class="dl-grp" style="margin-top:20px"><span>Redeemed</span><em>${r.history.length}</em></div>
     <div class="list">${r.history.slice(0,15).map(h=>`<div class="row-item"><div class="ri-main"><div class="ri-title">${esc(h.name)}</div><div class="ri-sub">${fmtDateShort(h.date)} · -${h.cost} coins</div></div></div>`).join('')}</div>` : ''}
   `;
   $all('[data-rw]', view('rewards')).forEach(btn=>btn.addEventListener('click', ()=>{
@@ -3212,6 +3396,7 @@ function renderRewards(){
     else if(act==='delete') openDeleteRewardModal(id);
   }));
   const fz = $('#rwFreeze'); if(fz) fz.addEventListener('click', openUseFreezeModal);
+  $all('[data-buy]', view('rewards')).forEach(b=>b.addEventListener('click', ()=>openRedeemModal(b.dataset.buy)));
 }
 function openRedeemModal(id){
   const it = ensureRewards().items.find(x=>x.id===id); if(!it) return;
@@ -3277,31 +3462,31 @@ function performDeleteReward(id){
   closeModal(); renderAll(); toast('Reward deleted');
 }
 function openUseFreezeModal(){
-  const r = ensureRewards();
+  const r=ensureRewards();
   if(r.freezes<=0){ toast('You have no streak freezes'); return; }
-  const active = new Set(streakActiveDates('study'));
-  const opts = [];
-  for(let i=1;i<=14;i++){ const d = addDays(todayStr(), -i); if(!active.has(d)) opts.push(d); }
-  if(!opts.length){ toast('No missed days in the last 14 days'); return; }
+  const opts=freezeOptions();
+  if(!opts.length){ toast('No missed day needs a freeze right now'); return; }
   openModal(`
     <div class="modal-head"><h3>Use a streak freeze</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
     <div class="field"><label>Which missed day should it cover?</label>
-      <select id="fz-date">${opts.map(d=>`<option value="${d}">${esc(fmtDate(d))}</option>`).join('')}</select>
+      <select id="fz-date">${opts.map(o=>`<option value="${o.date}">${esc(fmtDate(o.date))} · ${o.gain>0?'streak becomes '+o.streak:'joins older study days'}</option>`).join('')}</select>
     </div>
-    <p class="muted" style="font-size:14px;margin-bottom:12px">That day will count as a study day for your streak.</p>
+    <p class="muted" style="font-size:14px;margin-bottom:12px">Only days next to a study day are listed, so a freeze is never wasted. That day will count as a study day.</p>
     <div class="modal-actions">
       <button class="btn secondary" onclick="closeModal()">Cancel</button>
       <button class="btn" onclick="confirmUseFreeze()">Use freeze</button>
     </div>`);
 }
 function confirmUseFreeze(){
-  const date = $('#fz-date').value; if(!date) return;
+  const date=$('#fz-date').value; if(!date) return;
+  let ok=false;
   updateData(d=>{
-    const r = ensureRewards(d);
+    const r=ensureRewards(d);
     if(r.freezes<=0 || r.frozenDates.includes(date)) return;
-    r.freezes -= 1; r.frozenDates.push(date);
+    r.freezes-=1; r.frozenDates.push(date); ok=true;
   });
-  closeModal(); renderAll(); toast('Streak freeze used');
+  closeModal(); renderAll();
+  toast(ok ? `Streak freeze used. Streak: ${DATA.streaks.study.current} days` : 'Could not use the freeze');
 }
 
 /* ---------- Coin popup: "+N coins" whenever something earns coins ---------- */
@@ -3859,25 +4044,26 @@ function renderHomeCountdownOnly(){
 
 function homeGreeting(){ const h=new Date().getHours(); return h<12?'Morning':h<17?'Afternoon':'Evening'; }
 function homeHeroHtml(){
-  const s=DATA.settings, t=todayStr();
-  const hrs=studyHoursOn(t), target=Number(s.dailyStudyHours)||0;
-  const p=target>0?Math.min(100,Math.round(hrs/target*100)):0;
-  const q=questionsSolvedOn(t), qT=Number(s.dailyQuestionTarget)||0;
-  const st=DATA.streaks.study.current;
-  const rev=revisionsDueToday().length+revisionsOverdue().length;
-  const name=esc((profileName().split(/\s+/)[0])||'Student');
-  const tile=(ic,val,lbl,click)=>`<div class="hh-tile"${click?` onclick="${click}"`:''}><span class="hh-ic">${ic}</span><b>${val}</b><small>${lbl}</small></div>`;
-  return `<div class="home-hero">
-    <div class="hh-greet">${homeGreeting()}, ${name}</div>
-    <div class="hh-row"><span>Study today</span><span class="hh-pill">${p}% of goal</span></div>
-    <div class="hh-big">${hoursToHM(hrs)}<span>/ ${target}h</span></div>
-    <div class="hh-bar"><div style="width:${p}%"></div></div>
-    <div class="hh-tiles">
-      ${tile(ICONS.practice, q, 'questions', "switchView('practice')")}
-      ${tile(ICONS.flame, st, 'day streak', "openStreakDetails('current')")}
-      ${tile(ICONS.revision, rev, 'revise', "switchView('revision')")}
+  const s=DATA.settings, t=todayStr(), hrs=studyHoursOn(t), target=Number(s.dailyStudyHours)||0;
+  const p=target>0?Math.min(100,Math.round(hrs/target*100)):0, q=questionsSolvedOn(t), qT=Number(s.dailyQuestionTarget)||0;
+  const rv=DATA.revisions.filter(r=>r.dueDate===t), rd=rv.filter(r=>r.completed).length, od=revisionsOverdue().length;
+  const name=esc((profileName().split(/\s+/)[0])||'Student'), st=DATA.streaks.study.current, C=289.03;
+  const mini=(l,v,tot,go)=>`<div class="hm-st" onclick="${go}"><span>${l}</span><b>${v}<i>/ ${tot}</i></b><div class="hh-bar"><div style="width:${tot>0?Math.min(100,Math.round(v/tot*100)):0}%"></div></div></div>`;
+  return `<div class="home-hero hm-hero">
+    <div class="hm-top"><div><small>Good ${homeGreeting().toLowerCase()} · ${esc(new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'short'}))}</small><h2>${name}</h2></div>
+      <button type="button" class="hm-fire" onclick="openStreakDetails('current')">${ICONS.flame}<b>${st}</b><span>day streak</span></button></div>
+    <div class="hm-main">
+      <div class="hm-ring"><svg viewBox="0 0 110 110"><circle cx="55" cy="55" r="46" class="rt"/><circle cx="55" cy="55" r="46" class="rf" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p/100)}" transform="rotate(-90 55 55)"/></svg><div><b>${hoursToHM(hrs)}</b><span>of ${target}h · ${p}%</span></div></div>
+      <div class="hm-sd">${mini('Questions',q,qT,"switchView('practice')")}${mini('Revisions today',rd,rv.length,"switchView('revision')")}<div class="hm-od" onclick="switchView('revision')">${od?od+' overdue revision'+(od===1?'':'s'):'No overdue revisions'}</div></div>
     </div>
+    <button type="button" class="hm-cta" onclick="switchView('timer')">${ICONS.timer}<span>Start study session</span></button>
+    <div class="hm-wkbox"><div class="hm-wkh"><span>This week</span><b>${DATA.streaks.study.longest} best</b></div>${weekStripHtml()}</div>
   </div>`;
+}
+function rescueBannerHtml(){
+  const rs=streakRescue(); if(!rs) return '';
+  const have=ensureRewards().freezes>0;
+  return `<div class="hx-card hm-rescue"><div><b>Save your ${rs.streak}-day streak</b><span>You missed ${esc(fmtDateShort(rs.date))}. ${have?'A streak freeze can cover it.':'Buy a streak freeze to cover it.'}</span></div><button type="button" class="btn sm" onclick="${have?'openUseFreezeModal()':"switchView('rewards')"}">${have?'Use freeze':'Get freeze'}</button></div>`;
 }
 function dailyRoutineHtml(){
   const t=todayStr(), now=nowMinutes(), ents=ttEntries(t);
@@ -3947,22 +4133,27 @@ function renderHome(){
   const extra=[revDueTodayAll.length>0?`Revision ${revDoneToday}/${revDueTodayAll.length}`:''].filter(Boolean).join('  ·  ');
   const IC='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
   const ring=(label,val,sub,p,col)=>`<div class="hp-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-opacity=".2" stroke-width="10"/><circle cx="60" cy="60" r="50" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="${314.16*(1-Math.min(100,p)/100)}" transform="rotate(-90 60 60)"/></svg><div class="hp-ring-t"><span class="hp-k">${label}</span><b>${val}</b><span>${sub}</span><em style="color:${col===ACC.fill?'var(--accent-ink)':col}">${Math.min(100,p)}%</em></div></div>`;
+  const cnt=sb=>{const a=DATA.chapters.filter(c=>c.subject===sb);return a.filter(c=>c.status==='Completed'||c.status==='Revised').length+'/'+a.length+' chapters';};
+  const sj=(n,v,c,sb)=>`<div class="hm-sj"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="${c}" stroke-opacity=".2" stroke-width="5"/><circle cx="22" cy="22" r="18" fill="none" stroke="${c}" stroke-width="5" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="${113.1*(1-v/100)}" transform="rotate(-90 22 22)"/></svg><b>${v}%</b><span>${n}</span><small>${cnt(sb)}</small></div>`;
   const html = `
   ${homeHeroHtml()}
-  ${dailyRoutineHtml()}
-  <div class="hx-row">
-    <div class="hx-cd" style="background:var(--accent)"><div class="hx-cd-top"><span>JEE Main</span><svg viewBox="0 0 24 24" width="22" height="22" ${IC}><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></div><div class="hx-num" id="cd-main">${mDays}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeMainDate)||'')}</div></div>
-    <div class="hx-cd" style="background:#E8A04C"><div class="hx-cd-top"><span>JEE Advanced</span><svg viewBox="0 0 24 24" width="22" height="22" ${IC}><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6M10 17h4"/></svg></div><div class="hx-num" id="cd-adv">${aDays}<span> days left</span></div><div class="hx-date">${esc(fmtDate(s.jeeAdvancedDate)||'')}</div></div>
-  </div>
-
+  ${rescueBannerHtml()}
   ${coinCardHtml()}
-
-  <div class="hd-head" style="margin:0 2px 10px"><div class="hx-h" style="margin:0">Quick tiles</div><button class="pf-edit" id="qaCustom">Customise</button></div>
+  <div class="hm-cds">
+    <div class="hm-cdi a"><span>JEE Main</span><b id="cd-main">${mDays}<span> days left</span></b><em>${esc(fmtDate(s.jeeMainDate)||'')}</em></div>
+    <div class="hm-cdi b"><span>JEE Advanced</span><b id="cd-adv">${aDays}<span> days left</span></b><em>${esc(fmtDate(s.jeeAdvancedDate)||'')}</em></div>
+  </div>
+  <div class="hm-sec">Today</div>
+  ${dailyRoutineHtml()}
+  <div class="hm-sec">Progress</div>
+  <div class="hx-card" onclick="switchView('chapters')" style="cursor:pointer">
+    <div class="hd-head"><div class="hx-h" style="margin:0">Syllabus</div><span class="hd-more">${overall}% done</span></div>
+    <div class="hm-sjs" style="margin-top:12px">${sj('Physics',phy,ACC.fill,'Physics')}${sj('Chemistry',chem,'#2F9E63','Chemistry')}${sj('Maths',math,'#DD9A2E','Mathematics')}</div>
+  </div>
+  <div class="hm-sec" style="display:flex;justify-content:space-between;align-items:center">Shortcuts</div>
+  <div class="hd-head" style="display:none"><div class="hx-h" style="margin:0">Quick tiles</div><button class="pf-edit" id="qaCustom">Customise</button></div>
   <div class="qa-grid" id="qaGrid" style="margin-bottom:12px"></div>
-
-
   ${homeDeadlinesCard()}
-
   ${homeLatestMockCard(lt)}
   `;
   view('home').innerHTML = html;
