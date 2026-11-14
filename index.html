@@ -1279,7 +1279,7 @@ body.nofab .fab.fab-alert{bottom:28px}
 @keyframes barrise{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 @keyframes pgrow{from{width:0}}
 @keyframes pop{0%{transform:scale(.3)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
-.view.enter.active>*{animation:rise .42s cubic-bezier(.2,.7,.2,1) both}
+.view.enter.active>*{animation:rise .26s cubic-bezier(.2,.7,.2,1) both}
 .view.enter.active>*:nth-child(2){animation-delay:.04s}.view.enter.active>*:nth-child(3){animation-delay:.08s}
 .view.enter.active>*:nth-child(4){animation-delay:.12s}.view.enter.active>*:nth-child(5){animation-delay:.16s}
 .view.enter.active>*:nth-child(6){animation-delay:.2s}.view.enter.active>*:nth-child(7){animation-delay:.24s}
@@ -1290,7 +1290,7 @@ body.nofab .fab.fab-alert{bottom:28px}
 .view.enter .barchart .bcol:nth-child(4) .bar{animation-delay:.12s}.view.enter .barchart .bcol:nth-child(5) .bar{animation-delay:.16s}
 .view.enter .barchart .bcol:nth-child(6) .bar{animation-delay:.2s}.view.enter .barchart .bcol:nth-child(7) .bar{animation-delay:.24s}
 .view.enter .barchart .bcol:nth-child(n+8) .bar{animation-delay:.28s}
-.view.enter .pbar>div,.view.enter .hh-bar>div,.view.enter .hb-track>div{animation:pgrow .85s cubic-bezier(.2,.8,.2,1) both}
+.view.enter .pbar>div,.view.enter .hh-bar>div,.view.enter .hb-track>div{animation:pgrow .5s cubic-bezier(.2,.8,.2,1) both}
 .view.enter .dr-item.done .dr-check svg,.view.enter .ch-badge svg,.view.enter .tt-block.done .tt-check svg{animation:pop .45s .25s both}
 .hh-tile,.qa-tile,.dr-item,.ch-row,.ch-tile,.row-item,.pf-tabs button,.st-acc .st-h,.btn{transition:transform .12s ease,background-color .15s,opacity .15s}
 .hh-tile:active,.qa-tile:active,.dr-item:active,.ch-row:active,.row-item:active,.st-acc .st-h:active,.btn:active{transform:scale(.975)}
@@ -1430,11 +1430,48 @@ body.nofab .fab.fab-alert{bottom:28px}
 .hm-sj small{font-size:11px;color:var(--ink-soft);margin-top:-3px}
 .hx-card.hm-rescue{border-radius:22px}
 @keyframes hmIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-#view-home.active>*{animation:hmIn .5s cubic-bezier(.2,.8,.2,1) both}
-#view-home.active>*:nth-child(2){animation-delay:.05s}#view-home.active>*:nth-child(3){animation-delay:.1s}
-#view-home.active>*:nth-child(4){animation-delay:.15s}#view-home.active>*:nth-child(5){animation-delay:.2s}
-#view-home.active>*:nth-child(n+6){animation-delay:.25s}
+#view-home.active>*{animation:hmIn .3s cubic-bezier(.2,.8,.2,1) both}
+#view-home.active>*:nth-child(2){animation-delay:.03s}#view-home.active>*:nth-child(3){animation-delay:.06s}
+#view-home.active>*:nth-child(4){animation-delay:.09s}#view-home.active>*:nth-child(5){animation-delay:.12s}
+#view-home.active>*:nth-child(n+6){animation-delay:.15s}
 @media (prefers-reduced-motion:reduce){#view-home.active>*{animation:none}}
+
+/* ===== Skeleton matches the new Home ===== */
+.sk-hero{padding-top:calc(58px + env(safe-area-inset-top,0px));gap:14px}
+.sk-hero>i.sk-l,.sk-main i,.sk-btn,.sk-week i{background:linear-gradient(90deg,rgba(255,255,255,.08) 25%,rgba(255,255,255,.2) 50%,rgba(255,255,255,.08) 75%);background-size:200% 100%;animation:skm 1s linear infinite}
+.sk-main{display:flex;align-items:center;gap:18px;margin:6px 0}
+.sk-ring{width:128px;height:128px;flex:0 0 128px;border-radius:50%}
+.sk-sd{flex:1;display:grid;gap:16px}.sk-sd .sk-l{height:10px;width:100%;background:rgba(255,255,255,.14)}
+.sk-btn{display:block;height:50px;border-radius:999px}
+.sk-week{display:flex;gap:6px;justify-content:space-between;margin-top:4px}.sk-week i{flex:1;max-width:38px;aspect-ratio:1;border-radius:50%}
+.sk-cds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 16px}
+.sk-cds i{height:120px;border-radius:24px;background:linear-gradient(90deg,var(--line) 25%,var(--paper-2) 50%,var(--line) 75%);background-size:200% 100%;animation:skm 1s linear infinite}
+@media (prefers-reduced-motion:reduce){.sk-hero i,.sk-cds i{animation:none}}
+/* ===== Inner pages: same hero as Home ===== */
+.pg-banner{margin:0 0 12px;padding:18px;border-radius:26px;color:#fff;background:radial-gradient(110% 90% at 92% 0,var(--hero-glow),rgba(0,0,0,0) 70%),var(--hero)}
+.pgb-top{display:flex;align-items:center;gap:16px}
+.pgb-l{flex:1;min-width:0}
+.pgb-l small{display:block;font:600 12px var(--font-body);color:rgba(255,255,255,.62);letter-spacing:.02em}
+.pgb-big{font:700 38px/1.1 var(--font-head);margin-top:4px}
+.pgb-big i{font:500 14px var(--font-body);font-style:normal;color:rgba(255,255,255,.55);margin-left:6px}
+.pgb-ring{position:relative;width:84px;height:84px;flex:0 0 84px}
+.pgb-ring svg{width:100%;height:100%}
+.pgb-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 16px var(--font-head)}
+.pgb-spark{display:flex;align-items:flex-end;gap:5px;height:56px;flex:0 0 auto}
+.pgb-spark i{width:12px;border-radius:5px;background:rgba(255,255,255,.18)}
+.pgb-spark i:last-child{background:var(--accent-light)}
+.pgb-seg{display:flex;gap:4px;margin-top:14px}
+.pgb-seg i{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.14)}
+.pgb-seg i.on{background:linear-gradient(90deg,var(--accent-light),var(--accent))}
+.pgb-chips{display:flex;gap:8px;margin-top:14px}
+.pgb-chips span{flex:1;min-width:0;background:rgba(255,255,255,.08);border-radius:16px;padding:9px 10px;font:500 11px var(--font-body);color:rgba(255,255,255,.62)}
+.pgb-chips b{display:block;font:700 18px var(--font-head);color:#fff;margin-bottom:1px}
+.pgb-sj{display:grid;gap:11px;margin-top:14px}
+.pgb-sj div{display:flex;align-items:center;gap:10px;font:600 12px var(--font-body);color:rgba(255,255,255,.7)}
+.pgb-sj em{width:78px;font-style:normal}
+.pgb-sj u{flex:1;height:7px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden;text-decoration:none}
+.pgb-sj u i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent-light),var(--accent))}
+.pgb-sj b{width:36px;text-align:right;color:#fff}
 </style>
 </head>
 <body>
@@ -1510,7 +1547,7 @@ body.nofab .fab.fab-alert{bottom:28px}
 
 <!-- Auth screen -->
 <div class="auth-screen" id="authScreen">
-  <div class="auth-loading" id="authLoading"><div class="sk-wrap" aria-hidden="true"><div class="sk-hero"><i class="sk-l" style="width:38%"></i><i class="sk-l" style="width:64%;height:26px"></i><i class="sk-l" style="width:100%;height:6px"></i><div class="sk-tiles"><i></i><i></i><i></i></div></div><div class="sk-card"><i class="sk-l" style="width:46%"></i><i class="sk-l" style="width:82%"></i></div><div class="sk-card"><i class="sk-l" style="width:58%"></i><i class="sk-l" style="width:92%"></i><i class="sk-l" style="width:40%"></i></div></div><span class="sk-msg">Loading…</span></div>
+  <div class="auth-loading" id="authLoading"><div class="sk-wrap" aria-hidden="true"><div class="sk-hero"><i class="sk-l" style="width:44%;height:12px"></i><i class="sk-l" style="width:30%;height:26px"></i><div class="sk-main"><i class="sk-ring"></i><div class="sk-sd"><i class="sk-l"></i><i class="sk-l"></i><i class="sk-l" style="width:60%"></i></div></div><i class="sk-btn"></i><div class="sk-week"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="sk-cds"><i></i><i></i></div><div class="sk-card"><i class="sk-l" style="width:46%"></i><i class="sk-l" style="width:82%"></i></div></div><span class="sk-msg">Loading…</span></div>
   <div class="auth-wrap" id="authWrap" hidden>
     <div class="auth-brand"><span class="auth-logo">J</span></div>
     <h2 id="authTitle">Welcome back</h2>
@@ -3074,18 +3111,23 @@ async function startSession(user){
   const hadLocal = !!localStorage.getItem(LS_KEY);
   loadData();                                   // instant local load
 
+  let cloudP = null;
   if(user){
-    const cloud = await fbLoad();
-    if(cloud === undefined){
-      // cloud unreachable: keep working locally, but do not sync until the cloud copy has been read
-      fbStartRetry(hadLocal);
-      setTimeout(()=>toast('Offline. Your changes stay on this device until you are back online'), 800);
-    } else {
-      await fbApplyCloud(cloud, hadLocal);
-    }
+    cloudP = (async()=>{
+      // never wait forever: a slow cloud read falls back to the local copy and keeps retrying
+      const cloud = await Promise.race([fbLoad(), new Promise(r=>setTimeout(()=>r(undefined), hadLocal?3500:8000))]);
+      if(cloud === undefined){
+        fbStartRetry(hadLocal);
+        setTimeout(()=>toast('Offline. Your changes stay on this device until you are back online'), 800);
+      } else {
+        await fbApplyCloud(cloud, hadLocal);
+      }
+    })();
+    if(!hadLocal) await cloudP;   // first time on this device: the cloud copy is needed
   }
+  const fastStart = !!(cloudP && hadLocal);   // app opens instantly from the local copy; cloud is applied in the background
 
-  if(!user || fbReady) jee27Run();   // offline-with-account: wait until the cloud copy has been read
+  if(!user || (!fastStart && fbReady)) jee27Run();   // offline-with-account: wait until the cloud copy has been read
   hideAuthScreen();
   applyTheme();
   buildSidebar();
@@ -3107,6 +3149,7 @@ async function startSession(user){
   $('#tbGear').addEventListener('click', ()=>switchView('settings'));
   $('#tbBell').addEventListener('click', ()=>switchView('notifications'));
   $('#tbCoin').addEventListener('click', ()=>switchView('rewards'));
+  if(fastStart) cloudP.then(()=>{ if(fbReady){ jee27Run(); applyTheme(); renderAll(); updateNotifDot(); } });
 }
 function saveDataLocalOnly(){
   try{ localStorage.setItem(LS_KEY, JSON.stringify(DATA)); }catch(e){ console.error('Save failed', e); }
@@ -7025,6 +7068,39 @@ function playEnter(){
   const rh=renderHome;
   renderHome=function(){ const r=rh.apply(this,arguments); if(CURRENT_VIEW==='home') requestAnimationFrame(playEnter); return r; };
 })();
+
+/* Inner pages: same theme as Home (hero gradient, glass chips, rounded bento) but a layout of their own */
+function pageHero(id){
+  const v=view(id); if(!v || !DATA || v.querySelector('.pg-banner')) return;
+  const t=todayStr(), chip=(val,l)=>`<span><b>${val}</b>${l}</span>`, chips=a=>`<div class="pgb-chips">${a.join('')}</div>`;
+  let h='';
+  if(id==='practice'){
+    const q=questionsSolvedOn(t), T=Number(DATA.settings.dailyQuestionTarget)||0, p=T?Math.min(100,Math.round(q/T*100)):0, C=113.1;
+    h=`<div class="pgb-top"><div class="pgb-l"><small>Solved today</small><div class="pgb-big">${q}<i>of ${T}</i></div></div>
+      <div class="pgb-ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="5"/><circle cx="22" cy="22" r="18" fill="none" stroke="var(--accent-light)" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p/100)}" transform="rotate(-90 22 22)"/></svg><b>${p}%</b></div></div>
+      ${chips([chip(sumInRange(questionsSolvedOn,7),'this week'),chip(sumInRange(questionsSolvedOn,30),'this month'),chip(DATA.practiceSessions.reduce((a,x)=>a+Number(x.attempted||0),0),'all time')])}`;
+  } else if(id==='tests'){
+    const T=DATA.tests.slice().sort((a,b)=>a.date.localeCompare(b.date)), n=T.length, last=T[n-1], rec=T.slice(-6), mx=Math.max(1,...rec.map(x=>Number(x.total||0)));
+    const acc=n?Math.round(T.reduce((a,x)=>a+testAccuracy(x),0)/n):0;
+    h=`<div class="pgb-top"><div class="pgb-l"><small>${n?'Latest score':'No tests yet'}</small><div class="pgb-big">${n?last.total:'0'}<i>${n?esc(last.type||''):''}</i></div></div>
+      <div class="pgb-spark">${rec.map(x=>`<i style="height:${Math.max(8,Math.round(Number(x.total||0)/mx*56))}px"></i>`).join('')}</div></div>
+      ${chips([chip(n?Math.max(...T.map(x=>Number(x.total||0))):0,'best'),chip(acc+'%','avg accuracy'),chip(n,n===1?'test':'tests')])}`;
+  } else if(id==='revision'){
+    const od=revisionsOverdue().length, all=DATA.revisions, td=all.filter(r=>r.dueDate===t), dn=td.filter(r=>r.completed).length, due=revisionsDueToday().length+od;
+    h=`<div class="pgb-top"><div class="pgb-l"><small>Due now</small><div class="pgb-big">${due}<i>${dn}/${td.length} done today</i></div></div></div>
+      <div class="pgb-seg">${(td.length?td:[0,0,0,0]).slice(0,12).map(r=>`<i class="${r&&r.completed?'on':''}"></i>`).join('')}</div>
+      ${chips([chip(od,'overdue'),chip(all.filter(r=>!r.completed).length,'pending'),chip(all.filter(r=>r.completed).length,'done')])}`;
+  } else {
+    const o=overallSyllabusPct();
+    h=`<div class="pgb-top"><div class="pgb-l"><small>Syllabus done</small><div class="pgb-big">${o}%<i>${DATA.chapters.filter(c=>c.status==='Completed'||c.status==='Revised').length}/${DATA.chapters.length} chapters</i></div></div></div>
+      <div class="pgb-sj">${['Physics','Chemistry','Mathematics'].map(sb=>{const q=chapterCompletionPct(sb);return `<div><em>${sb}</em><u><i style="width:${q}%"></i></u><b>${q}%</b></div>`;}).join('')}</div>`;
+  }
+  v.insertAdjacentHTML('afterbegin',`<div class="pg-banner">${h}</div>`);
+}
+renderPractice=(f=>function(){ const r=f.apply(this,arguments); pageHero('practice'); return r; })(renderPractice);
+renderTests=(f=>function(){ const r=f.apply(this,arguments); pageHero('tests'); return r; })(renderTests);
+renderRevision=(f=>function(){ const r=f.apply(this,arguments); pageHero('revision'); return r; })(renderRevision);
+renderChapters=(f=>function(){ const r=f.apply(this,arguments); pageHero('chapters'); return r; })(renderChapters);
 </script>
 </body>
 </html>
