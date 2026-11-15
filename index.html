@@ -378,7 +378,7 @@ body.nofab .fab-alert{bottom:28px;}}
 }
 :root[data-theme="dark"] .toast{background:#F7EEEA; color:#150D0B;}
 .toast.show{opacity:1; transform:translateX(-50%) translateY(-6px); pointer-events:auto;}
-.toast-action{background:none; border:none; color:#FFB59E; font-weight:700; font-size:14px; cursor:pointer; padding:0;}
+.toast-action{background:none; border:none; color:#FF8F66; font-weight:700; font-size:14px; cursor:pointer; padding:0;}
 :root[data-theme="dark"] .toast-action{color:var(--accent);}
 @media (min-width:900px){
 .toast{bottom:24px;}}
@@ -699,7 +699,7 @@ body.nofab .fab-alert{bottom:28px;}}
 .qa-tile{color:#fff;border-radius:16px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:11px}
 .qa-tile svg{color:#fff}
 .qa-tile:nth-child(3n+1){background:var(--accent)}
-.qa-tile:nth-child(3n+2){background:#B8503A}
+.qa-tile:nth-child(3n+2){background:var(--a3)}
 .qa-tile:nth-child(3n){background:#3DBE7E}
 #view-home .pf-box{background:var(--card)}
 /* ===== Header, nav and cards like the reference ===== */
@@ -745,15 +745,15 @@ body.nofab .fab-alert{bottom:28px;}}
 .tab.active{background:var(--indigo);color:#fff}
 .grid>.stat{color:#fff}
 .grid>.stat:nth-child(4n+1){background:var(--accent)}
-.grid>.stat:nth-child(4n+2){background:#E8A04C}
-.grid>.stat:nth-child(4n+3){background:#B8503A}
+.grid>.stat:nth-child(4n+2){background:var(--a2)}
+.grid>.stat:nth-child(4n+3){background:var(--a3)}
 .grid>.stat:nth-child(4n){background:#3DBE7E}
 .grid>.stat .val, .grid>.stat .lbl{color:#fff}
 .grid>.stat .lbl{text-transform:uppercase;font-size:11px;letter-spacing:.03em;opacity:.95}
 .grid>.stat .icon{color:#fff}
 .pf-c-g{background:#3DBE7E}
 .pf-c-i{background:var(--accent)}
-.pf-c-a{background:#E8A04C}
+.pf-c-a{background:#D9822B}
 .pf-c-g, .pf-c-i, .pf-c-a{color:#fff}
 .pf-c-g .n, .pf-c-g .l, .pf-c-i .n, .pf-c-i .l, .pf-c-a .n, .pf-c-a .l{color:#fff}
 .hx-k{font:600 12px var(--font-body);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
@@ -834,7 +834,7 @@ img, canvas{max-width:100%}
 .hd-sub{font-size:14px;color:var(--ink-soft)}
 .tb-coin{display:flex;align-items:center;gap:5px;height:32px;padding:0 10px 0 7px;border-radius:999px;border:none;background:var(--card);color:var(--ink);cursor:pointer;margin-right:2px}
 .tb-coin[hidden]{display:none}
-.tb-coin-ic{display:flex;width:18px;height:18px;color:#E8A04C}
+.tb-coin-ic{display:flex;width:18px;height:18px;color:#D9822B}
 .tb-coin-ic svg{width:18px;height:18px}
 .tb-coin b{font:700 14px var(--font-body)}
 .avatar-btn.back-mode{background:var(--card);color:var(--ink);border:none}
@@ -854,7 +854,7 @@ img, canvas{max-width:100%}
 .coin-pop.in{transform:translate(-50%,0) scale(1);opacity:1}
 .coin-pop.out{transform:translate(-50%,-140%) scale(.9);opacity:0}
 :root[data-theme="dark"] .coin-pop{background:#F7EEEA;color:#150D0B}
-.coin-pop-ic{display:flex;flex:0 0 30px;width:30px;height:30px;color:#E8A04C;animation:coinspin .8s ease-out}
+.coin-pop-ic{display:flex;flex:0 0 30px;width:30px;height:30px;color:#D9822B;animation:coinspin .8s ease-out}
 .coin-pop-ic svg{width:30px;height:30px}
 .coin-pop b{display:block;font:800 16px var(--font-body)}
 .coin-pop-sub{display:block;font-size:12px;opacity:.75;margin-top:1px}
@@ -1059,7 +1059,7 @@ input[type=checkbox],input[type=radio],input[type=range]{accent-color:var(--acce
 @media (min-width:900px){.sheet,.modal,.modal-card,.sheet-card{border-radius:24px}}
 
 /* ===== Soft cream tiles (match reference) ===== */
-:root{--tile:#FFF1EE;--tile-ink:#1E1512;--tile-sub:#6A5A53}
+:root{--tile:#F4D5CB;--tile-ink:#1E1512;--tile-sub:#6A5A53}
 :root[data-theme="dark"]{--tile:#2E1D18;--tile-ink:#F7EEEA;--tile-sub:#C9B8B0}
 .hx-cd,.dl-tile,.qa-tile,.grid>.stat,.pf-c-g,.pf-c-i,.pf-c-a{background:var(--tile) !important;color:var(--tile-ink) !important;text-shadow:none !important;border:none !important;border-radius:20px !important}
 .hx-cd svg,.qa-tile svg,.grid>.stat svg,.dl-tile svg{color:var(--accent) !important;stroke:currentColor;filter:none !important}
@@ -1160,7 +1160,7 @@ body:has(#view-profile.active) .topbar,body:has(#view-settings.active) .topbar{m
 .grid>.stat .val,.grid>.stat .lbl,.grid>.stat .cmp-delta{color:var(--tile-ink) !important}
 .grid>.stat .lbl{color:var(--tile-sub) !important;opacity:1}
 .stat .val{color:var(--tile-ink)}
-em[style*="background:#E8A04C"]{color:var(--hero) !important}
+em[style*="background:#D9822B"]{color:var(--hero) !important}
 em[style*="background:#3DBE7E"]{color:#08281A !important}
 em[style*="background:#C0302D"]{color:#fff !important}
 .dl-tile[style*="E8A04C"] b{color:#8F5A10 !important}
@@ -1194,8 +1194,8 @@ em[style*="background:#C0302D"]{color:#fff !important}
 :root[data-theme="dark"] .tt-sub,:root[data-theme="dark"] .tt-block .tt-sub{color:var(--ink-soft) !important}
 :root[data-theme="dark"] .hp-ring-t em[style*="C0302D"]{color:#FF8C86 !important}
 :root[data-theme="dark"] .hp-ring-t em[style*="color:var(--accent)"]{color:var(--accent-text-dk) !important}
-:root[data-theme="dark"] .hp-ring-t em[style*="color:#E8A04C"]{color:#F0B25A !important}
-.hp-ring-t em[style*="color:#E8A04C"]{color:#8F5A10 !important}
+:root[data-theme="dark"] .hp-ring-t em[style*="color:#D9822B"]{color:#F0B25A !important}
+.hp-ring-t em[style*="color:#D9822B"]{color:#8F5A10 !important}
 .hp-ring-t em[style*="color:#3DBE7E"]{color:#1F7A50 !important}
 :root[data-theme="dark"] .hp-ring-t em[style*="color:#3DBE7E"]{color:#5FD29A !important}
 
@@ -1351,7 +1351,7 @@ body.nofab .fab.fab-alert{bottom:28px}
 .hx-card.hm-rescue{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--accent-tint);box-shadow:inset 0 0 0 1.5px var(--accent)}
 .hm-rescue b{display:block;font:700 15px var(--font-head)}.hm-rescue span{font-size:13px;color:var(--ink-soft)}
 .cc{display:flex;align-items:center;gap:14px}
-.cc-ic{width:48px;height:48px;flex:0 0 48px;border-radius:16px;background:var(--tile);color:#E8A04C;display:flex;align-items:center;justify-content:center}
+.cc-ic{width:48px;height:48px;flex:0 0 48px;border-radius:16px;background:var(--tile);color:#D9822B;display:flex;align-items:center;justify-content:center}
 .cc-ic svg{width:28px;height:28px}
 .cc-m{flex:1;min-width:0}
 .cc-m .hx-sn{font:700 26px/1 var(--font-head)}
@@ -1374,9 +1374,9 @@ body.nofab .fab.fab-alert{bottom:28px}
 .rw-hero{margin:0 0 12px;padding:20px;border-radius:26px;color:#fff;background:radial-gradient(110% 90% at 90% 0,var(--hero-glow),rgba(0,0,0,0) 70%),var(--hero)}
 .rw-hl{font:600 13px var(--font-body);color:rgba(255,255,255,.62)}
 .rw-bal{display:flex;align-items:center;gap:10px;font:700 46px/1.1 var(--font-head);margin:6px 0 14px}
-.rw-coin{width:40px;height:40px;color:#F5B85A;display:flex}.rw-coin svg{width:100%;height:100%}
+.rw-coin{width:40px;height:40px;color:#E8912F;display:flex}.rw-coin svg{width:100%;height:100%}
 .rw-hero .rw-meter{background:rgba(255,255,255,.16)}
-.rw-hero .rw-meter>div{background:linear-gradient(90deg,var(--accent-light),#F5B85A)}
+.rw-hero .rw-meter>div{background:linear-gradient(90deg,var(--accent-light),var(--accent))}
 .rw-nx{font-size:13px;color:rgba(255,255,255,.7);margin-top:8px}
 .rw-chips{display:flex;gap:8px;margin-top:14px}
 .rw-chips span{background:rgba(255,255,255,.1);border-radius:999px;padding:6px 12px;font-size:12px;color:rgba(255,255,255,.7)}
@@ -1396,7 +1396,7 @@ body.nofab .fab.fab-alert{bottom:28px}
 .rw-it.fz{background:var(--accent-tint)}
 .rw-it-h{display:flex;align-items:center;justify-content:space-between}
 .rw-cost{display:inline-flex;align-items:center;gap:5px;font:700 16px var(--font-head)}
-.rw-cost svg{width:18px;height:18px;color:#E8A04C}
+.rw-cost svg{width:18px;height:18px;color:#D9822B}
 .rw-acts{display:flex;gap:2px}.rw-acts .icon-btn{width:30px;height:30px}
 .rw-it-n{font:600 14px/1.3 var(--font-body);flex:1;overflow-wrap:anywhere}
 .rw-it .btn{width:100%}.rw-off{opacity:.55}
@@ -1410,7 +1410,9 @@ body.nofab .fab.fab-alert{bottom:28px}
 .hm-cdi+.hm-cdi{border-left:none}.hm-cdi>span,.hm-cdi b span,.hm-cdi em{color:inherit}
 .hm-hero{padding-bottom:22px}
 .hm-top h2{font-size:30px}
-.hm-ring{width:136px;flex-basis:136px;filter:drop-shadow(0 0 18px rgba(var(--accent-rgb),.45))}
+.hm-ring{width:136px;flex-basis:136px}
+.hm-ring::before{content:"";position:absolute;inset:-14%;border-radius:50%;background:radial-gradient(circle,rgba(var(--accent-rgb),.4),rgba(var(--accent-rgb),0) 68%)}
+.hm-ring svg,.hm-ring>div{z-index:1}
 .hm-ring b{font-size:24px}
 .hm-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:none;border-radius:999px;padding:15px;background:var(--accent);color:#fff;font:700 15px var(--font-body);cursor:pointer;box-shadow:0 8px 20px rgba(var(--accent-rgb),.4)}
 .hm-cta svg{width:20px;height:20px}
@@ -1430,10 +1432,10 @@ body.nofab .fab.fab-alert{bottom:28px}
 .hm-sj small{font-size:11px;color:var(--ink-soft);margin-top:-3px}
 .hx-card.hm-rescue{border-radius:22px}
 @keyframes hmIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-#view-home.active>*{animation:hmIn .3s cubic-bezier(.2,.8,.2,1) both}
-#view-home.active>*:nth-child(2){animation-delay:.03s}#view-home.active>*:nth-child(3){animation-delay:.06s}
-#view-home.active>*:nth-child(4){animation-delay:.09s}#view-home.active>*:nth-child(5){animation-delay:.12s}
-#view-home.active>*:nth-child(n+6){animation-delay:.15s}
+#view-home.enter.active>*{animation:hmIn .3s cubic-bezier(.2,.8,.2,1) both}
+#view-home.enter.active>*:nth-child(2){animation-delay:.03s}#view-home.enter.active>*:nth-child(3){animation-delay:.06s}
+#view-home.enter.active>*:nth-child(4){animation-delay:.09s}#view-home.enter.active>*:nth-child(5){animation-delay:.12s}
+#view-home.enter.active>*:nth-child(n+6){animation-delay:.15s}
 @media (prefers-reduced-motion:reduce){#view-home.active>*{animation:none}}
 
 /* ===== Skeleton matches the new Home ===== */
@@ -1500,9 +1502,9 @@ body.nofab .fab.fab-alert{bottom:28px}
 .toast-i.bad{background:#C0302D}
 .toast-action{background:rgba(255,255,255,.14) !important;color:var(--hero-acc) !important;padding:6px 12px !important;border-radius:999px;font-weight:700}
 .coin-pop{background:radial-gradient(120% 170% at 100% 0,var(--hero-glow),rgba(0,0,0,0) 65%),var(--hero) !important;color:#fff !important;border-radius:22px;border:1px solid rgba(255,255,255,.1);padding:10px 22px 10px 10px}
-.coin-pop-ic{width:42px;height:42px;flex:0 0 42px;border-radius:50%;background:rgba(232,160,76,.2);align-items:center;justify-content:center;color:#F5B85A;box-shadow:0 0 0 4px rgba(232,160,76,.12),0 0 22px rgba(232,160,76,.45)}
+.coin-pop-ic{width:42px;height:42px;flex:0 0 42px;border-radius:50%;background:rgba(217,130,43,.2);align-items:center;justify-content:center;color:#E8912F;box-shadow:0 0 0 4px rgba(217,130,43,.12),0 0 22px rgba(217,130,43,.45)}
 .coin-pop-ic svg{width:25px;height:25px}
-.coin-pop b{color:#F5B85A;font-size:18px}
+.coin-pop b{color:#E8912F;font-size:18px}
 .coin-pop-sub{color:rgba(255,255,255,.72);opacity:1}
 .pill-select,.pg-body select{-webkit-appearance:none;appearance:none;border-radius:14px;padding-right:32px !important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;background-size:15px}
 .cd-hero .pill-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
@@ -1518,18 +1520,83 @@ body.nofab .fab.fab-alert{bottom:28px}
 .modal-backdrop.closing .modal{animation:pgOut .18s ease both !important}
 .modal-backdrop.pop.closing .modal{animation:popOut .16s ease both !important}
 .modal-backdrop.pop.closing{opacity:0;transition:opacity .18s ease}
-/* ===== Smooth motion everywhere ===== */
+/* ===== Smooth motion everywhere (transform + opacity only, so it stays on the GPU) ===== */
 :root{--ease:cubic-bezier(.22,.8,.2,1)}
 html,body,#main{scroll-behavior:auto !important}
-.btn,.icon-btn,.qa-tile,.hx-card,.rw-it,.dl-tile,.row-item,.pl-chip,.bn-item,.hm-cta,.hm-fire,.pill-select,.wk-d i,.hm-sj{transition:transform .24s var(--ease),box-shadow .24s var(--ease),background-color .24s var(--ease),border-color .24s var(--ease),opacity .24s var(--ease),color .24s var(--ease)}
+.btn,.icon-btn,.qa-tile,.hx-card,.rw-it,.row-item,.pl-chip,.bn-item,.hm-cta,.hm-fire{transition:transform .18s var(--ease),opacity .2s ease,background-color .2s ease}
 .btn:active,.qa-tile:active,.rw-it:active,.hm-cta:active,.hm-fire:active,.bn-item:active,.icon-btn:active,.pl-chip:active{transform:scale(.96)}
 .hx-card[onclick]:active,.row-item:active{transform:scale(.985)}
-.pbar>div,.hh-bar>div,.rw-meter>div,.pgb-sj u i,.cd-split>div{transition:width .7s var(--ease)}
-.hm-ring .rf,.pgb-ring circle{transition:stroke-dashoffset .9s var(--ease)}
-.view.enter.active>*{animation-duration:.34s !important;animation-timing-function:var(--ease) !important}
-#view-home.active>*{animation-duration:.38s;animation-timing-function:var(--ease)}
-.toast{transition:opacity .3s var(--ease),transform .3s var(--ease)}
-.coin-pop{transition:transform .5s var(--ease),opacity .35s var(--ease)}
+.hm-ring .rf,.pgb-ring circle{transition:stroke-dashoffset .8s var(--ease)}
+@keyframes rise{from{opacity:0;transform:translate3d(0,10px,0)}to{opacity:1;transform:none}}
+.view.enter.active>*{animation:rise .3s var(--ease) both !important}
+.view.enter.active>*:nth-child(2){animation-delay:.03s !important}.view.enter.active>*:nth-child(3){animation-delay:.06s !important}
+.view.enter.active>*:nth-child(4){animation-delay:.09s !important}.view.enter.active>*:nth-child(5){animation-delay:.12s !important}
+.view.enter.active>*:nth-child(n+6){animation-delay:.15s !important}
+#view-home.active>*{animation:none}
+.modal-backdrop .modal{will-change:transform,opacity}
+.toast{transition:opacity .28s var(--ease),transform .28s var(--ease)}
+.coin-pop{transition:transform .45s var(--ease),opacity .3s ease}
+
+/* ===== Timer page ===== */
+.tm-hero{position:relative;margin:0 0 12px;padding:18px 16px 22px;border-radius:28px;color:#fff;background:radial-gradient(110% 80% at 90% 0,var(--hero-glow),rgba(0,0,0,0) 70%),var(--hero)}
+.tm-seg{display:flex;max-width:300px;margin:0 auto 14px;padding:4px;border-radius:999px;background:rgba(255,255,255,.1)}
+.tm-seg button{flex:1;border:none;background:none;color:rgba(255,255,255,.65);font:600 13px var(--font-body);padding:9px 12px;border-radius:999px;cursor:pointer;transition:background-color .25s ease,color .25s ease}
+.tm-seg button.active{background:var(--accent);color:#fff}
+.tm-hero .timer-ring{color:var(--accent-light);margin:4px auto 0}
+.tm-hero .timer-ring.brk{color:#5FD29A}
+.tm-hero .timer-track{stroke:rgba(255,255,255,.12)}
+.tm-hero .timer-tick{stroke:rgba(255,255,255,.14)}
+.tm-hero .timer-tick.on,.tm-hero .timer-tick.now{stroke:currentColor}
+.tm-hero .timer-dot{fill:var(--hero)}
+.tm-hero .timer-glow{filter:none;background:radial-gradient(circle,currentColor,rgba(0,0,0,0) 68%);inset:6%}
+.tm-hero .timer-digits{color:#fff;font-size:46px}
+.tm-hero .timer-mode-label{color:rgba(255,255,255,.68);background:rgba(255,255,255,.1);padding:4px 12px;border-radius:999px}
+.tm-ctl{display:flex;justify-content:center;align-items:flex-start;gap:24px;margin-top:20px}
+.tm-b{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;color:rgba(255,255,255,.7);font:600 12px var(--font-body);cursor:pointer;padding:0;margin-top:11px}
+.tm-b i{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .18s var(--ease)}
+.tm-b i svg{width:22px;height:22px}
+.tm-b.main{margin-top:0;color:#fff}
+.tm-b.main i{width:76px;height:76px;background:var(--accent);box-shadow:0 10px 26px rgba(var(--accent-rgb),.5)}
+.tm-b.main i svg{width:30px;height:30px}
+.tm-b.stop i{background:rgba(192,48,45,.4)}
+.tm-b:active i{transform:scale(.92)}
+.tm-round{text-align:center;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.65)}
+.tm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.tm-stats div{background:var(--tile);border-radius:20px;padding:12px}
+.tm-stats b{display:block;font:700 20px var(--font-head);color:var(--tile-ink)}
+.tm-stats span{font-size:11px;color:var(--tile-sub)}
+
+/* ===== Timer layout B ===== */
+.tb{background:var(--card);border-radius:28px;padding:18px;margin:0 0 12px;box-shadow:0 1px 2px rgba(30,21,18,.04),0 10px 30px rgba(30,21,18,.07)}
+:root[data-theme="dark"] .tb{box-shadow:none}
+.tb.done{animation:tdone .8s ease-out}
+.tb-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tb-seg{display:flex;background:var(--tile);border-radius:999px;padding:3px}
+.tb-seg button{border:none;background:none;color:var(--ink-soft);font:600 12.5px var(--font-body);padding:7px 13px;border-radius:999px;cursor:pointer;transition:background-color .25s ease,color .25s ease}
+.tb-seg button.active{background:var(--accent);color:#fff}
+.tb-st{display:flex;align-items:center;gap:6px;font:700 12px var(--font-body);color:var(--ink-soft)}
+.tb-st i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.tb.running .tb-st i{background:#3DBE7E;animation:tbpulse 1.4s ease-in-out infinite}
+.tb.paused .tb-st i{background:#D9822B}
+@keyframes tbpulse{50%{transform:scale(1.5);opacity:.5}}
+.tb-label{text-align:center;margin-top:26px;font:600 13px var(--font-body);color:var(--ink-soft)}
+.tb-digits{display:block;text-align:center;font:700 68px/1.05 var(--font-mono);letter-spacing:-1px;color:var(--ink);margin:6px 0 18px}
+.tb-digits.long{font-size:54px}
+.tb.paused .tb-digits{animation:tblink 1.6s ease-in-out infinite}
+.tb-bar{height:10px;border-radius:6px;background:var(--line);overflow:hidden}
+.tb-bar i{display:block;height:100%;width:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent-light),var(--accent));transform-origin:left;transform:scaleX(0);transition:transform .3s linear}
+.tb.brk .tb-bar i{background:linear-gradient(90deg,#5FD29A,#1F7A50)}
+.tb-hint{text-align:center;font-size:12px;color:var(--ink-soft);margin:10px 0 20px}
+.tb-go{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:none;border-radius:20px;padding:17px;background:var(--accent);color:#fff;font:700 17px var(--font-body);cursor:pointer;box-shadow:0 10px 24px rgba(var(--accent-rgb),.35)}
+.tb-go svg{width:22px;height:22px}
+.tb.running .tb-go{background:var(--hero);box-shadow:none}
+.tb-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.tb-sec{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:18px;padding:13px;background:var(--tile);color:var(--tile-ink);font:600 14px var(--font-body);cursor:pointer}
+.tb-sec svg{width:18px;height:18px}
+.tb-sec.stop{color:#C0302D}
+.tb-go:active,.tb-sec:active{transform:scale(.97)}
+.tm-sw{display:block;margin:0 auto 14px;background:none;border:none;color:var(--ink-soft);font:600 12.5px var(--font-body);text-decoration:underline;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.tb-st i{animation:none}}
 </style>
 </head>
 <body>
@@ -1643,10 +1710,10 @@ html,body,#main{scroll-behavior:auto !important}
 <script>
 
 const ACCENTS={
- coral:{name:'Coral',fill:'#CC492B',deep:'#A83A20',text:'#B83C1B',textDk:'#F4896A',light:'#F2825F',tint:'#FDEBE5',tile:'#FFF1EE',hero:'#2B1511',glow:'#5E2B1F',heroAcc:'#FFB39C',rgb:'204,73,43',dk:{paper:'#150D0B',paper2:'#1E1411',card:'#241816',line:'#35251F',tile:'#2E1D18',tint:'#3A1F18'}},
- blue:{name:'Blue',fill:'#2F5FD0',deep:'#234EB5',text:'#234EB5',textDk:'#8FB0FF',light:'#6C93F0',tint:'#E6EDFB',tile:'#EDF2FD',hero:'#0F1B3D',glow:'#243E86',heroAcc:'#B8CCFF',rgb:'47,95,208',dk:{paper:'#0B1020',paper2:'#121830',card:'#161D38',line:'#26304F',tile:'#1C2646',tint:'#1B2A55'}},
- green:{name:'Green',fill:'#1F7A50',deep:'#176B44',text:'#176B44',textDk:'#5FD29A',light:'#3FA876',tint:'#E1F3EA',tile:'#E9F6EF',hero:'#0E2A1E',glow:'#1E5A3F',heroAcc:'#7FE0B2',rgb:'31,122,80',dk:{paper:'#08140F',paper2:'#0F1D16',card:'#13241B',line:'#1F3A2C',tile:'#183225',tint:'#173A2A'}},
- purple:{name:'Purple',fill:'#7141C8',deep:'#5F32B0',text:'#5F32B0',textDk:'#C0A4FF',light:'#9B72E6',tint:'#EFE8FB',tile:'#F3EEFD',hero:'#1E1236',glow:'#47288A',heroAcc:'#D0B8FF',rgb:'113,65,200',dk:{paper:'#100B1C',paper2:'#181128',card:'#1D1530',line:'#2F2548',tile:'#261C3F',tint:'#2C2050'}}
+ coral:{name:'Coral',fill:'#CC492B',deep:'#A83A20',text:'#B83C1B',textDk:'#F4896A',light:'#E8643F',a2:'#E26A3D',a3:'#A83A20',a4:'#7A3A2A',tint:'#F7DDD3',tile:'#F4D5CB',hero:'#2B1511',glow:'#5E2B1F',heroAcc:'#FF8F66',rgb:'204,73,43',dk:{paper:'#150D0B',paper2:'#1E1411',card:'#241816',line:'#35251F',tile:'#2E1D18',tint:'#3A1F18'}},
+ blue:{name:'Blue',fill:'#2F5FD0',deep:'#234EB5',text:'#234EB5',textDk:'#8FB0FF',light:'#6C93F0',a2:'#4C86E8',a3:'#234EB5',a4:'#1E3A80',tint:'#CBD9F5',tile:'#D6E1F7',hero:'#0F1B3D',glow:'#243E86',heroAcc:'#B8CCFF',rgb:'47,95,208',dk:{paper:'#0B1020',paper2:'#121830',card:'#161D38',line:'#26304F',tile:'#1C2646',tint:'#1B2A55'}},
+ green:{name:'Green',fill:'#1F7A50',deep:'#176B44',text:'#176B44',textDk:'#5FD29A',light:'#3FA876',a2:'#2E9B66',a3:'#176B44',a4:'#0F4D30',tint:'#C4E3D2',tile:'#CFE8DA',hero:'#0E2A1E',glow:'#1E5A3F',heroAcc:'#7FE0B2',rgb:'31,122,80',dk:{paper:'#08140F',paper2:'#0F1D16',card:'#13241B',line:'#1F3A2C',tile:'#183225',tint:'#173A2A'}},
+ purple:{name:'Purple',fill:'#7141C8',deep:'#5F32B0',text:'#5F32B0',textDk:'#C0A4FF',light:'#9B72E6',a2:'#8F63DC',a3:'#5F32B0',a4:'#43237F',tint:'#D9CCF3',tile:'#E0D5F6',hero:'#1E1236',glow:'#47288A',heroAcc:'#D0B8FF',rgb:'113,65,200',dk:{paper:'#100B1C',paper2:'#181128',card:'#1D1530',line:'#2F2548',tile:'#261C3F',tint:'#2C2050'}}
 };
 let ACC=Object.assign({},ACCENTS.coral);
 function applyLooks(theme, accent){
@@ -1656,7 +1723,7 @@ function applyLooks(theme, accent){
   if(theme==='black') r.setAttribute('data-oled','1'); else r.removeAttribute('data-oled');
   const set=(k,v)=>st.setProperty(k,v);
   set('--accent',A.fill); set('--accent-ink', dark?A.textDk:A.text); set('--accent-deep',A.deep); set('--accent-text',A.text); set('--accent-text-dk',A.textDk);
-  set('--accent-light',A.light); set('--accent-rgb',A.rgb); set('--hero',A.hero); set('--hero-glow',A.glow); set('--hero-acc',A.heroAcc); set('--hero-tile',A.tile);
+  set('--accent-light',A.light); set('--a2',A.a2); set('--a3',A.a3); set('--a4',A.a4); set('--accent-rgb',A.rgb); set('--hero',A.hero); set('--hero-glow',A.glow); set('--hero-acc',A.heroAcc); set('--hero-tile',A.tile);
   const dk=Object.assign({},A.dk);
   if(theme==='black') Object.assign(dk,{paper:'#000000',paper2:'#0A0A0A',card:'#121212',line:'#262626',tile:'#1C1C1C'});
   if(dark){ set('--paper',dk.paper); set('--paper-2',dk.paper2); set('--card',dk.card); set('--line',dk.line); set('--tile',dk.tile); set('--accent-tint',dk.tint); set('--indigo-tint',dk.tint); }
@@ -2700,7 +2767,7 @@ function goalPlanHtml(){
   const s2 = DATA.settings;
 
   return `
-  <div class="dl-sum" style="margin-bottom:12px">${tile(p.daysLeft,'Days left',ACC.fill)}${tile(p.perWeekNeeded,'Chapters / week','#E8A04C')}${tile(fmtDateShort(p.finishBy),'Finish by','#3DBE7E')}</div>
+  <div class="dl-sum" style="margin-bottom:12px">${tile(p.daysLeft,'Days left',ACC.fill)}${tile(p.perWeekNeeded,'Chapters / week',ACC.a2)}${tile(fmtDateShort(p.finishBy),'Finish by','#3DBE7E')}</div>
   <div class="hx-card">
     <div class="hx-h">Pace</div>
     ${paceBar}
@@ -2710,7 +2777,7 @@ function goalPlanHtml(){
   <div class="hx-card">
     <div class="hx-h">Today's plan</div>
     ${rows}
-    <div class="hd-row" style="border-left-color:#E8A04C"><div class="hd-n">Revision<span>${revSub}</span></div></div>
+    <div class="hd-row" style="border-left-color:#D9822B"><div class="hd-n">Revision<span>${revSub}</span></div></div>
     <div class="hd-row" style="border-left-color:#3DBE7E"><div class="hd-n">${mockTitle}<span>${mockSub}</span></div></div>
     ${p.targetsBelow ? `<div class="plan-note">This goal usually calls for about ${p.tier.hours}h a day and ${p.tier.q} questions. Your targets are ${s2.dailyStudyHours}h and ${s2.dailyQuestionTarget}. <button type="button" class="plan-link" onclick="applyGoalTargets()">Use suggested targets</button></div>` : ''}
     <p class="plan-foot">General guidelines, not a rank prediction. Protect your sleep while chasing the hours.</p>
@@ -2743,7 +2810,7 @@ function goalProgressHtml(){
     <div class="hx-h">Syllabus progress</div>
     <div class="hx-rings">
       ${goalRing('Overall', `${doneCh}/${total}`, 'chapters done', overallSyllabusPct(), ACC.fill)}
-      ${goalRing('Important', `${impDone}/${imp.length}`, 'chapters done', importantSyllabusPct(), '#E8A04C')}
+      ${goalRing('Important', `${impDone}/${imp.length}`, 'chapters done', importantSyllabusPct(), ACC.a2)}
     </div>
     <div style="margin-top:14px">${bars}</div>
   </div>`;
@@ -2759,7 +2826,7 @@ function goalLast30Html(){
   return `
   <div class="dl-grp"><span>Last 30 days</span></div>
   <div class="dl-sum" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-    ${tile(hoursToHM(hrs),'Studied',ACC.fill)}${tile(q,'Questions','#E8A04C')}${tile(tests,'Mock tests','#B8503A')}${tile(revs,'Revisions done','#3DBE7E')}
+    ${tile(hoursToHM(hrs),'Studied',ACC.fill)}${tile(q,'Questions',ACC.a2)}${tile(tests,'Mock tests',ACC.a3)}${tile(revs,'Revisions done','#3DBE7E')}
   </div>`;
 }
 function goalGapHtml(){
@@ -2968,7 +3035,7 @@ function weeklyRecapHtml(){
     <div class="stat"><div class="val">${hoursToHM(hrs)}</div><div class="lbl">Studied</div></div>
     <div class="stat"><div class="val">${q}</div><div class="lbl">Questions</div></div>
     <div class="stat"><div class="val">${testsCount}</div><div class="lbl">Mock tests</div></div>
-    <div class="stat" style="background:#E8A04C;"><div class="val">${least||'—'}</div><div class="lbl">Needs more focus</div></div>
+    <div class="stat" style="background:var(--a2);"><div class="val">${least||'—'}</div><div class="lbl">Needs more focus</div></div>
   </div>`;
 }
 function maybeShowDailyPopup(){
@@ -3283,7 +3350,7 @@ function buildNotifications(){
   const out = [];
   const s = DATA.settings, t = todayStr(), hr = new Date().getHours();
   const add = (id, pri, col, title, sub, go)=>out.push({id, pri, col, title, sub, go});
-  const RED='#C0302D', AMB='#E8A04C', BLU=ACC.fill, GRN='#3DBE7E';
+  const RED='#C0302D', AMB='#D9822B', BLU=ACC.fill, GRN='#3DBE7E';
 
   // 1-2. chapter deadlines (overdue, due today)
   const g = deadlineGroups();
@@ -3359,7 +3426,7 @@ function updateNotifDot(){
   if(!dot || !DATA) return;
   const list = activeNotifications();
   dot.hidden = list.length===0;
-  dot.style.background = list.some(n=>n.pri===1) ? '#C0302D' : '#E8A04C';
+  dot.style.background = list.some(n=>n.pri===1) ? '#C0302D' : '#D9822B';
 }
 function runNotifAction(go){
   if(!go) return;
@@ -3654,7 +3721,7 @@ function showCoinPop(amount, parts){
 function confettiBurst(){
   try{
     if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const cols = ['#E8A04C',ACC.fill,'#3DBE7E','#C0302D','#8B5CF6','#F5C84C'];
+    const cols = ['#D9822B',ACC.fill,'#3DBE7E','#C0302D','#8B5CF6','#F5C84C'];
     const host = document.createElement('div'); host.className = 'confetti-host'; document.body.appendChild(host);
     const cx = innerWidth/2, cy = innerHeight*0.42;
     for(let i=0;i<48;i++){
@@ -3824,7 +3891,7 @@ function updateDeadlineFab(){
   const btn = document.getElementById('deadlineFabBtn');
   if(!btn) return;
   const n = dueNowChapters().length;
-  if(n>0){ btn.style.display='flex'; btn.textContent = String(n); const od = overdueChapters().length>0; btn.style.background = od ? '#C0302D' : '#E8A04C'; btn.style.color = od ? '#fff' : '#2B1511'; }
+  if(n>0){ btn.style.display='flex'; btn.textContent = String(n); const od = overdueChapters().length>0; btn.style.background = od ? '#C0302D' : '#D9822B'; btn.style.color = od ? '#fff' : '#2B1511'; }
   else { btn.style.display='none'; }
 }
 function dueNowChapters(){
@@ -3839,7 +3906,7 @@ function deadlineGroups(){
     .sort((a,b)=>a.diff-b.diff);
   return [
     {key:'over', title:'Overdue', col:'#C0302D', items:pending.filter(x=>x.diff<0)},
-    {key:'today', title:'Due today', col:'#E8A04C', items:pending.filter(x=>x.diff===0)},
+    {key:'today', title:'Due today', col:'#D9822B', items:pending.filter(x=>x.diff===0)},
     {key:'week', title:'Next 7 days', col:ACC.fill, items:pending.filter(x=>x.diff>0&&x.diff<=7)},
     {key:'later', title:'Later', col:'#3DBE7E', items:pending.filter(x=>x.diff>7)}
   ];
@@ -3867,7 +3934,7 @@ function renderDeadlinesPage(){
   const upc=g.find(x=>x.key==='week').items.length+g.find(x=>x.key==='later').items.length;
   view('deadlines').innerHTML = `
     <div class="pl-filters">${['','Physics','Chemistry','Mathematics'].map(s=>`<button class="pl-chip ${DL_SUBJECT===s?'on':''}" data-dlsubj="${s}">${s||'All'}</button>`).join('')}</div>
-    <div class="dl-sum">${tile('over','#C0302D')}${tile('today','#E8A04C')}<div class="dl-tile" style="background:var(--accent)"><b>${upc}</b><span>Upcoming</span></div></div>
+    <div class="dl-sum">${tile('over','#C0302D')}${tile('today','#D9822B')}<div class="dl-tile" style="background:var(--accent)"><b>${upc}</b><span>Upcoming</span></div></div>
     <div id="deadlineList">
     ${total ? g.filter(x=>x.items.length).map(x=>`
       <div class="dl-grp"><span class="dl-dot" style="background:${x.col}"></span><span>${x.title}</span><em>${x.items.length}</em></div>
@@ -4002,9 +4069,9 @@ function shareCollect(){
     blocksDone, blocksTotal:blocks.length, revCount:revs.length, chCount:chDone.length,
     sections:[
       {title:'Chapters completed', col:'#3DBE7E', items:chDone.map(c=>({t:c.name,s:c.subject}))},
-      {title:'Revisions done', col:'#E8A04C', items:revs.map(r=>({t:chName(r.chapterId),s:chSub(r.chapterId)+' · Round '+r.round}))},
-      {title:'Chapters studied', col:'#F2825F', items:Object.values(chapStudied).map(c=>({t:c.t,s:c.subject+' · '+hoursToHM(c.min/60)}))},
-      {title:'Question practice', col:'#B8503A', items:prac.map(p=>{ const a=(Number(p.correct||0)+Number(p.wrong||0)); return {t:p.chapter||p.subject, s:p.subject+' · '+Number(p.attempted||0)+' Qs'+(a?' · '+Math.round(Number(p.correct||0)/a*100)+'% acc':'')}; })},
+      {title:'Revisions done', col:'#D9822B', items:revs.map(r=>({t:chName(r.chapterId),s:chSub(r.chapterId)+' · Round '+r.round}))},
+      {title:'Chapters studied', col:ACC.light, items:Object.values(chapStudied).map(c=>({t:c.t,s:c.subject+' · '+hoursToHM(c.min/60)}))},
+      {title:'Question practice', col:ACC.a3, items:prac.map(p=>{ const a=(Number(p.correct||0)+Number(p.wrong||0)); return {t:p.chapter||p.subject, s:p.subject+' · '+Number(p.attempted||0)+' Qs'+(a?' · '+Math.round(Number(p.correct||0)/a*100)+'% acc':'')}; })},
       {title:'Mock tests', col:'#C0302D', items:tests.map(x=>({t:x.name,s:'Score '+x.total+' · '+testAccuracy(x)+'% accuracy'+(x.percentile!=null?' · '+x.percentile+' %ile':'')}))}
     ].filter(x=>x.items.length)
   };
@@ -4014,9 +4081,9 @@ function paintShare(ctx,d,W,H){
   const fit=(txt,max)=>{ txt=String(txt); if(ctx.measureText(txt).width<=max) return txt; while(txt.length>1&&ctx.measureText(txt+'…').width>max) txt=txt.slice(0,-1); return txt.trimEnd()+'…'; };
   const rr=(x,y,w,h,r)=>roundRectPath(ctx,x,y,w,h,r);
   // background
-  const g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,'#2B1511'); g.addColorStop(.55,'#4A2018'); g.addColorStop(1,'#3A1B14');
+  const g=ctx.createLinearGradient(0,0,W,H); g.addColorStop(0,ACC.hero); g.addColorStop(.55,ACC.glow); g.addColorStop(1,ACC.hero);
   ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-  [[W*0.95,120,420,ACC.fill],[W*0.05,Math.min(H*0.55,1100),380,'#E8A04C']].forEach(c=>{
+  [[W*0.95,120,420,ACC.fill],[W*0.05,Math.min(H*0.55,1100),380,ACC.a2]].forEach(c=>{
     const rg=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],c[2]); rg.addColorStop(0,c[3]+'44'); rg.addColorStop(1,c[3]+'00');
     ctx.fillStyle=rg; ctx.fillRect(0,0,W,H);
   });
@@ -4030,7 +4097,7 @@ function paintShare(ctx,d,W,H){
   ctx.fillText(new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'}),W-P,y+37);
   y+=56+70;
   ctx.textAlign='left'; ctx.fillStyle='#fff'; ctx.font='800 72px '+F; ctx.fillText(fit(d.name+"'s study day",CW),P,y);
-  y+=48; ctx.font='600 30px '+F; ctx.fillStyle='#F5B85A';
+  y+=48; ctx.font='600 30px '+F; ctx.fillStyle=ACC.heroAcc;
   if(d.mainDays!=null) ctx.fillText('JEE Main in '+d.mainDays+' days',P,y);
   y+=50;
   // hero card
@@ -4039,7 +4106,7 @@ function paintShare(ctx,d,W,H){
   const cx=P+210, cy=y+hh/2, R=130, pr=d.target>0?Math.min(1,d.hrs/d.target):(d.hrs>0?1:0);
   ctx.lineWidth=30; ctx.lineCap='round';
   ctx.strokeStyle='rgba(255,255,255,.16)'; ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.stroke();
-  if(pr>0){ ctx.strokeStyle=pr>=1?'#3DBE7E':'#F2825F'; ctx.beginPath(); ctx.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+Math.PI*2*pr); ctx.stroke(); }
+  if(pr>0){ ctx.strokeStyle=pr>=1?'#3DBE7E':ACC.light; ctx.beginPath(); ctx.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+Math.PI*2*pr); ctx.stroke(); }
   ctx.textAlign='center'; ctx.fillStyle='#fff'; ctx.font='800 50px '+F; ctx.fillText(hoursToHM(d.hrs),cx,cy+10);
   ctx.font='600 24px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText(d.target?'of '+d.target+'h goal':'studied today',cx,cy+48);
   // right stats
@@ -4051,12 +4118,12 @@ function paintShare(ctx,d,W,H){
   ctx.fillText((d.qTarget?'/ '+d.qTarget:'')+(d.acc!=null?'   '+d.acc+'% accurate':''),rx+qw+14,y+185);
   ctx.strokeStyle='rgba(255,255,255,.14)'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(rx,y+225); ctx.lineTo(P+CW-40,y+225); ctx.stroke();
   ctx.font='600 24px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText('CURRENT STREAK',rx,y+275);
-  ctx.font='800 64px '+F; ctx.fillStyle='#F5B85A'; const sk=String(d.streak); ctx.fillText(sk,rx,y+340); const skw=ctx.measureText(sk).width;
+  ctx.font='800 64px '+F; ctx.fillStyle=ACC.heroAcc; const sk=String(d.streak); ctx.fillText(sk,rx,y+340); const skw=ctx.measureText(sk).width;
   ctx.font='600 28px '+F; ctx.fillStyle='#fff'; ctx.fillText(d.streak===1?'day':'days',rx+skw+14,y+340);
   y+=hh+24;
   // tiles
   const tw=(CW-40)/3, th=150;
-  [['Chapters done',d.chCount,'#3DBE7E'],['Revisions',d.revCount,'#E8A04C'],['Slots done',d.blocksDone+'/'+d.blocksTotal,ACC.fill]].forEach((t,i)=>{
+  [['Chapters done',d.chCount,'#3DBE7E'],['Revisions',d.revCount,'#D9822B'],['Slots done',d.blocksDone+'/'+d.blocksTotal,ACC.fill]].forEach((t,i)=>{
     const x=P+i*(tw+20);
     ctx.fillStyle=t[2]; rr(x,y,tw,th,28); ctx.fill();
     ctx.textAlign='left'; ctx.fillStyle='#fff'; ctx.font='800 56px '+F; ctx.fillText(String(t[1]),x+26,y+84);
@@ -4065,7 +4132,7 @@ function paintShare(ctx,d,W,H){
   y+=th+56;
   // subject time
   ctx.textAlign='left'; ctx.font='800 26px '+F; ctx.fillStyle='rgba(255,255,255,.7)'; ctx.fillText('TIME BY SUBJECT',P,y); y+=34;
-  const colors={Physics:'#F2825F',Chemistry:'#3DBE7E',Mathematics:'#E8A04C',General:'#9AA0B4'};
+  const colors={Physics:ACC.light,Chemistry:'#3DBE7E',Mathematics:ACC.a2,General:'#9AA0B4'};
   const keys=Object.keys(d.subjMin).filter(k=>k!=='General'||d.subjMin.General>0);
   const mx=Math.max(1,...keys.map(k=>d.subjMin[k]));
   keys.forEach(k=>{
@@ -4214,7 +4281,7 @@ function homeDeadlinesCard(){
   const urgent=groups[0].items.concat(groups[1].items);
   const upcoming=groups[2].items.concat(groups[3].items);
   const show=(urgent.length?urgent:upcoming).slice(0,3);
-  const col=x=>x.diff<0?'#C0302D':x.diff===0?'#E8A04C':ACC.fill;
+  const col=x=>x.diff<0?'#C0302D':x.diff===0?'#D9822B':ACC.fill;
   const when=x=>x.diff<0?`${-x.diff} day${x.diff===-1?'':'s'} overdue`:x.diff===0?'Due today':`in ${x.diff} day${x.diff===1?'':'s'}`;
   const rows=show.map(x=>`<div class="hd-row" style="border-left-color:${col(x)}"><div class="hd-n">${esc(x.c.name)}<span>${esc(x.c.subject)}</span></div><b style="color:${col(x)}">${when(x)}</b></div>`).join('');
   return `<div class="hx-card" onclick="switchView('deadlines')" style="cursor:pointer">
@@ -4230,7 +4297,7 @@ function homeLatestMockCard(lt){
   return `<div class="hx-card" onclick="switchView('tests')" style="cursor:pointer">
     <div class="hd-head"><div class="hx-h" style="margin:0">Latest mock test</div><span class="hd-more">All tests</span></div>
     <div class="hd-sub">${esc(lt.name)} <span class="badge studying">${esc(lt.type)}</span> · ${fmtDate(lt.date)}</div>
-    <div class="dl-sum" style="margin:12px 0 0">${tile(lt.total,'Score',ACC.fill)}${tile(testAccuracy(lt)+'%','Accuracy','#E8A04C')}${tile(rk?'~'+rk.toLocaleString('en-IN'):'—','Est. rank','#3DBE7E')}</div>
+    <div class="dl-sum" style="margin:12px 0 0">${tile(lt.total,'Score',ACC.fill)}${tile(testAccuracy(lt)+'%','Accuracy',ACC.a2)}${tile(rk?'~'+rk.toLocaleString('en-IN'):'—','Est. rank','#3DBE7E')}</div>
   </div>`;
 }
 function renderHome(){
@@ -4347,11 +4414,11 @@ function ttCalendarHtml(){
   for(let k=0;k<offset;k++) cells+='<span class="rv-c empty"></span>';
   if(TT_CAL_OPEN) for(let d=1; d<=days; d++){
     const iso=isoDate(y,m,d), o=dayInfo(iso);
-    const dot=!o?'transparent':o.miss?'#C0302D':o.pend?'#E8A04C':'#3DBE7E';
+    const dot=!o?'transparent':o.miss?'#C0302D':o.pend?'#D9822B':'#3DBE7E';
     cells+=`<button class="rv-c ${iso===date?'on':''} ${iso===t?'today':''}" data-tdate="${iso}"><b>${d}</b><i style="background:${iso===date&&o?'#fff':dot}"></i></button>`;
   }
   const label=first.toLocaleDateString('en-IN',{month:'long',year:'numeric'}), o=dayInfo(date);
-  const chip=o?(o.miss?`<em style="background:#C0302D">${o.miss} missed</em>`:'')+(o.pend?`<em style="background:#E8A04C">${o.pend} pending</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
+  const chip=o?(o.miss?`<em style="background:#C0302D">${o.miss} missed</em>`:'')+(o.pend?`<em style="background:#D9822B">${o.pend} pending</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
   const CAL='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>';
   return `<div class="hx-card rv-cal" style="margin-bottom:12px;">
     <button class="rv-toggle" id="ttCalToggle" aria-expanded="${TT_CAL_OPEN}">${CAL}<span class="rv-sel">${plannerDayLabel(date)}</span>${chip}<span class="rv-chev ${TT_CAL_OPEN?'open':''}">&#9662;</span></button>
@@ -4360,7 +4427,7 @@ function ttCalendarHtml(){
       <div class="hd-head"><button class="rv-nav" data-tmonth="-1" aria-label="Previous month">&#8249;</button><div class="hx-h" style="margin:0">${label}</div><button class="rv-nav" data-tmonth="1" aria-label="Next month">&#8250;</button></div>
       <div class="rv-grid rv-head"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
       <div class="rv-grid">${cells}</div>
-      <div class="rv-legend"><span><i style="background:#C0302D"></i>Missed</span><span><i style="background:#E8A04C"></i>Pending</span><span><i style="background:#3DBE7E"></i>Done</span></div>
+      <div class="rv-legend"><span><i style="background:#C0302D"></i>Missed</span><span><i style="background:#D9822B"></i>Pending</span><span><i style="background:#3DBE7E"></i>Done</span></div>
     </div>`:''}
   </div>`;
 }
@@ -4373,7 +4440,7 @@ function plannerHtml(){
   const strip=[0,1,2,3,4,5,6].map(n=>{
     const d=addDays(t,n), cnt=blocksForDate(d).filter(b=>!blockIsDone(b,d)).length;
     const dt=new Date(d+'T00:00:00'), sel=date===d;
-    return `<button class="pl-day ${sel?'on':''}" data-date="${d}"><span>${n===0?'Today':dt.toLocaleDateString('en-IN',{weekday:'short'})}</span><b>${dt.getDate()}</b><i style="background:${cnt?(sel?'#fff':'#E8A04C'):'transparent'}"></i></button>`;
+    return `<button class="pl-day ${sel?'on':''}" data-date="${d}"><span>${n===0?'Today':dt.toLocaleDateString('en-IN',{weekday:'short'})}</span><b>${dt.getDate()}</b><i style="background:${cnt?(sel?'#fff':'#D9822B'):'transparent'}"></i></button>`;
   }).join('');
   return ttCalendarHtml() + `
     <div class="pl-strip">${strip}</div>
@@ -4381,7 +4448,7 @@ function plannerHtml(){
       <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:#3DBE7E"><b>${done}</b><span>Done</span></div>
-        <div class="dl-tile" style="background:#E8A04C"><b>${pending}</b><span>Pending</span></div>
+        <div class="dl-tile" style="background:#D9822B"><b>${pending}</b><span>Pending</span></div>
         <div class="dl-tile" style="background:var(--accent)"><b>${mins>=60?Math.floor(mins/60)+'h'+(mins%60?(mins%60)+'m':''):mins+'m'}</b><span>Planned</span></div>
       </div>
     </div>`;
@@ -4585,10 +4652,10 @@ function renderChapters(){
       <div class="pbar"><div style="width:${overall}%;background:var(--accent)"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:var(--accent)"><b>${overall}%</b><span>Overall</span></div>
-        <div class="dl-tile" style="background:#E8A04C"><b>${chapterCompletionPct(CHAPTER_SUBJECT)}%</b><span>${CHAPTER_SUBJECT}</span></div>
+        <div class="dl-tile" style="background:var(--a2)"><b>${chapterCompletionPct(CHAPTER_SUBJECT)}%</b><span>${CHAPTER_SUBJECT}</span></div>
         <div class="dl-tile" style="background:#3DBE7E"><b>${stats.completed}</b><span>Completed</span></div>
         <div class="dl-tile" style="background:#C0302D"><b>${stats.weak}</b><span>Weak</span></div>
-        <div class="dl-tile" style="background:#B8503A"><b>${impPct}%</b><span>Important</span></div>
+        <div class="dl-tile" style="background:var(--a3)"><b>${impPct}%</b><span>Important</span></div>
       </div>
     </div>
     <div class="ch-sr">
@@ -4776,7 +4843,7 @@ function openChapterDetail(id){
   const lastStudied = [ps.lastDate, ...allStudy().filter(x=>x.subject===c.subject && x.chapter===c.name).map(x=>x.date)].filter(Boolean).sort().pop() || null;
   const lastTxt = lastStudied ? (lastStudied===t ? 'Today' : daysBetween(lastStudied,t)+'d ago') : '—';
   const tasks = [['notesDone','Notes'],['questionsDone','Practice questions'],['pyqsDone','PYQs']];
-  const stCol = {'Not Started':'#8A94A6','Studying':'#E8A04C','Completed':'#3DBE7E','Revised':ACC.fill}[c.status]||ACC.fill;
+  const stCol = {'Not Started':'#8A94A6','Studying':'#D9822B','Completed':'#3DBE7E','Revised':ACC.fill}[c.status]||ACC.fill;
   const tile = (col,val,lbl)=>`<div class="dl-tile" style="background:${col}"><b>${val}</b><span>${lbl}</span></div>`;
   const wrongPct = (ps.correct+ps.wrong) ? 100-ps.accuracy : 0;
   const revRows = revs.map(r=>{
@@ -4811,12 +4878,12 @@ function openChapterDetail(id){
 
     <div class="dl-sum">
       ${tile(ACC.fill, hoursToHM(chapterStudyOnlyMin(c)/60)+' / '+chapterTargetHours(c)+'h', 'Study time')}
-      ${tile('#B8503A', hoursToHM(chapterPracticeMin(c)/60), 'PYQ / practice')}
+      ${tile(ACC.a3, hoursToHM(chapterPracticeMin(c)/60), 'PYQ / practice')}
       ${tile('#64748B', hoursToHM((chapterStudyOnlyMin(c)+chapterPracticeMin(c))/60), 'Total time')}
-      ${tile('#B8503A', ps.avgSec==null?'—':formatSeconds(ps.avgSec), 'Avg / question')}
+      ${tile(ACC.a3, ps.avgSec==null?'—':formatSeconds(ps.avgSec), 'Avg / question')}
       ${tile('#3DBE7E', ps.accuracy+'%', 'Accuracy')}
-      ${tile('#E8A04C', ps.attempted, 'Questions')}
-      ${tile('#8A5A48', doneRevs+'/'+(revs.length||0), 'Revisions')}
+      ${tile(ACC.a2, ps.attempted, 'Questions')}
+      ${tile(ACC.a4, doneRevs+'/'+(revs.length||0), 'Revisions')}
       ${tile('#C0302D', lastTxt, 'Last studied')}
     </div>
 
@@ -4938,10 +5005,10 @@ function renderPractice(){
     </div>
     <div class="dl-sum" style="margin-bottom:12px;">
       <div class="dl-tile" style="background:var(--accent)"><b>${todayQ}</b><span>Today</span></div>
-      <div class="dl-tile" style="background:#E8A04C"><b>${weekQ}</b><span>This week</span></div>
-      <div class="dl-tile" style="background:#B8503A"><b>${monthQ}</b><span>This month</span></div>
+      <div class="dl-tile" style="background:var(--a2)"><b>${weekQ}</b><span>This week</span></div>
+      <div class="dl-tile" style="background:var(--a3)"><b>${monthQ}</b><span>This month</span></div>
       <div class="dl-tile" style="background:#3DBE7E"><b>${totalQ}</b><span>Total solved</span></div>
-      <div class="dl-tile" style="background:#8A5A48"><b>${formatSeconds(avgTPQ)}</b><span>Avg / question</span></div>
+      <div class="dl-tile" style="background:var(--a4)"><b>${formatSeconds(avgTPQ)}</b><span>Avg / question</span></div>
       <div class="dl-tile" style="background:#C0302D"><b>${practiceAccuracyAll()}%</b><span>Accuracy</span></div>
     </div>
     ${Object.keys(bySubject).length ? `
@@ -5136,10 +5203,10 @@ function renderTests(){
   const html = `
     <div class="dl-sum" style="margin-bottom:12px;">
       <div class="dl-tile" style="background:var(--accent)"><b>${DATA.tests.length}</b><span>Tests taken</span></div>
-      <div class="dl-tile" style="background:#E8A04C"><b>${avgScore}</b><span>Avg score</span></div>
-      <div class="dl-tile" style="background:#B8503A"><b>${avgAcc}%</b><span>Avg accuracy</span></div>
+      <div class="dl-tile" style="background:var(--a2)"><b>${avgScore}</b><span>Avg score</span></div>
+      <div class="dl-tile" style="background:var(--a3)"><b>${avgAcc}%</b><span>Avg accuracy</span></div>
       <div class="dl-tile" style="background:#3DBE7E"><b>${best}</b><span>Best score</span></div>
-      <div class="dl-tile" style="background:#8A5A48"><b>${wkTests}</b><span>This week${wkTests>prevWkTests?' ▲':wkTests<prevWkTests?' ▼':''}</span></div>
+      <div class="dl-tile" style="background:var(--a4)"><b>${wkTests}</b><span>This week${wkTests>prevWkTests?' ▲':wkTests<prevWkTests?' ▼':''}</span></div>
       ${improvement ? `<div class="dl-tile" style="background:${improvement.col}"><b>${improvement.txt}</b><span>vs last test</span></div>` : `<div class="dl-tile" style="background:#8A94A6"><b>${avgAttemptRate!==null?avgAttemptRate+'%':'—'}</b><span>Attempt rate</span></div>`}
     </div>
     ${avgRankCard}
@@ -5205,12 +5272,12 @@ function viewTestDetails(id){
     </div>
     ${hasSubj ? `<div class="dl-sum">
       ${tile(ACC.fill, t.physics||0, 'Physics')}
-      ${tile('#E8A04C', t.chemistry||0, 'Chemistry')}
+      ${tile(ACC.a2, t.chemistry||0, 'Chemistry')}
       ${tile('#3DBE7E', t.maths||0, 'Maths')}
     </div>` : ''}
     <div class="dl-sum">
-      ${tile('#B8503A', testAccuracy(t)+'%', 'Accuracy')}
-      ${tile('#8A5A48', attempted+'/'+(totalQ || t.questions || '—'), 'Attempted')}
+      ${tile(ACC.a3, testAccuracy(t)+'%', 'Accuracy')}
+      ${tile(ACC.a4, attempted+'/'+(totalQ || t.questions || '—'), 'Attempted')}
       ${tile('#C0302D', t.timeTaken ? t.timeTaken+'m' : '—', 'Time taken')}
     </div>
     <div class="hx-card">
@@ -5376,12 +5443,12 @@ function revisionCalendarHtml(){
   for(let k=0;k<offset;k++) cells+='<span class="rv-c empty"></span>';
   for(let d=1; d<=days; d++){
     const iso=isoDate(y,m,d), o=info[iso];
-    const dot=!o?'transparent':o.over?'#C0302D':o.pend?'#E8A04C':'#3DBE7E';
+    const dot=!o?'transparent':o.over?'#C0302D':o.pend?'#D9822B':'#3DBE7E';
     cells+=`<button class="rv-c ${iso===REVISION_DATE?'on':''} ${iso===t?'today':''}" data-rdate="${iso}"><b>${d}</b><i style="background:${iso===REVISION_DATE&&o?'#fff':dot}"></i></button>`;
   }
   const label=first.toLocaleDateString('en-IN',{month:'long',year:'numeric'});
   const o=info[REVISION_DATE];
-  const chip=o?(o.over?`<em style="background:#C0302D">${o.over} overdue</em>`:'')+(o.pend?`<em style="background:#E8A04C">${o.pend} due</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
+  const chip=o?(o.over?`<em style="background:#C0302D">${o.over} overdue</em>`:'')+(o.pend?`<em style="background:#D9822B">${o.pend} due</em>`:'')+(o.done?`<em style="background:#3DBE7E">${o.done} done</em>`:''):'';
   const CAL='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>';
   return `<div class="hx-card rv-cal">
     <button class="rv-toggle" id="rvToggle" aria-expanded="${REVISION_CAL_OPEN}">${CAL}<span class="rv-sel">${plannerDayLabel(REVISION_DATE)}</span>${chip}<span class="rv-chev ${REVISION_CAL_OPEN?'open':''}">&#9662;</span></button>
@@ -5390,7 +5457,7 @@ function revisionCalendarHtml(){
       <div class="hd-head"><button class="rv-nav" data-rmonth="-1" aria-label="Previous month">&#8249;</button><div class="hx-h" style="margin:0">${label}</div><button class="rv-nav" data-rmonth="1" aria-label="Next month">&#8250;</button></div>
       <div class="rv-grid rv-head"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
       <div class="rv-grid">${cells}</div>
-      <div class="rv-legend"><span><i style="background:#C0302D"></i>Overdue</span><span><i style="background:#E8A04C"></i>Due</span><span><i style="background:#3DBE7E"></i>Done</span></div>
+      <div class="rv-legend"><span><i style="background:#C0302D"></i>Overdue</span><span><i style="background:#D9822B"></i>Due</span><span><i style="background:#3DBE7E"></i>Done</span></div>
     </div>`:''}
   </div>`;
 }
@@ -5418,7 +5485,7 @@ function renderRevision(){
       <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:#3DBE7E"><b>${done}</b><span>Done</span></div>
-        <div class="dl-tile" style="background:#E8A04C"><b>${pending}</b><span>Pending</span></div>
+        <div class="dl-tile" style="background:#D9822B"><b>${pending}</b><span>Pending</span></div>
         <div class="dl-tile" style="background:#C0302D"><b>${od.length}</b><span>Overdue</span></div>
       </div>
     </div>`;
@@ -5430,7 +5497,7 @@ function renderRevision(){
       <div class="pbar"><div style="width:${progress}%;background:#3DBE7E"></div></div>
       <div class="dl-sum" style="margin:12px 0 0">
         <div class="dl-tile" style="background:#3DBE7E"><b>${doneAll}</b><span>Done</span></div>
-        <div class="dl-tile" style="background:#E8A04C"><b>${pendAll-od.length}</b><span>Upcoming</span></div>
+        <div class="dl-tile" style="background:#D9822B"><b>${pendAll-od.length}</b><span>Upcoming</span></div>
         <div class="dl-tile" style="background:#C0302D"><b>${od.length}</b><span>Overdue</span></div>
       </div>
     </div>`;
@@ -5445,7 +5512,7 @@ function renderRevision(){
     const today=all.filter(r=>!r.completed && r.dueDate===t);
     const upcoming=all.filter(r=>!r.completed && r.dueDate>t).sort(byDue);
     const completed=all.filter(r=>r.completed).sort((a,b)=>(b.completedDate||'').localeCompare(a.completedDate||''));
-    body = all.length ? sec('Overdue','#C0302D',overdue)+sec('Due today','#E8A04C',today)+sec('Upcoming',ACC.fill,upcoming)+sec('Completed','#3DBE7E',completed)
+    body = all.length ? sec('Overdue','#C0302D',overdue)+sec('Due today','#D9822B',today)+sec('Upcoming',ACC.fill,upcoming)+sec('Completed','#3DBE7E',completed)
       : `<div class="hx-card" style="text-align:center;color:var(--ink-soft)">No revisions yet. Complete chapters to auto-schedule spaced revisions.</div>`;
   }
   view('revision').innerHTML = `
@@ -5475,7 +5542,7 @@ function revisionRowHtml(r){
   const status = revisionStatusOf(r);
   const statusClass = {'Due Today':'duetoday','Overdue':'overdue','Upcoming':'upcoming','Completed':'done'}[status];
   return `
-  <div class="row-item tk-row" data-id="${r.id}" style="border-left:4px solid ${{'Due Today':'#E8A04C','Overdue':'#C0302D','Upcoming':ACC.fill,'Completed':'#3DBE7E'}[status]};margin-bottom:10px;">
+  <div class="row-item tk-row" data-id="${r.id}" style="border-left:4px solid ${{'Due Today':'#D9822B','Overdue':'#C0302D','Upcoming':ACC.fill,'Completed':'#3DBE7E'}[status]};margin-bottom:10px;">
     <div class="ri-main">
       <div class="ri-title">${esc(chapter?chapter.name:'Chapter')} <span class="badge ${statusClass}">${status}</span></div>
       <div class="ri-sub">${esc(chapter?chapter.subject:'')} · Revision round ${r.round} · ${r.completed? 'Done '+fmtDateShort(r.completedDate) : 'Due '+fmtDateShort(r.dueDate)}${(r.origDue&&r.origDue!==r.dueDate)?' · <b>Originally due '+fmtDateShort(r.origDue)+'</b>':''}${r.completed?'':revSchedTag(r.id)}</div>
@@ -5838,7 +5905,7 @@ function renderSettings(){
   `;
   view('settings').innerHTML = html;
   { // same layout language as the rest of the app: headings live inside white cards
-    const root=view('settings'), cols=[ACC.fill,'#E8A04C','#B8503A','#3DBE7E','#C0302D'];
+    const root=view('settings'), cols=[ACC.fill,ACC.a2,ACC.a3,'#3DBE7E','#C0302D'];
     let ci=0;
     $all('.section-title', root).forEach(t=>{
       const card=t.nextElementSibling;
@@ -6021,7 +6088,7 @@ function sugInfo(type,id){
   }
   if(type==='pyq'){
     const c=DATA.chapters.find(x=>x.id===id); if(!c) return null;
-    return {type,id,kind:'Practice',subject:c.subject,chapter:c.name,mins:60,color:'#E8A04C',title:'PYQs: '+c.name,pri:(c.important||c.weightage==='High')?3:4,
+    return {type,id,kind:'Practice',subject:c.subject,chapter:c.name,mins:60,color:'#D9822B',title:'PYQs: '+c.name,pri:(c.important||c.weightage==='High')?3:4,
       sub:`${c.subject} · PYQs pending`+(c.important?' · important':'')};
   }
   if(type==='test') return {type,id:'mock',kind:'Test',subject:'',chapter:'',mins:180,color:'#64748B',title:'Take a mock test',pri:2,sub:mockStatus().text};
@@ -6473,15 +6540,40 @@ const TimerState = {
 };
 const TIMER_R = 104, TIMER_C = 2*Math.PI*TIMER_R;
 
+const TM_IC={
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>',
+  pause:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4.2" height="14" rx="1.4"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.4"/></svg>',
+  stop:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2.4"/></svg>',
+  reset:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.8-6.3"/><path d="M3.5 4.5v4.2h4.2"/></svg>'
+};
+let TM_LAYOUT = (()=>{ try{ return localStorage.getItem('jeeTimerLayout')||'b'; }catch(e){ return 'b'; } })();
+function toggleTimerLayout(){ TM_LAYOUT = TM_LAYOUT==='a' ? 'b' : 'a'; try{ localStorage.setItem('jeeTimerLayout', TM_LAYOUT); }catch(e){} renderTimer(); }
+/* Timer layout B: light focus card, big digits and a progress bar instead of the ring */
+function timerDesignB(s){
+  const st=TimerState, run=st.running, paused=!run && st.elapsedSec>0, brk=st.mode==='pomodoro' && st.phase!=='study', pomo=st.mode==='pomodoro';
+  const label = pomo ? (st.phase==='study'?'Focus session':(st.phase==='longbreak'?'Long break':'Short break')) : 'Free study session';
+  return `<div class="tb ${run?'running':paused?'paused':''} ${brk?'brk':''} ${st.justFinished?'done':''}" id="timerRing">
+    <div class="tb-top">
+      <div class="tb-seg"><button type="button" class="${!pomo?'active':''}" onclick="setTimerMode('stopwatch')">Stopwatch</button><button type="button" class="${pomo?'active':''}" onclick="setTimerMode('pomodoro')">Pomodoro</button></div>
+      <span class="tb-st"><i></i>${run?'Running':paused?'Paused':'Ready'}</span>
+    </div>
+    <div class="tb-label">${label}${pomo?' · Round '+(st.pomoCount+1):''}</div>
+    <div class="timer-digits tb-digits" id="timerDisplay">${renderTimerText()}</div>
+    <div class="tb-bar"><i id="tmBar"></i></div>
+    <div class="tb-hint">${pomo ? s.pomodoroMinutes+'m focus / '+s.pomodoroBreak+'m break' : 'The bar fills once every minute'}</div>
+    ${run ? `<button type="button" class="tb-go" onclick="pauseTimer()">${TM_IC.pause}Pause</button>` : `<button type="button" class="tb-go" onclick="startTimer()">${TM_IC.play}${st.elapsedSec>0?'Resume':'Start session'}</button>`}
+    <div class="tb-row"><button type="button" class="tb-sec" onclick="resetTimer()">${TM_IC.reset}Reset</button><button type="button" class="tb-sec stop" onclick="stopTimer()">${TM_IC.stop}Stop &amp; Save</button></div>
+  </div>`;
+}
 function renderTimer(){
   const s = DATA.settings;
-  const html = `
+  let html = `
     ${LINKED_BLOCK ? linkedBlockNoteHtml() : ''}
-    <div class="seg" style="max-width:320px; margin:0 auto 6px auto;">
-      <button type="button" class="${TimerState.mode==='stopwatch'?'active':''}" onclick="setTimerMode('stopwatch')">Stopwatch</button>
-      <button type="button" class="${TimerState.mode==='pomodoro'?'active':''}" onclick="setTimerMode('pomodoro')">Pomodoro</button>
-    </div>
-    <div class="card" style="max-width:420px; margin:14px auto;">
+    <div class="tm-hero">
+      <div class="tm-seg">
+        <button type="button" class="${TimerState.mode==='stopwatch'?'active':''}" onclick="setTimerMode('stopwatch')">Stopwatch</button>
+        <button type="button" class="${TimerState.mode==='pomodoro'?'active':''}" onclick="setTimerMode('pomodoro')">Pomodoro</button>
+      </div>
       <div class="timer-ring ${TimerState.running?'running':(TimerState.elapsedSec>0?'paused':'')} ${TimerState.mode==='pomodoro' && TimerState.phase!=='study'?'brk':''} ${TimerState.justFinished?'done':''}" id="timerRing">
         <div class="timer-glow"></div>
         <svg viewBox="0 0 260 260" aria-hidden="true">
@@ -6501,14 +6593,20 @@ function renderTimer(){
           <div class="timer-mode-label">${TimerState.mode==='pomodoro' ? (TimerState.phase==='study'?'Focus session':(TimerState.phase==='longbreak'?'Long break':'Short break')) : 'Free study session'}${(!TimerState.running && TimerState.elapsedSec>0)?' · Paused':''}</div>
         </div>
       </div>
-      <div class="timer-controls">
-        ${!TimerState.running ? `<button class="btn" onclick="startTimer()">${TimerState.elapsedSec>0?'Resume':'Start'}</button>` : `<button class="btn secondary" onclick="pauseTimer()">Pause</button>`}
-        <button class="btn danger" onclick="stopTimer()">Stop &amp; Save</button>
-        <button class="btn ghost" onclick="resetTimer()">Reset</button>
+      <div class="tm-ctl">
+        <button type="button" class="tm-b" onclick="resetTimer()"><i>${TM_IC.reset}</i>Reset</button>
+        ${!TimerState.running ? `<button type="button" class="tm-b main" onclick="startTimer()"><i>${TM_IC.play}</i>${TimerState.elapsedSec>0?'Resume':'Start'}</button>` : `<button type="button" class="tm-b main" onclick="pauseTimer()"><i>${TM_IC.pause}</i>Pause</button>`}
+        <button type="button" class="tm-b stop" onclick="stopTimer()"><i>${TM_IC.stop}</i>Stop &amp; Save</button>
       </div>
-      ${TimerState.mode==='pomodoro' ? `<p class="muted" style="text-align:center; margin-top:14px;">Round ${TimerState.pomoCount+1} · ${s.pomodoroMinutes}m focus / ${s.pomodoroBreak}m break</p>` : ''}
+      ${TimerState.mode==='pomodoro' ? `<div class="tm-round">Round ${TimerState.pomoCount+1} · ${s.pomodoroMinutes}m focus / ${s.pomodoroBreak}m break</div>` : ''}
+    </div>
+    <div class="tm-stats">
+      <div><b>${hoursToHM(studyHoursOn(todayStr()))}</b><span>studied today</span></div>
+      <div><b>${Number(s.dailyStudyHours)||0}h</b><span>daily goal</span></div>
+      <div><b>${DATA.studySessions.filter(x=>x.date===todayStr()).length}</b><span>sessions today</span></div>
     </div>
 
+    <button type="button" class="tm-sw" onclick="toggleTimerLayout()">Switch timer layout</button>
     <button class="btn secondary block" style="margin-bottom:6px;" onclick="openManualSessionModal()">+ Log Study Session Manually</button>
     <p class="muted" style="text-align:center; margin-bottom:18px;">Already studied offline? Add the time directly without the timer.</p>
 
@@ -6517,6 +6615,7 @@ function renderTimer(){
       ${DATA.studySessions.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,10).map(sessionRowHtml).join('') || emptyState('⏱️','No sessions logged yet','Start a timer or log one manually.')}
     </div>
   `;
+  if(TM_LAYOUT==='b') html = html.replace(/<div class="tm-hero">[\s\S]*?(?=<div class="tm-stats">)/, ()=>timerDesignB(s));
   view('timer').innerHTML = html;
   TimerState.justFinished = false;
   TimerState.lastTickSec = -1;
@@ -6719,6 +6818,11 @@ function updateTimerVisual(){
   if(prog){
     if(v < TimerState.lastV - 0.5){ prog.style.transition='none'; prog.getBoundingClientRect(); prog.style.transition=''; }  // no backwards sweep at the wrap
     prog.style.strokeDashoffset = TIMER_C*(1-v); prog.style.opacity = v<0.002 ? 0 : '';
+  }
+  const tb = $('#tmBar');
+  if(tb){
+    if(v < TimerState.lastV - 0.5){ tb.style.transition='none'; tb.getBoundingClientRect(); tb.style.transition=''; }
+    tb.style.transform = 'scaleX(' + Math.min(1, Math.max(0, v)) + ')';
   }
   TimerState.lastV = v;
   if(dot){
