@@ -1478,7 +1478,6 @@ body.nofab .fab.fab-alert{bottom:28px}
 .modal-backdrop .modal,.modal-backdrop.center .modal{width:100%;max-width:760px !important;margin:0 auto;padding:0 !important;max-height:none !important;border-radius:0 !important;background:transparent !important;overflow:visible !important;animation:pgIn .26s cubic-bezier(.2,.8,.2,1)}
 @keyframes pgIn{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.modal-backdrop .modal{animation:none}}
-body.pg-open{overflow:hidden}
 .pg-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:12px;padding:calc(14px + env(safe-area-inset-top,0px)) 16px 18px;color:#fff;border-radius:0 0 28px 28px;background:radial-gradient(110% 140% at 90% 0,var(--hero-glow),rgba(0,0,0,0) 70%),var(--hero)}
 .pg-back{width:40px;height:40px;flex:0 0 40px;border:none;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .pg-back svg{width:22px;height:22px}
@@ -1521,7 +1520,7 @@ body.pg-open{overflow:hidden}
 .modal-backdrop.pop.closing{opacity:0;transition:opacity .18s ease}
 /* ===== Smooth motion everywhere ===== */
 :root{--ease:cubic-bezier(.22,.8,.2,1)}
-html{scroll-behavior:smooth}
+html,body,#main{scroll-behavior:auto !important}
 .btn,.icon-btn,.qa-tile,.hx-card,.rw-it,.dl-tile,.row-item,.pl-chip,.bn-item,.hm-cta,.hm-fire,.pill-select,.wk-d i,.hm-sj{transition:transform .24s var(--ease),box-shadow .24s var(--ease),background-color .24s var(--ease),border-color .24s var(--ease),opacity .24s var(--ease),color .24s var(--ease)}
 .btn:active,.qa-tile:active,.rw-it:active,.hm-cta:active,.hm-fire:active,.bn-item:active,.icon-btn:active,.pl-chip:active{transform:scale(.96)}
 .hx-card[onclick]:active,.row-item:active{transform:scale(.985)}
@@ -3053,7 +3052,7 @@ function switchView(viewId, fromBack){
 /* html/body have overflow-x:hidden, which can turn body (or .main) into the scroll container,
    so window.scrollTo alone is not enough: reset every possible scroller. */
 function resetScrollTop(){
-  try{ window.scrollTo(0,0); }catch(e){}
+  try{ window.scrollTo({top:0,left:0,behavior:'instant'}); }catch(e){ try{ window.scrollTo(0,0); }catch(_){} }
   [document.scrollingElement, document.documentElement, document.body, document.getElementById('main')].forEach(el=>{ if(el) el.scrollTop = 0; });
 }
 /* Shows when a streak started and ended. kind: 'current' | 'best' */
@@ -3136,12 +3135,14 @@ function updateTopDate(){
 
 /* ---------------- Modal helpers ---------------- */
 /* Forms and detail views open as full pages; short confirmations ("Are you sure?", "Redeem?", freeze, reschedule) stay small popups. */
-let MODAL_TM = null;
+let MODAL_TM = null, MODAL_Y = 0, MODAL_V = null;
 function openModal(html){
   const w = document.createElement('div'); w.innerHTML = html;
   const h = w.querySelector('.modal-head'), t = h && h.querySelector('h3');
   const small = !!t && (/\?\s*$/.test(t.textContent) || /streak freeze|reschedule/i.test(t.textContent));
-  const bd = $('#modalBackdrop'); clearTimeout(MODAL_TM); bd.classList.remove('closing');
+  const bd = $('#modalBackdrop'); clearTimeout(MODAL_TM);
+  if(!bd.classList.contains('open')){ const se = document.scrollingElement||document.documentElement; MODAL_Y = se.scrollTop; MODAL_V = CURRENT_VIEW; }
+  bd.classList.remove('closing');
   if(small){
     $('#modalBody').innerHTML = html; bd.classList.add('pop');
     document.body.classList.remove('pg-open');
@@ -3157,7 +3158,10 @@ function closeModal(){
   const bd = $('#modalBackdrop'); if(!bd.classList.contains('open')) return;
   bd.classList.add('closing'); document.body.classList.remove('pg-open');
   clearTimeout(MODAL_TM);
-  MODAL_TM = setTimeout(()=>{ bd.classList.remove('open','center','closing','pop'); $('#modalBody').innerHTML = ''; }, 190);
+  MODAL_TM = setTimeout(()=>{
+    bd.classList.remove('open','center','closing','pop'); $('#modalBody').innerHTML = '';
+    if(CURRENT_VIEW===MODAL_V){ const se = document.scrollingElement||document.documentElement; se.scrollTop = MODAL_Y; }   // back lands exactly where you were
+  }, 190);
 }
 $('#modalBackdrop').addEventListener('click', e=>{
   if(e.target.id==='modalBackdrop') closeModal();
