@@ -1508,6 +1508,29 @@ body.pg-open{overflow:hidden}
 .pill-select,.pg-body select{-webkit-appearance:none;appearance:none;border-radius:14px;padding-right:32px !important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;background-size:15px}
 .cd-hero .pill-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
 .pg-body input[type=date],.pg-body input[type=number],.pg-body input[type=text],.pg-body select{border-radius:14px}
+
+/* ===== Small confirmations stay popups ===== */
+.modal-backdrop.open.pop{display:flex !important;align-items:center;justify-content:center;background:rgba(20,16,14,.5) !important;overflow:hidden;animation:bdIn .2s ease both}
+.modal-backdrop.pop .modal{max-width:420px !important;margin:0 16px;padding:20px !important;border-radius:26px !important;background:var(--card) !important;box-shadow:0 24px 60px rgba(0,0,0,.35);animation:popIn .26s var(--ease) both}
+@keyframes bdIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{opacity:0;transform:translateY(14px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes pgOut{to{opacity:0;transform:translateX(18px)}}
+@keyframes popOut{to{opacity:0;transform:scale(.96)}}
+.modal-backdrop.closing .modal{animation:pgOut .18s ease both !important}
+.modal-backdrop.pop.closing .modal{animation:popOut .16s ease both !important}
+.modal-backdrop.pop.closing{opacity:0;transition:opacity .18s ease}
+/* ===== Smooth motion everywhere ===== */
+:root{--ease:cubic-bezier(.22,.8,.2,1)}
+html{scroll-behavior:smooth}
+.btn,.icon-btn,.qa-tile,.hx-card,.rw-it,.dl-tile,.row-item,.pl-chip,.bn-item,.hm-cta,.hm-fire,.pill-select,.wk-d i,.hm-sj{transition:transform .24s var(--ease),box-shadow .24s var(--ease),background-color .24s var(--ease),border-color .24s var(--ease),opacity .24s var(--ease),color .24s var(--ease)}
+.btn:active,.qa-tile:active,.rw-it:active,.hm-cta:active,.hm-fire:active,.bn-item:active,.icon-btn:active,.pl-chip:active{transform:scale(.96)}
+.hx-card[onclick]:active,.row-item:active{transform:scale(.985)}
+.pbar>div,.hh-bar>div,.rw-meter>div,.pgb-sj u i,.cd-split>div{transition:width .7s var(--ease)}
+.hm-ring .rf,.pgb-ring circle{transition:stroke-dashoffset .9s var(--ease)}
+.view.enter.active>*{animation-duration:.34s !important;animation-timing-function:var(--ease) !important}
+#view-home.active>*{animation-duration:.38s;animation-timing-function:var(--ease)}
+.toast{transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.coin-pop{transition:transform .5s var(--ease),opacity .35s var(--ease)}
 </style>
 </head>
 <body>
@@ -3112,20 +3135,29 @@ function updateTopDate(){
 }
 
 /* ---------------- Modal helpers ---------------- */
-/* Every popup now opens as a full page in the app theme: hero bar with a back button and the popup's title. */
+/* Forms and detail views open as full pages; short confirmations ("Are you sure?", "Redeem?", freeze, reschedule) stay small popups. */
+let MODAL_TM = null;
 function openModal(html){
   const w = document.createElement('div'); w.innerHTML = html;
   const h = w.querySelector('.modal-head'), t = h && h.querySelector('h3');
-  const title = t ? t.innerHTML : ''; if(h) h.remove();
-  const card = html.indexOf('hx-card') < 0;   // plain forms sit on a card, rich pages bring their own cards
-  $('#modalBody').innerHTML = `<div class="pg-bar"><button type="button" class="pg-back" onclick="closeModal()" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h3>${title}</h3></div><div class="pg-body${card?' card':''}">${w.innerHTML}</div>`;
-  const bd = $('#modalBackdrop'); bd.classList.add('open'); bd.scrollTop = 0;
-  document.body.classList.add('pg-open');
+  const small = !!t && (/\?\s*$/.test(t.textContent) || /streak freeze|reschedule/i.test(t.textContent));
+  const bd = $('#modalBackdrop'); clearTimeout(MODAL_TM); bd.classList.remove('closing');
+  if(small){
+    $('#modalBody').innerHTML = html; bd.classList.add('pop');
+    document.body.classList.remove('pg-open');
+  } else {
+    const title = t ? t.innerHTML : ''; if(h) h.remove();
+    const card = html.indexOf('hx-card') < 0;   // plain forms sit on a card, rich pages bring their own cards
+    $('#modalBody').innerHTML = `<div class="pg-bar"><button type="button" class="pg-back" onclick="closeModal()" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h3>${title}</h3></div><div class="pg-body${card?' card':''}">${w.innerHTML}</div>`;
+    bd.classList.remove('pop'); bd.scrollTop = 0; document.body.classList.add('pg-open');
+  }
+  bd.classList.add('open');
 }
 function closeModal(){
-  $('#modalBackdrop').classList.remove('open','center');
-  $('#modalBody').innerHTML = '';
-  document.body.classList.remove('pg-open');
+  const bd = $('#modalBackdrop'); if(!bd.classList.contains('open')) return;
+  bd.classList.add('closing'); document.body.classList.remove('pg-open');
+  clearTimeout(MODAL_TM);
+  MODAL_TM = setTimeout(()=>{ bd.classList.remove('open','center','closing','pop'); $('#modalBody').innerHTML = ''; }, 190);
 }
 $('#modalBackdrop').addEventListener('click', e=>{
   if(e.target.id==='modalBackdrop') closeModal();
