@@ -1472,6 +1472,42 @@ body.nofab .fab.fab-alert{bottom:28px}
 .pgb-sj u{flex:1;height:7px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden;text-decoration:none}
 .pgb-sj u i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent-light),var(--accent))}
 .pgb-sj b{width:36px;text-align:right;color:#fff}
+
+/* ===== Popups are full pages (same theme as Home) ===== */
+.modal-backdrop.open,.modal-backdrop.center.open{display:block !important;background:var(--paper) !important;overflow-y:auto;overscroll-behavior:contain;z-index:120}
+.modal-backdrop .modal,.modal-backdrop.center .modal{width:100%;max-width:760px !important;margin:0 auto;padding:0 !important;max-height:none !important;border-radius:0 !important;background:transparent !important;overflow:visible !important;animation:pgIn .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes pgIn{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.modal-backdrop .modal{animation:none}}
+body.pg-open{overflow:hidden}
+.pg-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:12px;padding:calc(14px + env(safe-area-inset-top,0px)) 16px 18px;color:#fff;border-radius:0 0 28px 28px;background:radial-gradient(110% 140% at 90% 0,var(--hero-glow),rgba(0,0,0,0) 70%),var(--hero)}
+.pg-back{width:40px;height:40px;flex:0 0 40px;border:none;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.pg-back svg{width:22px;height:22px}
+.pg-bar h3{font:700 20px/1.2 var(--font-head);color:#fff;min-width:0;overflow-wrap:anywhere}
+.pg-body{padding:16px 16px calc(28px + env(safe-area-inset-bottom,0px))}
+.pg-body.card{margin:16px;padding:18px;border-radius:24px;background:var(--card);box-shadow:0 1px 2px rgba(30,21,18,.04),0 8px 24px rgba(30,21,18,.05)}
+:root[data-theme="dark"] .pg-body.card{box-shadow:none}
+/* chapter page header */
+.cd-hero{background:radial-gradient(110% 90% at 92% 0,var(--hero-glow),rgba(0,0,0,0) 70%),var(--hero) !important;color:#fff}
+.cd-hero .hx-k{color:rgba(255,255,255,.65)}
+.cd-hero .hx-big2{color:#fff;font-size:44px}.cd-hero .hx-big2 span{color:rgba(255,255,255,.6)}
+.cd-hero .pbar{background:rgba(255,255,255,.16)}
+.cd-hero .pill-select{background:rgba(255,255,255,.12) !important;color:#fff !important;border-color:transparent !important}
+.cd-hero .pill-select option{color:#1E1512;background:#fff}
+
+/* ===== Toast, coin popup and pickers in the app theme ===== */
+.toast{background:radial-gradient(120% 170% at 100% 0,var(--hero-glow),rgba(0,0,0,0) 65%),var(--hero) !important;color:#fff !important;padding:10px 16px 10px 10px;border-radius:20px;border:1px solid rgba(255,255,255,.1);max-width:min(92vw,440px);white-space:normal;box-shadow:0 14px 34px rgba(0,0,0,.32)}
+.toast-i{width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font:800 15px var(--font-body)}
+.toast-i svg{width:16px;height:16px}
+.toast-i.bad{background:#C0302D}
+.toast-action{background:rgba(255,255,255,.14) !important;color:var(--hero-acc) !important;padding:6px 12px !important;border-radius:999px;font-weight:700}
+.coin-pop{background:radial-gradient(120% 170% at 100% 0,var(--hero-glow),rgba(0,0,0,0) 65%),var(--hero) !important;color:#fff !important;border-radius:22px;border:1px solid rgba(255,255,255,.1);padding:10px 22px 10px 10px}
+.coin-pop-ic{width:42px;height:42px;flex:0 0 42px;border-radius:50%;background:rgba(232,160,76,.2);align-items:center;justify-content:center;color:#F5B85A;box-shadow:0 0 0 4px rgba(232,160,76,.12),0 0 22px rgba(232,160,76,.45)}
+.coin-pop-ic svg{width:25px;height:25px}
+.coin-pop b{color:#F5B85A;font-size:18px}
+.coin-pop-sub{color:rgba(255,255,255,.72);opacity:1}
+.pill-select,.pg-body select{-webkit-appearance:none;appearance:none;border-radius:14px;padding-right:32px !important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;background-size:15px}
+.cd-hero .pill-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+.pg-body input[type=date],.pg-body input[type=number],.pg-body input[type=text],.pg-body select{border-radius:14px}
 </style>
 </head>
 <body>
@@ -1866,15 +1902,17 @@ function esc(str){
 function toast(msg, action){
   const t = $('#toast');
   clearTimeout(toast._tm);
+  const bad = /could not|failed|error|offline|no streak|invalid|need |not /i.test(msg);
+  const ic = `<span class="toast-i${bad?' bad':''}">${bad?'!':ICONS.check}</span>`;
   if(action){
-    t.innerHTML = `<span>${esc(msg)}</span><button type="button" class="toast-action" id="toastActionBtn">${esc(action.label)}</button>`;
+    t.innerHTML = `${ic}<span>${esc(msg)}</span><button type="button" class="toast-action" id="toastActionBtn">${esc(action.label)}</button>`;
     document.getElementById('toastActionBtn').addEventListener('click', ()=>{
       t.classList.remove('show');
       clearTimeout(toast._tm);
       action.onClick();
     });
   } else {
-    t.textContent = msg;
+    t.innerHTML = `${ic}<span>${esc(msg)}</span>`;
   }
   t.classList.add('show');
   toast._tm = setTimeout(()=>t.classList.remove('show'), action ? 5000 : 2200);
@@ -3074,13 +3112,20 @@ function updateTopDate(){
 }
 
 /* ---------------- Modal helpers ---------------- */
+/* Every popup now opens as a full page in the app theme: hero bar with a back button and the popup's title. */
 function openModal(html){
-  $('#modalBody').innerHTML = html;
-  $('#modalBackdrop').classList.add('open');
+  const w = document.createElement('div'); w.innerHTML = html;
+  const h = w.querySelector('.modal-head'), t = h && h.querySelector('h3');
+  const title = t ? t.innerHTML : ''; if(h) h.remove();
+  const card = html.indexOf('hx-card') < 0;   // plain forms sit on a card, rich pages bring their own cards
+  $('#modalBody').innerHTML = `<div class="pg-bar"><button type="button" class="pg-back" onclick="closeModal()" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h3>${title}</h3></div><div class="pg-body${card?' card':''}">${w.innerHTML}</div>`;
+  const bd = $('#modalBackdrop'); bd.classList.add('open'); bd.scrollTop = 0;
+  document.body.classList.add('pg-open');
 }
 function closeModal(){
   $('#modalBackdrop').classList.remove('open','center');
   $('#modalBody').innerHTML = '';
+  document.body.classList.remove('pg-open');
 }
 $('#modalBackdrop').addEventListener('click', e=>{
   if(e.target.id==='modalBackdrop') closeModal();
